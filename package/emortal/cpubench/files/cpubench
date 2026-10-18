@@ -1,0 +1,5 @@
+#!/bin/sh
+result=$(openssl speed -evp aes-256-cbc -seconds 3 2>/dev/null | tail -1 | awk '{print $NF}')
+[ -n "$result" ] || result=0
+score=$(awk -v r="$result" 'BEGIN{printf "%.6f", r/1000}')
+echo " (CpuMark ${score} Scores)"
