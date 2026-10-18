@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -s /etc/bench.log ] || /usr/bin/cpubench > /etc/bench.log
+exit 0
