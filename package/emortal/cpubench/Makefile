@@ -13,6 +13,13 @@ define Package/cpubench
   DEPENDS:=+openssl-util
 endef
 
+define Package/cpubench/description
+  Simple OpenSSL based CPU benchmark for the LuCI status page (CpuMark).
+endef
+
+define Build/Compile
+endef
+
 define Package/cpubench/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) ./files/cpubench $(1)/usr/bin/
