@@ -70,6 +70,13 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
+      - name: Add custom LuCI packages
+        run: |
+          mkdir -p package/custom
+          git clone --depth 1 https://github.com/luanmuc/luci-app-airoha-npu package/custom/luci-app-airoha-npu
+          git clone --depth 1 https://github.com/qwe-qaq/luci-app /tmp/luci-app
+          cp -r /tmp/luci-app/luci-app-pon-status package/custom/
+
       - name: Load repository signing key
         env:
           PONWRT_APK_PRIVATE_KEY: ${{ secrets.PONWRT_APK_PRIVATE_KEY }}
