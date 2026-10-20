@@ -76,7 +76,7 @@ jobs:
           git clone --depth 1 https://github.com/luanmuc/luci-app-airoha-npu package/custom/luci-app-airoha-npu
           git clone --depth 1 https://github.com/qwe-qaq/luci-app /tmp/luci-app
           cp -r /tmp/luci-app/luci-app-pon-status package/custom/
-          
+
       - name: Stamp version info
         run: |
           STAMP="by shb110119 $(TZ=Asia/Shanghai date +%Y%m%d-%H:%M)"
@@ -87,8 +87,6 @@ jobs:
           else
             echo "::warning::找不到 $JS，版本号不会带署名"
           fi
-          sed -i "s/^PRETTY_NAME=\"$.*$\"$/PRETTY_NAME=\"\1 ${STAMP}\"/" package/base-files/files/usr/lib/os-release
-
           
       - name: Load repository signing key
         env:
