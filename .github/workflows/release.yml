@@ -131,7 +131,10 @@ jobs:
 
       - name: Create checksums
         working-directory: release
-        run: find . -type f ! -name sha256sums -exec sha256sum {} + | sort -k2 > sha256sums
+        run: |
+          rm -f */config.buildinfo */version.buildinfo */profiles.json */feeds.buildinfo */sha256sums
+          find . -type f ! -name sha256sums -exec sha256sum {} + | sort -k2 > sha256sums
+
 
       - name: Create GitHub release
         env:
