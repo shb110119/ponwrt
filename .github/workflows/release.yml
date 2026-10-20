@@ -89,6 +89,7 @@ jobs:
           fi
           sed -i "s/^PRETTY_NAME=\"$.*$\"$/PRETTY_NAME=\"\1 ${STAMP}\"/" package/base-files/files/usr/lib/os-release
 
+          
       - name: Load repository signing key
         env:
           PONWRT_APK_PRIVATE_KEY: ${{ secrets.PONWRT_APK_PRIVATE_KEY }}
