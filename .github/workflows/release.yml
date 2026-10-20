@@ -79,7 +79,7 @@ jobs:
 
       - name: Stamp version info
         run: |
-          STAMP="by shb110119 $(TZ=Asia/Shanghai date +%Y%m%d-%H:%M)"
+          STAMP="by test $(TZ=Asia/Shanghai date +%Y%m%d-%H:%M)"
           JS=feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
           if [ -f "$JS" ]; then
             sed -i "s#(luciversion || '')#(luciversion || '') + ' ${STAMP}'#" "$JS"
