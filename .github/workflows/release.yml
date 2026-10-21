@@ -80,7 +80,8 @@ jobs:
       - name: Add libffi (fix python3 build)
         run: |
           git clone --depth 1 --filter=blob:none --sparse https://github.com/openwrt/openwrt /tmp/openwrt-core
-          cd /tmp/openwrt-core && git sparse-checkout set package/libs/libffi
+          ( cd /tmp/openwrt-core && git sparse-checkout set package/libs/libffi )
+          mkdir -p package/libs
           rm -rf package/libs/libffi
           cp -r /tmp/openwrt-core/package/libs/libffi package/libs/
           ls package/libs/libffi
