@@ -76,6 +76,13 @@ jobs:
           git clone --depth 1 https://github.com/luanmuc/luci-app-airoha-npu package/custom/luci-app-airoha-npu
           git clone --depth 1 https://github.com/qwe-qaq/luci-app /tmp/luci-app
           cp -r /tmp/luci-app/luci-app-pon-status package/custom/
+          
+      - name: Add libffi (fix python3 build)
+        run: |
+          git clone --depth 1 --filter=blob:none --sparse https://github.com/openwrt/openwrt /tmp/openwrt-core
+          cd /tmp/openwrt-core && git sparse-checkout set package/libs/libffi
+          mkdir -p package/libs
+          cp -r /tmp/openwrt-core/package/libs/libffi package/libs/
 
       - name: Stamp version info
         run: |
