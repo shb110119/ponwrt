@@ -29,7 +29,7 @@ env:
   BUILD_SCOPE: ${{ github.event.inputs.scope || 'firmware' }}
   IGNORE_CACHE: ${{ github.event.inputs.ignore_cache || 'false' }}
   FW_BUILD_TIME: ''                 # 留空 = 自动取构建时时间（Asia/Shanghai）
-  FW_DESC_SUFFIX: ''               # 留空 = "· qwe · <构建时间>"；填了则完全自定义
+  FW_DESC_SUFFIX: ''               # 留空 = 不追加后缀（版本号就是 PonWrt SNAPSHOT r0-xxxx）；填了则原样拼在后面
 
 on:
   repository_dispatch:
