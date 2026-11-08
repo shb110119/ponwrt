@@ -240,4 +240,31 @@ if [ -f "$OSREL_TPL" ]; then
   echo "✅ os-release 同步 -> $OSREL_LINE"
 fi
 
+# ---------------------------------------------------------
+# 6. LuCI 概览页版本号补「by test 日期」
+#
+#    概览页「固件版本」= boardinfo.release.description + ' / ' + luciversion
+#      · 前半截（... · qwe · 构建时间）来自上面第 5 段，改的是 /etc/openwrt_release
+#      · 后半截（LuCI 分支/版本号）默认只到版本为止
+#    原 release.yml 有独立的 "Stamp version info" 步骤补这一截，
+#    build.yml(bq 流程) 没有，所以统一放进 diy-part2，哪个入口跑都能带上。
+# ---------------------------------------------------------
+LUCI_STATUS_JS="feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js"
+LUCI_STAMP="by test $(TZ="${TZ:-Asia/Shanghai}" date '+%Y%m%d-%H:%M')"
+
+if [ -f "$LUCI_STATUS_JS" ]; then
+  if grep -q "by test " "$LUCI_STATUS_JS"; then
+    echo "ℹ️ LuCI 版本署名已存在，跳过（$(grep -o "by test [0-9-]*:[0-9]*" "$LUCI_STATUS_JS" | head -1)）"
+  else
+    sed -i "s#(luciversion || '')#(luciversion || '') + ' ${LUCI_STAMP}'#" "$LUCI_STATUS_JS" || true
+    if grep -qF "$LUCI_STAMP" "$LUCI_STATUS_JS"; then
+      echo "✅ LuCI 版本署名 -> ${LUCI_STAMP}"
+    else
+      echo "::warning::未命中 (luciversion || '')，LuCI 版本号不会带署名（上游 LuCI 可能改版）"
+    fi
+  fi
+else
+  echo "::warning::未找到 $LUCI_STATUS_JS，跳过 LuCI 版本署名"
+fi
+
 echo "🎉 diy-part2.sh 执行完毕 (author=$FW_AUTHOR)"
