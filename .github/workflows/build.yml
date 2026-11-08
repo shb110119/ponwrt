@@ -15,7 +15,10 @@ env:
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: ${{ github.event.inputs.upload_release || 'true' }}
+  # 只有显式选择 false 才跳过发版；留空 / true 一律发版
+  # （旧写法 `inputs.upload_release || 'true'` 有坑：字符串 'false' 在表达式里是真值，
+  #   会原样传下去，导致「跑完绿色成功但其实没发 Release」）
+  UPLOAD_RELEASE: ${{ github.event.inputs.upload_release == 'false' && 'false' || 'true' }}
   USE_DL_CACHE: true
   USE_CCACHE: false
   TZ: Asia/Shanghai
@@ -768,10 +771,12 @@ jobs:
             exit 0
           fi
 
-          # 固定 tag：机型 + 分支，不含时间戳、不含作者
-          # 同一机型/分支再次编译时，softprops/action-gh-release 会更新
-          # 这个已存在的 Release（同名固件自动覆盖），不会新建版本。
-          RELEASE_TAG=$(echo "${DEVICE_NAME}-${REPO_BRANCH}" | sed 's/[^a-zA-Z0-9._-]/-/g')
+          # 每次编译一个独立 tag：机型 + 分支 + 上海时间（精确到分钟）
+          #   ponwrt-an7581-all-master-20261108-1750
+          # 好处：每一版都可回滚，不会被下一次编译覆盖；
+          # 老版本由后面的 "Remove old releases" 步骤按同一 pattern 自动清理。
+          STAMP=$(date '+%Y%m%d-%H%M')
+          RELEASE_TAG=$(echo "${DEVICE_NAME}-${REPO_BRANCH}-${STAMP}" | sed 's/[^a-zA-Z0-9._-]/-/g')
           echo "release_tag=${RELEASE_TAG}" >> "$GITHUB_OUTPUT"
 
           touch release.txt
@@ -795,7 +800,8 @@ jobs:
             echo '```'
             echo ""
             echo "---"
-            echo "> 本 Release 为滚动发布页，仅保留最新一次编译产物。"
+            echo "> 每次编译生成一个独立 Release，最近 10 个自动保留，更早的连同 tag 一起清理。"
+            echo "> Artifact（Actions 页面内）与此处内容相同，保留 90 天。"
             echo "> 安装前请用 AN758x-Stock2UBI 备份原厂 flash，刷机后恢复 PON/校准数据。"
           } >> release.txt
           echo "status=success" >> "$GITHUB_OUTPUT"
@@ -822,6 +828,8 @@ jobs:
             ${{ env.FIRMWARE }}/*.tar.gz
             ${{ env.FIRMWARE }}/*.manifest
             ${{ env.FIRMWARE }}/*.json
+            ${{ env.FIRMWARE }}/*.buildinfo
+            ${{ env.FIRMWARE }}/sha256sums
 
       # =========================================================
       # 23. 清理旧记录
