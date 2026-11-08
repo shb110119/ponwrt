@@ -6,7 +6,7 @@
 #   1) 默认时区改成中国（Asia/Shanghai, CST-8）
 #   2) 5G WiFi：国家码 CN、信道 auto、频宽 160MHz
 #   3) 概览页「CPU 使用率（%）」行：显示 USR/SYS + 每个核心的明细
-#   4) 固件版本后追加「作者 + 构建时间」
+#   4) 固件版本串补回「版本代号 r0-<短hash>」（与上游发行版一致）
 #
 # ================================================================
 
@@ -209,21 +209,45 @@ fi
 
 [ -z "$FW_BUILD_TIME" ] && FW_BUILD_TIME="$(TZ="${TZ:-Asia/Shanghai}" date '+%Y-%m-%d %H:%M')"
 
+# ---------------------------------------------------------
+# 4.5 固件版本串：必须保留上游那截「版本代号」
+#
+#   上游模板是 DISTRIB_DESCRIPTION='%D %V %C'
+#     %D = 发行名（PonWrt）  %V = SNAPSHOT  %C = 版本代号（r0-<git 短 hash>）
+#   .config 里没有 CONFIG_VERSION_CODE 时，这里按 getver.sh 的格式自己算一个
+#   r0-<短hash>。**绝不能再降级成 '%D %V'** —— 那样概览页会把整个
+#   r0-xxxx 丢掉，只剩 "PonWrt SNAPSHOT"，和上游发行版对不上。
+# ---------------------------------------------------------
 VER_CODE="$(sed -n 's/^CONFIG_VERSION_CODE="\(.*\)"$/\1/p' .config 2>/dev/null || true)"
-if [ -n "$VER_CODE" ]; then
-  DESC_BODY='%D %V %C'
-else
-  DESC_BODY='%D %V'
+if [ -z "$VER_CODE" ]; then
+  GIT_HASH="$(git rev-parse --short HEAD 2>/dev/null || true)"
+  if [ -n "$GIT_HASH" ]; then
+    VER_CODE="r0-${GIT_HASH}"
+  fi
 fi
-[ -z "$FW_DESC_SUFFIX" ] && FW_DESC_SUFFIX="· ${FW_AUTHOR} · ${FW_BUILD_TIME}"
+if [ -n "$VER_CODE" ]; then
+  DESC_BODY="%D %V ${VER_CODE}"
+else
+  DESC_BODY='%D %V %C'        # 连 git hash 都拿不到，交回上游模板自己展开
+fi
+
+# 默认不追加「· 作者 · 时间」后缀，保持与上游发行版一致的观感；
+# 需要时由 workflow 传 FW_DESC_SUFFIX 显式打开。
+FW_DESC_SUFFIX="${FW_DESC_SUFFIX:-}"
 
 RELEASE_TPL="package/base-files/files/etc/openwrt_release"
 OSREL_TPL="package/base-files/files/usr/lib/os-release"
 
 # 用 perl + 环境变量传替换文本：作者名/后缀里带 / | # & 都不会搞坏语法
 # （直接 sed "s|...|${FW_DESC_SUFFIX}|" 遇到这些字符会炸）
-FW_DESC_LINE="DISTRIB_DESCRIPTION='${DESC_BODY} ${FW_DESC_SUFFIX}'"
-OSREL_LINE="OPENWRT_RELEASE=\"${DESC_BODY} ${FW_DESC_SUFFIX}\""
+if [ -n "$FW_DESC_SUFFIX" ]; then
+  FW_DESC_LINE="DISTRIB_DESCRIPTION='${DESC_BODY} ${FW_DESC_SUFFIX}'"
+  OSREL_LINE="OPENWRT_RELEASE=\"${DESC_BODY} ${FW_DESC_SUFFIX}\""
+else
+  # 没有后缀时不要留尾随空格
+  FW_DESC_LINE="DISTRIB_DESCRIPTION='${DESC_BODY}'"
+  OSREL_LINE="OPENWRT_RELEASE=\"${DESC_BODY}\""
+fi
 export FW_DESC_LINE OSREL_LINE
 
 if [ -f "$RELEASE_TPL" ]; then
@@ -244,7 +268,8 @@ fi
 # 6. LuCI 概览页版本号补「by test 日期」
 #
 #    概览页「固件版本」= boardinfo.release.description + ' / ' + luciversion
-#      · 前半截（... · qwe · 构建时间）来自上面第 5 段，改的是 /etc/openwrt_release
+#      · 前半截（PonWrt SNAPSHOT r0-xxxx）来自上面第 4.5 段，
+#        改的是 package/base-files 的 openwrt_release 模板
 #      · 后半截（LuCI 分支/版本号）默认只到版本为止
 #    原 release.yml 有独立的 "Stamp version info" 步骤补这一截，
 #    build.yml(bq 流程) 没有，所以统一放进 diy-part2，哪个入口跑都能带上。
