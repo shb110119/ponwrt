@@ -1,30 +1,62 @@
 name: Release PonWrt
 
+# ================================================================
+# 与 Build PonWrt (build.yml) 使用同一套构建配方：
+#   同一源码(fork) / 同一 .config 合成方式 / diy-part1 + diy-part2 /
+#   同一工具链缓存（key、路径、Release 备份都对齐，可与 build.yml 互相复用）
+# 区别只在「入口语义」：
+#   · 一次 matrix 跑完 an7581 + an7583 两套
+#   · 不裁剪机型（整个 target 全编）
+#   · 用你指定的 tag 直接建 Release
+# ================================================================
+
 on:
   workflow_dispatch:
     inputs:
       tag:
-        description: Release tag
+        description: 'Release tag'
         required: true
         type: string
       prerelease:
-        description: Mark as prerelease
+        description: 'Mark as prerelease'
         required: true
         default: true
         type: boolean
+      fw_author:
+        description: '固件版本后缀的作者名（可选，留空 = 不显示）'
+        required: false
+        default: ''
+      ignore_cache:
+        description: '忽略工具链缓存强制重编'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: release-${{ inputs.tag }}
   cancel-in-progress: false
 
+env:
+  TZ: Asia/Shanghai
+  # 必须是 workflow 级静态变量：actions/cache 的 with.path 里若用动态值会解析成空串
+  BUILD_ROOT: /workdir
+  FW_AUTHOR: ${{ inputs.fw_author }}
+  IGNORE_CACHE: ${{ inputs.ignore_cache || 'false' }}
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     name: Build ${{ matrix.target }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 360
+    # 命中工具链缓存约 50~70 分钟；冷编（工具链 + 全量包）接近 6 小时上限
+    timeout-minutes: 350
     environment: release
     strategy:
       fail-fast: false
@@ -34,104 +66,375 @@ jobs:
           - an7583
 
     steps:
-      - uses: actions/checkout@v6
-
-      - name: Free build space
-        run: |
-          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
-          sudo apt-get clean
-
-      - name: Install build dependencies
+      # =========================================================
+      # 1. 释放空间 + 初始化编译环境（与 build.yml 第 1 步一致）
+      # =========================================================
+      - name: Free disk space & init build environment
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            asciidoc autoconf automake autopoint binutils bison build-essential \
-            bzip2 ccache clang cmake cpio curl device-tree-compiler flex gawk \
-            gettext git g++-multilib gcc-multilib gperf help2man intltool \
-            libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev \
-            libmpfr-dev libncurses-dev libpython3-dev libreadline-dev libssl-dev \
-            libtool libyaml-dev lld llvm ninja-build p7zip-full patch pkgconf \
-            python3 python3-docutils python3-pip python3-ply python3-pyelftools \
-            qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo \
-            uglifyjs unzip wget xmlto xxd zlib1g-dev zstd
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc \
+            /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/lib/jvm \
+            /usr/local/share/powershell /usr/share/swift 2>/dev/null || true
+          sudo docker image prune --all --force 2>/dev/null || true
+          sudo -E apt-get -yqq purge firefox snapd 2>/dev/null || true
 
-      - name: Cache downloads
-        uses: actions/cache@v4
-        with:
-          path: dl
-          key: ponwrt-dl-${{ matrix.target }}-${{ hashFiles('feeds.conf.default', 'configs/*.config') }}
-          restore-keys: |
-            ponwrt-dl-${{ matrix.target }}-
+          # aarch64 工具链/内核编译需要额外内存，8G swap 兜底
+          sudo swapoff -a 2>/dev/null || true
+          sudo rm -f /swapfile
+          sudo fallocate -l 8G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile && sudo swapon /swapfile
 
-      - name: Install feeds
+          sudo -E apt-get -yqq update
+          sudo -E apt-get -yqq install build-essential clang llvm dwarves \
+            libssl-dev libelf-dev bc flex bison python3 python3-distutils \
+            xz-utils tar unzip zip zstd dos2unix ccache gettext \
+            rsync file wget curl git subversion device-tree-compiler 2>/dev/null || true
+
+          if [ -x "$GITHUB_WORKSPACE/scripts/init_build_environment.sh" ]; then
+            bash "$GITHUB_WORKSPACE/scripts/init_build_environment.sh" || true
+          else
+            sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)' || true
+          fi
+
+          sudo -E apt-get -yqq autoremove --purge
+          sudo -E apt-get -yqq clean
+          sudo -E timedatectl set-timezone "$TZ"
+
+          sudo mkdir -p "$BUILD_ROOT"
+          sudo chown "$USER":"$USER" "$BUILD_ROOT"
+
+          echo "磁盘空间:"; df -hT
+          echo "内存/Swap:"; free -h
+
+      # =========================================================
+      # 2. 克隆源码（固定 fork，与 build.yml 的 source=fork 完全相同）
+      #    构建目录统一放 /workdir/openwrt：与 build.yml 一致，
+      #    工具链缓存里带绝对路径，路径不同会导致缓存不可用。
+      # =========================================================
+      - name: Clone source code
         run: |
+          cd "$BUILD_ROOT"
+          git clone --depth=1 --branch "${GITHUB_REF_NAME}" \
+            "https://github.com/${{ github.repository }}.git" openwrt
+          cd openwrt
+          echo "commit: $(git rev-parse --short HEAD)"
+          echo "branch: $(git rev-parse --abbrev-ref HEAD)"
+
+      # =========================================================
+      # 3. dl 下载缓存（key 与 build.yml 同构，可互相命中）
+      # =========================================================
+      - name: Cache dl directory
+        uses: actions/cache@v5
+        continue-on-error: true
+        with:
+          path: ${{ env.BUILD_ROOT }}/openwrt/dl
+          key: ponwrt-dl-fork-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            ponwrt-dl-fork-${{ github.ref_name }}-
+          save-always: true
+
+      # =========================================================
+      # 4. Feeds
+      # =========================================================
+      - name: Update & install feeds
+        run: |
+          cd "$BUILD_ROOT/openwrt"
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
-      - name: Add custom LuCI packages
+      # =========================================================
+      # 5. diy-part1.sh —— 拉取可选插件（npu / fluent / natmode / pon-status）
+      # =========================================================
+      - name: Pull optional plugins (diy-part1.sh)
         run: |
-          mkdir -p package/custom
-          git clone --depth 1 https://github.com/luanmuc/luci-app-airoha-npu package/custom/luci-app-airoha-npu
-          git clone --depth 1 https://github.com/qwe-qaq/luci-app /tmp/luci-app
-          cp -r /tmp/luci-app/luci-app-pon-status package/custom/
-          
+          cd "$BUILD_ROOT/openwrt"
+          chmod +x diy-part1.sh
+          ./diy-part1.sh
 
-      - name: Stamp version info
+      # =========================================================
+      # 6. 加载 .config —— 直接以仓库基座 configs/<soc>.config 打底
+      #    （等价于 build.yml 的「源码基座 + 追加同文件」；
+      #     profile=all 时 build.yml 用到的也正是这份文件）
+      # =========================================================
+      - name: Load custom configuration
         run: |
-          STAMP="by test $(TZ=Asia/Shanghai date +%Y%m%d-%H:%M)"
-          JS=feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-          if [ -f "$JS" ]; then
-            sed -i "s#(luciversion || '')#(luciversion || '') + ' ${STAMP}'#" "$JS"
-            grep -n "Firmware Version" "$JS"
-          else
-            echo "::warning::找不到 $JS，版本号不会带署名"
+          cd "$BUILD_ROOT/openwrt"
+          CONFIG_FILE="configs/${{ matrix.target }}.config"
+          if [ ! -f "$CONFIG_FILE" ]; then
+            echo "::error::找不到 $CONFIG_FILE"
+            exit 1
           fi
-          
-      - name: Load repository signing key
+          cp "$CONFIG_FILE" .config
+          echo "✅ 已加载: $CONFIG_FILE ($(wc -l < .config) 行)"
+
+      # =========================================================
+      # 7. diy-part2.sh —— 时区 / 5G / 版本串（与 build.yml 完全一致）
+      # =========================================================
+      - name: Customize defaults (diy-part2.sh)
+        run: |
+          cd "$BUILD_ROOT/openwrt"
+          chmod +x diy-part2.sh
+          FW_AUTHOR="$FW_AUTHOR" FW_BUILD_TIME="" FW_DESC_SUFFIX="" \
+          WIFI_5G_COUNTRY="CN" WIFI_5G_CHANNEL="auto" \
+          WIFI_5G_HTMODE="HE160" WIFI_5G_FALLBACK="HE80" \
+            ./diy-part2.sh
+
+      # =========================================================
+      # 8. defconfig + 关键包校验 + 工具链缓存 Key
+      # =========================================================
+      - name: Generate toolchain cache key
+        id: cache-key
+        run: |
+          cd "$BUILD_ROOT/openwrt"
+
+          echo "===== make defconfig ====="
+          make defconfig 2>&1 | tail -5
+
+          # PON 核心链路：缺了编出来光口不通，必须硬失败
+          MISSING=""
+          for p in kmod-airoha-xpon kmod-airoha-pon-frontend airoha-pond airoha-ponctl luci-app-pon; do
+            grep -q "^CONFIG_PACKAGE_${p}=y" .config || MISSING="$MISSING $p"
+          done
+          if [ -n "$MISSING" ]; then
+            echo "::error::以下关键包在 defconfig 后未启用:$MISSING"
+            exit 1
+          fi
+          echo "✅ PON 关键包校验通过"
+
+          # 第三方状态插件：包目录缺失会被 defconfig 静默剔除
+          OPT_MISS=""
+          for p in luci-app-airoha-npu luci-app-pon-status luci-app-natmode; do
+            if ! grep -q "^CONFIG_PACKAGE_${p}=y" .config; then
+              OPT_MISS="$OPT_MISS $p"
+              echo "::warning::${p} 在 defconfig 后未启用"
+              echo "  包目录: $([ -d "package/custom/${p}" ] && echo 存在 || echo 不存在)"
+              echo "  feeds 链接: $([ -e "package/feeds/custom/${p}" ] && echo 存在 || echo 不存在)"
+            fi
+          done
+          if [ -n "$OPT_MISS" ]; then
+            echo "::error::状态插件缺失:$OPT_MISS 请检查 diy-part1.sh 的 clone / 拷贝"
+            exit 1
+          fi
+          echo "✅ 状态插件校验通过"
+
+          grep -q "^CONFIG_PACKAGE_luci-i18n-airoha-npu-zh-cn=y" .config || \
+            echo "::warning::luci-i18n-airoha-npu-zh-cn 未启用（界面将为英文）"
+
+          TARGET=$(grep '^CONFIG_TARGET_BOARD=' .config | cut -d'"' -f2)
+          SUBTARGET=$(grep '^CONFIG_TARGET_SUBTARGET=' .config | cut -d'"' -f2)
+
+          TOOLS_HASH=$(find tools toolchain -type f \( -name "Makefile" -o -name "*.mk" \) \
+            -exec md5sum {} + 2>/dev/null | sort | md5sum | cut -d' ' -f1)
+
+          CACHE_KEY="ponwrt-toolchain-${TARGET}-${SUBTARGET}-${TOOLS_HASH:0:16}"
+          CACHE_PREFIX="ponwrt-toolchain-${TARGET}-${SUBTARGET}"
+
+          echo "CACHE_KEY=$CACHE_KEY"       >> "$GITHUB_OUTPUT"
+          echo "CACHE_PREFIX=$CACHE_PREFIX" >> "$GITHUB_OUTPUT"
+          echo "缓存 Key : $CACHE_KEY"
+
+      # =========================================================
+      # 9. 工具链源码（make toolchain/install 不会自动补下载）
+      # =========================================================
+      - name: Download toolchain sources
+        run: |
+          cd "$BUILD_ROOT/openwrt"
+          for i in 1 2 3; do
+            echo "===== 第 $i 次尝试: tools/toolchain download ====="
+            if make tools/download toolchain/download -j8; then break; fi
+            echo "::warning::第 $i 次失败，5 秒后重试"
+            sleep 5
+          done
+          find dl -size -1024c -type f -exec rm -f {} \; 2>/dev/null || true
+          echo "dl 共 $(ls -1 dl 2>/dev/null | wc -l) 个文件"
+
+          MISS=""
+          for pat in "musl-*.tar.gz" "gcc-*" "binutils-*"; do
+            ls dl/$pat >/dev/null 2>&1 || MISS="$MISS $pat"
+          done
+          if [ -n "$MISS" ]; then
+            echo "::error::工具链源码缺失:$MISS"
+            exit 1
+          fi
+          echo "✅ 工具链源码校验通过"
+
+      # =========================================================
+      # 10. 恢复工具链：actions/cache → Release 备份 → 从源码编
+      # =========================================================
+      - name: Restore toolchain from actions/cache
+        if: env.IGNORE_CACHE != 'true'
+        uses: actions/cache/restore@v5
+        id: cache-restore
+        with:
+          path: |
+            ${{ env.BUILD_ROOT }}/openwrt/staging_dir/host*
+            ${{ env.BUILD_ROOT }}/openwrt/staging_dir/tool*
+          key: ${{ steps.cache-key.outputs.CACHE_KEY }}
+
+      - name: Restore toolchain from Release backup
+        if: env.IGNORE_CACHE != 'true' && steps.cache-restore.outputs.cache-hit != 'true'
+        id: release-restore
+        continue-on-error: true
         env:
-          PONWRT_APK_PRIVATE_KEY: ${{ secrets.PONWRT_APK_PRIVATE_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ -n "$PONWRT_APK_PRIVATE_KEY" ]; then
-            umask 077
-            printf '%s\n' "$PONWRT_APK_PRIVATE_KEY" > private-key.pem
-            openssl ec -in private-key.pem -pubout -out public-key.pem
+          cd "$BUILD_ROOT/openwrt"
+          CACHE_KEY="${{ steps.cache-key.outputs.CACHE_KEY }}"
+          ASSET_NAME="${CACHE_KEY}.tzst"
+
+          if ! gh release view toolchain-cache --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "restored=false" >> "$GITHUB_OUTPUT"
+            echo "toolchain-cache Release 不存在，首次运行"
+            exit 0
           fi
 
-      - name: Configure ${{ matrix.target }}
-        run: |
-          ./scripts/kconfig.pl + \
-            "configs/${{ matrix.target }}.config" \
-            configs/release.config > .config
-          make defconfig
+          which unzstd >/dev/null 2>&1 || sudo -E apt-get -yqq install zstd >/dev/null 2>&1 || true
 
-      - name: Download sources
-        run: make download -j"$(nproc)"
+          if gh release view toolchain-cache --repo "$GITHUB_REPOSITORY" \
+               --json assets -q '.assets[].name' 2>/dev/null | grep -qx "$ASSET_NAME"; then
+            echo "从 Release 下载工具链: $ASSET_NAME"
+            gh release download toolchain-cache --repo "$GITHUB_REPOSITORY" -p "$ASSET_NAME" -D .
+            tar -I unzstd -xf "$ASSET_NAME" || tar -xf "$ASSET_NAME"
+            rm -f "$ASSET_NAME"
+            echo "restored=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "restored=false" >> "$GITHUB_OUTPUT"
+            echo "Release 中无匹配缓存"
+          fi
+
+      - name: Handle toolchain
+        id: toolchain
+        run: |
+          cd "$BUILD_ROOT/openwrt"
+
+          CACHE_HIT="${{ steps.cache-restore.outputs.cache-hit }}"
+          RELEASE_HIT="${{ steps.release-restore.outputs.restored }}"
+          [ "$IGNORE_CACHE" = "true" ] && CACHE_HIT="" && RELEASE_HIT=""
+
+          if [ "$CACHE_HIT" = "true" ]; then
+            echo "actions/cache 命中，跳过工具链编译"
+            echo "need_save_cache=false"   >> "$GITHUB_OUTPUT"
+            echo "need_save_release=false" >> "$GITHUB_OUTPUT"
+          elif [ "$RELEASE_HIT" = "true" ]; then
+            echo "Release 缓存命中，回写 actions/cache"
+            echo "need_save_cache=true"   >> "$GITHUB_OUTPUT"
+            echo "need_save_release=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "无可用缓存，开始编译工具链..."
+            make tools/install -j"$(nproc)" || make tools/install -j1 V=s || { echo "tools 编译失败"; exit 1; }
+            make toolchain/install -j"$(nproc)" || make toolchain/install -j1 V=s || { echo "toolchain 编译失败"; exit 1; }
+            echo "need_save_cache=true"   >> "$GITHUB_OUTPUT"
+            echo "need_save_release=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          touch toolchain/stamp-compile tools/stamp-compile 2>/dev/null || true
+
+      - name: Save toolchain to actions/cache
+        uses: actions/cache/save@v5
+        if: steps.toolchain.outputs.need_save_cache == 'true'
+        continue-on-error: true
+        with:
+          path: |
+            ${{ env.BUILD_ROOT }}/openwrt/staging_dir/host*
+            ${{ env.BUILD_ROOT }}/openwrt/staging_dir/tool*
+          key: ${{ steps.cache-key.outputs.CACHE_KEY }}
+
+      - name: Save toolchain to Release backup
+        if: steps.toolchain.outputs.need_save_release == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd "$BUILD_ROOT/openwrt"
+          CACHE_KEY="${{ steps.cache-key.outputs.CACHE_KEY }}"
+          CACHE_PREFIX="${{ steps.cache-key.outputs.CACHE_PREFIX }}"
+
+          tar -I zstdmt -cf "${CACHE_KEY}.tzst" staging_dir/host* staging_dir/tool*
+          ls -lh "${CACHE_KEY}.tzst"
+
+          gh release view toolchain-cache --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
+            gh release create toolchain-cache --repo "$GITHUB_REPOSITORY" \
+              --title "Toolchain Cache" --notes "自动生成的工具链缓存，请勿手动删除" --latest=false
+
+          gh release view toolchain-cache --repo "$GITHUB_REPOSITORY" --json assets \
+            -q '.assets[].name' 2>/dev/null | grep "^${CACHE_PREFIX}" | while read -r old; do
+              gh release delete-asset toolchain-cache "$old" --repo "$GITHUB_REPOSITORY" -y 2>/dev/null || true
+            done
+
+          gh release upload toolchain-cache "${CACHE_KEY}.tzst" --repo "$GITHUB_REPOSITORY" --clobber
+          rm -f "${CACHE_KEY}.tzst"
+
+      # =========================================================
+      # 11. 下载软件包 + 编译
+      # =========================================================
+      - name: Download packages
+        run: |
+          cd "$BUILD_ROOT/openwrt"
+          for i in 1 2 3; do
+            echo "===== 第 $i 次尝试: make download ====="
+            if make download -j8; then break; fi
+            sleep 5
+          done
+          find dl -size -1024c -type f -exec rm -f {} \; 2>/dev/null || true
+          echo "dl 共 $(ls -1 dl 2>/dev/null | wc -l) 个文件"
 
       - name: Build ${{ matrix.target }}
-        run: make -j"$(nproc)"
-
-      - name: Pack ${{ matrix.target }}
+        id: compile
         run: |
-          mkdir -p "release/${{ matrix.target }}"
-          find "bin/targets/airoha/${{ matrix.target }}" -maxdepth 1 -type f -exec cp {} "release/${{ matrix.target }}/" \;
+          cd "$BUILD_ROOT/openwrt"
+          JOBS=$(awk -v p="$(nproc)" '/^MemAvailable:/{m=int($2/2097152)+1} END{print m<p?m:p}' /proc/meminfo)
+          JOBS=$(( JOBS < 1 ? 1 : JOBS ))
+          echo "开始编译 ${JOBS} 线程 / target: ${{ matrix.target }}"
+          df -hT /
 
+          if make -j"${JOBS}"; then
+            echo "多线程编译成功"
+          elif make -j1; then
+            echo "单线程编译成功"
+          elif make -j1 V=s; then
+            echo "单线程详细日志编译成功"
+          else
+            echo "编译失败"
+            exit 1
+          fi
+
+          df -hT /
+          echo "status=success" >> "$GITHUB_OUTPUT"
+          echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> "$GITHUB_ENV"
+
+      # =========================================================
+      # 12. 打包 + 上传 Artifact
+      # =========================================================
+      - name: Pack ${{ matrix.target }}
+        if: steps.compile.outputs.status == 'success'
+        run: |
+          cd "$BUILD_ROOT/openwrt"
+          mkdir -p "release/${{ matrix.target }}"
+          rm -rf "bin/targets/airoha/${{ matrix.target }}/packages"
+          find "bin/targets/airoha/${{ matrix.target }}" -maxdepth 1 -type f \
+            -exec cp {} "release/${{ matrix.target }}/" \;
+          echo "产物:"; ls -lh "release/${{ matrix.target }}/" | head -40
 
       - name: Upload ${{ matrix.target }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
+        if: steps.compile.outputs.status == 'success'
         with:
           name: ponwrt-${{ matrix.target }}
-          path: release/
+          path: ${{ env.BUILD_ROOT }}/openwrt/release/
           if-no-files-found: error
           retention-days: 7
 
+  # ==============================================================
+  # 汇总两个 SoC 的产物，一次性创建 Release
+  # ==============================================================
   release:
     name: Create release
     needs: build
     runs-on: ubuntu-24.04
     permissions:
       contents: write
+      actions: read        # download-artifact 需要读 Actions 产物
 
     steps:
       - name: Download firmware archives
@@ -146,7 +449,7 @@ jobs:
         run: |
           rm -f */config.buildinfo */version.buildinfo */profiles.json */feeds.buildinfo */sha256sums
           find . -type f ! -name sha256sums -exec sha256sum {} + | sort -k2 > sha256sums
-
+          echo "== 文件清单 =="; cat sha256sums
 
       - name: Create GitHub release
         env:
