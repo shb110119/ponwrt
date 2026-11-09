@@ -40,15 +40,15 @@ permissions:
   actions: write
 
 concurrency:
-  group: release-${{ inputs.tag }}
+  group: release-${{ github.event.inputs.tag }}
   cancel-in-progress: false
 
 env:
   TZ: Asia/Shanghai
   # 必须是 workflow 级静态变量：actions/cache 的 with.path 里若用动态值会解析成空串
   BUILD_ROOT: /workdir
-  FW_AUTHOR: ${{ inputs.fw_author }}
-  IGNORE_CACHE: ${{ inputs.ignore_cache || 'false' }}
+  FW_AUTHOR: ${{ github.event.inputs.fw_author }}
+  IGNORE_CACHE: ${{ github.event.inputs.ignore_cache || 'false' }}
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
@@ -123,14 +123,24 @@ jobs:
           echo "branch: $(git rev-parse --abbrev-ref HEAD)"
 
       # =========================================================
-      # 3. dl 下载缓存（key 与 build.yml 同构，可互相命中）
+      # 2.5 缓存版本号：按「年+周」滚动（与 build.yml 同规则）
+      # =========================================================
+      - name: Resolve build week
+        id: week
+        run: echo "week=$(date +%Y%W)" >> "$GITHUB_OUTPUT"
+
+      # =========================================================
+      # 3. dl 下载缓存
+      #    key 里用「年+周」而不是 run_id：同一周内复用同一条目，
+      #    否则每次运行都新建一份，10GB 配额会被迅速刷满。
+      #    前缀与 build.yml 的 source=fork 完全一致，可互相命中。
       # =========================================================
       - name: Cache dl directory
         uses: actions/cache@v5
         continue-on-error: true
         with:
           path: ${{ env.BUILD_ROOT }}/openwrt/dl
-          key: ponwrt-dl-fork-${{ github.ref_name }}-${{ github.run_id }}
+          key: ponwrt-dl-fork-${{ github.ref_name }}-${{ steps.week.outputs.week }}
           restore-keys: |
             ponwrt-dl-fork-${{ github.ref_name }}-
           save-always: true
@@ -454,8 +464,8 @@ jobs:
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ inputs.tag }}
-          PRERELEASE: ${{ inputs.prerelease }}
+          RELEASE_TAG: ${{ github.event.inputs.tag }}
+          PRERELEASE: ${{ github.event.inputs.prerelease }}
         run: |
           args=(
             "$RELEASE_TAG"
