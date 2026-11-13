@@ -278,12 +278,14 @@ return view.extend({
 
 			tipEl.innerHTML = '';
 			tipEl.appendChild(E('div', { style: 'opacity:.8;margin-bottom:2px' }, tm));
-			tipEl.appendChild(E('div', {},
+			tipEl.appendChild(E('div', {}, [
 				E('span', { style: 'display:inline-block;width:8px;height:8px;border-radius:2px;background:' + COL_DOWN + ';margin-right:5px' }),
-				'下行 ' + fmtRate(p.down)));
-			tipEl.appendChild(E('div', {},
+				'下行 ' + fmtRate(p.down)
+			]));
+			tipEl.appendChild(E('div', {}, [
 				E('span', { style: 'display:inline-block;width:8px;height:8px;border-radius:2px;background:' + COL_UP + ';margin-right:5px' }),
-				'上行 ' + fmtRate(p.up)));
+				'上行 ' + fmtRate(p.up)
+			]));
 			tipEl.style.display = 'block';
 
 			var bw = chartBox.clientWidth, bh = chartBox.clientHeight;
