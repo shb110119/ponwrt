@@ -305,6 +305,14 @@ echo "🎉 diy-part2.sh 执行完毕 (author=$FW_AUTHOR)"
 #   2) 文件本体都在仓库根的 files/ 里，构建时由 workflow 拷进源码树并覆盖进 rootfs
 # =============================================================
 
+# =============================================================
+# 追加到仓库根 diy-part2.sh 的末尾（.config 已加载、make defconfig 之前）
+#
+# 这里只做两件事：
+#   1) 把自建流量页 / UPnP 修复所需的包固定选上
+#   2) 文件本体都在仓库根的 files/ 里，构建时由 workflow 拷进源码树并覆盖进 rootfs
+# =============================================================
+
 echo "=========================================="
 echo "自建流量页 & 补丁文件校验"
 echo "=========================================="
@@ -352,7 +360,7 @@ for f in \
   files/usr/share/rpcd/ucode/luci.upnp \
   files/usr/share/rpcd/acl.d/luci-app-traffic.json \
   files/usr/share/luci/menu.d/luci-app-traffic.json \
-  files/www/luci-static/resources/view/traffic/overview6.js \
+  files/www/luci-static/resources/view/traffic/overview14.js \
   files/www/luci-static/resources/view/status/include/15_pon.js \
   files/etc/config/vnstat \
   files/etc/uci-defaults/98-vnstat-persist \
