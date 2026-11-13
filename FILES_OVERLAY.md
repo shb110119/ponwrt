@@ -13,6 +13,7 @@
 | `www/luci-static/resources/view/traffic/overview14.js` | 流量页前端 | 文件名改版是为了绕 LuCI 的 JS 缓存，改动时**换新文件名**并同步菜单 |
 | `usr/share/rpcd/ucode/luci.upnp` | 修 miniupnpd 2.3.11 的端口映射列表为空 | 上游 luci-app-upnp 修好后，`diy-part2.sh` 会自动删掉这份覆盖 |
 | `www/.../view/status/include/15_pon.js` | 概览页 PON 卡片收窄（460px） | 属于 luci-app-pon-status，跟上游版本走，升级该包时重新比对 |
+| `www/.../view/status/include/16_traffic.js` | 概览页"流量统计"卡片（实时速率 + 今日总量 + 跳转链接） | 依赖 `luci.traffic` RPC（已在 ACL 里），文件名带序号即自动被概览页加载 |
 | `etc/config/vnstat` | 默认监控接口列表 | 只在新装/恢复出厂时作为默认值 |
 | `etc/uci-defaults/98-vnstat-persist` | vnstat 库挪到 `/etc/vnstat` + 写 sysupgrade 保留列表 | 不整份覆盖 `vnstat.conf`，只 sed 两行 |
 | `usr/bin/fix-luci-upnp.sh` | 同上 UPnP 修复的独立脚本 | 老固件上可手动跑，幂等 |
