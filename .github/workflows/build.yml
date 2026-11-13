@@ -283,7 +283,12 @@ jobs:
       - name: Load custom configuration
         run: |
           cd "$BUILD_ROOT/openwrt"
-          [ -e "$GITHUB_WORKSPACE/files" ] && cp -r "$GITHUB_WORKSPACE/files" files
+          mkdir -p files
+          # 本仓库自身就带 files/，而 $BUILD_ROOT/openwrt 就是本仓库的 clone，
+          # 直接 cp -r 会把内容套成 files/files，必须用 "src/." 合并拷贝
+          if [ -d "$GITHUB_WORKSPACE/files" ]; then
+            cp -a "$GITHUB_WORKSPACE/files/." files/
+          fi
 
           # git 可能在 checkout 时丢掉 exec bit，rpcd 就执行不了 tempinfo
           [ -d files/sbin ] && chmod +x files/sbin/* 2>/dev/null

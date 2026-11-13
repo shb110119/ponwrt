@@ -309,6 +309,12 @@ echo "=========================================="
 echo "自建流量页 & 补丁文件校验"
 echo "=========================================="
 
+# 防御：老的 workflow 用 cp -r 会多出一层 files/files，清掉免得多余文件进固件
+if [ -d files/files ]; then
+  rm -rf files/files
+  echo "  [!] 清理了多余的 files/files"
+fi
+
 ensure_pkg() {
   for p in "$@"; do
     if grep -q "^CONFIG_PACKAGE_${p}=y$" .config 2>/dev/null; then
