@@ -135,8 +135,50 @@ return view.extend({
 		});
 
 		var chartBox = E('div', {
-			style: 'border:1px solid rgba(128,128,128,0.25);border-radius:6px;padding:6px;margin-bottom:14px'
+			style: 'position:relative;border:1px solid rgba(128,128,128,0.25);border-radius:6px;padding:6px;margin-bottom:14px'
 		}, canvas);
+
+		var tipEl = E('div', {
+			style: 'position:absolute;display:none;pointer-events:none;z-index:5;' +
+				'background:rgba(0,0,0,0.8);color:#fff;font-size:12px;line-height:1.6;' +
+				'padding:6px 9px;border-radius:4px;white-space:nowrap'
+		});
+
+		chartBox.appendChild(tipEl);
+
+		canvas.addEventListener('mousemove', function(ev) {
+			if (!gh || !gh.pts.length) return;
+
+			var r = canvas.getBoundingClientRect();
+			var b = chartBox.getBoundingClientRect();
+
+			hover.mx = ev.clientX - b.left;
+			hover.my = ev.clientY - b.top;
+
+			var i = nearestIdx(ev.clientX - r.left);
+
+			if (i < 0) {
+				if (hover.on) { hover.on = false; draw(); }
+				return;
+			}
+
+			var t = gh.pts[i].t;
+
+			if (hover.on && hover.t === t) {
+				paintHover();
+				return;
+			}
+
+			hover.on = true;
+			hover.t = t;
+			draw();
+		});
+
+		canvas.addEventListener('mouseleave', function() {
+			if (!hover.on) return;
+			hover.on = false;
+			draw();
+		});
 
 		var tds = {}, tabBtns = {}, winBtns = [], hintEl,
 			sumTable, histBox, histTbody, histEmpty, histHead;
@@ -150,6 +192,111 @@ return view.extend({
 				E('td', {}, label),
 				cur, avg, mx, tot
 			]);
+		}
+
+		/* ---------- 鼠标悬停读数 ---------- */
+
+		var gh = null, hover = { on: false, t: 0, mx: 0, my: 0 };
+
+		/* 当前图上的数据点横坐标（画布内部坐标） */
+		function xAt(p) {
+			if (!gh) return 0;
+			if (gh.mode === 'rt')
+				return gh.ax.padL + gh.ax.pw - ((gh.now - p.t) / gh.span) * gh.ax.pw;
+			return gh.ax.padL + ((p.t - gh.t0) / (gh.t1 - gh.t0)) * gh.ax.pw;
+		}
+
+		function nearestIdx(px) {
+			if (!gh || !gh.pts.length) return -1;
+			var best = -1, bd = 1e9;
+			for (var i = 0; i < gh.pts.length; i++) {
+				var d = Math.abs(xAt(gh.pts[i]) - px);
+				if (d < bd) { bd = d; best = i; }
+			}
+			/* 离数据太远（空白区域）就不显示，最多容忍半个像素槽 */
+			return bd > Math.max(24, gh.ax.pw / Math.max(1, gh.pts.length)) ? -1 : best;
+		}
+
+		function idxByTime(t) {
+			if (!gh || !gh.pts.length) return -1;
+			var best = 0, bd = 1e18;
+			for (var i = 0; i < gh.pts.length; i++) {
+				var d = Math.abs(gh.pts[i].t - t);
+				if (d < bd) { bd = d; best = i; }
+			}
+			return best;
+		}
+
+		function paintHover() {
+			if (!gh || !hover.on || !gh.pts.length) {
+				tipEl.style.display = 'none';
+				return;
+			}
+
+			var i = idxByTime(hover.t);
+			if (i < 0) { tipEl.style.display = 'none'; return; }
+
+			var p = gh.pts[i];
+			var x = xAt(p);
+			var ymax = gh.ymax || 1;
+			var g = canvas.getContext('2d');
+			var dpr = window.devicePixelRatio || 1;
+
+			g.setTransform(dpr, 0, 0, dpr, 0, 0);
+			g.save();
+
+			g.strokeStyle = 'rgba(140,140,140,0.75)';
+			g.lineWidth = 1;
+			g.setLineDash([ 4, 4 ]);
+			g.beginPath();
+			g.moveTo(x, gh.ax.padT);
+			g.lineTo(x, gh.ax.padT + gh.ax.ph);
+			g.stroke();
+			g.setLineDash([]);
+
+			[ [ p.down, COL_DOWN ], [ p.up, COL_UP ] ].forEach(function(s) {
+				var y = gh.ax.padT + gh.ax.ph - (Math.min(s[0], ymax) / ymax) * gh.ax.ph;
+				g.beginPath();
+				g.arc(x, y, 4, 0, Math.PI * 2);
+				g.fillStyle = s[1];
+				g.fill();
+				g.strokeStyle = 'rgba(255,255,255,0.9)';
+				g.lineWidth = 1.5;
+				g.stroke();
+			});
+
+			g.restore();
+
+			var tm;
+			if (gh.mode === 'rt') {
+				var d = new Date(p.t);
+				tm = pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+			}
+			else {
+				tm = hhmm(p.t - (gh.interval || 300) / 2);
+			}
+
+			tipEl.innerHTML = '';
+			tipEl.appendChild(E('div', { style: 'opacity:.8;margin-bottom:2px' }, tm));
+			tipEl.appendChild(E('div', {},
+				E('span', { style: 'display:inline-block;width:8px;height:8px;border-radius:2px;background:' + COL_DOWN + ';margin-right:5px' }),
+				'下行 ' + fmtRate(p.down)));
+			tipEl.appendChild(E('div', {},
+				E('span', { style: 'display:inline-block;width:8px;height:8px;border-radius:2px;background:' + COL_UP + ';margin-right:5px' }),
+				'上行 ' + fmtRate(p.up)));
+			tipEl.style.display = 'block';
+
+			var bw = chartBox.clientWidth, bh = chartBox.clientHeight;
+			var tw = tipEl.offsetWidth, th = tipEl.offsetHeight;
+			var lx = 7 + x + 14;
+
+			if (lx + tw > bw - 6) lx = 7 + x - tw - 14;
+			if (lx < 6) lx = 6;
+
+			var ty = Math.min(Math.max(6, hover.my - th - 12), bh - th - 6);
+
+			tipEl.style.left = lx + 'px';
+			tipEl.style.top = ty + 'px';
 		}
 
 		/* ---------- 绘图 ---------- */
@@ -210,7 +357,7 @@ return view.extend({
 			}
 
 			var ax = gridAndAxis(g, c.w, c.h, niceMax(ymax), labels);
-			if (ax.pw < 20) return;
+			if (ax.pw < 20) { gh = null; return; }
 
 			function line(key, color) {
 				if (pts.length < 2) return;
@@ -228,12 +375,15 @@ return view.extend({
 
 			line('down', COL_DOWN);
 			line('up', COL_UP);
+
+			gh = { mode: 'rt', pts: pts, ax: ax, now: now, span: span, ymax: ymax || 1 };
 		}
 
 		function drawHist() {
 			var c = prepCanvas(), g = c.g;
 
 			if (!state.hist || !state.hist.ok) {
+				gh = null;
 				g.fillStyle = 'rgba(128,128,128,1)';
 				g.font = '13px sans-serif';
 				g.textAlign = 'center';
@@ -293,9 +443,10 @@ return view.extend({
 			}
 
 			var ax = gridAndAxis(g, c.w, c.h, niceMax(ymax), labels);
-			if (ax.pw < 20) return;
+			if (ax.pw < 20) { gh = null; return; }
 
 			if (!pts.length) {
+				gh = null;
 				g.fillStyle = 'rgba(128,128,128,1)';
 				g.font = '13px sans-serif';
 				g.textAlign = 'center';
@@ -346,11 +497,17 @@ return view.extend({
 					pad(f.getHours()) + ':' + pad(f.getMinutes()) + ' 之后的数据（共 ' + mins + ' 分钟）',
 					ax.padL + ax.pw / 2, ax.padT + ax.ph / 2);
 			}
+
+			gh = { mode: 'hist', pts: pts, ax: ax, t0: t0, t1: t1, interval: interval, ymax: ymax || 1 };
 		}
 
 		function draw() {
+			gh = null;
+
 			if (state.tab === 'rt') drawRt();
 			else if (state.tab === '24h') drawHist();
+
+			paintHover();
 		}
 
 		/* ---------- 表格 ---------- */
@@ -555,6 +712,7 @@ return view.extend({
 					state.tab = t[0];
 					state.hist = null;
 					state.rows = [];
+					hover.on = false;
 					TABS.forEach(function(x) { tabBtns[x[0]].className = 'cbi-button' + (x[0] === state.tab ? ' cbi-button-action' : ''); });
 					syncLayout();
 					if (state.tab === 'rt') {
@@ -595,6 +753,7 @@ return view.extend({
 				state.hist = null;
 				state.rows = [];
 				state.histKey = '';
+				hover.on = false;
 				if (hintEl) hintEl.textContent = hintText(state.iface);
 				if (state.tab === 'rt') {
 					draw();
