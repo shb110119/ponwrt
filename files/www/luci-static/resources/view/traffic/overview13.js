@@ -76,13 +76,25 @@ function fmtBytes(b) {
 	return (i === 0 ? b.toFixed(0) : b.toFixed(2)) + ' ' + u[i];
 }
 
+/* 纵轴上限：把表内峰值向上凑整到 1/1.5/2/2.5/3/4/5/6/8/10 × 10^n，曲线至少占约 67% 高度 */
 function niceMax(v) {
 	if (!(v > 0)) return 1000;
 	var exp = Math.floor(Math.log(v) / Math.LN10);
 	var base = Math.pow(10, exp);
-	var m = v / base;
-	var n = (m <= 1) ? 1 : (m <= 2) ? 2 : (m <= 5) ? 5 : 10;
+	var m = +(v / base).toFixed(6);
+	var n = (m <= 1) ? 1 : (m <= 1.5) ? 1.5 : (m <= 2) ? 2 : (m <= 2.5) ? 2.5 :
+	        (m <= 3) ? 3 : (m <= 4) ? 4 : (m <= 5) ? 5 : (m <= 6) ? 6 : (m <= 8) ? 8 : 10;
 	return n * base;
+}
+
+/* 等分数跟着凑整值走，保证每条刻度都是整数（如 1.5→3 等分、2.5→5 等分、8→4 等分） */
+function axisDivs(ymax) {
+	if (!(ymax > 0)) return 4;
+	var exp = Math.floor(Math.log(ymax) / Math.LN10);
+	var m = +(ymax / Math.pow(10, exp)).toFixed(6);
+	if (m === 1.5 || m === 3 || m === 6) return 3;
+	if (m === 2.5 || m === 5 || m === 10) return 5;
+	return 4;
 }
 
 function dayStart(key) {
@@ -322,9 +334,9 @@ return view.extend({
 		/* 左侧刻度按最长标签实测宽度留白，避免 "100.00 Mbps" 被裁成 "00.00 Mbps" */
 		function axisPadL(g, ymax) {
 			g.font = '11px sans-serif';
-			var w = 0;
-			for (var i = 0; i <= 4; i++)
-				w = Math.max(w, g.measureText(fmtRate(ymax * i / 4)).width);
+			var w = 0, d = axisDivs(ymax);
+			for (var i = 0; i <= d; i++)
+				w = Math.max(w, g.measureText(fmtRate(ymax * i / d)).width);
 			return Math.max(64, Math.ceil(w) + 14);
 		}
 
@@ -337,13 +349,14 @@ return view.extend({
 			g.font = '11px sans-serif';
 			g.textBaseline = 'middle';
 
-			for (var i = 0; i <= 4; i++) {
-				var y = padT + ph - (i / 4) * ph;
+			var d = axisDivs(ymax);
+			for (var i = 0; i <= d; i++) {
+				var y = padT + ph - (i / d) * ph;
 				g.strokeStyle = 'rgba(128,128,128,0.22)';
 				g.beginPath(); g.moveTo(padL, y); g.lineTo(padL + pw, y); g.stroke();
 				g.fillStyle = 'rgba(128,128,128,1)';
 				g.textAlign = 'right';
-				g.fillText(fmtRate(ymax * i / 4), padL - 8, y);
+				g.fillText(fmtRate(ymax * i / d), padL - 8, y);
 			}
 
 			g.textAlign = 'center';
