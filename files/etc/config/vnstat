@@ -1,0 +1,7 @@
+config vnstat
+	list interface 'pppoe-wan'
+	list interface 'br-lan'
+	list interface 'pon0'
+	list interface 'phy0-ap0'
+	list interface 'phy1-ap0'
+	list interface 'lan1'

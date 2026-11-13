@@ -1,0 +1,10 @@
+{
+	"luci-app-traffic": {
+		"description": "Interface traffic monitor",
+		"read": {
+			"ubus": {
+				"luci.traffic": [ "get_rate", "get_history" ]
+			}
+		}
+	}
+}

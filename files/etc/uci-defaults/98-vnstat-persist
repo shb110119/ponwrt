@@ -1,0 +1,31 @@
+#!/bin/sh
+# 首次启动（含恢复出厂）：把 vnstat 统计库挪出 tmpfs，并加进 sysupgrade 保留列表
+# 说明：/var/lib/vnstat 在 OpenWrt 上是 tmpfs，重启就丢；这里统一放到 /etc/vnstat
+
+CONF=/etc/vnstat.conf
+
+# 1) 数据库目录
+mkdir -p /etc/vnstat
+chmod 755 /etc/vnstat
+
+if [ -f "$CONF" ]; then
+	# 就地改，没这两行就直接补（不整份覆盖，跟随 vnstat 包自身的默认配置）
+	sed -i 's|^DatabaseDir[[:space:]].*|DatabaseDir "/etc/vnstat"|' "$CONF"
+	sed -i 's|^MaxBandwidth[[:space:]].*|MaxBandwidth 2500|' "$CONF"
+	grep -q '^DatabaseDir' "$CONF" || echo 'DatabaseDir "/etc/vnstat"' >> "$CONF"
+	grep -q '^MaxBandwidth' "$CONF" || echo 'MaxBandwidth 2500' >> "$CONF"
+fi
+
+# 2) 升级时保留统计库，否则日/月历史每次刷机清零
+SYS=/etc/sysupgrade.conf
+touch "$SYS"
+grep -qx '/etc/vnstat' "$SYS" || echo '/etc/vnstat' >> "$SYS"
+grep -qx '/etc/vnstat.conf' "$SYS" || echo '/etc/vnstat.conf' >> "$SYS"
+
+# 3) 让新配置生效
+[ -x /etc/init.d/vnstat ] && {
+	/etc/init.d/vnstat enable >/dev/null 2>&1
+	/etc/init.d/vnstat restart >/dev/null 2>&1
+}
+
+exit 0
