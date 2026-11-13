@@ -4,7 +4,7 @@
 		"order": 91,
 		"action": {
 			"type": "view",
-			"path": "traffic/overview6"
+			"path": "traffic/overview9"
 		},
 		"depends": {
 			"acl": [ "luci-app-traffic" ]

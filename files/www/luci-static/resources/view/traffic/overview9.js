@@ -15,15 +15,25 @@ var callGetHistory = rpc.declare({
 });
 
 var IFACE_LABEL = {
-	'pppoe-wan': 'WAN (PPPoE)',
-	'br-lan': 'LAN 桥接',
-	'pon0': 'PON 光口',
-	'pon0.140': 'PON VLAN 140',
+	'pppoe-wan': 'WAN (PPPoE) · 加速后偏小',
+	'br-lan': 'LAN 桥接 · 加速后偏小',
+	'pon0': 'PON 光口（真实速率）',
+	'pon0.140': 'PON VLAN 140 · 加速后偏小',
 	'phy0-ap0': '无线 2.4G',
 	'phy1-ap0': '无线 5G',
 	'eth0': 'eth0',
 	'lan1': 'LAN1'
 };
+
+/* 硬件加速（flow_offloading_hw）下，PPPoE 与 VLAN 子接口在软件层只看到未加速的少量包 */
+function hintText(name) {
+	var s = '数据来自 /sys/class/net 接口计数器，每秒采样一次；「总共量值」为接口自本次开机以来的累计。';
+
+	if (name === 'pppoe-wan' || /\.\d+$/.test(name || ''))
+		s += ' 注意：开启硬件加速后，该接口只统计未走 PPE 的少量包，速率会明显偏小，看真实吞吐请选 pon0。';
+
+	return s;
+}
 
 /* 无线接口优先按实测频率命名，静态表只作兜底（不同机型 phy 顺序可能不同） */
 function labelFor(name, rec) {
@@ -107,7 +117,8 @@ return view.extend({
 
 		var state = {
 			tab: 'rt',
-			iface: ifaces.indexOf('pppoe-wan') >= 0 ? 'pppoe-wan' : ifaces[0],
+			iface: ifaces.indexOf('pon0') >= 0 ? 'pon0'
+			     : (ifaces.indexOf('pppoe-wan') >= 0 ? 'pppoe-wan' : ifaces[0]),
 			win: 60,
 			samples: [],
 			last: null,
@@ -549,7 +560,7 @@ return view.extend({
 					if (state.tab === 'rt') {
 						draw();
 						refreshTable();
-						hintEl.textContent = '数据来自 /sys/class/net 接口计数器，每秒采样一次；「总共量值」为接口自本次开机以来的累计。';
+						hintEl.textContent = hintText(state.iface);
 					}
 					else {
 						loadHistory();
@@ -584,6 +595,7 @@ return view.extend({
 				state.hist = null;
 				state.rows = [];
 				state.histKey = '';
+				if (hintEl) hintEl.textContent = hintText(state.iface);
 				if (state.tab === 'rt') {
 					draw();
 					refreshTable();
@@ -598,7 +610,7 @@ return view.extend({
 		}));
 
 		hintEl = E('p', { style: 'margin-top:10px;font-size:12px;color:rgba(128,128,128,1)' },
-			'数据来自 /sys/class/net 接口计数器，每秒采样一次；「总共量值」为接口自本次开机以来的累计。');
+			hintText(state.iface));
 
 		/* ---------- 实时采样 ---------- */
 
