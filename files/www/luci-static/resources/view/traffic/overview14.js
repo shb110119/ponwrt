@@ -27,7 +27,7 @@ var IFACE_LABEL = {
 
 /* 硬件加速（flow_offloading_hw）下，PPPoE 与 VLAN 子接口在软件层只看到未加速的少量包 */
 function hintText(name) {
-	var s = '数据来自 /sys/class/net 接口计数器，每秒采样一次；「总共量值」为接口自本次开机以来的累计。';
+	var s = '接口列表与「vnStat(网络监测)」里勾选的监测接口同步，去掉勾选这里就不显示。数据来自 /sys/class/net 接口计数器，每秒采样一次；「总共量值」为接口自本次开机以来的累计。';
 
 	if (name === 'pppoe-wan' || /\.\d+$/.test(name || ''))
 		s += ' 注意：开启硬件加速后，该接口只统计未走 PPE 的少量包，速率会明显偏小，看真实吞吐请选 pon0。';
@@ -122,7 +122,10 @@ return view.extend({
 	},
 
 	render: function(res) {
-		var ifaces = Object.keys((res && res.ifaces) || {});
+		var all = Object.keys((res && res.ifaces) || {});
+		/* 接口列表跟随 vnStat 里勾选的监测接口；vnstat 没配或读不到时退回全部 */
+		var mon = ((res && res.monitored) || []).filter(function(n) { return all.indexOf(n) >= 0; });
+		var ifaces = mon.length ? mon : all;
 
 		if (!ifaces.length)
 			return E('div', { 'class': 'cbi-section' }, E('p', {}, '读取不到接口计数器（/sys/class/net）。'));
@@ -797,7 +800,49 @@ return view.extend({
 				labelFor(n, (res.ifaces || {})[n]));
 		}));
 
-		hintEl = E('p', { style: 'margin-top:10px;font-size:12px;color:rgba(128,128,128,1)' },
+		/* vnStat 里改勾选后，下次采样自动重建下拉（不用重开页面） */
+		function fillSel(r) {
+			while (sel.firstChild)
+				sel.removeChild(sel.firstChild);
+
+			ifaces.forEach(function(n) {
+				sel.appendChild(E('option', { value: n, selected: n === state.iface ? '' : null },
+					labelFor(n, (r && r.ifaces || {})[n])));
+			});
+		}
+
+		function syncIfaces(r) {
+			if (!r || !r.ifaces)
+				return false;
+
+			var all2 = Object.keys(r.ifaces);
+			var mon2 = (r.monitored || []).filter(function(n) { return all2.indexOf(n) >= 0; });
+			var next = mon2.length ? mon2 : all2;
+
+			if (!next.length || next.join('|') === ifaces.join('|'))
+				return false;
+
+			ifaces = next;
+			fillSel(r);
+
+			if (next.indexOf(state.iface) < 0) {
+				state.iface = next.indexOf('pon0') >= 0 ? 'pon0' : next[0];
+				sel.value = state.iface;
+				state.samples = [];
+				state.last = null;
+				state.hist = null;
+				state.rows = [];
+				state.histKey = '';
+				hover.on = false;
+				if (hintEl) hintEl.textContent = hintText(state.iface);
+				if (state.tab === 'rt') { draw(); refreshTable(); }
+				else loadHistory();
+			}
+
+			return true;
+		}
+
+		var hintEl = E('p', { style: 'margin-top:10px;font-size:12px;color:rgba(128,128,128,1)' },
 			hintText(state.iface));
 
 		/* ---------- 实时采样 ---------- */
@@ -813,6 +858,8 @@ return view.extend({
 			}
 
 			return callGetRate().then(function(r) {
+				syncIfaces(r);
+
 				var d = (r.ifaces || {})[state.iface];
 				if (!d) return;
 

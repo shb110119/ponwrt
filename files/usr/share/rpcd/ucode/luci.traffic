@@ -181,13 +181,45 @@ function getHistory(iface, range, key) {
 	};
 }
 
+// 读 /etc/config/vnstat 里勾选的监测接口（list interface 'xxx'），用于和 vnStat 页面保持同步
+function monitoredIfaces() {
+	const raw = readfile('/etc/config/vnstat');
+	const out = [];
+
+	if (!raw)
+		return out;
+
+	const lines = split(raw, '\n');
+
+	for (let i = 0; i < length(lines); i++) {
+		const m = match(lines[i], /^[ \t]*list[ \t]+interface[ \t]+['"]([^'"]+)['"]/);
+
+		if (m && index(out, m[1]) < 0)
+			push(out, m[1]);
+	}
+
+	return out;
+}
+
 const methods = {
 	get_rate: {
 		call: function() {
 			const ifaces = {};
+			const monitored = monitoredIfaces();
 
-			for (let i = 0; i < length(CANDIDATES); i++) {
-				const name = CANDIDATES[i];
+			// 候选 = 固定列表 ∪ vnstat 勾选的接口（勾选的可能不在固定列表里，如 lan2~lan4）
+			const names = [];
+
+			for (let i = 0; i < length(CANDIDATES); i++)
+				push(names, CANDIDATES[i]);
+
+			for (let i = 0; i < length(monitored); i++) {
+				if (index(names, monitored[i]) < 0)
+					push(names, monitored[i]);
+			}
+
+			for (let i = 0; i < length(names); i++) {
+				const name = names[i];
 				const base = `/sys/class/net/${name}/statistics/`;
 
 				if (!access(base + 'rx_bytes'))
@@ -202,7 +234,7 @@ const methods = {
 				};
 			}
 
-			return { ifaces };
+			return { ifaces, monitored };
 		}
 	},
 
@@ -214,7 +246,7 @@ const methods = {
 			if (req && type(req.args) == 'object')
 				args = req.args;
 
-			const iface = args.iface || 'pppoe-wan';
+			const iface = args.iface || (monitoredIfaces()[0] || 'pppoe-wan');
 			const range = args.range || '24h';
 			const key = args.key || '';
 			const r = getHistory(iface, range, key);
