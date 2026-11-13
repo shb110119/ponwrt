@@ -55,7 +55,6 @@ for f in \
   files/usr/share/luci/menu.d/luci-app-traffic.json \
   files/www/luci-static/resources/view/traffic/overview14.js \
   files/www/luci-static/resources/view/status/include/15_pon.js \
-  files/www/luci-static/resources/view/status/include/16_traffic.js \
   files/etc/config/vnstat \
   files/etc/uci-defaults/98-vnstat-persist \
   files/usr/bin/fix-luci-upnp.sh
