@@ -316,6 +316,16 @@ return view.extend({
 			isRunning = data[0]['vnstat']['instances']['instance1']['running'];
 		} catch (e) { }
 
+		var tabsDiv = E('div', ifaces.length ? [
+			self.renderTab(ifaces, 's', _('Summary')),
+			self.renderTab(ifaces, 't', _('Top')),
+			self.renderTab(ifaces, '5', _('5 Minute')),
+			self.renderTab(ifaces, 'h', _('Hourly')),
+			self.renderTab(ifaces, 'd', _('Daily')),
+			self.renderTab(ifaces, 'm', _('Monthly')),
+			self.renderTab(ifaces, 'y', _('Yearly'))
+		] : [ E('em', {}, [ _('No monitored interfaces have been found. Go to the configuration to enable monitoring for one or more interfaces.') ]) ]);
+
 		var view = E([], [
 			E('style', { 'type': 'text/css' },
 				'.vnstat-tbl{border-collapse:collapse;margin:4px 0 12px}' +
@@ -328,15 +338,7 @@ return view.extend({
 
 			(isRunning == false) ? E('p', { 'class': 'alert-message warning' }, _('Warning: The service is not running, graphs will not be updated!')) : E('p'),
 
-			E('div', ifaces.length ? [
-				self.renderTab(ifaces, 's', _('Summary')),
-				self.renderTab(ifaces, 't', _('Top')),
-				self.renderTab(ifaces, '5', _('5 Minute')),
-				self.renderTab(ifaces, 'h', _('Hourly')),
-				self.renderTab(ifaces, 'd', _('Daily')),
-				self.renderTab(ifaces, 'm', _('Monthly')),
-				self.renderTab(ifaces, 'y', _('Yearly'))
-			] : [ E('em', {}, [ _('No monitored interfaces have been found. Go to the configuration to enable monitoring for one or more interfaces.') ]) ]),
+			tabsDiv,
 
 			E('div', { 'class': 'right' }, [
 				E('br'),
@@ -357,7 +359,7 @@ return view.extend({
 		]);
 
 		if (ifaces.length)
-			ui.tabs.initTabGroup(view.childNodes[2].childNodes);
+			ui.tabs.initTabGroup(tabsDiv.childNodes);
 
 		return view;
 	},
