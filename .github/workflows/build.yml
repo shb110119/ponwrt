@@ -414,6 +414,17 @@ jobs:
             echo "::warning::luci-i18n-airoha-npu-zh-cn 未启用（po/zh_Hans 未注入？界面将为英文）"
           fi
 
+          # IPTV 桥接包（来自 pon_userspace feed）：defconfig 若把它当无效符号丢掉，
+          # 界面上不会有「网络 -> IPTV」，这里提前暴露而不是等刷完才发现
+          for p in luci-app-iptv luci-i18n-iptv-zh-cn; do
+            if ! grep -q "^CONFIG_PACKAGE_${p}=y" .config; then
+              echo "::warning::${p} 在 defconfig 后未启用（IPTV 菜单将缺失）"
+              echo "  1) 包目录: $([ -d "package/feeds/pon_userspace/luci-app-iptv" ] && echo '存在' || echo '不存在')"
+              echo "  2) feeds 配置: $(grep -c 'pon_userspace' feeds.conf.default 2>/dev/null || echo 0)"
+              echo "  3) .packageinfo 记录: $(grep -c "Package: ${p}\$" tmp/.packageinfo 2>/dev/null || echo 0)"
+            fi
+          done
+
           # 机型校验: 机型名写错时直接失败，避免静默全编译
           if [ "${PROFILE}" != "all" ]; then
             if ! grep -q "^CONFIG_TARGET_DEVICE_airoha_${SOC}_DEVICE_${PROFILE}=y" .config; then
