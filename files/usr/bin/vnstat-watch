@@ -1,0 +1,57 @@
+#!/bin/sh
+# vnstatd 看门狗
+#
+# 现象：库里 header 的「最后更新时间」停在某个时间点不再前进，vnstatd 进程还在、
+# 但既不报错也不写库。表现就是流量页「最近 24 小时」图右边一整段没有曲线，
+# 而 vnstat 自己的 daily/monthly 汇总也跟着停在那一天。
+# 已知触发场景：系统时间大幅跳变（开机先按文件时间起表、随后 NTP 校正），
+# 或者速率瞬间超过 MaxBandwidth 进入 syncing 后没退出来。
+#
+# 这里每 10 分钟看一次，超过 30 分钟没更新就重启 vnstat；连续 3 次重启都没救回来
+# 就放慢到 30 分钟一次，避免无意义地反复重启。
+
+MAXAGE=1800
+INTERVAL=600
+LOGFILE=/var/log/vnstat-watch.log
+
+[ -x /usr/sbin/vnstatd ] || exit 0
+
+log() {
+	logger -t vnstat-watch "$*"
+	{
+		tail -n 200 "$LOGFILE" 2>/dev/null
+		echo "$(date '+%F %T') $*"
+	} > /tmp/vnstat-watch.tmp 2>/dev/null && mv /tmp/vnstat-watch.tmp "$LOGFILE"
+}
+
+fails=0
+
+while :; do
+	sleep "$INTERVAL"
+
+	upd=$(vnstat --json 2>/dev/null | jsonfilter -e '@.interfaces[0].updated.timestamp' 2>/dev/null)
+
+	case "$upd" in
+		''|*[!0-9]*)
+			# 没有库 / 刚建库 / 接口都没在监控，不折腾
+			continue
+			;;
+	esac
+
+	age=$(( $(date +%s) - upd ))
+
+	# age 为负且越来越大 = 库里记的时间跑到未来了，同样要重启
+	if [ "$age" -gt "$MAXAGE" ] || [ "$age" -lt -600 ]; then
+		fails=$((fails + 1))
+		log "vnstatd 疑似卡住：最后更新时间差 ${age}s，重启服务（第 ${fails} 次）"
+		/etc/init.d/vnstat restart >/dev/null 2>&1
+
+		if [ "$fails" -ge 3 ]; then
+			log "连续 3 次重启仍未恢复，30 分钟后再试"
+			sleep 1800
+			fails=0
+		fi
+	else
+		fails=0
+	fi
+done
