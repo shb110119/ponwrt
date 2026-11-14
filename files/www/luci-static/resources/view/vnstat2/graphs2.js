@@ -259,6 +259,8 @@ return view.extend({
 			while (box.firstElementChild)
 				box.removeChild(box.firstElementChild);
 
+			var grid = E('div', { 'class': 'vnstat-grid' });
+
 			results.forEach(function(res) {
 				var tr = res.idata.traffic || {};
 				var built = buildRows(mode, res.idata);
@@ -274,8 +276,10 @@ return view.extend({
 				else
 					wrap.appendChild(tbl);
 
-				box.appendChild(wrap);
+				grid.appendChild(wrap);
 			});
+
+			box.appendChild(grid);
 		}).catch(function(e) {
 			while (box.firstElementChild)
 				box.removeChild(box.firstElementChild);
@@ -332,6 +336,8 @@ return view.extend({
 				'.vnstat-tbl th,.vnstat-tbl td{border:1px solid #d4d4d4;padding:3px 10px;font-size:12px;white-space:nowrap}' +
 				'.vnstat-tbl th{background:rgba(0,0,0,.05);text-align:center}' +
 				'.vnstat-tbl td.num{text-align:right}' +
+				'.vnstat-grid{display:flex;flex-wrap:wrap;align-items:flex-start}' +
+				'.vnstat-grid>div{flex:1 1 46%;min-width:320px;box-sizing:border-box;padding:2px 8px 8px 2px}' +
 				'.vnstat-scroll{max-height:420px;overflow:auto;border:1px solid #d4d4d4;padding:2px}'),
 
 			E('h2', {}, [ _('vnStat Graphs') ]),
