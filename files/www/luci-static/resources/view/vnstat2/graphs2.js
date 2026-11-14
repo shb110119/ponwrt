@@ -189,17 +189,19 @@ function buildRows(mode, idata) {
 			};
 
 		case '5':
+			/* 与 vnstati -5 默认一致：最新 24 条 */
 			return {
 				headers: [ '时间', '下行', '上行', '合计', '平均速率' ],
-				rows: rev(tr.fiveminute).map(function(e) {
+				rows: rev(tr.fiveminute).slice(0, 24).map(function(e) {
 					return [ fmtTs(e, 'fmin'), fmtBytes(e.rx), fmtBytes(e.tx), fmtBytes(e.rx + e.tx), fmtRate(e.rx + e.tx, 300) ];
 				})
 			};
 
 		case 'h':
+			/* 与 vnstati -h 默认一致：最新 24 条 */
 			return {
 				headers: [ '时间', '下行', '上行', '合计', '平均速率' ],
-				rows: rev(tr.hour).slice(0, 48).map(function(e) {
+				rows: rev(tr.hour).slice(0, 24).map(function(e) {
 					return [ fmtTs(e, 'hour'), fmtBytes(e.rx), fmtBytes(e.tx), fmtBytes(e.rx + e.tx), fmtRate(e.rx + e.tx, 3600) ];
 				})
 			};
