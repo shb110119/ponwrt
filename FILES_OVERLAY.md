@@ -7,10 +7,10 @@
 
 | 路径 | 来历 | 注意事项 |
 | --- | --- | --- |
-| `usr/share/rpcd/ucode/luci.traffic` | 自建流量页后端（读 `/sys/class/net` 计数器 + 调 vnstat） | 与 `www/.../view/traffic/overview15.js` 配套，改协议要两边一起改 |
+| `usr/share/rpcd/ucode/luci.traffic` | 自建流量页后端（读 `/sys/class/net` 计数器 + 调 vnstat） | 与 `www/.../view/traffic/overview16.js` 配套，改协议要两边一起改 |
 | `usr/share/rpcd/acl.d/luci-app-traffic.json` | 流量页 ACL | 新增 rpc 方法必须同步加进 `luci.traffic` 数组，否则浏览器端调不通 |
 | `usr/share/luci/menu.d/luci-app-traffic.json` | 状态 → 网络流量 | 菜单 order 91 |
-| `www/luci-static/resources/view/traffic/overview15.js` | 流量页前端 | 文件名改版是为了绕 LuCI 的 JS 缓存，改动时**换新文件名**并同步菜单 |
+| `www/luci-static/resources/view/traffic/overview16.js` | 流量页前端 | 文件名改版是为了绕 LuCI 的 JS 缓存，改动时**换新文件名**并同步菜单 |
 | `usr/share/rpcd/ucode/luci.upnp` | 修 miniupnpd 2.3.11 的端口映射列表为空 | 上游 luci-app-upnp 修好后，`diy-part2.sh` 会自动删掉这份覆盖 |
 | `www/.../view/status/include/15_pon.js` | 概览页 PON 卡片收窄（460px） | 属于 luci-app-pon-status，跟上游版本走，升级该包时重新比对 |
 | `etc/config/vnstat` | 默认监控接口列表 | 只在新装/恢复出厂时作为默认值 |
