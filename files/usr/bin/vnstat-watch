@@ -1,18 +1,16 @@
 #!/bin/sh
-# vnstatd 看门狗
+# vnstatd 看门狗 + 开机智能启动
 #
-# 症状：流量页「最近 24 小时」右半边没有曲线，vnstat 自己的日/月汇总也停在某个时间点。
-# 此时 vnstatd 进程通常还活着，但库的「最后更新时间」不再前进。
+# 职责一（开机）：vnstat 的 init 脚本在开机时若发现"库最后写入时间跑在本机时间之前"
+#   （典型场景：无 RTC，时钟慢 8 小时，NTP 还没同步），会推迟启动。
+#   本脚本在时钟追上库的那一刻调用 /etc/init.d/vnstat start 把它拉起来；
+#   超过 30 分钟还没追上（NTP 失联）则兜底强启，宁可时间不对也不空转。
 #
-# 已知诱因：
-#   1) 开机时系统时钟还没校准（本地 RTC 与 NTP 差 8 小时很常见）。vnstatd 起来时看到
-#      库里的最后更新时间"在未来"，等满 timesyncwait 后就放弃，之后一段时间都不再落盘，
-#      直到真实时间追上那个未来时刻——表现就是"早上一停，傍晚自己好"。
-#   2) vnstatd 卡在 syncing / 计数器回绕校准里，进程活着但不再写库。
+# 职责二（运行中）：vnstatd 进程活着但不再写库时自动重启。
+#   判据：库 updated 与本机时间相差超过 15 分钟（卡死）或跑到未来 2 分钟以上。
+#   连续 3 次救不回来则退避 30 分钟。
 #
-# 处理：开机后 15 分钟内每 60 秒查一次（多数情况下时钟 3~5 分钟内就被 NTP 拨正，
-# 这时重启一次 vnstat 立刻恢复），之后每 2 分钟查一次。判据是库的 updated 与本机时间
-# 相差超过 15 分钟、或 updated 跑到未来 2 分钟以上。连续 3 次没救回来则退避 30 分钟。
+# 巡检节奏：开机前 15 分钟每 60 秒一次（等 NTP），之后每 2 分钟一次。
 
 MAXAGE=900       # 落后超过 15 分钟视为卡死
 FUTURE=-120      # updated 比本机时间还晚 2 分钟以上，同样视为异常
@@ -26,6 +24,27 @@ log() {
 		tail -n 200 "$LOGFILE" 2>/dev/null
 		echo "$(date '+%F %T') $*"
 	} > /tmp/vnstat-watch.tmp 2>/dev/null && mv /tmp/vnstat-watch.tmp "$LOGFILE"
+}
+
+vnstatd_running() {
+	ps w 2>/dev/null | grep -q '[v]nstatd'
+}
+
+# vnstatd 没在跑就拉起；init 里的门闸会在时钟没追上库时自动推迟，
+# 所以这里只需要反复尝试，不用自己判断时间
+ensure_running() {
+	vnstatd_running && return 0
+
+	/etc/init.d/vnstat start >/dev/null 2>&1
+
+	if vnstatd_running; then
+		log "vnstatd 未在运行，已由看门狗拉起"
+	else
+		[ "${bootwait_noted:-0}" = 0 ] && {
+			log "时钟还没追上库，vnstatd 继续等待（init 门闸推迟）"
+			bootwait_noted=1
+		}
+	fi
 }
 
 stuck() {
@@ -64,10 +83,13 @@ restart_vnstat() {
 	fi
 }
 
+bootwait_noted=0
+
 # 开机阶段：前 15 分钟每 60 秒查一次，尽快跟上 NTP 校准
 sleep 60
 i=0
 while [ "$i" -lt 15 ]; do
+	ensure_running
 	stuck && restart_vnstat
 	i=$((i + 1))
 	sleep 60
@@ -75,6 +97,7 @@ done
 
 # 稳定运行阶段：每 2 分钟查一次
 while :; do
+	ensure_running
 	stuck && restart_vnstat
 	sleep 120
 done

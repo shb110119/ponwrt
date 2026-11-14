@@ -1,0 +1,78 @@
+#!/bin/sh /etc/rc.common
+
+START=60
+STOP=50
+
+USE_PROCD=1
+
+# 开机时钟门闸：无 RTC 的设备开机时系统时钟往往还没被 NTP 校准（常见慢 8 小时），
+# 此时库的最后写入时间"在未来"，vnstatd 起来也只会进入跳过模式干等。
+# 这里选择干脆不启动，等时钟追上库（通常 NTP 同步后的第一次检查）由 vnstat-watch 拉起。
+# 兜底：开机超过 30 分钟（uptime >= 1800）就不再推迟，宁可时间不对也不空转。
+clock_is_sane() {
+	local db_ts now uptime_s
+
+	db_ts=$(vnstat --json 2>/dev/null | jsonfilter -e '@.interfaces[*].updated.timestamp' 2>/dev/null | sort -n | tail -n 1)
+
+	# 没有库 / 刚建库读不出时间：不拦
+	case "$db_ts" in
+		''|*[!0-9]*) return 0 ;;
+	esac
+
+	now=$(date +%s)
+	uptime_s=$(cut -d. -f1 /proc/uptime 2>/dev/null)
+	case "$uptime_s" in ''|*[!0-9]*) uptime_s=99999 ;; esac
+
+	# 库时间还在未来 2 分钟以上且开机未满 30 分钟：推迟
+	if [ "$now" -lt $((db_ts - 120)) ] && [ "$uptime_s" -lt 1800 ]; then
+		return 1
+	fi
+	return 0
+}
+
+init_database() {
+	/usr/sbin/vnstatd --initdb >/dev/null
+}
+
+init_ifaces() {
+	local cfg="$1"
+
+	init_iface() {
+		local ifn="$1"
+
+		/usr/bin/vnstat --add --force -i "$ifn" >/dev/null
+	}
+
+	config_list_foreach "$cfg" interface init_iface
+}
+
+start_service() {
+	if ! clock_is_sane; then
+		logger -t vnstat "时钟未校准（库最后写入 $(date -d @$(vnstat --json 2>/dev/null | jsonfilter -e '@.interfaces[*].updated.timestamp' 2>/dev/null | sort -n | tail -n 1) '+%F %T' 2>/dev/null) 还在未来），推迟启动，交由 vnstat-watch 在时钟追上后拉起"
+		return 0
+	fi
+
+	init_database
+
+	config_load vnstat
+	config_foreach init_ifaces vnstat
+
+	procd_open_instance
+	procd_set_param stdout 1
+	procd_set_param stderr 1
+	procd_set_param command /usr/sbin/vnstatd --nodaemon --noadd --startempty --noremove
+	procd_set_param file /etc/vnstat.conf
+	procd_set_param respawn
+	procd_close_instance
+}
+
+reload_service() {
+	config_load vnstat
+	config_foreach init_ifaces vnstat
+
+	procd_send_signal vnstat
+}
+
+service_triggers() {
+	procd_add_reload_trigger vnstat
+}

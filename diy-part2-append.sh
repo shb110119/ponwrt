@@ -48,6 +48,7 @@ fi
 [ -d files/etc/uci-defaults ] && chmod +x files/etc/uci-defaults/* 2>/dev/null || true
 [ -f files/usr/bin/vnstat-watch ] && chmod +x files/usr/bin/vnstat-watch 2>/dev/null || true
 [ -f files/etc/init.d/vnstat-watch ] && chmod +x files/etc/init.d/vnstat-watch 2>/dev/null || true
+[ -f files/etc/init.d/vnstat ] && chmod +x files/etc/init.d/vnstat 2>/dev/null || true
 
 echo "---- files/ 注入清单 ----"
 for f in \
@@ -61,6 +62,7 @@ for f in \
   files/etc/uci-defaults/98-vnstat-persist \
   files/usr/bin/vnstat-watch \
   files/etc/init.d/vnstat-watch \
+  files/etc/init.d/vnstat \
   files/usr/bin/fix-luci-upnp.sh
 do
   if [ -f "$f" ]; then

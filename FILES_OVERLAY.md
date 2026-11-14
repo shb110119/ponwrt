@@ -15,6 +15,8 @@
 | `www/.../view/status/include/15_pon.js` | 概览页 PON 卡片收窄（460px） | 属于 luci-app-pon-status，跟上游版本走，升级该包时重新比对 |
 | `etc/config/vnstat` | 默认监控接口列表 | 只在新装/恢复出厂时作为默认值 |
 | `etc/uci-defaults/98-vnstat-persist` | vnstat 库挪到 `/etc/vnstat` + 写 sysupgrade 保留列表 | 不整份覆盖 `vnstat.conf`，只 sed 两行 |
+| `etc/init.d/vnstat` | 覆盖包自带的 init，加**开机时钟门闸**：无 RTC 开机时钟没被 NTP 校准（库时间在未来）时不启动 vnstatd，超过 30 分钟兜底强启 | 与 `usr/bin/vnstat-watch`（开机负责拉起）配套 |
+| `usr/bin/vnstat-watch` + `etc/init.d/vnstat-watch` | vnstatd 看门狗：开机等时钟追上库后拉起 vnstat；运行中库停止更新/跑到未来就自动重启 | 之前吃过的亏：overlay 权限位变 644 导致 procd exec 失败，init 里已改用 `/bin/sh` 显式执行 |
 | `usr/bin/fix-luci-upnp.sh` | 同上 UPnP 修复的独立脚本 | 老固件上可手动跑，幂等 |
 
 ## 几个坑（都踩过了）
