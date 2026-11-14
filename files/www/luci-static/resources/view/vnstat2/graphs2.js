@@ -76,6 +76,83 @@ function fmtTs(e, style) {
 		(t.hour != null ? ' ' + pad(t.hour) + ':' + pad(t.minute || 0) : '');
 }
 
+/* 速率：bytes/秒 → vnstat 风格 bit/s 单位 */
+function fmtRate(bytes, secs) {
+	if (!secs || secs <= 0)
+		return '-';
+
+	var bps = (bytes || 0) * 8 / secs;
+	var u = [ 'bit/s', 'Kibit/s', 'Mibit/s', 'Gibit/s', 'Tibit/s' ];
+	var k = 0, v = bps;
+
+	while (v >= 1024 && k < u.length - 1) { v /= 1024; k++; }
+
+	if (v >= 100) return v.toFixed(0) + ' ' + u[k];
+	if (v >= 10) return v.toFixed(1) + ' ' + u[k];
+	return v.toFixed(2) + ' ' + u[k];
+}
+
+/* 浏览器与设备同为 CST，直接用本地时间判断"今天/本月" */
+function isToday(e) {
+	var d = new Date();
+
+	return e && e.date && e.date.year == d.getFullYear() &&
+		e.date.month == (d.getMonth() + 1) && e.date.day == d.getDate();
+}
+
+function isThisMonth(e) {
+	var d = new Date();
+
+	return e && e.date && e.date.year == d.getFullYear() &&
+		e.date.month == (d.getMonth() + 1);
+}
+
+function secsIntoMonth() {
+	var d = new Date();
+
+	return (d.getDate() - 1) * 86400 + d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
+}
+
+function secsIntoDay() {
+	var d = new Date();
+
+	return d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
+}
+
+function daysInMonth() {
+	var d = new Date();
+
+	return new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+}
+
+/* 日/月的"预估"：按已过时间线性外推到整日/整月 */
+function estTot(e, kind) {
+	var tot = (e && e.rx != null && e.tx != null) ? (e.rx + e.tx) : null;
+
+	if (tot == null)
+		return '-';
+
+	if (kind == 'day') {
+		if (!isToday(e))
+			return '-';
+
+		var el = secsIntoDay();
+
+		return (el > 60) ? fmtBytes(tot / el * 86400) : '-';
+	}
+
+	if (kind == 'month') {
+		if (!isThisMonth(e))
+			return '-';
+
+		var el = secsIntoMonth();
+
+		return (el > 600) ? fmtBytes(tot / el * (daysInMonth() * 86400)) : '-';
+	}
+
+	return '-';
+}
+
 function rev(a) { return (a || []).slice().reverse(); }
 
 /* 各标签页：从 traffic 里取数，返回 { headers, rows } */
@@ -113,33 +190,34 @@ function buildRows(mode, idata) {
 
 		case '5':
 			return {
-				headers: [ '时间', '下行', '上行', '合计' ],
+				headers: [ '时间', '下行', '上行', '合计', '平均速率' ],
 				rows: rev(tr.fiveminute).map(function(e) {
-					return [ fmtTs(e, 'fmin'), fmtBytes(e.rx), fmtBytes(e.tx), fmtBytes(e.rx + e.tx) ];
+					return [ fmtTs(e, 'fmin'), fmtBytes(e.rx), fmtBytes(e.tx), fmtBytes(e.rx + e.tx), fmtRate(e.rx + e.tx, 300) ];
 				})
 			};
 
 		case 'h':
 			return {
-				headers: [ '时间', '下行', '上行', '合计' ],
+				headers: [ '时间', '下行', '上行', '合计', '平均速率' ],
 				rows: rev(tr.hour).slice(0, 48).map(function(e) {
-					return [ fmtTs(e, 'hour'), fmtBytes(e.rx), fmtBytes(e.tx), fmtBytes(e.rx + e.tx) ];
+					return [ fmtTs(e, 'hour'), fmtBytes(e.rx), fmtBytes(e.tx), fmtBytes(e.rx + e.tx), fmtRate(e.rx + e.tx, 3600) ];
 				})
 			};
 
 		case 'd':
 			return {
-				headers: [ '日期', '下行', '上行', '合计' ],
+				headers: [ '日期', '下行', '上行', '合计', '平均速率', '当日预估' ],
 				rows: rev(tr.day).map(function(e) {
-					return [ fmtTs(e, 'day'), fmtBytes(e.rx), fmtBytes(e.tx), fmtBytes(e.rx + e.tx) ];
+					return [ fmtTs(e, 'day'), fmtBytes(e.rx), fmtBytes(e.tx), fmtBytes(e.rx + e.tx),
+						fmtRate(e.rx + e.tx, isToday(e) ? secsIntoDay() : 86400), estTot(e, 'day') ];
 				})
 			};
 
 		case 'm':
 			return {
-				headers: [ '月份', '下行', '上行', '合计' ],
+				headers: [ '月份', '下行', '上行', '合计', '当月预估' ],
 				rows: rev(tr.month).map(function(e) {
-					return [ fmtTs(e, 'month'), fmtBytes(e.rx), fmtBytes(e.tx), fmtBytes(e.rx + e.tx) ];
+					return [ fmtTs(e, 'month'), fmtBytes(e.rx), fmtBytes(e.tx), fmtBytes(e.rx + e.tx), estTot(e, 'month') ];
 				})
 			};
 
