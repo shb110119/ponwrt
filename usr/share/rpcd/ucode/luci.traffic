@@ -1,0 +1,273 @@
+'use strict';
+
+import { readfile, access, popen } from 'fs';
+
+const CANDIDATES = [
+	'pppoe-wan', 'br-lan', 'pon0', 'pon0.140',
+	'phy0-ap0', 'phy1-ap0', 'eth0', 'lan1'
+];
+
+function num(path) {
+	const v = readfile(path);
+
+	return v ? +trim(v) : 0;
+}
+
+function pad2(n) {
+	return n < 10 ? '0' + n : '' + n;
+}
+
+function dayKey(d) {
+	return `${d.year}-${pad2(d.month)}-${pad2(d.day)}`;
+}
+
+function monthKey(d) {
+	return `${d.year}-${pad2(d.month)}`;
+}
+
+// 读取 vnstat 数据库（JSON v2），返回该接口的 traffic 节点
+function vnstatTraffic(name) {
+	const p = popen(`vnstat --json -i ${name} 2>/dev/null`, 'r');
+
+	if (!p)
+		return null;
+
+	const raw = p.read('all');
+
+	p.close();
+
+	if (!raw || length(raw) < 20)
+		return null;
+
+	let obj;
+
+	try {
+		obj = json(raw);
+	}
+	catch (e) {
+		return null;
+	}
+
+	const list = obj ? obj.interfaces : null;
+
+	if (!list || !length(list))
+		return null;
+
+	return list[0];
+}
+
+function lastOf(arr) {
+	return arr && length(arr) ? arr[length(arr) - 1] : null;
+}
+
+// 无线接口实际频段（60 秒缓存），避免不同机型 phy 编号顺序不同
+let wifiCache = { ts: 0, bands: {} };
+
+function wifiBand(name) {
+	if (!match(name, /^phy[0-9]+-ap[0-9]+$/))
+		return null;
+
+	const now = time();
+
+	if (now - wifiCache.ts > 60) {
+		wifiCache.ts = now;
+		wifiCache.bands = {};
+
+		for (let i = 0; i < length(CANDIDATES); i++) {
+			const n = CANDIDATES[i];
+
+			if (!match(n, /^phy[0-9]+-ap[0-9]+$/))
+				continue;
+
+			const p = popen(`iw dev ${n} info 2>/dev/null`, 'r');
+
+			if (!p)
+				continue;
+
+			const out = p.read('all');
+
+			p.close();
+
+			const m = out ? match(out, /\(([0-9]+) MHz\)/) : null;
+
+			if (!m)
+				continue;
+
+			const f = +m[1];
+
+			wifiCache.bands[n] = (f < 3000) ? '2.4G' : ((f < 5925) ? '5G' : '6G');
+		}
+	}
+
+	return wifiCache.bands[name] || null;
+}
+
+/* 按 key（2026-11-14 / 2026-11）降序插入：越近越靠前。
+ * 不用 sort 模块——部分 ucode 构建没有该模块，这里直接做插入排序。 */
+function pushDesc(rows, row) {
+	let i = length(rows);
+
+	push(rows, row);
+
+	while (i > 0 && rows[i - 1].key < rows[i].key) {
+		const t = rows[i - 1];
+
+		rows[i - 1] = rows[i];
+		rows[i] = t;
+		i--;
+	}
+}
+
+function getHistory(iface, range, key) {
+	const data = vnstatTraffic(iface);
+
+	if (!data || !data.traffic)
+		return { ok: false, error: 'nodb', iface, range };
+
+	const tr = data.traffic;
+	const now = time();
+
+	if (range == 'day') {
+		const days = tr.day || [];
+		const rows = [];
+
+		for (let i = 0; i < length(days); i++)
+			pushDesc(rows, {
+				key: dayKey(days[i].date),
+				rx: days[i].rx || 0,
+				tx: days[i].tx || 0
+			});
+
+		return { ok: true, iface, range: 'day', rows, total: tr.total || null };
+	}
+
+	if (range == 'month') {
+		const months = tr.month || [];
+		const rows = [];
+
+		for (let i = 0; i < length(months); i++)
+			pushDesc(rows, {
+				key: monthKey(months[i].date),
+				rx: months[i].rx || 0,
+				tx: months[i].tx || 0
+			});
+
+		return { ok: true, iface, range: 'month', rows, total: tr.total || null };
+	}
+
+	/* 最近 24 小时：用 5 分钟粒度 */
+	const five = tr.fiveminute || [];
+	let pts = [];
+	const from = now - 86400;
+
+	for (let i = 0; i < length(five); i++)
+		if (five[i].timestamp >= from)
+			push(pts, five[i]);
+
+	/* vnstat 给接口建库时，第一个 5 分钟样本会把建库前的累计值整包算进来，
+	   表现为比其余点大几个数量级（例如 50GB/5min）。这种基线样本必须丢掉，
+	   否则峰值和纵轴会被一个假点彻底压平。
+	   判据：首点占该接口累计总量的 80% 以上，且其余点加起来不到 20%。 */
+	if (length(pts) > 1) {
+		const firstSum = (+pts[0].rx || 0) + (+pts[0].tx || 0);
+		const totalSum = (+(tr.total && tr.total.rx) || 0) + (+(tr.total && tr.total.tx) || 0);
+		let rest = 0;
+
+		for (let i = 1; i < length(pts); i++)
+			rest += (+pts[i].rx || 0) + (+pts[i].tx || 0);
+
+		if (totalSum > 0 && firstSum >= totalSum * 0.8 && rest <= totalSum * 0.2) {
+			let trimmed = [];
+
+			for (let i = 1; i < length(pts); i++)
+				push(trimmed, pts[i]);
+
+			pts = trimmed;
+		}
+	}
+
+	return {
+		ok: true, iface, range: '24h', interval: 300,
+		t0: now - 86400, t1: now, selected: '', choices: [],
+		points: pts, total: tr.total || null
+	};
+}
+
+// 读 /etc/config/vnstat 里勾选的监测接口（list interface 'xxx'），用于和 vnStat 页面保持同步
+function monitoredIfaces() {
+	const raw = readfile('/etc/config/vnstat');
+	const out = [];
+
+	if (!raw)
+		return out;
+
+	const lines = split(raw, '\n');
+
+	for (let i = 0; i < length(lines); i++) {
+		const m = match(lines[i], /^[ \t]*list[ \t]+interface[ \t]+['"]([^'"]+)['"]/);
+
+		if (m && index(out, m[1]) < 0)
+			push(out, m[1]);
+	}
+
+	return out;
+}
+
+const methods = {
+	get_rate: {
+		call: function() {
+			const ifaces = {};
+			const monitored = monitoredIfaces();
+
+			// 候选 = 固定列表 ∪ vnstat 勾选的接口（勾选的可能不在固定列表里，如 lan2~lan4）
+			const names = [];
+
+			for (let i = 0; i < length(CANDIDATES); i++)
+				push(names, CANDIDATES[i]);
+
+			for (let i = 0; i < length(monitored); i++) {
+				if (index(names, monitored[i]) < 0)
+					push(names, monitored[i]);
+			}
+
+			for (let i = 0; i < length(names); i++) {
+				const name = names[i];
+				const base = `/sys/class/net/${name}/statistics/`;
+
+				if (!access(base + 'rx_bytes'))
+					continue;
+
+				ifaces[name] = {
+					rx: num(base + 'rx_bytes'),
+					tx: num(base + 'tx_bytes'),
+					rxp: num(base + 'rx_packets'),
+					txp: num(base + 'tx_packets'),
+					band: wifiBand(name)
+				};
+			}
+
+			return { ifaces, monitored };
+		}
+	},
+
+	get_history: {
+		args: { iface: 'iface', range: 'range', key: 'key' },
+		call: function(req) {
+			let args = {};
+
+			if (req && type(req.args) == 'object')
+				args = req.args;
+
+			const iface = args.iface || (monitoredIfaces()[0] || 'pppoe-wan');
+			const range = args.range || '24h';
+			const key = args.key || '';
+			const r = getHistory(iface, range, key);
+
+			r.now = time();
+
+			return r;
+		}
+	}
+};
+
+return { 'luci.traffic': methods };
