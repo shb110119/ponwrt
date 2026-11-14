@@ -13,6 +13,7 @@
 | `www/luci-static/resources/view/traffic/overview16.js` | 流量页前端 | 文件名改版是为了绕 LuCI 的 JS 缓存，改动时**换新文件名**并同步菜单 |
 | `usr/share/rpcd/ucode/luci.upnp` | 修 miniupnpd 2.3.11 的端口映射列表为空 | 上游 luci-app-upnp 修好后，`diy-part2.sh` 会自动删掉这份覆盖 |
 | `www/.../view/status/include/15_pon.js` | 概览页 PON 卡片收窄（460px） | 属于 luci-app-pon-status，跟上游版本走，升级该包时重新比对 |
+| `www/.../view/vnstat2/graphs.js` | 自带 vnStat 图表页改文本表格版：vnstati PNG 换成 `vnstat --json` 渲染的可复制表格（7 个标签页，含"复制本表"按钮） | 基于上游 a5ec60d483 改写，覆盖上游文件；上游升级 graphs.js 后需重新对位 |
 | `etc/config/vnstat` | 默认监控接口列表 | 只在新装/恢复出厂时作为默认值 |
 | `etc/uci-defaults/98-vnstat-persist` | vnstat 库挪到 `/etc/vnstat` + 写 sysupgrade 保留列表 | 不整份覆盖 `vnstat.conf`，只 sed 两行 |
 | `etc/init.d/vnstat` | 覆盖包自带的 init，加**开机时钟门闸**：无 RTC 开机时钟没被 NTP 校准（库时间在未来）时不启动 vnstatd，超过 30 分钟兜底强启 | 与 `usr/bin/vnstat-watch`（开机负责拉起）配套 |

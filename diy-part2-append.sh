@@ -58,6 +58,7 @@ for f in \
   files/usr/share/luci/menu.d/luci-app-traffic.json \
   files/www/luci-static/resources/view/traffic/overview16.js \
   files/www/luci-static/resources/view/status/include/15_pon.js \
+  files/www/luci-static/resources/view/vnstat2/graphs.js \
   files/etc/config/vnstat \
   files/etc/uci-defaults/98-vnstat-persist \
   files/usr/bin/vnstat-watch \
