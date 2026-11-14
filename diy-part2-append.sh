@@ -46,6 +46,8 @@ fi
 [ -x files/usr/share/rpcd/ucode/luci.traffic ] || chmod +x files/usr/share/rpcd/ucode/luci.traffic 2>/dev/null || true
 [ -f files/usr/bin/fix-luci-upnp.sh ] && chmod +x files/usr/bin/fix-luci-upnp.sh 2>/dev/null || true
 [ -d files/etc/uci-defaults ] && chmod +x files/etc/uci-defaults/* 2>/dev/null || true
+[ -f files/usr/bin/vnstat-watch ] && chmod +x files/usr/bin/vnstat-watch 2>/dev/null || true
+[ -f files/etc/init.d/vnstat-watch ] && chmod +x files/etc/init.d/vnstat-watch 2>/dev/null || true
 
 echo "---- files/ 注入清单 ----"
 for f in \
@@ -53,10 +55,12 @@ for f in \
   files/usr/share/rpcd/ucode/luci.upnp \
   files/usr/share/rpcd/acl.d/luci-app-traffic.json \
   files/usr/share/luci/menu.d/luci-app-traffic.json \
-  files/www/luci-static/resources/view/traffic/overview15.js \
+  files/www/luci-static/resources/view/traffic/overview16.js \
   files/www/luci-static/resources/view/status/include/15_pon.js \
   files/etc/config/vnstat \
   files/etc/uci-defaults/98-vnstat-persist \
+  files/usr/bin/vnstat-watch \
+  files/etc/init.d/vnstat-watch \
   files/usr/bin/fix-luci-upnp.sh
 do
   if [ -f "$f" ]; then
