@@ -102,6 +102,22 @@ function wifiBand(name) {
 	return wifiCache.bands[name] || null;
 }
 
+/* 按 key（2026-11-14 / 2026-11）降序插入：越近越靠前。
+ * 不用 sort 模块——部分 ucode 构建没有该模块，这里直接做插入排序。 */
+function pushDesc(rows, row) {
+	let i = length(rows);
+
+	push(rows, row);
+
+	while (i > 0 && rows[i - 1].key < rows[i].key) {
+		const t = rows[i - 1];
+
+		rows[i - 1] = rows[i];
+		rows[i] = t;
+		i--;
+	}
+}
+
 function getHistory(iface, range, key) {
 	const data = vnstatTraffic(iface);
 
@@ -116,13 +132,11 @@ function getHistory(iface, range, key) {
 		const rows = [];
 
 		for (let i = 0; i < length(days); i++)
-			push(rows, {
+			pushDesc(rows, {
 				key: dayKey(days[i].date),
 				rx: days[i].rx || 0,
 				tx: days[i].tx || 0
 			});
-
-		reverse(rows);
 
 		return { ok: true, iface, range: 'day', rows, total: tr.total || null };
 	}
@@ -132,13 +146,11 @@ function getHistory(iface, range, key) {
 		const rows = [];
 
 		for (let i = 0; i < length(months); i++)
-			push(rows, {
+			pushDesc(rows, {
 				key: monthKey(months[i].date),
 				rx: months[i].rx || 0,
 				tx: months[i].tx || 0
 			});
-
-		reverse(rows);
 
 		return { ok: true, iface, range: 'month', rows, total: tr.total || null };
 	}

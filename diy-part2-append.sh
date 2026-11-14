@@ -53,7 +53,7 @@ for f in \
   files/usr/share/rpcd/ucode/luci.upnp \
   files/usr/share/rpcd/acl.d/luci-app-traffic.json \
   files/usr/share/luci/menu.d/luci-app-traffic.json \
-  files/www/luci-static/resources/view/traffic/overview14.js \
+  files/www/luci-static/resources/view/traffic/overview15.js \
   files/www/luci-static/resources/view/status/include/15_pon.js \
   files/etc/config/vnstat \
   files/etc/uci-defaults/98-vnstat-persist \
