@@ -28,4 +28,11 @@ grep -qx '/etc/vnstat.conf' "$SYS" || echo '/etc/vnstat.conf' >> "$SYS"
 	/etc/init.d/vnstat restart >/dev/null 2>&1
 }
 
+# 4) vnstatd 看门狗：库里超过 30 分钟没更新就自动重启 vnstat
+#    （vnstatd 偶尔会卡在不写库的状态，24 小时图右边就整段空着）
+[ -x /etc/init.d/vnstat-watch ] && {
+	/etc/init.d/vnstat-watch enable >/dev/null 2>&1
+	/etc/init.d/vnstat-watch restart >/dev/null 2>&1
+}
+
 exit 0
