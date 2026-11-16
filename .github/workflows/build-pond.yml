@@ -70,13 +70,13 @@ jobs:
         run: |
           set -e
           zig version
-          cd src/airoha-pon-daemons
+          cd src/airoha-pon-daemons/src
           cargo zigbuild --release --target aarch64-unknown-linux-musl
 
       - name: Inspect binary
         run: |
           set -e
-          BIN=src/airoha-pon-daemons/target/aarch64-unknown-linux-musl/release/airoha-pond
+          BIN=src/airoha-pon-daemons/src/target/aarch64-unknown-linux-musl/release/airoha-pond
           ls -l "$BIN"
           file "$BIN" || true
           mkdir -p out
