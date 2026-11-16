@@ -343,4 +343,41 @@ else
   echo "未启用任何第三方插件"
 fi
 
+# ---------------------------------------------------------
+# PON 用户态补丁：累积 OLT 下发的每一条 VLAN 规则（EPON）
+#
+#   上游 airoha-pon-daemons 的 ctc.rs 用 `Option<VlanConfiguration>` 保存
+#   VLAN：OLT 每下发一条 CTC Set（leaf 0x0021）就整体覆盖一次，最终只剩
+#   最后一条。以本机为例，OLT 开机连发 4 条（140 + 4092 ×3），结果 140
+#   被 4092 覆盖，LuCI 的 PON 状态页只显示一个 VLAN。
+#   补丁改成按 object index 累积（BTreeMap），与 GPON/OMCI 的 MIB 表行为
+#   对齐，页面上就能看到 140, 4092。
+#
+#   补丁本体放在 .github/pond-patches/，与 build-pond.yml（单编 daemon）
+#   共用同一份，避免两边漂移。
+# ---------------------------------------------------------
+PON_VLAN_PATCH="$PWD/.github/pond-patches/0001-oam-ctc-keep-every-OLT-provisioned-VLAN-object-instance.patch"
+PON_CTC_RS="feeds/pon_userspace/airoha-pon-daemons/src/src/oam/ctc.rs"
+
+if [ -f "$PON_VLAN_PATCH" ] && [ -f "$PON_CTC_RS" ]; then
+  if grep -q 'BTreeMap<u32, VlanConfiguration>' "$PON_CTC_RS"; then
+    echo "✅ PON VLAN 补丁已存在，跳过"
+  else
+    echo ">>> 应用 PON VLAN 补丁: $(basename "$PON_VLAN_PATCH")"
+    if patch -p1 --batch --forward < "$PON_VLAN_PATCH"; then
+      if grep -q 'BTreeMap<u32, VlanConfiguration>' "$PON_CTC_RS"; then
+        echo "✅ PON VLAN 补丁已应用（vlan_ids 将累积显示全部 OLT 下发规则）"
+      else
+        echo "::error::补丁命令成功但未检测到预期改动，检查 ctc.rs"
+        exit 1
+      fi
+    else
+      echo "::error::PON VLAN 补丁应用失败 —— 上游 ctc.rs 可能已变动，需要 rebase 补丁"
+      exit 1
+    fi
+  fi
+else
+  echo "::warning::未找到 PON VLAN 补丁（$PON_VLAN_PATCH）或 pon_userspace 源码，跳过"
+fi
+
 echo "🎉 diy-part1.sh 执行完毕"
