@@ -337,7 +337,9 @@ ensure_pkg() {
 
 # vnstat2：流量页的统计后端；luci-app-upnp + miniupnpd-nftables：UPnP 页面；
 # luci-app-pon-status：概览页 PON 卡片
-ensure_pkg vnstat2 luci-app-vnstat2 miniupnpd-nftables luci-app-upnp luci-app-pon-status
+# ttyd 网页终端 + 简体中文 UI：luci-app-ttyd 的 po/zh_Hans 经 luci.mk 别名生成 luci-i18n-ttyd-zh-cn
+ensure_pkg vnstat2 luci-app-vnstat2 miniupnpd-nftables luci-app-upnp luci-app-pon-status \
+  ttyd luci-app-ttyd luci-i18n-ttyd-zh-cn
 
 # 上游 luci-app-upnp 若已自行修好（dport 与 dnat 之间允许任意内容），
 # 就丢掉我们这份覆盖，避免压住新版

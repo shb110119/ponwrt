@@ -382,6 +382,17 @@ jobs:
             exit 1
           fi
           echo "✅ PON 关键包校验通过"
+          # ttyd 网页终端 + 中文界面：三个包缺一不可（feeds 缺失会被 defconfig 静默剔除）
+          TTY_MISS=""
+          for p in ttyd luci-app-ttyd luci-i18n-ttyd-zh-cn; do
+            grep -q "^CONFIG_PACKAGE_${p}=y" .config || TTY_MISS="$TTY_MISS $p"
+          done
+          if [ -n "$TTY_MISS" ]; then
+            echo "::error::ttyd 相关包在 defconfig 后未启用:$TTY_MISS"
+            exit 1
+          fi
+          echo "✅ ttyd + 中文界面校验通过"
+
 
           # =========================================================
           # 状态插件校验：第三方包若在 package/custom 里缺失，
