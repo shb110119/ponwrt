@@ -59,13 +59,16 @@ jobs:
           rustup target add aarch64-unknown-linux-musl
           python3 -m pip install --quiet ziglang
           cargo install --quiet --locked cargo-zigbuild
-          zig version
+          ZIG=$(python3 -c "import ziglang,os;print(os.path.join(os.path.dirname(ziglang.__file__),'zig'))")
+          echo "zig path: $ZIG"
+          "$ZIG" version
+          echo "ZIG_BIN=$ZIG" >> "$GITHUB_ENV"
 
       - name: Build airoha-pond
         run: |
           set -e
           cd src/airoha-pon-daemons
-          cargo zigbuild --release --target aarch64-unknown-linux-musl
+          cargo zigbuild --release --target aarch64-unknown-linux-musl --zig-path "$ZIG_BIN"
 
       - name: Inspect binary
         run: |
