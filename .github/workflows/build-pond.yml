@@ -60,15 +60,18 @@ jobs:
           python3 -m pip install --quiet ziglang
           cargo install --quiet --locked cargo-zigbuild
           ZIG=$(python3 -c "import ziglang,os;print(os.path.join(os.path.dirname(ziglang.__file__),'zig'))")
-          echo "zig path: $ZIG"
-          "$ZIG" version
-          echo "ZIG_BIN=$ZIG" >> "$GITHUB_ENV"
+          mkdir -p "$HOME/.local/bin"
+          ln -sf "$ZIG" "$HOME/.local/bin/zig"
+          export PATH="$HOME/.local/bin:$PATH"
+          echo "zig: $(command -v zig) -> $("$HOME/.local/bin/zig" version)"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - name: Build airoha-pond
         run: |
           set -e
+          zig version
           cd src/airoha-pon-daemons
-          cargo zigbuild --release --target aarch64-unknown-linux-musl --zig-path "$ZIG_BIN"
+          cargo zigbuild --release --target aarch64-unknown-linux-musl
 
       - name: Inspect binary
         run: |
