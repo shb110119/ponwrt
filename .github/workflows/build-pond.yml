@@ -18,7 +18,7 @@ on:
       runner:
         description: 'runner 标签（ubuntu-latest 池堵塞时可换 ubuntu-22.04 / ubuntu-24.04）'
         required: true
-        default: 'ubuntu-latest'
+        default: 'ubuntu-22.04'
 
 permissions:
   contents: read
@@ -53,14 +53,19 @@ jobs:
             patch -p1 --batch --forward < "$p"
           done
 
-      - name: Cross build (aarch64 musl, static)
+      - name: Install cross toolchain (zig)
         run: |
           set -e
-          docker run --rm \
-            -v "$PWD/src/airoha-pon-daemons:/work" \
-            -w /work \
-            ghcr.io/cross-rs/aarch64-unknown-linux-musl:edge \
-            cargo build --release --target aarch64-unknown-linux-musl
+          rustup target add aarch64-unknown-linux-musl
+          python3 -m pip install --quiet ziglang
+          cargo install --quiet --locked cargo-zigbuild
+          zig version
+
+      - name: Build airoha-pond
+        run: |
+          set -e
+          cd src/airoha-pon-daemons
+          cargo zigbuild --release --target aarch64-unknown-linux-musl
 
       - name: Inspect binary
         run: |
