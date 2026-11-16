@@ -1,4 +1,5 @@
 name: Release PonWrt
+run-name: Release PonWrt ${{ inputs.tag }}
 
 # ================================================================
 # 与 Build PonWrt (build.yml) 使用同一套构建配方：
