@@ -357,14 +357,17 @@ fi
 #   共用同一份，避免两边漂移。
 # ---------------------------------------------------------
 PON_VLAN_PATCH="$PWD/.github/pond-patches/0001-oam-ctc-keep-every-OLT-provisioned-VLAN-object-instance.patch"
-PON_CTC_RS="feeds/pon_userspace/airoha-pon-daemons/src/src/oam/ctc.rs"
+PON_FEED_DIR="feeds/pon_userspace"
+PON_CTC_RS="$PON_FEED_DIR/airoha-pon-daemons/src/src/oam/ctc.rs"
 
 if [ -f "$PON_VLAN_PATCH" ] && [ -f "$PON_CTC_RS" ]; then
   if grep -q 'BTreeMap<u32, VlanConfiguration>' "$PON_CTC_RS"; then
     echo "✅ PON VLAN 补丁已存在，跳过"
   else
     echo ">>> 应用 PON VLAN 补丁: $(basename "$PON_VLAN_PATCH")"
-    if patch -p1 --batch --forward < "$PON_VLAN_PATCH"; then
+    # 补丁内路径形如 a/airoha-pon-daemons/src/src/oam/ctc.rs，
+    # 需以 feeds/pon_userspace 为根（-p1 去掉 a/ 前缀）
+    if patch -p1 --batch --forward -d "$PON_FEED_DIR" < "$PON_VLAN_PATCH"; then
       if grep -q 'BTreeMap<u32, VlanConfiguration>' "$PON_CTC_RS"; then
         echo "✅ PON VLAN 补丁已应用（vlan_ids 将累积显示全部 OLT 下发规则）"
       else
@@ -377,7 +380,7 @@ if [ -f "$PON_VLAN_PATCH" ] && [ -f "$PON_CTC_RS" ]; then
     fi
   fi
 else
-  echo "::warning::未找到 PON VLAN 补丁（$PON_VLAN_PATCH）或 pon_userspace 源码，跳过"
+  echo "::warning::未找到 PON VLAN 补丁（$PON_VLAN_PATCH）或 pon_userspace 源码（$PON_CTC_RS），跳过"
 fi
 
 echo "🎉 diy-part1.sh 执行完毕"
