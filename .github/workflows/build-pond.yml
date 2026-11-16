@@ -15,13 +15,17 @@ on:
         description: '上传产物 artifact'
         required: true
         default: 'true'
+      runner:
+        description: 'runner 标签（ubuntu-latest 池堵塞时可换 ubuntu-22.04 / ubuntu-24.04）'
+        required: true
+        default: 'ubuntu-latest'
 
 permissions:
   contents: read
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner }}
     steps:
       - name: Checkout patch set
         uses: actions/checkout@v4
