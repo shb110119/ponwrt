@@ -1,0 +1,78 @@
+name: Build airoha-pond (static aarch64)
+
+# 只编译 airoha-pon-daemons 里的 airoha-pond，产出静态 aarch64 musl 二进制，
+# 用于单文件替换测试（scp 到 /usr/sbin/airoha-pond），不需要整机刷固件。
+# 补丁放在 .github/pond-patches/*.patch，按文件名顺序 patch -p1 应用。
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'openwrt-pon-userspace 的 ref（分支/tag/commit）'
+        required: true
+        default: 'cce9d75'
+      upload_artifact:
+        description: '上传产物 artifact'
+        required: true
+        default: 'true'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout patch set
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/pond-patches
+          fetch-depth: 1
+
+      - name: Fetch daemon source
+        run: |
+          set -e
+          curl -fsSL "https://github.com/pbs05/openwrt-pon-userspace/archive/${{ inputs.ref }}.tar.gz" -o src.tgz
+          mkdir -p src
+          tar xzf src.tgz -C src --strip-components=1
+          echo "== source layout"
+          ls src/airoha-pon-daemons/src
+          grep -n '^version' src/airoha-pon-daemons/src/Cargo.toml
+
+      - name: Apply patches
+        run: |
+          set -e
+          cd src
+          shopt -s nullglob
+          for p in "$GITHUB_WORKSPACE"/.github/pond-patches/*.patch; do
+            echo "== applying $(basename "$p")"
+            patch -p1 --batch --forward < "$p"
+          done
+
+      - name: Cross build (aarch64 musl, static)
+        run: |
+          set -e
+          docker run --rm \
+            -v "$PWD/src/airoha-pon-daemons:/work" \
+            -w /work \
+            ghcr.io/cross-rs/aarch64-unknown-linux-musl:edge \
+            cargo build --release --target aarch64-unknown-linux-musl
+
+      - name: Inspect binary
+        run: |
+          set -e
+          BIN=src/airoha-pon-daemons/target/aarch64-unknown-linux-musl/release/airoha-pond
+          ls -l "$BIN"
+          file "$BIN" || true
+          mkdir -p out
+          cp "$BIN" out/airoha-pond
+          sha256sum out/airoha-pond | tee out/airoha-pond.sha256
+
+      - name: Upload artifact
+        if: inputs.upload_artifact != 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: airoha-pond-${{ inputs.ref }}
+          path: out/
+          if-no-files-found: error
+          retention-days: 14
