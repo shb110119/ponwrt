@@ -6,11 +6,11 @@ USE_PROCD=1
 
 start_service() {
 	# Boot ordering lets network and firewall consume the generated configuration.
-	/usr/libexec/iptv-apply boot
+	/usr/libexec/onu-iptv-apply boot
 }
 
 reload_service() {
-	/usr/libexec/iptv-apply reload
+	/usr/libexec/onu-iptv-apply reload
 }
 
 service_triggers() {

@@ -139,7 +139,7 @@ read_image "$work/current"
 
 if [ "$action" = read ]; then
 	load_field "$1"
-	/usr/libexec/pon-identity-image read "$work/current" \
+	/usr/libexec/onu-identity-image read "$work/current" \
 		"$offset" "$field_size" "$encoding"
 	exit $?
 fi
@@ -150,7 +150,7 @@ for change in "$@"; do
 	field="${change%%=*}"
 	value="${change#*=}"
 	load_field "$field"
-	/usr/libexec/pon-identity-image write "$work/updated" "$work/next" \
+	/usr/libexec/onu-identity-image write "$work/updated" "$work/next" \
 		"$offset" "$field_size" "$encoding" "$codec" "$mirror" "$value" ||
 		fail "Invalid value for $name.$field"
 	mv "$work/next" "$work/updated" || fail "Cannot prepare identity image"

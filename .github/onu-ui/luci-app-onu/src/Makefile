@@ -13,4 +13,4 @@ clean:
 
 install: compile
 	install -d $(DESTDIR)/usr/libexec
-	install -m 0755 identity-image $(DESTDIR)/usr/libexec/pon-identity-image
+	install -m 0755 identity-image $(DESTDIR)/usr/libexec/onu-identity-image

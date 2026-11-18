@@ -13,10 +13,10 @@
 				"/usr/sbin/ponctl --device * status": [ "exec" ],
 				"/usr/sbin/ponctl --device * status --json": [ "exec" ],
 				"/usr/bin/pondctl status --line *": [ "exec" ],
-				"/usr/libexec/pon-board-identity list": [ "exec" ],
-				"/usr/libexec/pon-board-identity read *": [ "exec" ],
-				"/usr/libexec/airoha-pon-data list": [ "exec" ],
-				"/usr/libexec/airoha-pon-data read *": [ "exec" ],
+				"/usr/libexec/onu-board-identity list": [ "exec" ],
+				"/usr/libexec/onu-board-identity read *": [ "exec" ],
+				"/usr/libexec/onu-pon-data list": [ "exec" ],
+				"/usr/libexec/onu-pon-data read *": [ "exec" ],
 				"/tmp/pon-board-backup.bin": [ "read" ],
 				"/tmp/pon-debug.tar.gz": [ "read" ]
 			}
@@ -29,8 +29,8 @@
 			},
 			"file": {
 				"/tmp/pon-board-data.bin": [ "write" ],
-				"/usr/libexec/airoha-pon-data write *": [ "exec" ],
-				"/usr/libexec/pon-board-identity write *": [ "exec" ],
+				"/usr/libexec/onu-pon-data write *": [ "exec" ],
+				"/usr/libexec/onu-board-identity write *": [ "exec" ],
 				"/usr/libexec/airoha-pon-debug collect": [ "exec" ],
 				"/usr/libexec/airoha-pon-debug restart": [ "exec" ]
 			}

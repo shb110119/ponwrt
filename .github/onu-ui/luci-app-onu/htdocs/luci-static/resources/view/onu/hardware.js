@@ -281,7 +281,7 @@ function parseStorageList(output) {
 }
 
 function runIdentity(args) {
-	return fs.exec('/usr/libexec/pon-board-identity', args).then(function(result) {
+	return fs.exec('/usr/libexec/onu-board-identity', args).then(function(result) {
 		if (result.code != 0)
 			throw new Error(result.stderr || result.stdout || _('Board identity operation failed.'));
 		return result.stdout.trim();
@@ -324,7 +324,7 @@ function loadIdentity() {
 }
 
 function loadStorages() {
-	return fs.exec('/usr/libexec/airoha-pon-data', [ 'list' ]).then(function(result) {
+	return fs.exec('/usr/libexec/onu-pon-data', [ 'list' ]).then(function(result) {
 		if (result.code != 0)
 			throw new Error(result.stderr || result.stdout || _('Unable to list storage.'));
 
@@ -902,7 +902,7 @@ return view.extend({
 			button.classList.add('spinning');
 		}
 
-		return fs.exec('/usr/libexec/airoha-pon-data', [ 'read', target.id ]).then(function(result) {
+		return fs.exec('/usr/libexec/onu-pon-data', [ 'read', target.id ]).then(function(result) {
 			if (result.code != 0)
 				throw new Error(result.stderr || result.stdout || _('Backup failed.'));
 
@@ -961,7 +961,7 @@ handleIdentityUpload: function(options, buttonId) {
 			button.classList.add('spinning');
 		}
 
-		return fs.exec('/usr/libexec/airoha-pon-data', [ 'write', target.id ]);
+		return fs.exec('/usr/libexec/onu-pon-data', [ 'write', target.id ]);
 	}).then(function(result) {
 		if (result.code != 0)
 			throw new Error(result.stderr || result.stdout || _('Write failed.'));
