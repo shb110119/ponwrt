@@ -1,1 +1,444 @@
-Ly8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEFwYWNoZS0yLjAKCid1c2Ugc3RyaWN0JzsKJ3JlcXVpcmUgZm9ybSc7CidyZXF1aXJlIG5ldHdvcmsnOwoncmVxdWlyZSB1Y2knOwoncmVxdWlyZSB2aWV3JzsKCnZhciBTVFlMRVNIRUVUID0gJ3ZpZXcvb251L29udS5jc3MnOwoKLyoKICogVGhlIG5hbWVzIGludGVybmV0LWFwcGx5IGRlcml2ZXMgZnJvbSB0aGlzIHBhZ2UuIEtlZXBpbmcgdGhlbSBoZXJlIG1pcnJvcnMKICogd2hhdCB0aGUgYXBwbHkgc2NyaXB0IHdyaXRlczogdGhlIHNhbWUgcHJpbmNpcGxlIGFzIHRoZSB1cHN0cmVhbSBkZXZpY2Ugb24KICogdGhlIElQVFYgcGFnZSwgd2hpY2ggaGFzIHRvIGZvbGxvdyBpcHR2LWFwcGx5IGJyYW5jaCBieSBicmFuY2guCiAqLwp2YXIgVkxBTl9ERVZJQ0UgPSAnY3Qtd2FudXAnOwp2YXIgQlJJREdFX0RFVklDRSA9ICdici13YW51cCc7CgovKgogKiBUaGUgUE9OIHZpZXdzIGZvbGxvdyBsdWNpLXRoZW1lLWFyZ29uOiBjYXJkcywgZm9ybSByb3dzIGFuZCBidXR0b25zIGFsbCBjb21lCiAqIGZyb20gdGhlIHRoZW1lLiBPbmx5IHRoZSBzbWFsbCBoZWxwZXIgc3R5bGVzaGVldCBpcyBvdXJzLgogKi8KZnVuY3Rpb24gZW5zdXJlU3R5bGVzaGVldCgpIHsKCXZhciBocmVmOwoKCWlmIChkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCdsaW5rW2RhdGEtcG9uLXN0eWxlc2hlZXRdJykpCgkJcmV0dXJuOwoKCWhyZWYgPSAodHlwZW9mIEwucmVzb3VyY2UgPT0gJ2Z1bmN0aW9uJykgPyBMLnJlc291cmNlKFNUWUxFU0hFRVQpIDogbnVsbDsKCglpZiAoIWhyZWYpCgkJaHJlZiA9ICgoTC5lbnYgJiYgTC5lbnYuYmFzZV91cmwpIHx8ICcvbHVjaS1zdGF0aWMvcmVzb3VyY2VzJykgKyAnLycgKyBTVFlMRVNIRUVUOwoKCWRvY3VtZW50LmhlYWQuYXBwZW5kQ2hpbGQoRSgnbGluaycsIHsKCQkncmVsJzogJ3N0eWxlc2hlZXQnLAoJCSdocmVmJzogaHJlZiwKCQknZGF0YS1wb24tc3R5bGVzaGVldCc6ICcnCgl9KSk7Cn0KCmZ1bmN0aW9uIGxpc3RQb25EZXZpY2VzKCkgewoJcmV0dXJuIHVjaS5zZWN0aW9ucygncG9uJywgJ3hwb24nKS5tYXAoZnVuY3Rpb24obGluZSkgewoJCXJldHVybiBsaW5lLmRldmljZSB8fCBsaW5lWycubmFtZSddOwoJfSkuam9pbignLCAnKSB8fCAnLSc7Cn0KCi8qCiAqIFBvcnQgb3duZXJzaGlwIGFjcm9zcyB0aGUgdGhyZWUgUE9OIHNlcnZpY2UgcGFnZXMsIG1pcnJvcmluZwogKiBwb3J0X293bmVkX2Vsc2V3aGVyZSgpIGluIGludGVybmV0LWFwcGx5LgogKgogKiBBIGRlZGljYXRlZCBicmlkZ2UgcG9ydCAoaW50ZXJuZXQgYnJpZGdlLCBJUFRWIHNldC10b3AgYm94IHBvcnQsIHZvaWNlCiAqIGJyaWRnZSBwb3J0KSBsZWF2ZXMgYnItbGFuIGFuZCBiZWxvbmdzIHRvIGV4YWN0bHkgb25lIHNlcnZpY2UgYnJpZGdlLCBzbyBubwogKiBvdGhlciBwYWdlIG1heSBwaWNrIGl0LiBBIHRydW5rIHBvcnQgc3RheXMgaW4gYnItbGFuIGFuZCBvbmx5IGNhcnJpZXMgdGFnZ2VkCiAqIDgwMjFxIHN1YmludGVyZmFjZXMsIHNvIHRoZSBJUFRWIGFuZCB2b2ljZSB0cnVua3MgbWF5IHNoYXJlIG9uZSBwb3J0IG9uCiAqIHB1cnBvc2UgLSBidXQgYSBkZWRpY2F0ZWQgcG9ydCBtdXN0IG5ldmVyIGJlY29tZSBhIHRydW5rIHBvcnQgZWl0aGVyLCBvciBpdAogKiB3b3VsZCBjYXJyeSBmb3JlaWduIHRhZ2dlZCBWTEFOcyB3aGlsZSBpdHMgb3duIHNlcnZpY2UgZXhwZWN0cyBpdCB1bnRhZ2dlZC4KICoKICogVGhlIGludGVybmV0IHBhZ2Ugb3ducyBwb3J0cyBpbiBicmlkZ2UgbW9kZSBvbmx5LCBhbmQgYSBicmlkZ2VkIHBvcnQgaXMgYQogKiBkZWRpY2F0ZWQgcG9ydC4gU28gYm90aCB0aGUgSVBUViBhbmQgdGhlIHZvaWNlIHBvcnQgYXJlIG9mZi1saW1pdHMgaGVyZSBpbgogKiBlaXRoZXIgb2YgdGhlaXIgZGVsaXZlcnkgbW9kZXMuCiAqLwpmdW5jdGlvbiBwb3J0c09mKHZhbHVlKSB7CglyZXR1cm4gTC50b0FycmF5KHZhbHVlKS5maWx0ZXIoZnVuY3Rpb24ocG9ydCkgewoJCXJldHVybiAhIXBvcnQ7Cgl9KTsKfQoKZnVuY3Rpb24gaXB0dlBvcnRzKCkgewoJaWYgKHVjaS5nZXQoJ29udS1pcHR2JywgJ2NvbmZpZycsICdlbmFibGVkJykgIT09ICcxJykKCQlyZXR1cm4gW107CgoJc3dpdGNoICh1Y2kuZ2V0KCdvbnUtaXB0dicsICdjb25maWcnLCAnbW9kZScpKSB7CgljYXNlICdicmlkZ2UnOgoJCXJldHVybiBwb3J0c09mKHVjaS5nZXQoJ29udS1pcHR2JywgJ2NvbmZpZycsICdsYW5fcG9ydCcpKTsKCgljYXNlICd0cnVuayc6CgkJcmV0dXJuIHBvcnRzT2YodWNpLmdldCgnb251LWlwdHYnLCAnY29uZmlnJywgJ3RydW5rX3BvcnQnKSk7Cgl9CgoJcmV0dXJuIFtdOwp9CgpmdW5jdGlvbiB2b2ljZVBvcnRzKCkgewoJaWYgKHVjaS5nZXQoJ29udS12b2ljZScsICduZXR3b3JrJywgJ2VuYWJsZWQnKSAhPT0gJzEnKQoJCXJldHVybiBbXTsKCglzd2l0Y2ggKHVjaS5nZXQoJ29udS12b2ljZScsICduZXR3b3JrJywgJ21vZGUnKSkgewoJY2FzZSAnYnJpZGdlJzoKCQlyZXR1cm4gcG9ydHNPZih1Y2kuZ2V0KCdvbnUtdm9pY2UnLCAnbmV0d29yaycsICdsYW5fcG9ydCcpKTsKCgljYXNlICd0cnVuayc6CgkJcmV0dXJuIHBvcnRzT2YodWNpLmdldCgnb251LXZvaWNlJywgJ25ldHdvcmsnLCAndHJ1bmtfcG9ydCcpKTsKCX0KCglyZXR1cm4gW107Cn0KCi8qIEV2ZXJ5IHBvcnQgYW5vdGhlciBwYWdlIGFscmVhZHkgYm91bmQsIHNvIGl0IGNhbiBiZSBsZWZ0IG91dCBvZiB0aGUgcGlja2VyLiAqLwpmdW5jdGlvbiBmb3JlaWduUG9ydHMoKSB7CglyZXR1cm4gaXB0dlBvcnRzKCkuY29uY2F0KHZvaWNlUG9ydHMoKSk7Cn0KCi8qIFdobyBvd25zIHRoZSBwb3J0LCBmb3IgdGhlIHZhbGlkYXRpb24gbWVzc2FnZS4gKi8KZnVuY3Rpb24gcG9ydE93bmVyKHBvcnQpIHsKCWlmIChpcHR2UG9ydHMoKS5pbmRleE9mKHBvcnQpID49IDApCgkJcmV0dXJuIF8oJ0lQVFYnKTsKCglpZiAodm9pY2VQb3J0cygpLmluZGV4T2YocG9ydCkgPj0gMCkKCQlyZXR1cm4gXygndm9pY2UnKTsKCglyZXR1cm4gbnVsbDsKfQoKZnVuY3Rpb24gc2VsZWN0ZWRQb3J0cyhzZWN0aW9uSWQpIHsKCXJldHVybiBMLnRvQXJyYXkodWNpLmdldCgnb251LWludGVybmV0JywgJ2NvbmZpZycsICdwb3J0cycpKTsKfQoKZnVuY3Rpb24gdmFsaWRhdGVQb3J0cyhzZWN0aW9uSWQsIHZhbHVlKSB7Cgl2YXIgcG9ydHMgPSBMLnRvQXJyYXkodmFsdWUpOwoJdmFyIG93bmVyLCBpOwoKCWlmICghcG9ydHMubGVuZ3RoKQoJCXJldHVybiBfKCdQaWNrIGF0IGxlYXN0IG9uZSBMQU4gcG9ydCBmb3IgdGhlIGludGVybmV0IGJyaWRnZS4nKTsKCglmb3IgKGkgPSAwOyBpIDwgcG9ydHMubGVuZ3RoOyBpKyspIHsKCQlvd25lciA9IHBvcnRPd25lcihwb3J0c1tpXSk7CgoJCWlmIChvd25lcikKCQkJcmV0dXJuIF8oJ1RoaXMgcG9ydCBpcyBhbHJlYWR5IGJvdW5kIGJ5IHRoZSAlcyBwYWdlOyBmcmVlIGl0IHRoZXJlIGZpcnN0LicpLmZvcm1hdChvd25lcik7Cgl9CgoJcmV0dXJuIHRydWU7Cn0KCi8qCiAqIE1pcnJvciBvZiB3YW50X2lwdjYoKSBpbiBpbnRlcm5ldC1hcHBseS4gSXQgaGFzIHRvIGFncmVlIHdpdGggdGhlIHNjcmlwdCwKICogb3RoZXJ3aXNlIHRoaXMgcGFnZSBhbmQgdGhlIGNvbmZpZyBpdCB3cml0ZXMgZHJpZnQgYXBhcnQuCiAqLwpmdW5jdGlvbiB3YW50c0lQdjYoKSB7Cglzd2l0Y2ggKHVjaS5nZXQoJ29udS1pbnRlcm5ldCcsICdjb25maWcnLCAnaXBfdmVyc2lvbicpKSB7CgljYXNlICdpcHY2JzoKCWNhc2UgJ2lwdjRfaXB2Nic6CgljYXNlICdkdWFsJzoKCQlyZXR1cm4gdHJ1ZTsKCX0KCglyZXR1cm4gZmFsc2U7Cn0KCi8qCiAqIFdoYXQgdGhlIGFwcGx5IHNjcmlwdCBidWlsZHMgZnJvbSB0aGUgY3VycmVudCBzZXR0aW5ncy4gTGF5ZXIgdHdvIGRldmljZXMgYXJlCiAqIG5vdCBpbnZlbnRlZCBieSB0aGUgdXNlciwgdGhleSBhcmUgZGVyaXZlZCAtIHNob3dpbmcgdGhlbSBrZWVwcyB0aGlzIHBhZ2UgYW5kCiAqIGludGVybmV0LWFwcGx5IHJlYWRhYmxlIGFnYWluc3QgZWFjaCBvdGhlci4KICoKICogSW4gVU5UQUcgdHJhbnNwYXJlbnQgbW9kZSB0aGVyZSBpcyBubyA4MDIxcSBzdWJpbnRlcmZhY2U6IHRoZSB1cGxpbmsgaXRzZWxmCiAqIGNhcnJpZXMgdGhlIHNlcnZpY2UsIHNvIHRoZSAiLnZsYW4iIHBhcnQgaXMgZHJvcHBlZCBmcm9tIGV2ZXJ5IGxpbmUuCiAqLwpmdW5jdGlvbiBkZXJpdmVkRGV2aWNlcygpIHsKCXZhciB1cGxpbmsgPSB1Y2kuZ2V0KCdvbnUtaW50ZXJuZXQnLCAnY29uZmlnJywgJ3VwbGluaycpIHx8ICdwb24wJzsKCXZhciB2bGFuID0gdWNpLmdldCgnb251LWludGVybmV0JywgJ2NvbmZpZycsICd2bGFuJyk7Cgl2YXIgdG1vZGUgPSB1Y2kuZ2V0KCdvbnUtaW50ZXJuZXQnLCAnY29uZmlnJywgJ3RyYW5zcGFyZW50X21vZGUnKSB8fCAndGFnJzsKCglpZiAodWNpLmdldCgnb251LWludGVybmV0JywgJ2NvbmZpZycsICdlbmFibGVkJykgIT09ICcxJykKCQlyZXR1cm4gJy0nOwoKCXZhciBpZmFjZSA9ICh0bW9kZSA9PT0gJ3VudGFnJykgPyB1cGxpbmsgOiAnJXMuJXMnLmZvcm1hdCh1cGxpbmssIHZsYW4gfHwgJz8nKTsKCglzd2l0Y2ggKHVjaS5nZXQoJ29udS1pbnRlcm5ldCcsICdjb25maWcnLCAnbW9kZScpKSB7CgljYXNlICdwcHBvZSc6CgkJcmV0dXJuICclcyAoJXMpIC0+IHBwcG9lLXdhbicuZm9ybWF0KGlmYWNlLCBWTEFOX0RFVklDRSk7CgoJY2FzZSAnZGhjcCc6CgkJLyogT25seSB0aGUgZHVhbC1zdGFjayBjYXNlIGdldHMgYSBzZWNvbmQgaW50ZXJmYWNlOiB0aGF0IGlzIHRoZSBvbmUKCQkgKiBwbGFjZSBhIHJlYWwgREhDUHY2IGNsaWVudCBpcyB3cml0dGVuLiAqLwoJCXJldHVybiAnJXMgKCVzKSAtPiB3YW4lcycuZm9ybWF0KGlmYWNlLCBWTEFOX0RFVklDRSwKCQkJd2FudHNJUHY2KCkgPyAnICsgd2FuNicgOiAnJyk7CgoJZGVmYXVsdDoKCQkvKiBVTlRBRyBicmlkZ2UgaW5saW5lcyB0aGUgcmF3IHVwbGluayBpbnRvIGJyLXdhbnVwOiB0aGUgQWlyb2hhIGtlcm5lbAoJCSAqIHJlamVjdHMgYSBicmlkZ2UgbmVzdGVkIGluIGEgYnJpZGdlLCBzbyBjdC13YW51cCBpcyBub3QgY3JlYXRlZCB0aGVyZQoJCSAqIGFuZCB0aGUgdXBsaW5rIGl0c2VsZiBpcyB0aGUgYnJpZGdlIG1lbWJlci4gU2hvdyBpdCBkaXJlY3RseS4gKi8KCQlpZiAodG1vZGUgPT09ICd1bnRhZycpCgkJCXJldHVybiAnJXMgKyBMQU4gcG9ydHMgLT4gJXMnLmZvcm1hdCh1cGxpbmssIEJSSURHRV9ERVZJQ0UpOwoJCXJldHVybiAnJXMgKCVzKSArIExBTiBwb3J0cyAtPiAlcycuZm9ybWF0KGlmYWNlLCBWTEFOX0RFVklDRSwgQlJJREdFX0RFVklDRSk7Cgl9Cn0KCnJldHVybiB2aWV3LmV4dGVuZCh7Cglsb2FkOiBmdW5jdGlvbigpIHsKCQlyZXR1cm4gUHJvbWlzZS5hbGwoWwoJCQluZXR3b3JrLmdldERldmljZXMoKSwKCQkJdWNpLmxvYWQoJ29udS1pbnRlcm5ldCcpLAoJCQl1Y2kubG9hZCgnb251LWlwdHYnKSwKCQkJdWNpLmxvYWQoJ29udS12b2ljZScpCgkJXSkudGhlbihmdW5jdGlvbihyZXN1bHRzKSB7CgkJCXJldHVybiByZXN1bHRzWzBdOwoJCX0pOwoJfSwKCglyZW5kZXI6IGZ1bmN0aW9uKGRldmljZXMpIHsKCQl2YXIgbSwgcywgbywgYWxsTGFuUG9ydHMsIGxhblBvcnRzLCBjdXJyZW50LCB0YWtlbjsKCgkJZW5zdXJlU3R5bGVzaGVldCgpOwoKCQkvKgoJCSAqIE9uZSBjYXJkLiBUaGUgbWFwIHRpdGxlIGlzIHRoZSBwYWdlIGhlYWRpbmcsIHNvIHRoZSBzZWN0aW9uIG11c3Qgbm90CgkJICogcmVwZWF0IGl0LCBhbmQgdGhlcmUgaXMgbm8gdGFiIGhlcmU6IHRoZSBtb2RlIHN3aXRjaCBhbHJlYWR5IGhpZGVzCgkJICogaGFsZiBvZiB0aGUgZmllbGRzLCBhbmQgYSBzZWNvbmQgZ3JvdXBpbmcgb24gdG9wIG9mIGl0IHdvdWxkIG9ubHkKCQkgKiBoaWRlIHdoZXJlIHRoZSBmaWVsZHMgYWN0dWFsbHkgbGl2ZS4KCQkgKi8KCQltID0gbmV3IGZvcm0uTWFwKCdvbnUtaW50ZXJuZXQnLCBfKCdPTlUgSW50ZXJuZXQnKSwKCQkJXygnVGhlIGludGVybmV0IHNlcnZpY2UgY2FycmllZCBieSB0aGUgUE9OIHVwbGluazogZWl0aGVyIGhhbmRlZCBvdmVyIGFzIGEgYnJpZGdlIHNvIGEgZG93bnN0cmVhbSByb3V0ZXIgZGlhbHMsIG9yIGRpYWxsZWQgYnkgdGhlIE9OVCBpdHNlbGYuJykpOwoJCW0ucmVhZG9ubHkgPSAhTC5oYXNWaWV3UGVybWlzc2lvbigpOwoKCQlzID0gbS5zZWN0aW9uKGZvcm0uTmFtZWRTZWN0aW9uLCAnY29uZmlnJywgJ2ludGVybmV0Jyk7CgkJcy5hbm9ueW1vdXMgPSB0cnVlOwoJCXMuYWRkcmVtb3ZlID0gZmFsc2U7CgoJCW8gPSBzLm9wdGlvbihmb3JtLkZsYWcsICdlbmFibGVkJywgXygnRW5hYmxlJykpOwoJCW8uZGVmYXVsdCA9ICcwJzsKCQlvLnJtZW1wdHkgPSBmYWxzZTsKCQlvLmRlc2NyaXB0aW9uID0gXygnV2l0aCB0aGUgc2VydmljZSBvZmYsIG5vIFZMQU4gc3ViaW50ZXJmYWNlIGFuZCBubyBkaWFsbGluZyBpbnRlcmZhY2UgaXMgd3JpdHRlbiwgYW5kIHRoZSBzdG9jayBXQU4gaW50ZXJmYWNlcyBvZiB0aGUgbmV0d29yayBwYWdlIGFyZSBwdXQgYmFjay4nKTsKCgkJLyoKCQkgKiBUcmFuc3BhcmVudCBtb2RlIHNpdHMgYWJvdmUgdGhlIFZMQU4gZmllbGQgYmVjYXVzZSBpdCBnb3Zlcm5zIHdoZXRoZXIKCQkgKiB0aGUgVkxBTiBmaWVsZCBpcyB1c2FibGUgYXQgYWxsOiBUQUcgY2FycmllcyB0aGUgc2VydmljZSBvbiBhbiA4MDIxcQoJCSAqIHN1YmludGVyZmFjZSBhbmQgbmVlZHMgYSBWTEFOIElEOyBVTlRBRyBoYW5kcyB0aGUgcmF3IHVwbGluayB0aHJvdWdoCgkJICogYW5kIHRoZSBWTEFOIGZpZWxkIGJlbG93IGlzIGRpc2FibGVkLgoJCSAqLwoJCW8gPSBzLm9wdGlvbihmb3JtLkxpc3RWYWx1ZSwgJ3RyYW5zcGFyZW50X21vZGUnLCBfKCdUcmFuc3BhcmVudCBtb2RlJyksCgkJCV8oJ1RBRyBtb2RlIHJlcXVpcmVzIGFuIEludGVybmV0IFZMQU4gSUQgZm9yIHRoZSBzZXJ2aWNlLiBVTlRBRyBtb2RlIHBhc3NlcyB0aGUgcmF3IHVwbGluayB0aHJvdWdoIHdpdGhvdXQgVkxBTiB0YWdnaW5nLCBzbyB0aGUgSW50ZXJuZXQgVkxBTiBmaWVsZCBiZWxvdyBpcyBoaWRkZW4gYW5kIG5vIFZMQU4gaXMgc3RvcmVkLicpKTsKCQlvLmRlZmF1bHQgPSAndGFnJzsKCQlvLnJtZW1wdHkgPSBmYWxzZTsKCQlvLnZhbHVlKCd0YWcnLCBfKCdUQUcnKSk7CgkJby52YWx1ZSgndW50YWcnLCBfKCdVTlRBRycpKTsKCQlvLmRlcGVuZHMoJ2VuYWJsZWQnLCAnMScpOwoKCQlvID0gcy5vcHRpb24oZm9ybS5WYWx1ZSwgJ3ZsYW4nLCBfKCdJbnRlcm5ldCBWTEFOJyksCgkJCV8oJ1RoZSBvcGVyYXRvciBWTEFOIGNhcnJ5aW5nIHRoZSBpbnRlcm5ldCBzZXJ2aWNlLiBJdCBiZWNvbWVzIGFuIDgwMjFxIHN1YmludGVyZmFjZSBvZiB0aGUgdXBsaW5rLCBuZXZlciBhIG1lbWJlciBvZiBici1sYW4uJykpOwoJCW8ucGxhY2Vob2xkZXIgPSAnMS00MDk0JzsKCQlvLmRhdGF0eXBlID0gJ3JhbmdlKDEsNDA5NCknOwoJCW8ucm1lbXB0eSA9IGZhbHNlOwoKCQkvKgoJCSAqIEhpZGRlbiBvdXRyaWdodCBpbiBVTlRBRyBpbnN0ZWFkIG9mIGdyZXllZCBvdXQuIEEgZGlzYWJsZWQgaW5wdXQKCQkgKiBzdGlsbCBjb3VudHMgYXMgYW4gZW1wdHkgcmVxdWlyZWQgZmllbGQsIHNvIHRoZSBwYWdlIHJlamVjdGVkIHRoZQoJCSAqIHNhdmUgd2l0aCAibXVzdCBub3QgYmUgZW1wdHkiIGV2ZW4gdGhvdWdoIFVOVEFHIGhhcyBubyBWTEFOIGF0IGFsbC4KCQkgKiBkZXBlbmRzKCkgZHJvcHMgdGhlIHdob2xlIHJvdyBmcm9tIHRoZSBET00gaW4gVU5UQUcsIHNvIHRoZXJlIGlzCgkJICogbm90aGluZyBsZWZ0IHRvIHZhbGlkYXRlLgoJCSAqLwoJCW8uZGVwZW5kcyh7IGVuYWJsZWQ6ICcxJywgdHJhbnNwYXJlbnRfbW9kZTogJ3RhZycgfSk7CgoJCS8qCgkJICogSW4gVU5UQUcgbW9kZSB0aGUgVkxBTiBoYXMgbm8gbWVhbmluZy4gVGhlIHJvdyBpcyBoaWRkZW4gYnkKCQkgKiBkZXBlbmRzKCksIGFuZCBpZiB0aGUgZmllbGQgaXMgZXZlciBwYXJzZWQgYW55d2F5LCB0aGUgc3RvcmVkIFZMQU4KCQkgKiBpcyBkcm9wcGVkIHNvIGludGVybmV0LWFwcGx5IG5ldmVyIHNlZXMgb25lIGluIFVOVEFHLgoJCSAqLwoJCW8uY2ZndmFsdWUgPSBmdW5jdGlvbihzZWN0aW9uX2lkKSB7CgkJCWlmICh1Y2kuZ2V0KCdvbnUtaW50ZXJuZXQnLCAnY29uZmlnJywgJ3RyYW5zcGFyZW50X21vZGUnKSA9PT0gJ3VudGFnJykKCQkJCXJldHVybiAnJzsKCQkJcmV0dXJuIHVjaS5nZXQoJ29udS1pbnRlcm5ldCcsICdjb25maWcnLCAndmxhbicpIHx8ICcnOwoJCX07CgoJCShmdW5jdGlvbigpIHsKCQkJdmFyIG9yaWdWbGFuUGFyc2UgPSBvLnBhcnNlOwoJCQlvLnBhcnNlID0gZnVuY3Rpb24oc2VjdGlvbl9pZCkgewoJCQkJdmFyIHRtb2RlRWwgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY2JpLm9udS1pbnRlcm5ldC5jb25maWcudHJhbnNwYXJlbnRfbW9kZScpOwoJCQkJdmFyIHRtb2RlID0gdG1vZGVFbCA/ICh0bW9kZUVsLnZhbHVlIHx8ICd0YWcnKQoJCQkJICAgICAgICAgICAgICAgICAgICA6ICh1Y2kuZ2V0KCdvbnUtaW50ZXJuZXQnLCAnY29uZmlnJywgJ3RyYW5zcGFyZW50X21vZGUnKSB8fCAndGFnJyk7CgoJCQkJaWYgKHRtb2RlID09PSAndW50YWcnKQoJCQkJCXJldHVybiB0aGlzLnJlbW92ZShzZWN0aW9uX2lkKTsKCgkJCQlyZXR1cm4gb3JpZ1ZsYW5QYXJzZS5jYWxsKHRoaXMsIHNlY3Rpb25faWQpOwoJCQl9OwoJCX0pKCk7CgoJCS8qCgkJICogSW50ZXJuZXQgbW9kZSAoQnJpZGdlZCAvIERIQ1AgLyBQUFBvRSkgbGl2ZXMgYmVsb3cgdGhlIFZMQU4gZmllbGQ6CgkJICogdGhlIFZMQU4gaWRlbnRpZmllcyB0aGUgc2VydmljZSwgdGhlIG1vZGUgZGVjaWRlcyB3aGF0IGlzIGRvbmUgd2l0aAoJCSAqIGl0LiBPcmRlciBpcyBjb3NtZXRpYyBoZXJlIC0gZGVwZW5kcygpIHJlc29sdmVzIGFnYWluc3QgdGhlIERPTSwgbm90CgkJICogdGhlIGRlY2xhcmF0aW9uIG9yZGVyIC0gYnV0IGl0IGtlZXBzIHRoZSByZWFkaW5nIG9yZGVyIGxvZ2ljYWwuCgkJICovCgkJbyA9IHMub3B0aW9uKGZvcm0uTGlzdFZhbHVlLCAnbW9kZScsIF8oJ0ludGVybmV0IG1vZGUnKSwKCQkJXygnQnJpZGdlZCBoYW5kcyB0aGUgb3BlcmF0b3IgVkxBTiB0byB5b3VyIG93biByb3V0ZXIuIERIQ1AgdGFrZXMgd2hhdGV2ZXIgYWRkcmVzcyB0aGUgb3BlcmF0b3IgaGFuZHMgb3V0LiBQUFBvRSBsZXRzIHRoZSBPTlQgdGVybWluYXRlIHRoZSBzZXNzaW9uIGFuZCByb3V0ZSBmb3IgdGhlIExBTi4nKSk7CgkJby5kZWZhdWx0ID0gJ2JyaWRnZSc7CgkJby5ybWVtcHR5ID0gZmFsc2U7CgkJby52YWx1ZSgnYnJpZGdlJywgXygnQnJpZGdlZCcpKTsKCQlvLnZhbHVlKCdkaGNwJywgXygnREhDUCcpKTsKCQlvLnZhbHVlKCdwcHBvZScsIF8oJ1BQUG9FJykpOwoJCW8uZGVwZW5kcygnZW5hYmxlZCcsICcxJyk7CgoJCWFsbExhblBvcnRzID0gKGRldmljZXMgfHwgW10pLm1hcChmdW5jdGlvbihkZXZpY2UpIHsKCQkJcmV0dXJuIGRldmljZS5nZXROYW1lKCk7CgkJfSkuZmlsdGVyKGZ1bmN0aW9uKG5hbWUpIHsKCQkJcmV0dXJuIC9ebGFuWzAtOV0rJC8udGVzdChuYW1lKTsKCQl9KS5zb3J0KCk7CgoJCS8qCgkJICogQSBwb3J0IHRoZSBJUFRWIG9yIHRoZSB2b2ljZSBwYWdlIGFscmVhZHkgYm91bmQgaXMgbm90IG9mZmVyZWQgYXQKCQkgKiBhbGw6IHR3byBzZXJ2aWNlcyBjYW5ub3Qgb3duIG9uZSBwb3J0LCBhbmQgb2ZmZXJpbmcgaXQgd291bGQgb25seQoJCSAqIGxldCB0aGUgb3BlcmF0b3IgYnVpbGQgYSBjb25maWd1cmF0aW9uIGludGVybmV0LWFwcGx5IHRoZW4gcmVmdXNlcy4KCQkgKi8KCQl0YWtlbiA9IGZvcmVpZ25Qb3J0cygpOwoJCWxhblBvcnRzID0gYWxsTGFuUG9ydHMuZmlsdGVyKGZ1bmN0aW9uKG5hbWUpIHsKCQkJcmV0dXJuIHRha2VuLmluZGV4T2YobmFtZSkgPCAwOwoJCX0pOwoKCQljdXJyZW50ID0gc2VsZWN0ZWRQb3J0cygpOwoKCQkvKgoJCSAqIGZvcm0uTXVsdGlWYWx1ZSBoYW5kcyBpdHMgY2hvaWNlcyB0byB1aS5Ecm9wZG93biwgd2hvc2UgcmVuZGVyKCkKCQkgKiBydW5zIE9iamVjdC5rZXlzKCkgb24gdGhlbS4gUmVnaXN0ZXJpbmcgbm8gY2hvaWNlIGF0IGFsbCBpcyBmYXRhbDoKCQkgKiBmb3JtLmpzIHRyYW5zZm9ybUNob2ljZXMoKSByZXR1cm5zIG51bGwgd2hlbiBub3RoaW5nIHdhcyBhZGRlZCwKCQkgKiBhbmQgdGhlIGRyb3Bkb3duJ3Mgb3duIGd1YXJkIC0gdHlwZW9mKGNob2ljZXMpICE9ICdvYmplY3QnIC0gZG9lcwoJCSAqIG5vdCBzdG9wIG51bGwsIGJlY2F1c2UgdHlwZW9mIG51bGwgaXMgJ29iamVjdCcuIFdpdGhvdXQgZGV2aWNlcwoJCSAqIG5hbWVkIGxhblswLTldKywgd2hpY2ggaXMgZXZlcnkgYm9vdGluZyBib2FyZCBiZWZvcmUgbmV0aWZkIGhhcwoJCSAqIHRoZW0gYW5kIGV2ZXJ5IHN0cmlwcGVkIHJvb3RmcywgdGhlIHdob2xlIHBhZ2Ugd291bGQgZ28gZG93biB3aXRoCgkJICogIlR5cGVFcnJvcjogQ2Fubm90IGNvbnZlcnQgdW5kZWZpbmVkIG9yIG51bGwgdG8gb2JqZWN0Ii4KCQkgKgoJCSAqIFRoZSBJUFRWIHBhZ2UgZ2V0cyBhd2F5IHdpdGggaXQgYmVjYXVzZSBmb3JtLkxpc3RWYWx1ZSByZW5kZXJzCgkJICogdGhyb3VnaCB1aS5TZWxlY3QsIHdoaWNoIG5vcm1hbGlzZXMgbnVsbCB0byB7fS4gTm90aGluZyBjYW4gYmUKCQkgKiBwaWNrZWQgaGVyZSBpbiB0aGF0IHN0YXRlIGVpdGhlciwgc28gc2F5IHNvIGluc3RlYWQgb2YgcmVuZGVyaW5nCgkJICogYW4gZW1wdHkgcGlja2VyLgoJCSAqLwoJCWlmIChsYW5Qb3J0cy5sZW5ndGggfHwgY3VycmVudC5sZW5ndGgpIHsKCQkJLyoKCQkJICogQnJpZGdlZCBwb3J0cyBhcmUgbm90IGp1c3QgbW92ZWQ6IHRoZXkgZW5kIHVwIGluIHRoZSBXQU4gem9uZSwKCQkJICogd2hpY2ggaXMgd2h5IHBpY2tpbmcgdGhlIHBvcnQgeW91IG1hbmFnZSB0aGUgT05UIGZyb20gY3V0cyB5b3UKCQkJICogb2ZmIC0gbm8gREhDUCBhbmQgbm8gbWFuYWdlbWVudCBwYWdlcyBhcmUgc2VydmVkIHRoZXJlIGFueSBtb3JlLgoJCQkgKiBTYXkgc28gdXAgZnJvbnQgaW5zdGVhZCBvZiBsZWF2aW5nIGl0IHRvIHRoZSBvcGVyYXRvciB0byBpbmZlci4KCQkJICovCgkJCW8gPSBzLm9wdGlvbihmb3JtLk11bHRpVmFsdWUsICdwb3J0cycsIF8oJ0xBTiBwb3J0cycpLAoJCQkJXygnVGhlIHNlbGVjdGVkIHBvcnRzIGxlYXZlIGJyLWxhbiBhbmQgam9pbiB0aGUgaW50ZXJuZXQgYnJpZGdlLCB3aGVyZSB0aGV5IGFyZSB0cmVhdGVkIGFzIG9wZXJhdG9yLWZhY2luZyBXQU4gcG9ydHM6IHRoZSBPTlQgbm8gbG9uZ2VyIHNlcnZlcyBESENQIG9yIGl0cyBvd24gbWFuYWdlbWVudCBwYWdlcyAoTHVDSS9TU0gpIG9uIHRoZW0uIExlYXZlIGF0IGxlYXN0IG9uZSBwb3J0IHVuc2VsZWN0ZWQgc28gdGhlIE9OVCBzdGF5cyBtYW5hZ2VhYmxlLicpKTsKCQkJbGFuUG9ydHMuZm9yRWFjaChmdW5jdGlvbihuYW1lKSB7CgkJCQlvLnZhbHVlKG5hbWUpOwoJCQl9KTsKCQkJY3VycmVudC5mb3JFYWNoKGZ1bmN0aW9uKG5hbWUpIHsKCQkJCWlmIChsYW5Qb3J0cy5pbmRleE9mKG5hbWUpIDwgMCkKCQkJCQlvLnZhbHVlKG5hbWUpOwoJCQl9KTsKCQkJby5ybWVtcHR5ID0gZmFsc2U7CgkJCW8uZGlzcGxheV9zaXplID0gYWxsTGFuUG9ydHMubGVuZ3RoIHx8IDM7CgkJCW8udmFsaWRhdGUgPSB2YWxpZGF0ZVBvcnRzOwoJCQlvLmRlcGVuZHMoeyBlbmFibGVkOiAnMScsIG1vZGU6ICdicmlkZ2UnIH0pOwoJCX0KCQllbHNlIHsKCQkJLyoKCQkJICogTm90aGluZyBsZWZ0IHRvIG9mZmVyLiBTYXkgd2hpY2ggb2YgdGhlIHR3byByZWFzb25zIGFwcGxpZXM6CgkJCSAqIG5vIExBTiBwb3J0IGRldmljZSBhdCBhbGwsIG9yIGV2ZXJ5IG9uZSBvZiB0aGVtIGFscmVhZHkgYm91bmQgYnkKCQkJICogdGhlIElQVFYgb3IgdGhlIHZvaWNlIHBhZ2UuCgkJCSAqLwoJCQl2YXIgcmVhc29uID0gYWxsTGFuUG9ydHMubGVuZ3RoCgkJCQk/IF8oJ0V2ZXJ5IExBTiBwb3J0IGlzIGFscmVhZHkgYm91bmQgYnkgdGhlIElQVFYgb3Igdm9pY2UgcGFnZS4gRnJlZSBvbmUgdGhlcmUgZmlyc3QuJykKCQkJCTogXygnTm8gTEFOIHBvcnQgZGV2aWNlcyBhcmUgYXZhaWxhYmxlIHRvIGJyaWRnZS4nKTsKCgkJCW8gPSBzLm9wdGlvbihmb3JtLkR1bW15VmFsdWUsICdfcG9ydHMnLCBfKCdMQU4gcG9ydHMnKSwKCQkJCV8oJ1RoZSBzZWxlY3RlZCBwb3J0cyBsZWF2ZSBici1sYW4gYW5kIGpvaW4gdGhlIGludGVybmV0IGJyaWRnZSwgd2hlcmUgdGhleSBhcmUgdHJlYXRlZCBhcyBvcGVyYXRvci1mYWNpbmcgV0FOIHBvcnRzOiB0aGUgT05UIG5vIGxvbmdlciBzZXJ2ZXMgREhDUCBvciBpdHMgb3duIG1hbmFnZW1lbnQgcGFnZXMgKEx1Q0kvU1NIKSBvbiB0aGVtLiBMZWF2ZSBhdCBsZWFzdCBvbmUgcG9ydCB1bnNlbGVjdGVkIHNvIHRoZSBPTlQgc3RheXMgbWFuYWdlYWJsZS4nKSk7CgkJCW8uY2ZndmFsdWUgPSBmdW5jdGlvbigpIHsKCQkJCXJldHVybiByZWFzb247CgkJCX07CgkJCW8uZGVwZW5kcyh7IGVuYWJsZWQ6ICcxJywgbW9kZTogJ2JyaWRnZScgfSk7CgkJfQoKCQlvID0gcy5vcHRpb24oZm9ybS5GbGFnLCAnaXBvZScsIF8oJ0Fsc28gY2FycnkgbmF0aXZlIElQdjQvSVB2NicpLAoJCQlfKCdUdXJuIHRoaXMgb24gd2hlbiB0aGUgb3BlcmF0b3Igc2VydmVzIElQb0UgaW5zdGVhZCBvZiBQUFBvRSwgb3RoZXJ3aXNlIG9ubHkgdGhlIFBQUG9FIEV0aGVyVHlwZXMgMHg4ODYzIGFuZCAweDg4NjQgYXJlIGxldCB0aHJvdWdoIHRvd2FyZHMgdGhlIHVwbGluay4nKSk7CgkJby5kZWZhdWx0ID0gJzAnOwoJCW8ucm1lbXB0eSA9IGZhbHNlOwoJCW8uZGVwZW5kcyh7IGVuYWJsZWQ6ICcxJywgbW9kZTogJ2JyaWRnZScgfSk7CgoJCS8qCgkJICogT25lIHBpY2tlciBmb3IgYm90aCBkaWFsbGVkIG1vZGVzLCBiZWNhdXNlIGJvdGggcmVhbGx5IGRvIG9mZmVyIHRoZQoJCSAqIHNhbWUgdHdvIHRoaW5ncy4gV2hlcmUgdGhleSBkaWZmZXIgaXMgb25seSB3aGVyZSBJUHY2IGNvbWVzIGZyb206CgkJICoKCQkgKiAgIFBQUG9FOiB0aGUgc2Vzc2lvbiBuZWdvdGlhdGVzIGl0LiBuZXRpZmQgcmFpc2VzIGl0cyBvd24gdmlydHVhbAoJCSAqICAgICAgICAgIHdhbl82IG9uIHRoZSBwcHAgaW50ZXJmYWNlIGFuZCBydW5zIERIQ1B2NiB0aGVyZS4gV3JpdGluZyBhCgkJICogICAgICAgICAgbmV0d29yay53YW42IG9mIG91ciBvd24gdXNlZCB0byBwdXQgYSAqc2Vjb25kKiBESENQdjYgY2xpZW50CgkJICogICAgICAgICAgb24gdGhlIHNhbWUgc2Vzc2lvbiwgd2hpY2ggaXMgd2h5IGludGVybmV0LWFwcGx5IG5vIGxvbmdlcgoJCSAqICAgICAgICAgIGRvZXMgaXQuIFN3aXRjaGluZyBiYWNrIHRvIElQdjQgb25seSBkcm9wcyB3aGF0ZXZlciB3YW42IGlzCgkJICogICAgICAgICAgbGVmdCBvdmVyIC0gbm8gaGVscCBmcm9tIHRoaXMgcGFnZSBpcyBuZWVkZWQgZm9yIHRoYXQuCgkJICoKCQkgKiAgIERIQ1AgOiB0aGVyZSBpcyBubyBzZXNzaW9uIHRvIGRlcml2ZSBhbnl0aGluZyBmcm9tLCBzbyB0aGUgcGFnZQoJCSAqICAgICAgICAgIGtlZXBzIHRoZSBESENQdjYgY2xpZW50IGFzIGEgcmVhbCB3YW42IGludGVyZmFjZS4KCQkgKgoJCSAqIFR3byBkZXBlbmRzKCkgY2FsbHMgYXJlIGFuIE9SLCBub3QgYW4gQU5EOiBvbmUgb2JqZWN0IG1lYW5zICJhbGwgb2YKCQkgKiB0aGVzZSBrZXlzIG1hdGNoIiwgdHdvIGNhbGxzIG1lYW4gImVpdGhlciBvZiB0aGVtIi4KCQkgKi8KCQlvID0gcy5vcHRpb24oZm9ybS5MaXN0VmFsdWUsICdpcF92ZXJzaW9uJywgXygnSVAgcHJvdG9jb2wgdmVyc2lvbicpLAoJCQlfKCdEdWFsIHN0YWNrIG92ZXIgUFBQb0UgdGFrZXMgSVB2NiBmcm9tIHRoZSBzZXNzaW9uIGl0c2VsZjsgb3ZlciBESENQIGl0IGFkZHMgYSBESENQdjYgY2xpZW50IGFza2luZyBmb3IgYSBwcmVmaXguJykpOwoJCW8uZGVmYXVsdCA9ICdpcHY0JzsKCQlvLnJtZW1wdHkgPSBmYWxzZTsKCQlvLnZhbHVlKCdpcHY0JywgXygnSVB2NCBvbmx5JykpOwoJCW8udmFsdWUoJ2lwdjRfaXB2NicsIF8oJ0lQdjQvSVB2NiBkdWFsIHN0YWNrJykpOwoKCQkvKgoJCSAqIElQdjYgb25seSBpcyBubyBsb25nZXIgb2ZmZXJlZCwgYnV0IGEgY29uZmlndXJhdGlvbiB3cml0dGVuIGJ5IGFuCgkJICogb2xkZXIgYnVpbGQgbWF5IHN0aWxsIGNhcnJ5IGl0LiBLZWVwIGl0cyBlbnRyeSBzbyB0aGUgcGlja2VyIG5ldmVyCgkJICogcmVuZGVycyBhIHZhbHVlIGl0IGRvZXMgbm90IGtub3csIHdoaWNoIHdvdWxkIHNpbGVudGx5IGZhbGwgYmFjayB0bwoJCSAqIHRoZSBmaXJzdCBjaG9pY2UgYW5kIHR1cm4gdGhlIHJ1bm5pbmcgc3RhY2sgb2ZmIG9uIHRoZSBuZXh0IHNhdmUuCgkJICovCgkJaWYgKHVjaS5nZXQoJ29udS1pbnRlcm5ldCcsICdjb25maWcnLCAnaXBfdmVyc2lvbicpID09PSAnaXB2NicpCgkJCW8udmFsdWUoJ2lwdjYnLCBfKCdJUHY2IG9ubHkgKG5vIGxvbmdlciBvZmZlcmVkKScpKTsKCgkJby5kZXBlbmRzKHsgZW5hYmxlZDogJzEnLCBtb2RlOiAncHBwb2UnIH0pOwoJCW8uZGVwZW5kcyh7IGVuYWJsZWQ6ICcxJywgbW9kZTogJ2RoY3AnIH0pOwoKCQlvID0gcy5vcHRpb24oZm9ybS5WYWx1ZSwgJ3VzZXJuYW1lJywgXygnUFBQb0UgdXNlciBuYW1lJyksCgkJCV8oJ1VzZXIgbmFtZSBhc3NpZ25lZCBieSB0aGUgb3BlcmF0b3IuJykpOwoJCW8ucm1lbXB0eSA9IGZhbHNlOwoJCW8uZGVwZW5kcyh7IGVuYWJsZWQ6ICcxJywgbW9kZTogJ3BwcG9lJyB9KTsKCgkJbyA9IHMub3B0aW9uKGZvcm0uVmFsdWUsICdwYXNzd29yZCcsIF8oJ1BQUG9FIHBhc3N3b3JkJykpOwoJCW8ucGFzc3dvcmQgPSB0cnVlOwoJCW8ucm1lbXB0eSA9IHRydWU7CgkJby5kZXBlbmRzKHsgZW5hYmxlZDogJzEnLCBtb2RlOiAncHBwb2UnIH0pOwoKCQlvID0gcy5vcHRpb24oZm9ybS5WYWx1ZSwgJ210dScsIF8oJ01UVScpLAoJCQlfKCdNVFUgb2YgdGhlIFBQUG9FIGludGVyZmFjZSwgb25lIFBQUG9FIGhlYWRlciBiZWxvdyB0aGUgRXRoZXJuZXQgTVRVLicpKTsKCQlvLmRlZmF1bHQgPSAnMTQ5Mic7CgkJby5kYXRhdHlwZSA9ICdyYW5nZSg1NzYsMTUwMCknOwoJCW8ucm1lbXB0eSA9IGZhbHNlOwoJCW8uZGVwZW5kcyh7IGVuYWJsZWQ6ICcxJywgbW9kZTogJ3BwcG9lJyB9KTsKCgkJbyA9IHMub3B0aW9uKGZvcm0uRHVtbXlWYWx1ZSwgJ19kZXZpY2VzJywgXygnRGVyaXZlZCBkZXZpY2VzJyksCgkJCV8oJ1doYXQgaW50ZXJuZXQtYXBwbHkgYnVpbGRzLiBCb3RoIGFyZSAxNSBjaGFyYWN0ZXJzIG9yIHNob3J0ZXIsIHdoaWNoIGlzIHdoYXQgbmV0aWZkIGFuZCB0aGUga2VybmVsIGFjY2VwdC4nKSk7CgkJby5jZmd2YWx1ZSA9IGRlcml2ZWREZXZpY2VzOwoJCW8uZGVwZW5kcygnZW5hYmxlZCcsICcxJyk7CgoJCS8qCgkJICogSGFyZHdhcmUgb2ZmbG9hZCB1c2VkIHRvIGJlIGEgc3dpdGNoIG9uIHRoaXMgcGFnZS4gSXQgbW92ZWQgdG8gaXRzCgkJICogb3duIHBhZ2UsIHNvIHRoZXJlIGlzIG5vdGhpbmcgaGVyZSBhbnkgbW9yZTogaW50ZXJuZXQtYXBwbHkgc3RpbGwKCQkgKiBob25vdXJzIG9udS1pbnRlcm5ldC5jb25maWcub2ZmbG9hZCwgd2hpY2ggaXMgd2hhdCBsZXRzIGFuIGV4aXN0aW5nCgkJICogY29uZmlndXJhdGlvbiBrZWVwIHJ1bm5pbmcgdW5jaGFuZ2VkIHVudGlsIHRoYXQgcGFnZSBsYW5kcy4KCQkgKi8KCgkJLyoKCQkgKiBObyBwb3N0LXJlbmRlciB3aXJpbmcgZm9yIHRoZSBWTEFOIGZpZWxkIGFueSBtb3JlOiBkZXBlbmRzKCkgaGlkZXMKCQkgKiB0aGUgd2hvbGUgcm93IGluIFVOVEFHLCB3aGljaCBpcyBib3RoIHNpbXBsZXIgYW5kIHNhZmVyIHRoYW4KCQkgKiBkaXNhYmxpbmcgaXQgLSBhIGRpc2FibGVkIHJlcXVpcmVkIGZpZWxkIHN0aWxsIGZhaWxlZCB2YWxpZGF0aW9uCgkJICogd2l0aCAibXVzdCBub3QgYmUgZW1wdHkiLgoJCSAqLwoJCXJldHVybiBtLnJlbmRlcigpOwoJfQp9KTsK
+// SPDX-License-Identifier: Apache-2.0
+
+'use strict';
+'require form';
+'require network';
+'require uci';
+'require view';
+
+var STYLESHEET = 'view/onu/onu.css';
+
+/*
+ * The names internet-apply derives from this page. Keeping them here mirrors
+ * what the apply script writes: the same principle as the upstream device on
+ * the IPTV page, which has to follow iptv-apply branch by branch.
+ */
+var VLAN_DEVICE = 'ct-wanup';
+var BRIDGE_DEVICE = 'br-wanup';
+
+/*
+ * The PON views follow luci-theme-argon: cards, form rows and buttons all come
+ * from the theme. Only the small helper stylesheet is ours.
+ */
+function ensureStylesheet() {
+	var href;
+
+	if (document.querySelector('link[data-pon-stylesheet]'))
+		return;
+
+	href = (typeof L.resource == 'function') ? L.resource(STYLESHEET) : null;
+
+	if (!href)
+		href = ((L.env && L.env.base_url) || '/luci-static/resources') + '/' + STYLESHEET;
+
+	document.head.appendChild(E('link', {
+		'rel': 'stylesheet',
+		'href': href,
+		'data-pon-stylesheet': ''
+	}));
+}
+
+function listPonDevices() {
+	return uci.sections('pon', 'xpon').map(function(line) {
+		return line.device || line['.name'];
+	}).join(', ') || '-';
+}
+
+/*
+ * Port ownership across the three PON service pages, mirroring
+ * port_owned_elsewhere() in internet-apply.
+ *
+ * A dedicated bridge port (internet bridge, IPTV set-top box port, voice
+ * bridge port) leaves br-lan and belongs to exactly one service bridge, so no
+ * other page may pick it. A trunk port stays in br-lan and only carries tagged
+ * 8021q subinterfaces, so the IPTV and voice trunks may share one port on
+ * purpose - but a dedicated port must never become a trunk port either, or it
+ * would carry foreign tagged VLANs while its own service expects it untagged.
+ *
+ * The internet page owns ports in bridge mode only, and a bridged port is a
+ * dedicated port. So both the IPTV and the voice port are off-limits here in
+ * either of their delivery modes.
+ */
+function portsOf(value) {
+	return L.toArray(value).filter(function(port) {
+		return !!port;
+	});
+}
+
+function iptvPorts() {
+	if (uci.get('onu-iptv', 'config', 'enabled') !== '1')
+		return [];
+
+	switch (uci.get('onu-iptv', 'config', 'mode')) {
+	case 'bridge':
+		return portsOf(uci.get('onu-iptv', 'config', 'lan_port'));
+
+	case 'trunk':
+		return portsOf(uci.get('onu-iptv', 'config', 'trunk_port'));
+	}
+
+	return [];
+}
+
+function voicePorts() {
+	if (uci.get('onu-voice', 'network', 'enabled') !== '1')
+		return [];
+
+	switch (uci.get('onu-voice', 'network', 'mode')) {
+	case 'bridge':
+		return portsOf(uci.get('onu-voice', 'network', 'lan_port'));
+
+	case 'trunk':
+		return portsOf(uci.get('onu-voice', 'network', 'trunk_port'));
+	}
+
+	return [];
+}
+
+/* Every port another page already bound, so it can be left out of the picker. */
+function foreignPorts() {
+	return iptvPorts().concat(voicePorts());
+}
+
+/* Who owns the port, for the validation message. */
+function portOwner(port) {
+	if (iptvPorts().indexOf(port) >= 0)
+		return _('IPTV');
+
+	if (voicePorts().indexOf(port) >= 0)
+		return _('voice');
+
+	return null;
+}
+
+function selectedPorts(sectionId) {
+	return L.toArray(uci.get('onu-internet', 'config', 'ports'));
+}
+
+function validatePorts(sectionId, value) {
+	var ports = L.toArray(value);
+	var owner, i;
+
+	if (!ports.length)
+		return _('Pick at least one LAN port for the internet bridge.');
+
+	for (i = 0; i < ports.length; i++) {
+		owner = portOwner(ports[i]);
+
+		if (owner)
+			return _('This port is already bound by the %s page; free it there first.').format(owner);
+	}
+
+	return true;
+}
+
+/*
+ * Mirror of want_ipv6() in internet-apply. It has to agree with the script,
+ * otherwise this page and the config it writes drift apart.
+ */
+function wantsIPv6() {
+	switch (uci.get('onu-internet', 'config', 'ip_version')) {
+	case 'ipv6':
+	case 'ipv4_ipv6':
+	case 'dual':
+		return true;
+	}
+
+	return false;
+}
+
+/*
+ * What the apply script builds from the current settings. Layer two devices are
+ * not invented by the user, they are derived - showing them keeps this page and
+ * internet-apply readable against each other.
+ *
+ * In UNTAG transparent mode there is no 8021q subinterface: the uplink itself
+ * carries the service, so the ".vlan" part is dropped from every line.
+ */
+function derivedDevices() {
+	var uplink = uci.get('onu-internet', 'config', 'uplink') || 'pon0';
+	var vlan = uci.get('onu-internet', 'config', 'vlan');
+	var tmode = uci.get('onu-internet', 'config', 'transparent_mode') || 'tag';
+
+	if (uci.get('onu-internet', 'config', 'enabled') !== '1')
+		return '-';
+
+	var iface = (tmode === 'untag') ? uplink : '%s.%s'.format(uplink, vlan || '?');
+
+	switch (uci.get('onu-internet', 'config', 'mode')) {
+	case 'pppoe':
+		return '%s (%s) -> pppoe-wan'.format(iface, VLAN_DEVICE);
+
+	case 'dhcp':
+		/* Only the dual-stack case gets a second interface: that is the one
+		 * place a real DHCPv6 client is written. */
+		return '%s (%s) -> wan%s'.format(iface, VLAN_DEVICE,
+			wantsIPv6() ? ' + wan6' : '');
+
+	default:
+		/* UNTAG bridge inlines the raw uplink into br-wanup: the Airoha kernel
+		 * rejects a bridge nested in a bridge, so ct-wanup is not created there
+		 * and the uplink itself is the bridge member. Show it directly. */
+		if (tmode === 'untag')
+			return '%s + LAN ports -> %s'.format(uplink, BRIDGE_DEVICE);
+		return '%s (%s) + LAN ports -> %s'.format(iface, VLAN_DEVICE, BRIDGE_DEVICE);
+	}
+}
+
+return view.extend({
+	load: function() {
+		return Promise.all([
+			network.getDevices(),
+			uci.load('onu-internet'),
+			uci.load('onu-iptv'),
+			uci.load('onu-voice')
+		]).then(function(results) {
+			return results[0];
+		});
+	},
+
+	render: function(devices) {
+		var m, s, o, allLanPorts, lanPorts, current, taken;
+
+		ensureStylesheet();
+
+		/*
+		 * One card. The map title is the page heading, so the section must not
+		 * repeat it, and there is no tab here: the mode switch already hides
+		 * half of the fields, and a second grouping on top of it would only
+		 * hide where the fields actually live.
+		 */
+		m = new form.Map('onu-internet', _('ONU Internet'),
+			_('The internet service carried by the PON uplink: either handed over as a bridge so a downstream router dials, or dialled by the ONT itself.'));
+		m.readonly = !L.hasViewPermission();
+
+		s = m.section(form.NamedSection, 'config', 'internet');
+		s.anonymous = true;
+		s.addremove = false;
+
+		o = s.option(form.Flag, 'enabled', _('Enable'));
+		o.default = '0';
+		o.rmempty = false;
+		o.description = _('With the service off, no VLAN subinterface and no dialling interface is written, and the stock WAN interfaces of the network page are put back.');
+
+		/*
+		 * Transparent mode sits above the VLAN field because it governs whether
+		 * the VLAN field is usable at all: TAG carries the service on an 8021q
+		 * subinterface and needs a VLAN ID; UNTAG hands the raw uplink through
+		 * and the VLAN field below is disabled.
+		 */
+		o = s.option(form.ListValue, 'transparent_mode', _('Transparent mode'),
+			_('TAG mode requires an Internet VLAN ID for the service. UNTAG mode passes the raw uplink through without VLAN tagging, so the Internet VLAN field below is hidden and no VLAN is stored.'));
+		o.default = 'tag';
+		o.rmempty = false;
+		o.value('tag', _('TAG'));
+		o.value('untag', _('UNTAG'));
+		o.depends('enabled', '1');
+
+		o = s.option(form.Value, 'vlan', _('Internet VLAN'),
+			_('The operator VLAN carrying the internet service. It becomes an 8021q subinterface of the uplink, never a member of br-lan.'));
+		o.placeholder = '1-4094';
+		o.datatype = 'range(1,4094)';
+		o.rmempty = false;
+
+		/*
+		 * Hidden outright in UNTAG instead of greyed out. A disabled input
+		 * still counts as an empty required field, so the page rejected the
+		 * save with "must not be empty" even though UNTAG has no VLAN at all.
+		 * depends() drops the whole row from the DOM in UNTAG, so there is
+		 * nothing left to validate.
+		 */
+		o.depends({ enabled: '1', transparent_mode: 'tag' });
+
+		/*
+		 * In UNTAG mode the VLAN has no meaning. The row is hidden by
+		 * depends(), and if the field is ever parsed anyway, the stored VLAN
+		 * is dropped so internet-apply never sees one in UNTAG.
+		 */
+		o.cfgvalue = function(section_id) {
+			if (uci.get('onu-internet', 'config', 'transparent_mode') === 'untag')
+				return '';
+			return uci.get('onu-internet', 'config', 'vlan') || '';
+		};
+
+		(function() {
+			var origVlanParse = o.parse;
+			o.parse = function(section_id) {
+				var tmodeEl = document.getElementById('cbi.onu-internet.config.transparent_mode');
+				var tmode = tmodeEl ? (tmodeEl.value || 'tag')
+				                    : (uci.get('onu-internet', 'config', 'transparent_mode') || 'tag');
+
+				if (tmode === 'untag')
+					return this.remove(section_id);
+
+				return origVlanParse.call(this, section_id);
+			};
+		})();
+
+		/*
+		 * Internet mode (Bridged / DHCP / PPPoE) lives below the VLAN field:
+		 * the VLAN identifies the service, the mode decides what is done with
+		 * it. Order is cosmetic here - depends() resolves against the DOM, not
+		 * the declaration order - but it keeps the reading order logical.
+		 */
+		o = s.option(form.ListValue, 'mode', _('Internet mode'),
+			_('Bridged hands the operator VLAN to your own router. DHCP takes whatever address the operator hands out. PPPoE lets the ONT terminate the session and route for the LAN.'));
+		o.default = 'bridge';
+		o.rmempty = false;
+		o.value('bridge', _('Bridged'));
+		o.value('dhcp', _('DHCP'));
+		o.value('pppoe', _('PPPoE'));
+		o.depends('enabled', '1');
+
+		allLanPorts = (devices || []).map(function(device) {
+			return device.getName();
+		}).filter(function(name) {
+			return /^lan[0-9]+$/.test(name);
+		}).sort();
+
+		/*
+		 * A port the IPTV or the voice page already bound is not offered at
+		 * all: two services cannot own one port, and offering it would only
+		 * let the operator build a configuration internet-apply then refuses.
+		 */
+		taken = foreignPorts();
+		lanPorts = allLanPorts.filter(function(name) {
+			return taken.indexOf(name) < 0;
+		});
+
+		current = selectedPorts();
+
+		/*
+		 * form.MultiValue hands its choices to ui.Dropdown, whose render()
+		 * runs Object.keys() on them. Registering no choice at all is fatal:
+		 * form.js transformChoices() returns null when nothing was added,
+		 * and the dropdown's own guard - typeof(choices) != 'object' - does
+		 * not stop null, because typeof null is 'object'. Without devices
+		 * named lan[0-9]+, which is every booting board before netifd has
+		 * them and every stripped rootfs, the whole page would go down with
+		 * "TypeError: Cannot convert undefined or null to object".
+		 *
+		 * The IPTV page gets away with it because form.ListValue renders
+		 * through ui.Select, which normalises null to {}. Nothing can be
+		 * picked here in that state either, so say so instead of rendering
+		 * an empty picker.
+		 */
+		if (lanPorts.length || current.length) {
+			/*
+			 * Bridged ports are not just moved: they end up in the WAN zone,
+			 * which is why picking the port you manage the ONT from cuts you
+			 * off - no DHCP and no management pages are served there any more.
+			 * Say so up front instead of leaving it to the operator to infer.
+			 */
+			o = s.option(form.MultiValue, 'ports', _('LAN ports'),
+				_('The selected ports leave br-lan and join the internet bridge, where they are treated as operator-facing WAN ports: the ONT no longer serves DHCP or its own management pages (LuCI/SSH) on them. Leave at least one port unselected so the ONT stays manageable.'));
+			lanPorts.forEach(function(name) {
+				o.value(name);
+			});
+			current.forEach(function(name) {
+				if (lanPorts.indexOf(name) < 0)
+					o.value(name);
+			});
+			o.rmempty = false;
+			o.display_size = allLanPorts.length || 3;
+			o.validate = validatePorts;
+			o.depends({ enabled: '1', mode: 'bridge' });
+		}
+		else {
+			/*
+			 * Nothing left to offer. Say which of the two reasons applies:
+			 * no LAN port device at all, or every one of them already bound by
+			 * the IPTV or the voice page.
+			 */
+			var reason = allLanPorts.length
+				? _('Every LAN port is already bound by the IPTV or voice page. Free one there first.')
+				: _('No LAN port devices are available to bridge.');
+
+			o = s.option(form.DummyValue, '_ports', _('LAN ports'),
+				_('The selected ports leave br-lan and join the internet bridge, where they are treated as operator-facing WAN ports: the ONT no longer serves DHCP or its own management pages (LuCI/SSH) on them. Leave at least one port unselected so the ONT stays manageable.'));
+			o.cfgvalue = function() {
+				return reason;
+			};
+			o.depends({ enabled: '1', mode: 'bridge' });
+		}
+
+		o = s.option(form.Flag, 'ipoe', _('Also carry native IPv4/IPv6'),
+			_('Turn this on when the operator serves IPoE instead of PPPoE, otherwise only the PPPoE EtherTypes 0x8863 and 0x8864 are let through towards the uplink.'));
+		o.default = '0';
+		o.rmempty = false;
+		o.depends({ enabled: '1', mode: 'bridge' });
+
+		/*
+		 * One picker for both dialled modes, because both really do offer the
+		 * same two things. Where they differ is only where IPv6 comes from:
+		 *
+		 *   PPPoE: the session negotiates it. netifd raises its own virtual
+		 *          wan_6 on the ppp interface and runs DHCPv6 there. Writing a
+		 *          network.wan6 of our own used to put a *second* DHCPv6 client
+		 *          on the same session, which is why internet-apply no longer
+		 *          does it. Switching back to IPv4 only drops whatever wan6 is
+		 *          left over - no help from this page is needed for that.
+		 *
+		 *   DHCP : there is no session to derive anything from, so the page
+		 *          keeps the DHCPv6 client as a real wan6 interface.
+		 *
+		 * Two depends() calls are an OR, not an AND: one object means "all of
+		 * these keys match", two calls mean "either of them".
+		 */
+		o = s.option(form.ListValue, 'ip_version', _('IP protocol version'),
+			_('Dual stack over PPPoE takes IPv6 from the session itself; over DHCP it adds a DHCPv6 client asking for a prefix.'));
+		o.default = 'ipv4';
+		o.rmempty = false;
+		o.value('ipv4', _('IPv4 only'));
+		o.value('ipv4_ipv6', _('IPv4/IPv6 dual stack'));
+
+		/*
+		 * IPv6 only is no longer offered, but a configuration written by an
+		 * older build may still carry it. Keep its entry so the picker never
+		 * renders a value it does not know, which would silently fall back to
+		 * the first choice and turn the running stack off on the next save.
+		 */
+		if (uci.get('onu-internet', 'config', 'ip_version') === 'ipv6')
+			o.value('ipv6', _('IPv6 only (no longer offered)'));
+
+		o.depends({ enabled: '1', mode: 'pppoe' });
+		o.depends({ enabled: '1', mode: 'dhcp' });
+
+		o = s.option(form.Value, 'username', _('PPPoE user name'),
+			_('User name assigned by the operator.'));
+		o.rmempty = false;
+		o.depends({ enabled: '1', mode: 'pppoe' });
+
+		o = s.option(form.Value, 'password', _('PPPoE password'));
+		o.password = true;
+		o.rmempty = true;
+		o.depends({ enabled: '1', mode: 'pppoe' });
+
+		o = s.option(form.Value, 'mtu', _('MTU'),
+			_('MTU of the PPPoE interface, one PPPoE header below the Ethernet MTU.'));
+		o.default = '1492';
+		o.datatype = 'range(576,1500)';
+		o.rmempty = false;
+		o.depends({ enabled: '1', mode: 'pppoe' });
+
+		o = s.option(form.DummyValue, '_devices', _('Derived devices'),
+			_('What internet-apply builds. Both are 15 characters or shorter, which is what netifd and the kernel accept.'));
+		o.cfgvalue = derivedDevices;
+		o.depends('enabled', '1');
+
+		/*
+		 * Hardware offload used to be a switch on this page. It moved to its
+		 * own page, so there is nothing here any more: internet-apply still
+		 * honours onu-internet.config.offload, which is what lets an existing
+		 * configuration keep running unchanged until that page lands.
+		 */
+
+		/*
+		 * No post-render wiring for the VLAN field any more: depends() hides
+		 * the whole row in UNTAG, which is both simpler and safer than
+		 * disabling it - a disabled required field still failed validation
+		 * with "must not be empty".
+		 */
+		return m.render();
+	}
+});

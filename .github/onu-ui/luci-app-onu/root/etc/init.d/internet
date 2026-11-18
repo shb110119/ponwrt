@@ -1,1 +1,18 @@
-IyEvYmluL3NoIC9ldGMvcmMuY29tbW9uCiMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEFwYWNoZS0yLjAKCiMgQmVmb3JlIG5ldHdvcmsgYW5kIGZpcmV3YWxsLCBzbyBib3RoIGNvbnN1bWUgdGhlIGdlbmVyYXRlZCBjb25maWd1cmF0aW9uLgpTVEFSVD0xOApVU0VfUFJPQ0Q9MQoKc3RhcnRfc2VydmljZSgpIHsKCS91c3IvbGliZXhlYy9pbnRlcm5ldC1hcHBseSBib290Cn0KCnJlbG9hZF9zZXJ2aWNlKCkgewoJL3Vzci9saWJleGVjL2ludGVybmV0LWFwcGx5IHJlbG9hZAp9CgpzZXJ2aWNlX3RyaWdnZXJzKCkgewoJcHJvY2RfYWRkX3JlbG9hZF90cmlnZ2VyICJvbnUtaW50ZXJuZXQiCn0K
+#!/bin/sh /etc/rc.common
+# SPDX-License-Identifier: Apache-2.0
+
+# Before network and firewall, so both consume the generated configuration.
+START=18
+USE_PROCD=1
+
+start_service() {
+	/usr/libexec/internet-apply boot
+}
+
+reload_service() {
+	/usr/libexec/internet-apply reload
+}
+
+service_triggers() {
+	procd_add_reload_trigger "onu-internet"
+}

@@ -1,1 +1,598 @@
-IyEvYmluL3NoCiMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEFwYWNoZS0yLjAKIwojIHZvaWNlLWFwcGx5IC0gdHVybiB0aGUgIm5ldHdvcmsiIHNlY3Rpb24gb2YgL2V0Yy9jb25maWcvb251LXZvaWNlIGludG8gbmV0d29yawojIGFuZCBmaXJld2FsbCBjb25maWd1cmF0aW9uLgojCiMgVGhlIHZvaWNlIFZMQU4gb2YgdGhlIFBPTiB1cGxpbmsgaXMgZGVsaXZlcmVkIGluIG9uZSBvZiB0aHJlZSBtb2RlczoKIwojICAgcm91dGUgICBUaGUgT05VIHRlcm1pbmF0ZXMgdGhlIHZvaWNlIFZMQU4gaXRzZWxmOiB0aGUgODAyMXEgc3ViaW50ZXJmYWNlCiMgICAgICAgICAgIGN0LXZvaWNlIGJhY2tzIHRoZSBsb2dpY2FsIGludGVyZmFjZSAidm9pY2UiIChESENQIG9yIHN0YXRpYyksIHdoaWNoCiMgICAgICAgICAgIHNpdHMgaW4gYSBmaXJld2FsbCB6b25lIG9mIGl0cyBvd24gd2l0aCBpbnB1dC9mb3J3YXJkIGRyb3BwZWQuIFRoaXMKIyAgICAgICAgICAgaXMgdGhlIG1vZGUgYW4gT05VLXNpZGUgU0lQL0guMjQ4IHN0YWNrIHJlZ2lzdGVycyBpbiwgYW5kIGl0IGlzIHRoZQojICAgICAgICAgICBkZWZhdWx0IGZvciBjb25maWd1cmF0aW9ucyB3cml0dGVuIGJlZm9yZSB0aGUgZGVsaXZlcnkgbW9kZXMKIyAgICAgICAgICAgZXhpc3RlZC4KIwojICAgYnJpZGdlICBTZXQtdG9wIGJveCBzdHlsZSwgdGhlIHNhbWUgdG9wb2xvZ3kgdGhlIElQVFYgcGFnZSB1c2VzIGluIGJyaWRnZQojICAgICAgICAgICBtb2RlOiBvbmUgTEFOIHBvcnQgaXMgdGFrZW4gb3V0IG9mIGJyLWxhbiBmb3IgYXMgbG9uZyBhcyB0aGUKIyAgICAgICAgICAgc2VydmljZSBpcyBlbmFibGVkIGFuZCBici12b2ljZSBicmlkZ2VzIGl0LCB1bnRhZ2dlZCwgdG8KIyAgICAgICAgICAgcG9uMC48dmxhbj4gKGN0LXZvaWNlKS4gVGhlIGJyaWRnZSBvd25zIG5vIElQIGFkZHJlc3MgYW5kIG5lZWRzIG5vCiMgICAgICAgICAgIGZpcmV3YWxsIHpvbmUgLSB0aGUgZGVkaWNhdGVkIHBvcnQgaXMgcmVtb3ZlZCBmcm9tIGJyLWxhbiwgc28gdGhlCiMgICAgICAgICAgIG9ubHkgcGxhbmUgaXQgY2FycmllcyBpcyB0aGUgdm9pY2UgVkxBTi4KIwojICAgdHJ1bmsgICBTaW5nbGUgY2FibGUgbXVsdGlwbGV4LCB0aGUgc2FtZSB0b3BvbG9neSB0aGUgSVBUViBwYWdlIHVzZXMgaW4KIyAgICAgICAgICAgdHJ1bmsgbW9kZTogdGhlIDgwMjFxIHBhaXIgdm9pY2UtdXAgKG9uIHRoZSBQT04gdXBsaW5rKSBhbmQKIyAgICAgICAgICAgdm9pY2UtZG4gKG9uIHRoZSB0cnVuayBwb3J0KSBpcyBqb2luZWQgYnkgYnItdm9pY2UtbXV4LCBhbmQgdGhlIFZMQU4KIyAgICAgICAgICAgbGVhdmVzIHRoZSB0cnVuayBwb3J0IHRhZ2dlZC4gVGhlIHRydW5rIHBvcnQgc3RheXMgaW4gYnItbGFuLCBzbyBhCiMgICAgICAgICAgIGRvd25zdHJlYW0gcm91dGVyIGdldHMgbWFuYWdlbWVudCBhbmQgZXZlcnkgaGFuZGVkLW92ZXIgc2VydmljZSBvbgojICAgICAgICAgICBvbmUgY2FibGUuIFRoZSBwb3J0IG1heSBiZSB0aGUgc2FtZSBwaHlzaWNhbCBwb3J0IHRoZSBJUFRWIHBhZ2UKIyAgICAgICAgICAgaGFuZHMgaXRzIFZMQU5zIG92ZXIgb246IGRpc3RpbmN0IFZMQU5zIGdldCBkaXN0aW5jdCA4MDIxcSBwYWlycwojICAgICAgICAgICBhbmQgYnJpZGdlcywgd2hpY2ggY29leGlzdCBvbiBzb2Z0d2FyZSBWTEFOLgojCiMgUmVtb3ZpbmcgdGhlIHBhZ2UncyBjb25maWd1cmF0aW9uIGlzIGEgc2luZ2xlIHN3ZWVwIG92ZXIgbmV0d29yay52b2ljZSogLwojIG5ldHdvcmsubHVjaV92b2ljZSogYW5kIGZpcmV3YWxsLmx1Y2lfdm9pY2UqLCBzbyBzd2l0Y2hpbmcgdGhlIHNlcnZpY2Ugb2ZmIG9yCiMgY2hhbmdpbmcgaXRzIG1vZGUgbGVhdmVzIG5vIGRhbmdsaW5nIHJlZmVyZW5jZSBiZWhpbmQuCiMKIyBUaGUgSVAgY29ubmVjdGl2aXR5IGFuZCBMMiBoYW5kLW92ZXIgYXJlIGFsbCB0aGlzIHNjcmlwdCBwcm92aWRlcy4gU0lQCiMgcmVnaXN0cmF0aW9uIGFuZCBjYWxsIGNvbnRyb2wgYXJlIHRoZSB2b2ljZSBzZXJ2aWNlJ3Mgam9iOyB0aGUgRlhTIHBvcnQgaXMKIyBib3VuZCB0byBTSVAgYWNjb3VudHMgdGhyb3VnaCB2b2ljZS5saW5lIGFuZCB2b2ljZS5jb2RlYywgd2hpY2ggdGhpcyBzY3JpcHQKIyBuZXZlciB0b3VjaGVzLgoKLiAvbGliL2Z1bmN0aW9ucy5zaAoKQUNUSU9OPSIkezE6LXJlbG9hZH0iCgojIFJvdXRlIG1vZGUga2VlcHMgaXRzIGhpc3RvcmljYWwgc2VjdGlvbiBuYW1lcy4gVGhlIGtlcm5lbCBkZXZpY2UgaXMgZml4ZWQgYXQKIyBjdC12b2ljZTsgcm91dGUgYW5kIGJyaWRnZSBhcmUgbXV0dWFsbHkgZXhjbHVzaXZlICh0aGUgbWFuYWdlZCBzZXQgaXMgc3dlcHQKIyBiZWZvcmUgZXZlcnkgcmV3cml0ZSksIHNvIGJyaWRnZSBtb2RlIHJldXNlcyB0aGUgc2FtZSB1cGxpbmsgZGV2aWNlIG5hbWUuClZMQU5fU0VDVElPTj0nbHVjaV92b2ljZV92bGFuJwpWTEFOX0RFVklDRT0nY3Qtdm9pY2UnClpPTkVfU0VDVElPTj0nbHVjaV92b2ljZV96b25lJwpaT05FX05BTUU9J3ZvaWNlJwpJRkFDRT0ndm9pY2UnCkxFR0FDWV9JRkFDRT0nbHVjaV92b2ljZScKCiMgR2F0ZXdheSBtZXRyaWMgb2YgdGhlIEwzIHZvaWNlIGludGVyZmFjZS4gVGhlIHZvaWNlIFZMQU4gc2hhcmVzIHRoZSBvcGVyYXRvcidzCiMgYWNjZXNzIG5ldHdvcmsgd2l0aCBJUFRWLCBidXQgdGhlIGludGVybmV0IFdBTiBvd25zIHRoZSBkZWZhdWx0IHJvdXRlOiB0aGUKIyB2b2ljZSBnYXRld2F5IGlzIG5ldmVyIHB1Ymxpc2hlZCBhcyB0aGUgZGVmYXVsdCBvbmUsIGFuZCB0aGUgaGlnaCBtZXRyaWMKIyBrZWVwcyBldmVyeXRoaW5nIHRoaXMgbGluayBkb2VzIGluc3RhbGwgYmVoaW5kIHRoZSBXQU4gYW5kIGJlaGluZCBJUFRWLgpWT0lDRV9NRVRSSUM9JzIxMDAnCgojIEJyaWRnZSBtb2RlIChVQ0kgc2VjdGlvbiBuYW1lcyB1c2UgdW5kZXJzY29yZXM7IGtlcm5lbCBkZXZpY2VzIG1heSBjYXJyeQojIGh5cGhlbnMpOgpCUl9WTEFOX1NFQz0ndm9pY2VfYnJfdmxhbicKQlJfREVWX1NFQz0ndm9pY2VfYnJfZGV2JwpCUl9ERVY9J2JyLXZvaWNlJwpCUl9JRkFDRT0ndm9pY2VfYnJpZGdlJwoKIyBTaW5nbGUgY2FibGUgbW9kZToKTVVYX1VQX1NFQz0ndm9pY2VfdXAnCk1VWF9ETl9TRUM9J3ZvaWNlX2RuJwpNVVhfQlJfU0VDPSd2b2ljZV9tdXhfZGV2JwpNVVhfVVBfREVWPSd2b2ljZS11cCcKTVVYX0ROX0RFVj0ndm9pY2UtZG4nCk1VWF9CUl9ERVY9J2JyLXZvaWNlLW11eCcKTVVYX0lGQUNFPSd2b2ljZV9tdXgnCgpmYWlsKCkgewoJbG9nZ2VyIC10IHZvaWNlICIkKiIKCWVjaG8gInZvaWNlOiAkKiIgPiYyCglleGl0IDEKfQoKd2FybigpIHsKCWxvZ2dlciAtdCB2b2ljZSAiJCoiCn0KCnZhbGlkYXRlX2lmbmFtZSgpIHsKCWxvY2FsIG5hbWU9IiQxIgoKCVsgLW4gIiRuYW1lIiBdIHx8IHJldHVybiAxCglbICIkeyNuYW1lfSIgLWxlIDE1IF0gfHwgcmV0dXJuIDEKCgljYXNlICIkbmFtZSIgaW4KCQkqWyFBLVphLXowLTlfLjotXSopIHJldHVybiAxIDs7Cgllc2FjCgoJcmV0dXJuIDAKfQoKdmFsaWRhdGVfdmxhbigpIHsKCWxvY2FsIHZpZD0iJDEiCgoJY2FzZSAiJHZpZCIgaW4KCQknJ3wqWyEwLTldKikgcmV0dXJuIDEgOzsKCWVzYWMKCglbICIkdmlkIiAtZ2UgMSBdICYmIFsgIiR2aWQiIC1sZSA0MDk0IF0KfQoKbG9hZF92b2ljZV9uZXR3b3JrKCkgewoJY29uZmlnX2xvYWQgb251LXZvaWNlCgoJY29uZmlnX2dldF9ib29sIFZOX0VOQUJMRUQgbmV0d29yayBlbmFibGVkIDAKCWNvbmZpZ19nZXQgVk5fTU9ERSBuZXR3b3JrIG1vZGUgcm91dGUKCWNvbmZpZ19nZXQgVk5fVVBMSU5LIG5ldHdvcmsgdXBsaW5rIHBvbjAKCWNvbmZpZ19nZXQgVk5fVkxBTiBuZXR3b3JrIHZsYW5faWQKCWNvbmZpZ19nZXQgVk5fTEFOX1BPUlQgbmV0d29yayBsYW5fcG9ydAoJY29uZmlnX2dldCBWTl9UUlVOS19QT1JUIG5ldHdvcmsgdHJ1bmtfcG9ydAoJY29uZmlnX2dldCBWTl9QUk9UTyBuZXR3b3JrIHByb3RvIGRoY3AKCWNvbmZpZ19nZXQgVk5fSVBBRERSIG5ldHdvcmsgaXBhZGRyCgljb25maWdfZ2V0IFZOX05FVE1BU0sgbmV0d29yayBuZXRtYXNrCgljb25maWdfZ2V0IFZOX0dBVEVXQVkgbmV0d29yayBnYXRld2F5Cgljb25maWdfZ2V0IFZOX0ROUyBuZXR3b3JrIGRucwoKCWNhc2UgIiRWTl9NT0RFIiBpbgoJCXJvdXRlfGJyaWRnZXx0cnVuaykgOzsKCQkqKSBWTl9NT0RFPSdyb3V0ZScgOzsKCWVzYWMKfQoKIyBBbiBpbnRlcmZhY2UgbmFtZSBoYXMgdG8gc3RheSB3aXRoaW4gMTUgY2hhcmFjdGVycywgd2hpY2ggdGhlIGtlcm5lbCBlbmZvcmNlcwojIGZvciBuZXR3b3JrIGRldmljZXMuIFRoZSBtYW5hZ2VkIHZvaWNlIGRldmljZXMgYXJlIGZpeGVkIG5hbWVzOyB2YWxpZGF0ZSB0aGUKIyBwaHlzaWNhbCB1cGxpbmsgYW5kIHRoZSBzZWxlY3RlZCBMQU4gcG9ydHMgc2VwYXJhdGVseSBiZWNhdXNlIHRoZXkgYXJlCiMgb3BlcmF0b3Igc3VwcGxpZWQuCnZhbGlkYXRlX2NvbmZpZygpIHsKCVsgIiRWTl9FTkFCTEVEIiAtZXEgMSBdIHx8IHJldHVybiAwCgoJdmFsaWRhdGVfaWZuYW1lICIkVk5fVVBMSU5LIiB8fCBmYWlsICJJbnZhbGlkIHVwbGluayBkZXZpY2UgbmFtZSIKCVsgLWUgIi9zeXMvY2xhc3MvbmV0LyRWTl9VUExJTksiIF0gfHwgZmFpbCAiVXBsaW5rIGRldmljZSAkVk5fVVBMSU5LIHdhcyBub3QgZm91bmQiCgl2YWxpZGF0ZV92bGFuICIkVk5fVkxBTiIgfHwgZmFpbCAiVGhlIHZvaWNlIFZMQU4gbXVzdCBiZSBiZXR3ZWVuIDEgYW5kIDQwOTQiCgoJY2FzZSAiJFZOX01PREUiIGluCgkJcm91dGUpCgkJCWNhc2UgIiRWTl9QUk9UTyIgaW4KCQkJCWRoY3ApCgkJCQkJOzsKCQkJCXN0YXRpYykKCQkJCQlbIC1uICIkVk5fSVBBRERSIiBdIHx8IGZhaWwgIkEgc3RhdGljIHZvaWNlIGludGVyZmFjZSBuZWVkcyBhbiBJUCBhZGRyZXNzIgoJCQkJCVsgLW4gIiRWTl9ORVRNQVNLIiBdIHx8IGZhaWwgIkEgc3RhdGljIHZvaWNlIGludGVyZmFjZSBuZWVkcyBhIHN1Ym5ldCBtYXNrIgoJCQkJCTs7CgkJCQkqKQoJCQkJCWZhaWwgIlVua25vd24gSVAgYXNzaWdubWVudCBwcm90b2NvbCAkVk5fUFJPVE8iCgkJCQkJOzsKCQkJZXNhYwoJCQk7OwoJCWJyaWRnZSkKCQkJdmFsaWRhdGVfaWZuYW1lICIkVk5fTEFOX1BPUlQiIHx8IGZhaWwgIkludmFsaWQgdm9pY2UgTEFOIHBvcnQgbmFtZSIKCQkJWyAtZSAiL3N5cy9jbGFzcy9uZXQvJFZOX0xBTl9QT1JUIiBdIHx8IGZhaWwgIlZvaWNlIExBTiBwb3J0ICRWTl9MQU5fUE9SVCB3YXMgbm90IGZvdW5kIgoJCQlbICIkVk5fTEFOX1BPUlQiICE9ICIkVk5fVVBMSU5LIiBdIHx8IGZhaWwgIlRoZSB2b2ljZSBMQU4gcG9ydCBhbmQgdXBsaW5rIG11c3QgYmUgZGlmZmVyZW50IGRldmljZXMiCgkJCTs7CgkJdHJ1bmspCgkJCXZhbGlkYXRlX2lmbmFtZSAiJFZOX1RSVU5LX1BPUlQiIHx8IGZhaWwgIkludmFsaWQgdm9pY2UgdHJ1bmsgcG9ydCBuYW1lIgoJCQlbIC1lICIvc3lzL2NsYXNzL25ldC8kVk5fVFJVTktfUE9SVCIgXSB8fCBmYWlsICJWb2ljZSB0cnVuayBwb3J0ICRWTl9UUlVOS19QT1JUIHdhcyBub3QgZm91bmQiCgkJCVsgIiRWTl9UUlVOS19QT1JUIiAhPSAiJFZOX1VQTElOSyIgXSB8fCBmYWlsICJUaGUgdm9pY2UgdHJ1bmsgcG9ydCBhbmQgdXBsaW5rIG11c3QgYmUgZGlmZmVyZW50IGRldmljZXMiCgkJCTs7Cgllc2FjCn0KCiMgVHdvIHNlcnZpY2VzIG11c3Qgbm90IHNoYXJlIGEgVkxBTjogaW4gcm91dGUgbW9kZSB0aGV5IHdvdWxkIGVuZCB1cCBpbiBvbmUKIyBmaXJld2FsbCB6b25lLCBhbmQgaW4gYnJpZGdlL3RydW5rIG1vZGUgdGhlIHNhbWUgVkxBTiB3b3VsZCBiZSBoYW5kZWQgb3ZlciBieQojIHR3byBicmlkZ2VzIG9uIHRoZSBzYW1lIHdpcmUuIFRoZSBzYW1lIHJ1bGUgaXMgZW5mb3JjZWQgaW4gdGhlIFVJLCB0aGlzIGlzCiMgdGhlIGJhY2tzdG9wIGZvciBhIGhhbmQtZWRpdGVkIGNvbmZpZy4gVGhlIElQVFYgdHJ1bmsgbGlzdCBpcyBhIGZyZWUtZm9ybQojIGxpc3QgdGhhdCBjYW4gY2FycnkgVkxBTnMgYWJzZW50IGZyb20gdGhlIHNlcnZpY2UvbXVsdGljYXN0L0lHTVAgb3B0aW9ucywgc28KIyBpdCBpcyBjaGVja2VkIHNlcGFyYXRlbHkuCmNoZWNrX3ZsYW5fY29uZmxpY3QoKSB7CglbICIkVk5fRU5BQkxFRCIgLWVxIDEgXSB8fCByZXR1cm4gMAoKCWxvY2FsIG5ldF9lbmFibGVkIG5ldF92bGFuCglsb2NhbCBpcHR2X2VuYWJsZWQgaXB0dl92bGFuCglsb2NhbCBpcHR2X3NlcnZpY2VfdmxhbiBpcHR2X211bHRpY2FzdF92bGFuIGlwdHZfaWdtcF92bGFuIGlwdHZfdHJ1bmtfdmxhbnMKCgljb25maWdfbG9hZCBvbnUtaW50ZXJuZXQKCWNvbmZpZ19nZXRfYm9vbCBuZXRfZW5hYmxlZCBjb25maWcgZW5hYmxlZCAwCgljb25maWdfZ2V0IG5ldF92bGFuIGNvbmZpZyB2bGFuCglpZiBbICIkbmV0X2VuYWJsZWQiID0gJzEnIF0gJiYgWyAiJFZOX1ZMQU4iID0gIiRuZXRfdmxhbiIgXTsgdGhlbgoJCWZhaWwgIlZMQU4gJFZOX1ZMQU4gYWxyZWFkeSBjYXJyaWVzIHRoZSBpbnRlcm5ldCBzZXJ2aWNlIgoJZmkKCgljb25maWdfbG9hZCBvbnUtaXB0dgoJY29uZmlnX2dldF9ib29sIGlwdHZfZW5hYmxlZCBjb25maWcgZW5hYmxlZCAwCglpZiBbICIkaXB0dl9lbmFibGVkIiA9ICcxJyBdOyB0aGVuCgkJY29uZmlnX2dldCBpcHR2X3NlcnZpY2VfdmxhbiBjb25maWcgc2VydmljZV92bGFuCgkJY29uZmlnX2dldCBpcHR2X211bHRpY2FzdF92bGFuIGNvbmZpZyBtdWx0aWNhc3RfdmxhbgoJCWNvbmZpZ19nZXQgaXB0dl9pZ21wX3ZsYW4gY29uZmlnIGlnbXBfdmxhbgoJCWNvbmZpZ19nZXQgaXB0dl90cnVua192bGFucyBjb25maWcgdHJ1bmtfdmxhbnMKCgkJZm9yIGlwdHZfdmxhbiBpbiAiJGlwdHZfc2VydmljZV92bGFuIiAiJGlwdHZfbXVsdGljYXN0X3ZsYW4iIFwKCQkJCSIkaXB0dl9pZ21wX3ZsYW4iICRpcHR2X3RydW5rX3ZsYW5zOyBkbwoJCQlbIC1uICIkaXB0dl92bGFuIiBdIHx8IGNvbnRpbnVlCgkJCVsgIiRWTl9WTEFOIiA9ICIkaXB0dl92bGFuIiBdICYmCgkJCQlmYWlsICJWTEFOICRWTl9WTEFOIGFscmVhZHkgY2FycmllcyBhbiBJUFRWIHNlcnZpY2UiCgkJZG9uZQoJZmkKfQoKIwojIFBvcnQgZXhjbHVzaXZpdHkgYWNyb3NzIHRoZSB0aHJlZSBQT04gc2VydmljZSBwYWdlcwojCiMgQSBkZWRpY2F0ZWQgYnJpZGdlIHBvcnQgKGludGVybmV0IGJyaWRnZSwgSVBUViBzZXQtdG9wIGJveCBwb3J0LCB2b2ljZQojIGJyaWRnZSBwb3J0KSBpcyB0YWtlbiBvdXQgb2YgYnItbGFuIGFuZCBlbnNsYXZlZCB0byBleGFjdGx5IG9uZSBzZXJ2aWNlCiMgYnJpZGdlLCBzbyBpdCBjYW4gbmV2ZXIgYmUgcGlja2VkIGJ5IGFub3RoZXIgZGVkaWNhdGVkIGJyaWRnZS4gQSB0cnVuayBwb3J0CiMgc3RheXMgaW4gYnItbGFuIGFuZCBvbmx5IGNhcnJpZXMgdGFnZ2VkIDgwMjFxIHN1YmludGVyZmFjZXMsIHdoaWNoIGlzIHdoeSB0aGUKIyB2b2ljZSBhbmQgSVBUViB0cnVua3MgTUFZIHNoYXJlIG9uZSBwb3J0IC0gYnV0IGEgZGVkaWNhdGVkIHBvcnQgbXVzdCBub3QgYmUgYQojIHRydW5rIHBvcnQgZWl0aGVyLCBvciB0aGUgZGVkaWNhdGVkIHNlcnZpY2Ugd291bGQgbGVhdmUgdGFnZ2VkIGZvcmVpZ24gVkxBTnMKIyBvbiBhIHBvcnQgdGhhdCBpcyBzdXBwb3NlZCB0byBjYXJyeSBpdHMgb25lIHBsYW5lIHVudGFnZ2VkLgpjaGVja19wb3J0X2NvbmZsaWN0KCkgewoJWyAiJFZOX0VOQUJMRUQiIC1lcSAxIF0gfHwgcmV0dXJuIDAKCglsb2NhbCBjYW5kaWRhdGU9IiQxIiBuZXRfbW9kZSBwb3J0Cglsb2NhbCBpcHR2X21vZGUgaXB0dl9wb3J0CgoJWyAtbiAiJGNhbmRpZGF0ZSIgXSB8fCByZXR1cm4gMAoKCWNvbmZpZ19sb2FkIG9udS1pbnRlcm5ldAoJY29uZmlnX2dldCBuZXRfbW9kZSBjb25maWcgbW9kZSBicmlkZ2UKCWlmIFsgIiQodWNpIC1xIGdldCBvbnUtaW50ZXJuZXQuY29uZmlnLmVuYWJsZWQpIiA9ICcxJyBdICYmIFsgIiRuZXRfbW9kZSIgPSAnYnJpZGdlJyBdOyB0aGVuCgkJZm9yIHBvcnQgaW4gJCh1Y2kgLXEgZ2V0IG9udS1pbnRlcm5ldC5jb25maWcucG9ydHMpOyBkbwoJCQlbICIkY2FuZGlkYXRlIiAhPSAiJHBvcnQiIF0gfHwKCQkJCWZhaWwgIkxBTiBwb3J0ICRjYW5kaWRhdGUgaXMgdXNlZCBieSB0aGUgaW50ZXJuZXQgYnJpZGdlOyBmcmVlIGl0IG9uIHRoZSBpbnRlcm5ldCBwYWdlIGZpcnN0IgoJCWRvbmUKCWZpCgoJY29uZmlnX2xvYWQgb251LWlwdHYKCWlmIFsgIiQodWNpIC1xIGdldCBvbnUtaXB0di5jb25maWcuZW5hYmxlZCkiID0gJzEnIF07IHRoZW4KCQljb25maWdfZ2V0IGlwdHZfbW9kZSBjb25maWcgbW9kZSBicmlkZ2UKCgkJaWYgWyAiJGlwdHZfbW9kZSIgPSAnYnJpZGdlJyBdOyB0aGVuCgkJCWNvbmZpZ19nZXQgaXB0dl9wb3J0IGNvbmZpZyBsYW5fcG9ydAoJCQlbICIkY2FuZGlkYXRlIiAhPSAiJGlwdHZfcG9ydCIgXSB8fAoJCQkJZmFpbCAiTEFOIHBvcnQgJGNhbmRpZGF0ZSBpcyBkZWRpY2F0ZWQgdG8gdGhlIElQVFYgc2V0LXRvcCBib3g7IGZyZWUgaXQgb24gdGhlIElQVFYgcGFnZSBmaXJzdCIKCQllbHNlCgkJCSMgVGhlIHZvaWNlIGRlZGljYXRlZCBwb3J0IG11c3Qgbm90IGJlY29tZSB0aGUgSVBUViB0cnVuayBwb3J0OwoJCQkjIHRoZSB2b2ljZSB0cnVuayBtYXkgc2hhcmUgdGhlIElQVFYgdHJ1bmsgcG9ydCBvbiBwdXJwb3NlLgoJCQlbICIkVk5fTU9ERSIgIT0gJ2JyaWRnZScgXSB8fCB7CgkJCQljb25maWdfZ2V0IGlwdHZfcG9ydCBjb25maWcgdHJ1bmtfcG9ydAoJCQkJWyAiJGNhbmRpZGF0ZSIgIT0gIiRpcHR2X3BvcnQiIF0gfHwKCQkJCQlmYWlsICJMQU4gcG9ydCAkY2FuZGlkYXRlIGlzIHRoZSBJUFRWIHRydW5rIHBvcnQ7IHBpY2sgYSBkaWZmZXJlbnQgdm9pY2UgcG9ydCIKCQkJfQoJCWZpCglmaQp9CgpmaW5kX2JyX2xhbigpIHsKCWxvY2FsIHNlY3Rpb249IiQxIgoJbG9jYWwgbmFtZQoKCWNvbmZpZ19nZXQgbmFtZSAiJHNlY3Rpb24iIG5hbWUKCVsgIiRuYW1lIiA9ICJici1sYW4iIF0gJiYgQlJfTEFOX1NFQ1RJT049IiRzZWN0aW9uIgp9CgojIFRoZSBpbnRlcm5ldCBwYWdlIG93bnMgZXZlcnkgcG9ydCBvZiBpdHMgYnJpZGdlIGluIGJyaWRnZWQgbW9kZTsgaW4gdGhlCiMgZGlhbGxlZCBtb2RlcyAoUFBQb0UvREhDUCkgaXQgb3ducyBubyBMQU4gcG9ydCBhdCBhbGwuIGNoZWNrX3BvcnRfY29uZmxpY3QoKQojIG5lZWRzIHRoZSBwb3J0cyBhbmQgZmluZF9vbGRfdm9pY2VfcG9ydCgpIG5lZWRzIHRvIHJlY29nbmlzZSB0aGVtLCBzbyBhIHBvcnQKIyB0aGUgaW50ZXJuZXQgcGFnZSB0b29rIG92ZXIgaXMgbm90IGhhbmRlZCBiYWNrIHRvIGJyLWxhbiBiZWhpbmQgaXRzIGJhY2suCmxvYWRfaW50ZXJuZXRfaW5mbygpIHsKCU5FVF9FTkFCTEVEPTAKCU5FVF9NT0RFPSdicmlkZ2UnCglORVRfUE9SVFM9JycKCgljb25maWdfbG9hZCBvbnUtaW50ZXJuZXQKCWNvbmZpZ19nZXRfYm9vbCBORVRfRU5BQkxFRCBjb25maWcgZW5hYmxlZCAwCglbICIkTkVUX0VOQUJMRUQiIC1lcSAxIF0gfHwgcmV0dXJuIDAKCWNvbmZpZ19nZXQgTkVUX01PREUgY29uZmlnIG1vZGUgYnJpZGdlCgljb25maWdfZ2V0IE5FVF9QT1JUUyBjb25maWcgcG9ydHMKfQoKaW50ZXJuZXRfb3duc19wb3J0KCkgewoJbG9jYWwgcG9ydAoKCVsgLW4gIiQxIiBdIHx8IHJldHVybiAxCglbICIkTkVUX0VOQUJMRUQiIC1lcSAxIF0gfHwgcmV0dXJuIDEKCVsgIiRORVRfTU9ERSIgPSAnYnJpZGdlJyBdIHx8IHJldHVybiAxCgoJZm9yIHBvcnQgaW4gJE5FVF9QT1JUUzsgZG8KCQlbICIkMSIgPSAiJHBvcnQiIF0gJiYgcmV0dXJuIDAKCWRvbmUKCglyZXR1cm4gMQp9CgpmaW5kX29sZF92b2ljZV9wb3J0KCkgewoJbG9jYWwgcG9ydAoJbG9jYWwgcG9ydHMKCgljb25maWdfZ2V0IHBvcnRzICIkQlJfREVWX1NFQyIgcG9ydHMKCWZvciBwb3J0IGluICRwb3J0czsgZG8KCQljYXNlICIkcG9ydCIgaW4KCQkJY3Qtdm9pY2UpIGNvbnRpbnVlIDs7CgkJZXNhYwoJCWludGVybmV0X293bnNfcG9ydCAiJHBvcnQiICYmIGNvbnRpbnVlCgkJT0xEX0xBTl9QT1JUPSIkcG9ydCIKCWRvbmUKfQoKZGV0YWNoX2Zyb21fZGV2aWNlKCkgewoJbG9jYWwgc2VjdGlvbj0iJDEiCglsb2NhbCBwb3J0cyBwb3J0CgoJY29uZmlnX2dldCBwb3J0cyAiJHNlY3Rpb24iIHBvcnRzCglmb3IgcG9ydCBpbiAkcG9ydHM7IGRvCgkJWyAiJHBvcnQiID0gIiRWTl9MQU5fUE9SVCIgXSAmJiB1Y2kgLXEgZGVsX2xpc3QgIm5ldHdvcmsuJHNlY3Rpb24ucG9ydHM9JHBvcnQiCglkb25lCn0KCmRldGFjaF9mcm9tX2ludGVyZmFjZSgpIHsKCWxvY2FsIHNlY3Rpb249IiQxIgoJbG9jYWwgZGV2aWNlIGlmbmFtZXMgaWZuYW1lCgoJY2FzZSAiJHNlY3Rpb24iIGluCgkJdm9pY2V8dm9pY2VfKnxsdWNpX3ZvaWNlKnxicl9pcHR2KnxtdXhfaXB0dl8qfFwKCQlsdWNpX2lwdHYqfGx1Y2lfd2FudXAqKSByZXR1cm4gOzsKCWVzYWMKCgljb25maWdfZ2V0IGRldmljZSAiJHNlY3Rpb24iIGRldmljZQoJY29uZmlnX2dldCBpZm5hbWVzICIkc2VjdGlvbiIgaWZuYW1lCglbICIkZGV2aWNlIiA9ICIkVk5fTEFOX1BPUlQiIF0gJiYgdWNpIC1xIGRlbGV0ZSAibmV0d29yay4kc2VjdGlvbi5kZXZpY2UiCgoJZm9yIGlmbmFtZSBpbiAkaWZuYW1lczsgZG8KCQlbICIkaWZuYW1lIiA9ICIkVk5fTEFOX1BPUlQiIF0gfHwgY29udGludWUKCQl1Y2kgLXEgZGVsX2xpc3QgIm5ldHdvcmsuJHNlY3Rpb24uaWZuYW1lPSRpZm5hbWUiIHx8IHVjaSAtcSBkZWxldGUgIm5ldHdvcmsuJHNlY3Rpb24uaWZuYW1lIgoJZG9uZQp9CgpkZXRhY2hfZnJvbV9icmlkZ2VfdmxhbigpIHsKCWxvY2FsIHNlY3Rpb249IiQxIgoJbG9jYWwgcG9ydHMgdG9rZW4gYmFzZQoKCWNvbmZpZ19nZXQgcG9ydHMgIiRzZWN0aW9uIiBwb3J0cwoJZm9yIHRva2VuIGluICRwb3J0czsgZG8KCQliYXNlPSIke3Rva2VuJSU6Kn0iCgkJWyAiJGJhc2UiID0gIiRWTl9MQU5fUE9SVCIgXSAmJiB1Y2kgLXEgZGVsX2xpc3QgIm5ldHdvcmsuJHNlY3Rpb24ucG9ydHM9JHRva2VuIgoJZG9uZQp9CgojIEJyaWRnZSBtb2RlIG93bnMgYSBMQU4gcG9ydDsgdHJ1bmsgbW9kZSBoYW5kcyBWTEFOcyBvdmVyIHRhZ2dlZCBhbmQgbmV2ZXIKIyB0YWtlcyBhIHBvcnQgb3V0IG9mIGJyLWxhbi4KZGV0YWNoX2xhbl9wb3J0KCkgewoJWyAiJFZOX01PREUiID0gJ2JyaWRnZScgXSB8fCByZXR1cm4gMAoJWyAtbiAiJFZOX0xBTl9QT1JUIiBdIHx8IHJldHVybiAwCgoJY29uZmlnX2ZvcmVhY2ggZGV0YWNoX2Zyb21fZGV2aWNlIGRldmljZQoJY29uZmlnX2ZvcmVhY2ggZGV0YWNoX2Zyb21faW50ZXJmYWNlIGludGVyZmFjZQoJY29uZmlnX2ZvcmVhY2ggZGV0YWNoX2Zyb21fYnJpZGdlX3ZsYW4gYnJpZGdlLXZsYW4KCXJlbW92ZV9zZWxlY3RlZF9wb3J0X2Zyb21fYnJfbGFuCn0KCiMKIyBNYW5hZ2VkIHNlY3Rpb25zCiMKIyBFdmVyeXRoaW5nIHRoaXMgcGFnZSB3cml0ZXMgbGl2ZXMgdW5kZXIgbmV0d29yay52b2ljZSogLyBuZXR3b3JrLmx1Y2lfdm9pY2UqCiMgYW5kIGZpcmV3YWxsLmx1Y2lfdm9pY2UqLCB3aGljaCBtYWtlcyByZW1vdmluZyBpdCBvbmUgc3dlZXAgYW5kIGxlYXZlcyB0aGUKIyByZXN0IG9mIHRoZSBjb25maWd1cmF0aW9uIHVudG91Y2hlZC4KIwpyZW1vdmVfbWFuYWdlZF9uZXR3b3JrKCkgewoJbG9jYWwgc2VjdGlvbgoKCWZvciBzZWN0aW9uIGluICQodWNpIC1xIHNob3cgbmV0d29yayAyPi9kZXYvbnVsbCB8IFwKCQlzZWQgLW4gXAoJCS1lICdzL15uZXR3b3JrXC5cKHZvaWNlW0EtWmEtejAtOV9dKlwpPS4qL1wxL3AnIFwKCQktZSAncy9ebmV0d29ya1wuXChsdWNpX3ZvaWNlW0EtWmEtejAtOV9dKlwpPS4qL1wxL3AnIHwgc29ydCAtdSk7IGRvCgkJdWNpIC1xIGRlbGV0ZSAibmV0d29yay4kc2VjdGlvbiIKCWRvbmUKfQoKcmVtb3ZlX21hbmFnZWRfZmlyZXdhbGwoKSB7Cglsb2NhbCBzZWN0aW9uCgoJZm9yIHNlY3Rpb24gaW4gJCh1Y2kgLXEgc2hvdyBmaXJld2FsbCAyPi9kZXYvbnVsbCB8IFwKCQlzZWQgLW4gJ3MvXmZpcmV3YWxsXC5cKGx1Y2lfdm9pY2VbQS1aYS16MC05X10qXCk9LiovXDEvcCcgfCBzb3J0IC11KTsgZG8KCQl1Y2kgLXEgZGVsZXRlICJmaXJld2FsbC4kc2VjdGlvbiIKCWRvbmUKfQoKIyBBbiBpbnRlcmZhY2UgbXVzdCBub3QgYmUgYSBtZW1iZXIgb2YgYW55IG90aGVyIHpvbmU7IGEgZGV2aWNlIGNhbiBzaXQgaW4gb25lCiMgem9uZSBvbmx5IGFuZCBhIHN0YWxlIHJlZmVyZW5jZSB3b3VsZCBtYWtlIGZ3NCByZWZ1c2UgdGhlIGNvbmZpZ3VyYXRpb24uCmRldGFjaF9mcm9tX3pvbmVzKCkgewoJbG9jYWwgem9uZSBjdXJyZW50CgoJZm9yIHpvbmUgaW4gJCh1Y2kgLXEgc2hvdyBmaXJld2FsbCAyPi9kZXYvbnVsbCB8IFwKCQlzZWQgLW4gJ3MvXmZpcmV3YWxsXC5cKFteLj1dKlwpPXpvbmUkL1wxL3AnKTsgZG8KCQlbICIkem9uZSIgPSAiJFpPTkVfU0VDVElPTiIgXSAmJiBjb250aW51ZQoJCWZvciBjdXJyZW50IGluICQodWNpIC1xIGdldCAiZmlyZXdhbGwuJHpvbmUubmV0d29yayIpOyBkbwoJCQljYXNlICIkY3VycmVudCIgaW4KCQkJCSIkSUZBQ0UifCIkTEVHQUNZX0lGQUNFInwiJEJSX0lGQUNFInwiJE1VWF9JRkFDRSIpCgkJCQkJdWNpIC1xIGRlbF9saXN0ICJmaXJld2FsbC4kem9uZS5uZXR3b3JrPSRjdXJyZW50IgoJCQkJCTs7CgkJCWVzYWMKCQlkb25lCglkb25lCn0KCnJlc3RvcmVfb2xkX2xhbl9wb3J0KCkgewoJWyAtbiAiJE9MRF9MQU5fUE9SVCIgXSB8fCByZXR1cm4KCVsgLW4gIiRCUl9MQU5fU0VDVElPTiIgXSB8fCByZXR1cm4KCgl1Y2kgLXEgZGVsX2xpc3QgIm5ldHdvcmsuJEJSX0xBTl9TRUNUSU9OLnBvcnRzPSRPTERfTEFOX1BPUlQiCgl1Y2kgLXEgYWRkX2xpc3QgIm5ldHdvcmsuJEJSX0xBTl9TRUNUSU9OLnBvcnRzPSRPTERfTEFOX1BPUlQiCn0KCnJlbW92ZV9zZWxlY3RlZF9wb3J0X2Zyb21fYnJfbGFuKCkgewoJWyAtbiAiJEJSX0xBTl9TRUNUSU9OIiBdIHx8IHJldHVybgoJdWNpIC1xIGRlbF9saXN0ICJuZXR3b3JrLiRCUl9MQU5fU0VDVElPTi5wb3J0cz0kVk5fTEFOX1BPUlQiCn0KCiMKIyBUb3BvbG9neQojCndyaXRlX3JvdXRlX25ldHdvcmsoKSB7CgkjIFRoZSA4MDIxcSBzdWJpbnRlcmZhY2UuICJpZm5hbWUiIGlzIHRoZSBwaHlzaWNhbCBQT04gZGV2aWNlLCAibmFtZSIgdGhlCgkjIGRldmljZSBoYW5kZWQgdG8gbmV0aWZkOyB0aGUgdHdvIGRpZmZlciBvbiBwdXJwb3NlLgoJdWNpIHNldCAibmV0d29yay4kVkxBTl9TRUNUSU9OIj0nZGV2aWNlJwoJdWNpIHNldCAibmV0d29yay4kVkxBTl9TRUNUSU9OLnR5cGUiPSc4MDIxcScKCXVjaSBzZXQgIm5ldHdvcmsuJFZMQU5fU0VDVElPTi5pZm5hbWUiPSIkVk5fVVBMSU5LIgoJdWNpIHNldCAibmV0d29yay4kVkxBTl9TRUNUSU9OLnZpZCI9IiRWTl9WTEFOIgoJdWNpIHNldCAibmV0d29yay4kVkxBTl9TRUNUSU9OLm5hbWUiPSIkVkxBTl9ERVZJQ0UiCgoJIyBUaGUgaW50ZXJmYWNlIHRoZSB2b2ljZSBzZXJ2aWNlIGJpbmRzIHRvLiBJdCBuZXZlciBqb2lucyBici1sYW4uCgl1Y2kgc2V0IG5ldHdvcmsuJElGQUNFPSdpbnRlcmZhY2UnCgl1Y2kgc2V0IG5ldHdvcmsuJElGQUNFLmRldmljZT0iJFZMQU5fREVWSUNFIgoJdWNpIHNldCBuZXR3b3JrLiRJRkFDRS5wcm90bz0iJFZOX1BST1RPIgoJdWNpIHNldCBuZXR3b3JrLiRJRkFDRS5hdXRvPScxJwoJdWNpIHNldCBuZXR3b3JrLiRJRkFDRS5mb3JjZV9saW5rPScxJwoJdWNpIHNldCBuZXR3b3JrLiRJRkFDRS5kZWxlZ2F0ZT0nMCcKCXVjaSBzZXQgbmV0d29yay4kSUZBQ0UubHVjaV92b2ljZT0nMScKCSMgVGhlIHZvaWNlIGdhdGV3YXkgcmVhY2hlcyB0aGUgc29mdHN3aXRjaCwgaXQgZG9lcyBub3Qgcm91dGUgdGhlIGN1c3RvbWVyOgoJIyBkZWZhdWx0cm91dGU9MCBrZWVwcyBhIERIQ1Atc3VwcGxpZWQgKG9yIG1hbnVhbGx5IGVudGVyZWQpIGdhdGV3YXkgb3V0IG9mCgkjIHRoZSBkZWZhdWx0IHJvdXRlLCBhbmQgdGhlIGhpZ2ggbWV0cmljIGxvc2VzIGFnYWluc3QgdGhlIFdBTiBldmVuIHdoZXJlCgkjIHRoZSBwcm90b2NvbCBzdGlsbCBpbnN0YWxscyBvbmUuCgl1Y2kgc2V0IG5ldHdvcmsuJElGQUNFLmRlZmF1bHRyb3V0ZT0nMCcKCXVjaSBzZXQgbmV0d29yay4kSUZBQ0UubWV0cmljPSIkVk9JQ0VfTUVUUklDIgoKCWlmIFsgIiRWTl9QUk9UTyIgPSAnc3RhdGljJyBdOyB0aGVuCgkJdWNpIHNldCBuZXR3b3JrLiRJRkFDRS5pcGFkZHI9IiRWTl9JUEFERFIiCgkJdWNpIHNldCBuZXR3b3JrLiRJRkFDRS5uZXRtYXNrPSIkVk5fTkVUTUFTSyIKCgkJaWYgWyAtbiAiJFZOX0dBVEVXQVkiIF07IHRoZW4KCQkJdWNpIHNldCBuZXR3b3JrLiRJRkFDRS5nYXRld2F5PSIkVk5fR0FURVdBWSIKCQllbHNlCgkJCXVjaSAtcSBkZWxldGUgbmV0d29yay4kSUZBQ0UuZ2F0ZXdheQoJCWZpCgoJCWlmIFsgLW4gIiRWTl9ETlMiIF07IHRoZW4KCQkJdWNpIHNldCBuZXR3b3JrLiRJRkFDRS5kbnM9IiRWTl9ETlMiCgkJZWxzZQoJCQl1Y2kgLXEgZGVsZXRlIG5ldHdvcmsuJElGQUNFLmRucwoJCWZpCgllbHNlCgkJdWNpIC1xIGRlbGV0ZSBuZXR3b3JrLiRJRkFDRS5pcGFkZHIKCQl1Y2kgLXEgZGVsZXRlIG5ldHdvcmsuJElGQUNFLm5ldG1hc2sKCQl1Y2kgLXEgZGVsZXRlIG5ldHdvcmsuJElGQUNFLmdhdGV3YXkKCQl1Y2kgLXEgZGVsZXRlIG5ldHdvcmsuJElGQUNFLmRucwoJZmkKfQoKd3JpdGVfYnJpZGdlX25ldHdvcmsoKSB7Cgl1Y2kgc2V0ICJuZXR3b3JrLiRCUl9WTEFOX1NFQyI9J2RldmljZScKCXVjaSBzZXQgIm5ldHdvcmsuJEJSX1ZMQU5fU0VDLnR5cGUiPSc4MDIxcScKCXVjaSBzZXQgIm5ldHdvcmsuJEJSX1ZMQU5fU0VDLmlmbmFtZSI9IiRWTl9VUExJTksiCgl1Y2kgc2V0ICJuZXR3b3JrLiRCUl9WTEFOX1NFQy52aWQiPSIkVk5fVkxBTiIKCXVjaSBzZXQgIm5ldHdvcmsuJEJSX1ZMQU5fU0VDLm5hbWUiPSIkVkxBTl9ERVZJQ0UiCgoJdWNpIHNldCAibmV0d29yay4kQlJfREVWX1NFQyI9J2RldmljZScKCXVjaSBzZXQgIm5ldHdvcmsuJEJSX0RFVl9TRUMudHlwZSI9J2JyaWRnZScKCXVjaSBzZXQgIm5ldHdvcmsuJEJSX0RFVl9TRUMubmFtZSI9IiRCUl9ERVYiCgl1Y2kgc2V0ICJuZXR3b3JrLiRCUl9ERVZfU0VDLnN0cCI9JzAnCgkjIFZvaWNlIGlzIHVuaWNhc3QgU0lQL1JUUDsgbm8gbXVsdGljYXN0IHNub29waW5nIG9yIHF1ZXJpZXIgaXMgbmVlZGVkLgoJdWNpIHNldCAibmV0d29yay4kQlJfREVWX1NFQy5pZ21wX3Nub29waW5nIj0nMCcKCXVjaSBzZXQgIm5ldHdvcmsuJEJSX0RFVl9TRUMubXVsdGljYXN0X3F1ZXJpZXIiPScwJwoJdWNpIGFkZF9saXN0ICJuZXR3b3JrLiRCUl9ERVZfU0VDLnBvcnRzIj0iJFZOX0xBTl9QT1JUIgoJdWNpIGFkZF9saXN0ICJuZXR3b3JrLiRCUl9ERVZfU0VDLnBvcnRzIj0iJFZMQU5fREVWSUNFIgoKCSMgVW5hZGRyZXNzZWQ6IHB1cmUgTDIgaGFuZC1vdmVyLCBubyBmaXJld2FsbCB6b25lICh0aGUgZGVkaWNhdGVkIHBvcnQgbGVmdAoJIyBici1sYW4sIHNvIHRoZSBicmlkZ2UgaXMgdGhlIG9ubHkgcGxhbmUgb24gaXQpLgoJdWNpIHNldCAibmV0d29yay4kQlJfSUZBQ0UiPSdpbnRlcmZhY2UnCgl1Y2kgc2V0ICJuZXR3b3JrLiRCUl9JRkFDRS5kZXZpY2UiPSIkQlJfREVWIgoJdWNpIHNldCAibmV0d29yay4kQlJfSUZBQ0UucHJvdG8iPSdub25lJwoJdWNpIHNldCAibmV0d29yay4kQlJfSUZBQ0UuYXV0byI9JzEnCgl1Y2kgc2V0ICJuZXR3b3JrLiRCUl9JRkFDRS5kZWxlZ2F0ZSI9JzAnCn0KCndyaXRlX3RydW5rX25ldHdvcmsoKSB7Cgl1Y2kgc2V0ICJuZXR3b3JrLiRNVVhfVVBfU0VDIj0nZGV2aWNlJwoJdWNpIHNldCAibmV0d29yay4kTVVYX1VQX1NFQy50eXBlIj0nODAyMXEnCgl1Y2kgc2V0ICJuZXR3b3JrLiRNVVhfVVBfU0VDLmlmbmFtZSI9IiRWTl9VUExJTksiCgl1Y2kgc2V0ICJuZXR3b3JrLiRNVVhfVVBfU0VDLnZpZCI9IiRWTl9WTEFOIgoJdWNpIHNldCAibmV0d29yay4kTVVYX1VQX1NFQy5uYW1lIj0iJE1VWF9VUF9ERVYiCgoJdWNpIHNldCAibmV0d29yay4kTVVYX0ROX1NFQyI9J2RldmljZScKCXVjaSBzZXQgIm5ldHdvcmsuJE1VWF9ETl9TRUMudHlwZSI9JzgwMjFxJwoJdWNpIHNldCAibmV0d29yay4kTVVYX0ROX1NFQy5pZm5hbWUiPSIkVk5fVFJVTktfUE9SVCIKCXVjaSBzZXQgIm5ldHdvcmsuJE1VWF9ETl9TRUMudmlkIj0iJFZOX1ZMQU4iCgl1Y2kgc2V0ICJuZXR3b3JrLiRNVVhfRE5fU0VDLm5hbWUiPSIkTVVYX0ROX0RFViIKCgl1Y2kgc2V0ICJuZXR3b3JrLiRNVVhfQlJfU0VDIj0nZGV2aWNlJwoJdWNpIHNldCAibmV0d29yay4kTVVYX0JSX1NFQy50eXBlIj0nYnJpZGdlJwoJdWNpIHNldCAibmV0d29yay4kTVVYX0JSX1NFQy5uYW1lIj0iJE1VWF9CUl9ERVYiCgl1Y2kgc2V0ICJuZXR3b3JrLiRNVVhfQlJfU0VDLnN0cCI9JzAnCgl1Y2kgc2V0ICJuZXR3b3JrLiRNVVhfQlJfU0VDLmlnbXBfc25vb3BpbmciPScwJwoJdWNpIHNldCAibmV0d29yay4kTVVYX0JSX1NFQy5tdWx0aWNhc3RfcXVlcmllciI9JzAnCgl1Y2kgYWRkX2xpc3QgIm5ldHdvcmsuJE1VWF9CUl9TRUMucG9ydHMiPSIkTVVYX1VQX0RFViIKCXVjaSBhZGRfbGlzdCAibmV0d29yay4kTVVYX0JSX1NFQy5wb3J0cyI9IiRNVVhfRE5fREVWIgoKCXVjaSBzZXQgIm5ldHdvcmsuJE1VWF9JRkFDRSI9J2ludGVyZmFjZScKCXVjaSBzZXQgIm5ldHdvcmsuJE1VWF9JRkFDRS5kZXZpY2UiPSIkTVVYX0JSX0RFViIKCXVjaSBzZXQgIm5ldHdvcmsuJE1VWF9JRkFDRS5wcm90byI9J25vbmUnCgl1Y2kgc2V0ICJuZXR3b3JrLiRNVVhfSUZBQ0UuYXV0byI9JzEnCgl1Y2kgc2V0ICJuZXR3b3JrLiRNVVhfSUZBQ0UuZGVsZWdhdGUiPScwJwp9Cgp3cml0ZV9uZXR3b3JrX2NvbmZpZygpIHsKCXJlc3RvcmVfb2xkX2xhbl9wb3J0CglyZW1vdmVfbWFuYWdlZF9uZXR3b3JrCgoJaWYgWyAiJFZOX0VOQUJMRUQiIC1lcSAxIF07IHRoZW4KCQkjIE9ubHkgYnJpZGdlIG1vZGUgbmVlZHMgZXhjbHVzaXZlIG5ldGlmZCBvd25lcnNoaXAgb2YgYSBMQU4gcG9ydC4KCQlkZXRhY2hfbGFuX3BvcnQKCgkJY2FzZSAiJFZOX01PREUiIGluCgkJCXJvdXRlKSB3cml0ZV9yb3V0ZV9uZXR3b3JrIDs7CgkJCWJyaWRnZSkgd3JpdGVfYnJpZGdlX25ldHdvcmsgOzsKCQkJdHJ1bmspIHdyaXRlX3RydW5rX25ldHdvcmsgOzsKCQllc2FjCglmaQoKCXVjaSBjb21taXQgbmV0d29yayB8fCBmYWlsICJDYW5ub3Qgc2F2ZSBuZXR3b3JrIGNvbmZpZ3VyYXRpb24iCn0KCiMgUm91dGUgbW9kZSBpcyB0aGUgb25seSBkZWxpdmVyeSB3aXRoIGFuIEwzIGludGVyZmFjZSwgaGVuY2UgdGhlIG9ubHkgb25lCiMgd2l0aCBhIGZpcmV3YWxsIHpvbmUuCndyaXRlX2ZpcmV3YWxsX2NvbmZpZygpIHsKCXJlbW92ZV9tYW5hZ2VkX2ZpcmV3YWxsCglkZXRhY2hfZnJvbV96b25lcwoKCWlmIFsgIiRWTl9FTkFCTEVEIiAtZXEgMSBdICYmIFsgIiRWTl9NT0RFIiA9ICdyb3V0ZScgXTsgdGhlbgoJCXVjaSBzZXQgImZpcmV3YWxsLiRaT05FX1NFQ1RJT04iPSd6b25lJwoJCXVjaSBzZXQgImZpcmV3YWxsLiRaT05FX1NFQ1RJT04ubmFtZSI9IiRaT05FX05BTUUiCgkJdWNpIHNldCAiZmlyZXdhbGwuJFpPTkVfU0VDVElPTi5pbnB1dCI9J0RST1AnCgkJdWNpIHNldCAiZmlyZXdhbGwuJFpPTkVfU0VDVElPTi5vdXRwdXQiPSdBQ0NFUFQnCgkJdWNpIHNldCAiZmlyZXdhbGwuJFpPTkVfU0VDVElPTi5mb3J3YXJkIj0nRFJPUCcKCQl1Y2kgLXEgZGVsZXRlICJmaXJld2FsbC4kWk9ORV9TRUNUSU9OLm5ldHdvcmsiCgkJdWNpIGFkZF9saXN0ICJmaXJld2FsbC4kWk9ORV9TRUNUSU9OLm5ldHdvcmsiPSIkSUZBQ0UiCglmaQoKCXVjaSBjb21taXQgZmlyZXdhbGwgfHwgZmFpbCAiQ2Fubm90IHNhdmUgZmlyZXdhbGwgY29uZmlndXJhdGlvbiIKfQoKcmVsb2FkX3J1bnRpbWUoKSB7CglbICIkQUNUSU9OIiA9ICdib290JyBdICYmIHJldHVybiAwCgoJIyBuZXR3b3JrIGZpcnN0LCB0aGVuIGZpcmV3YWxsOiB0aGUgem9uZSBoYXMgdG8gc2VlIHRoZSBpbnRlcmZhY2Ugd2hlbiB0aGUKCSMgZmlyZXdhbGwgYnVpbGRzIGl0cyBydWxlc2V0LCBhbmQgYSByZW1vdmVkIHpvbmUgaGFzIHRvIGJlIGZsdXNoZWQgdG9vLgoJdWJ1cyBjYWxsIG5ldHdvcmsgcmVsb2FkID4vZGV2L251bGwgfHwgZmFpbCAibmV0aWZkIHJlbG9hZCBmYWlsZWQiCgkvZXRjL2luaXQuZC9maXJld2FsbCByZWxvYWQgfHwgZmFpbCAiZmlyZXdhbGw0IHJlbG9hZCBmYWlsZWQiCn0KCmxvYWRfdm9pY2VfbmV0d29yawpsb2FkX2ludGVybmV0X2luZm8KCnZhbGlkYXRlX2NvbmZpZwpjaGVja192bGFuX2NvbmZsaWN0CmlmIFsgIiRWTl9FTkFCTEVEIiAtZXEgMSBdOyB0aGVuCgljYXNlICIkVk5fTU9ERSIgaW4KCQlicmlkZ2UpIGNoZWNrX3BvcnRfY29uZmxpY3QgIiRWTl9MQU5fUE9SVCIgOzsKCQl0cnVuaykgY2hlY2tfcG9ydF9jb25mbGljdCAiJFZOX1RSVU5LX1BPUlQiIDs7Cgllc2FjCmZpCgojIEV2ZXJ5dGhpbmcgYWJvdmUgcmVhZHMgb251LSogcGFja2FnZXMgdGhyb3VnaCBjb25maWdfbG9hZCwgd2hpY2ggcmVwbGFjZXMKIyB0aGUgaW4tbWVtb3J5IGNvbmZpZ3VyYXRpb24uIFRoZSBuZXR3b3JrIHBhY2thZ2UgaGFzIHRvIGJlIGxvYWRlZCBsYXN0IGFuZAojIHN0YXkgbG9hZGVkOiBkZXRhY2hfbGFuX3BvcnQoKSB3YWxrcyBpdCB3aXRoIGNvbmZpZ19mb3JlYWNoLCBhbmQgcnVubmluZwojIHRoYXQgYWdhaW5zdCBvbnUtdm9pY2Ugb3Igb251LWlwdHYgc2lsZW50bHkgZGV0YWNoZXMgbm90aGluZy4KY29uZmlnX2xvYWQgbmV0d29yawpCUl9MQU5fU0VDVElPTj0iIgpPTERfTEFOX1BPUlQ9IiIKY29uZmlnX2ZvcmVhY2ggZmluZF9icl9sYW4gZGV2aWNlCmZpbmRfb2xkX3ZvaWNlX3BvcnQKCndyaXRlX25ldHdvcmtfY29uZmlnCndyaXRlX2ZpcmV3YWxsX2NvbmZpZwpyZWxvYWRfcnVudGltZQoKaWYgWyAiJFZOX0VOQUJMRUQiIC1lcSAxIF07IHRoZW4KCWxvZ2dlciAtdCB2b2ljZSAiVm9pY2UgbmV0d29yayBhcHBsaWVkIChtb2RlPSRWTl9NT0RFIHZsYW49JFZOX1ZMQU4pIgplbHNlCglsb2dnZXIgLXQgdm9pY2UgIlZvaWNlIG5ldHdvcmsgZGlzYWJsZWQiCmZpCgpleGl0IDAK
+#!/bin/sh
+# SPDX-License-Identifier: Apache-2.0
+#
+# voice-apply - turn the "network" section of /etc/config/onu-voice into network
+# and firewall configuration.
+#
+# The voice VLAN of the PON uplink is delivered in one of three modes:
+#
+#   route   The ONU terminates the voice VLAN itself: the 8021q subinterface
+#           ct-voice backs the logical interface "voice" (DHCP or static), which
+#           sits in a firewall zone of its own with input/forward dropped. This
+#           is the mode an ONU-side SIP/H.248 stack registers in, and it is the
+#           default for configurations written before the delivery modes
+#           existed.
+#
+#   bridge  Set-top box style, the same topology the IPTV page uses in bridge
+#           mode: one LAN port is taken out of br-lan for as long as the
+#           service is enabled and br-voice bridges it, untagged, to
+#           pon0.<vlan> (ct-voice). The bridge owns no IP address and needs no
+#           firewall zone - the dedicated port is removed from br-lan, so the
+#           only plane it carries is the voice VLAN.
+#
+#   trunk   Single cable multiplex, the same topology the IPTV page uses in
+#           trunk mode: the 8021q pair voice-up (on the PON uplink) and
+#           voice-dn (on the trunk port) is joined by br-voice-mux, and the VLAN
+#           leaves the trunk port tagged. The trunk port stays in br-lan, so a
+#           downstream router gets management and every handed-over service on
+#           one cable. The port may be the same physical port the IPTV page
+#           hands its VLANs over on: distinct VLANs get distinct 8021q pairs
+#           and bridges, which coexist on software VLAN.
+#
+# Removing the page's configuration is a single sweep over network.voice* /
+# network.luci_voice* and firewall.luci_voice*, so switching the service off or
+# changing its mode leaves no dangling reference behind.
+#
+# The IP connectivity and L2 hand-over are all this script provides. SIP
+# registration and call control are the voice service's job; the FXS port is
+# bound to SIP accounts through voice.line and voice.codec, which this script
+# never touches.
+
+. /lib/functions.sh
+
+ACTION="${1:-reload}"
+
+# Route mode keeps its historical section names. The kernel device is fixed at
+# ct-voice; route and bridge are mutually exclusive (the managed set is swept
+# before every rewrite), so bridge mode reuses the same uplink device name.
+VLAN_SECTION='luci_voice_vlan'
+VLAN_DEVICE='ct-voice'
+ZONE_SECTION='luci_voice_zone'
+ZONE_NAME='voice'
+IFACE='voice'
+LEGACY_IFACE='luci_voice'
+
+# Gateway metric of the L3 voice interface. The voice VLAN shares the operator's
+# access network with IPTV, but the internet WAN owns the default route: the
+# voice gateway is never published as the default one, and the high metric
+# keeps everything this link does install behind the WAN and behind IPTV.
+VOICE_METRIC='2100'
+
+# Bridge mode (UCI section names use underscores; kernel devices may carry
+# hyphens):
+BR_VLAN_SEC='voice_br_vlan'
+BR_DEV_SEC='voice_br_dev'
+BR_DEV='br-voice'
+BR_IFACE='voice_bridge'
+
+# Single cable mode:
+MUX_UP_SEC='voice_up'
+MUX_DN_SEC='voice_dn'
+MUX_BR_SEC='voice_mux_dev'
+MUX_UP_DEV='voice-up'
+MUX_DN_DEV='voice-dn'
+MUX_BR_DEV='br-voice-mux'
+MUX_IFACE='voice_mux'
+
+fail() {
+	logger -t voice "$*"
+	echo "voice: $*" >&2
+	exit 1
+}
+
+warn() {
+	logger -t voice "$*"
+}
+
+validate_ifname() {
+	local name="$1"
+
+	[ -n "$name" ] || return 1
+	[ "${#name}" -le 15 ] || return 1
+
+	case "$name" in
+		*[!A-Za-z0-9_.:-]*) return 1 ;;
+	esac
+
+	return 0
+}
+
+validate_vlan() {
+	local vid="$1"
+
+	case "$vid" in
+		''|*[!0-9]*) return 1 ;;
+	esac
+
+	[ "$vid" -ge 1 ] && [ "$vid" -le 4094 ]
+}
+
+load_voice_network() {
+	config_load onu-voice
+
+	config_get_bool VN_ENABLED network enabled 0
+	config_get VN_MODE network mode route
+	config_get VN_UPLINK network uplink pon0
+	config_get VN_VLAN network vlan_id
+	config_get VN_LAN_PORT network lan_port
+	config_get VN_TRUNK_PORT network trunk_port
+	config_get VN_PROTO network proto dhcp
+	config_get VN_IPADDR network ipaddr
+	config_get VN_NETMASK network netmask
+	config_get VN_GATEWAY network gateway
+	config_get VN_DNS network dns
+
+	case "$VN_MODE" in
+		route|bridge|trunk) ;;
+		*) VN_MODE='route' ;;
+	esac
+}
+
+# An interface name has to stay within 15 characters, which the kernel enforces
+# for network devices. The managed voice devices are fixed names; validate the
+# physical uplink and the selected LAN ports separately because they are
+# operator supplied.
+validate_config() {
+	[ "$VN_ENABLED" -eq 1 ] || return 0
+
+	validate_ifname "$VN_UPLINK" || fail "Invalid uplink device name"
+	[ -e "/sys/class/net/$VN_UPLINK" ] || fail "Uplink device $VN_UPLINK was not found"
+	validate_vlan "$VN_VLAN" || fail "The voice VLAN must be between 1 and 4094"
+
+	case "$VN_MODE" in
+		route)
+			case "$VN_PROTO" in
+				dhcp)
+					;;
+				static)
+					[ -n "$VN_IPADDR" ] || fail "A static voice interface needs an IP address"
+					[ -n "$VN_NETMASK" ] || fail "A static voice interface needs a subnet mask"
+					;;
+				*)
+					fail "Unknown IP assignment protocol $VN_PROTO"
+					;;
+			esac
+			;;
+		bridge)
+			validate_ifname "$VN_LAN_PORT" || fail "Invalid voice LAN port name"
+			[ -e "/sys/class/net/$VN_LAN_PORT" ] || fail "Voice LAN port $VN_LAN_PORT was not found"
+			[ "$VN_LAN_PORT" != "$VN_UPLINK" ] || fail "The voice LAN port and uplink must be different devices"
+			;;
+		trunk)
+			validate_ifname "$VN_TRUNK_PORT" || fail "Invalid voice trunk port name"
+			[ -e "/sys/class/net/$VN_TRUNK_PORT" ] || fail "Voice trunk port $VN_TRUNK_PORT was not found"
+			[ "$VN_TRUNK_PORT" != "$VN_UPLINK" ] || fail "The voice trunk port and uplink must be different devices"
+			;;
+	esac
+}
+
+# Two services must not share a VLAN: in route mode they would end up in one
+# firewall zone, and in bridge/trunk mode the same VLAN would be handed over by
+# two bridges on the same wire. The same rule is enforced in the UI, this is
+# the backstop for a hand-edited config. The IPTV trunk list is a free-form
+# list that can carry VLANs absent from the service/multicast/IGMP options, so
+# it is checked separately.
+check_vlan_conflict() {
+	[ "$VN_ENABLED" -eq 1 ] || return 0
+
+	local net_enabled net_vlan
+	local iptv_enabled iptv_vlan
+	local iptv_service_vlan iptv_multicast_vlan iptv_igmp_vlan iptv_trunk_vlans
+
+	config_load onu-internet
+	config_get_bool net_enabled config enabled 0
+	config_get net_vlan config vlan
+	if [ "$net_enabled" = '1' ] && [ "$VN_VLAN" = "$net_vlan" ]; then
+		fail "VLAN $VN_VLAN already carries the internet service"
+	fi
+
+	config_load onu-iptv
+	config_get_bool iptv_enabled config enabled 0
+	if [ "$iptv_enabled" = '1' ]; then
+		config_get iptv_service_vlan config service_vlan
+		config_get iptv_multicast_vlan config multicast_vlan
+		config_get iptv_igmp_vlan config igmp_vlan
+		config_get iptv_trunk_vlans config trunk_vlans
+
+		for iptv_vlan in "$iptv_service_vlan" "$iptv_multicast_vlan" \
+				"$iptv_igmp_vlan" $iptv_trunk_vlans; do
+			[ -n "$iptv_vlan" ] || continue
+			[ "$VN_VLAN" = "$iptv_vlan" ] &&
+				fail "VLAN $VN_VLAN already carries an IPTV service"
+		done
+	fi
+}
+
+#
+# Port exclusivity across the three PON service pages
+#
+# A dedicated bridge port (internet bridge, IPTV set-top box port, voice
+# bridge port) is taken out of br-lan and enslaved to exactly one service
+# bridge, so it can never be picked by another dedicated bridge. A trunk port
+# stays in br-lan and only carries tagged 8021q subinterfaces, which is why the
+# voice and IPTV trunks MAY share one port - but a dedicated port must not be a
+# trunk port either, or the dedicated service would leave tagged foreign VLANs
+# on a port that is supposed to carry its one plane untagged.
+check_port_conflict() {
+	[ "$VN_ENABLED" -eq 1 ] || return 0
+
+	local candidate="$1" net_mode port
+	local iptv_mode iptv_port
+
+	[ -n "$candidate" ] || return 0
+
+	config_load onu-internet
+	config_get net_mode config mode bridge
+	if [ "$(uci -q get onu-internet.config.enabled)" = '1' ] && [ "$net_mode" = 'bridge' ]; then
+		for port in $(uci -q get onu-internet.config.ports); do
+			[ "$candidate" != "$port" ] ||
+				fail "LAN port $candidate is used by the internet bridge; free it on the internet page first"
+		done
+	fi
+
+	config_load onu-iptv
+	if [ "$(uci -q get onu-iptv.config.enabled)" = '1' ]; then
+		config_get iptv_mode config mode bridge
+
+		if [ "$iptv_mode" = 'bridge' ]; then
+			config_get iptv_port config lan_port
+			[ "$candidate" != "$iptv_port" ] ||
+				fail "LAN port $candidate is dedicated to the IPTV set-top box; free it on the IPTV page first"
+		else
+			# The voice dedicated port must not become the IPTV trunk port;
+			# the voice trunk may share the IPTV trunk port on purpose.
+			[ "$VN_MODE" != 'bridge' ] || {
+				config_get iptv_port config trunk_port
+				[ "$candidate" != "$iptv_port" ] ||
+					fail "LAN port $candidate is the IPTV trunk port; pick a different voice port"
+			}
+		fi
+	fi
+}
+
+find_br_lan() {
+	local section="$1"
+	local name
+
+	config_get name "$section" name
+	[ "$name" = "br-lan" ] && BR_LAN_SECTION="$section"
+}
+
+# The internet page owns every port of its bridge in bridged mode; in the
+# dialled modes (PPPoE/DHCP) it owns no LAN port at all. check_port_conflict()
+# needs the ports and find_old_voice_port() needs to recognise them, so a port
+# the internet page took over is not handed back to br-lan behind its back.
+load_internet_info() {
+	NET_ENABLED=0
+	NET_MODE='bridge'
+	NET_PORTS=''
+
+	config_load onu-internet
+	config_get_bool NET_ENABLED config enabled 0
+	[ "$NET_ENABLED" -eq 1 ] || return 0
+	config_get NET_MODE config mode bridge
+	config_get NET_PORTS config ports
+}
+
+internet_owns_port() {
+	local port
+
+	[ -n "$1" ] || return 1
+	[ "$NET_ENABLED" -eq 1 ] || return 1
+	[ "$NET_MODE" = 'bridge' ] || return 1
+
+	for port in $NET_PORTS; do
+		[ "$1" = "$port" ] && return 0
+	done
+
+	return 1
+}
+
+find_old_voice_port() {
+	local port
+	local ports
+
+	config_get ports "$BR_DEV_SEC" ports
+	for port in $ports; do
+		case "$port" in
+			ct-voice) continue ;;
+		esac
+		internet_owns_port "$port" && continue
+		OLD_LAN_PORT="$port"
+	done
+}
+
+detach_from_device() {
+	local section="$1"
+	local ports port
+
+	config_get ports "$section" ports
+	for port in $ports; do
+		[ "$port" = "$VN_LAN_PORT" ] && uci -q del_list "network.$section.ports=$port"
+	done
+}
+
+detach_from_interface() {
+	local section="$1"
+	local device ifnames ifname
+
+	case "$section" in
+		voice|voice_*|luci_voice*|br_iptv*|mux_iptv_*|\
+		luci_iptv*|luci_wanup*) return ;;
+	esac
+
+	config_get device "$section" device
+	config_get ifnames "$section" ifname
+	[ "$device" = "$VN_LAN_PORT" ] && uci -q delete "network.$section.device"
+
+	for ifname in $ifnames; do
+		[ "$ifname" = "$VN_LAN_PORT" ] || continue
+		uci -q del_list "network.$section.ifname=$ifname" || uci -q delete "network.$section.ifname"
+	done
+}
+
+detach_from_bridge_vlan() {
+	local section="$1"
+	local ports token base
+
+	config_get ports "$section" ports
+	for token in $ports; do
+		base="${token%%:*}"
+		[ "$base" = "$VN_LAN_PORT" ] && uci -q del_list "network.$section.ports=$token"
+	done
+}
+
+# Bridge mode owns a LAN port; trunk mode hands VLANs over tagged and never
+# takes a port out of br-lan.
+detach_lan_port() {
+	[ "$VN_MODE" = 'bridge' ] || return 0
+	[ -n "$VN_LAN_PORT" ] || return 0
+
+	config_foreach detach_from_device device
+	config_foreach detach_from_interface interface
+	config_foreach detach_from_bridge_vlan bridge-vlan
+	remove_selected_port_from_br_lan
+}
+
+#
+# Managed sections
+#
+# Everything this page writes lives under network.voice* / network.luci_voice*
+# and firewall.luci_voice*, which makes removing it one sweep and leaves the
+# rest of the configuration untouched.
+#
+remove_managed_network() {
+	local section
+
+	for section in $(uci -q show network 2>/dev/null | \
+		sed -n \
+		-e 's/^network\.\(voice[A-Za-z0-9_]*\)=.*/\1/p' \
+		-e 's/^network\.\(luci_voice[A-Za-z0-9_]*\)=.*/\1/p' | sort -u); do
+		uci -q delete "network.$section"
+	done
+}
+
+remove_managed_firewall() {
+	local section
+
+	for section in $(uci -q show firewall 2>/dev/null | \
+		sed -n 's/^firewall\.\(luci_voice[A-Za-z0-9_]*\)=.*/\1/p' | sort -u); do
+		uci -q delete "firewall.$section"
+	done
+}
+
+# An interface must not be a member of any other zone; a device can sit in one
+# zone only and a stale reference would make fw4 refuse the configuration.
+detach_from_zones() {
+	local zone current
+
+	for zone in $(uci -q show firewall 2>/dev/null | \
+		sed -n 's/^firewall\.\([^.=]*\)=zone$/\1/p'); do
+		[ "$zone" = "$ZONE_SECTION" ] && continue
+		for current in $(uci -q get "firewall.$zone.network"); do
+			case "$current" in
+				"$IFACE"|"$LEGACY_IFACE"|"$BR_IFACE"|"$MUX_IFACE")
+					uci -q del_list "firewall.$zone.network=$current"
+					;;
+			esac
+		done
+	done
+}
+
+restore_old_lan_port() {
+	[ -n "$OLD_LAN_PORT" ] || return
+	[ -n "$BR_LAN_SECTION" ] || return
+
+	uci -q del_list "network.$BR_LAN_SECTION.ports=$OLD_LAN_PORT"
+	uci -q add_list "network.$BR_LAN_SECTION.ports=$OLD_LAN_PORT"
+}
+
+remove_selected_port_from_br_lan() {
+	[ -n "$BR_LAN_SECTION" ] || return
+	uci -q del_list "network.$BR_LAN_SECTION.ports=$VN_LAN_PORT"
+}
+
+#
+# Topology
+#
+write_route_network() {
+	# The 8021q subinterface. "ifname" is the physical PON device, "name" the
+	# device handed to netifd; the two differ on purpose.
+	uci set "network.$VLAN_SECTION"='device'
+	uci set "network.$VLAN_SECTION.type"='8021q'
+	uci set "network.$VLAN_SECTION.ifname"="$VN_UPLINK"
+	uci set "network.$VLAN_SECTION.vid"="$VN_VLAN"
+	uci set "network.$VLAN_SECTION.name"="$VLAN_DEVICE"
+
+	# The interface the voice service binds to. It never joins br-lan.
+	uci set network.$IFACE='interface'
+	uci set network.$IFACE.device="$VLAN_DEVICE"
+	uci set network.$IFACE.proto="$VN_PROTO"
+	uci set network.$IFACE.auto='1'
+	uci set network.$IFACE.force_link='1'
+	uci set network.$IFACE.delegate='0'
+	uci set network.$IFACE.luci_voice='1'
+	# The voice gateway reaches the softswitch, it does not route the customer:
+	# defaultroute=0 keeps a DHCP-supplied (or manually entered) gateway out of
+	# the default route, and the high metric loses against the WAN even where
+	# the protocol still installs one.
+	uci set network.$IFACE.defaultroute='0'
+	uci set network.$IFACE.metric="$VOICE_METRIC"
+
+	if [ "$VN_PROTO" = 'static' ]; then
+		uci set network.$IFACE.ipaddr="$VN_IPADDR"
+		uci set network.$IFACE.netmask="$VN_NETMASK"
+
+		if [ -n "$VN_GATEWAY" ]; then
+			uci set network.$IFACE.gateway="$VN_GATEWAY"
+		else
+			uci -q delete network.$IFACE.gateway
+		fi
+
+		if [ -n "$VN_DNS" ]; then
+			uci set network.$IFACE.dns="$VN_DNS"
+		else
+			uci -q delete network.$IFACE.dns
+		fi
+	else
+		uci -q delete network.$IFACE.ipaddr
+		uci -q delete network.$IFACE.netmask
+		uci -q delete network.$IFACE.gateway
+		uci -q delete network.$IFACE.dns
+	fi
+}
+
+write_bridge_network() {
+	uci set "network.$BR_VLAN_SEC"='device'
+	uci set "network.$BR_VLAN_SEC.type"='8021q'
+	uci set "network.$BR_VLAN_SEC.ifname"="$VN_UPLINK"
+	uci set "network.$BR_VLAN_SEC.vid"="$VN_VLAN"
+	uci set "network.$BR_VLAN_SEC.name"="$VLAN_DEVICE"
+
+	uci set "network.$BR_DEV_SEC"='device'
+	uci set "network.$BR_DEV_SEC.type"='bridge'
+	uci set "network.$BR_DEV_SEC.name"="$BR_DEV"
+	uci set "network.$BR_DEV_SEC.stp"='0'
+	# Voice is unicast SIP/RTP; no multicast snooping or querier is needed.
+	uci set "network.$BR_DEV_SEC.igmp_snooping"='0'
+	uci set "network.$BR_DEV_SEC.multicast_querier"='0'
+	uci add_list "network.$BR_DEV_SEC.ports"="$VN_LAN_PORT"
+	uci add_list "network.$BR_DEV_SEC.ports"="$VLAN_DEVICE"
+
+	# Unaddressed: pure L2 hand-over, no firewall zone (the dedicated port left
+	# br-lan, so the bridge is the only plane on it).
+	uci set "network.$BR_IFACE"='interface'
+	uci set "network.$BR_IFACE.device"="$BR_DEV"
+	uci set "network.$BR_IFACE.proto"='none'
+	uci set "network.$BR_IFACE.auto"='1'
+	uci set "network.$BR_IFACE.delegate"='0'
+}
+
+write_trunk_network() {
+	uci set "network.$MUX_UP_SEC"='device'
+	uci set "network.$MUX_UP_SEC.type"='8021q'
+	uci set "network.$MUX_UP_SEC.ifname"="$VN_UPLINK"
+	uci set "network.$MUX_UP_SEC.vid"="$VN_VLAN"
+	uci set "network.$MUX_UP_SEC.name"="$MUX_UP_DEV"
+
+	uci set "network.$MUX_DN_SEC"='device'
+	uci set "network.$MUX_DN_SEC.type"='8021q'
+	uci set "network.$MUX_DN_SEC.ifname"="$VN_TRUNK_PORT"
+	uci set "network.$MUX_DN_SEC.vid"="$VN_VLAN"
+	uci set "network.$MUX_DN_SEC.name"="$MUX_DN_DEV"
+
+	uci set "network.$MUX_BR_SEC"='device'
+	uci set "network.$MUX_BR_SEC.type"='bridge'
+	uci set "network.$MUX_BR_SEC.name"="$MUX_BR_DEV"
+	uci set "network.$MUX_BR_SEC.stp"='0'
+	uci set "network.$MUX_BR_SEC.igmp_snooping"='0'
+	uci set "network.$MUX_BR_SEC.multicast_querier"='0'
+	uci add_list "network.$MUX_BR_SEC.ports"="$MUX_UP_DEV"
+	uci add_list "network.$MUX_BR_SEC.ports"="$MUX_DN_DEV"
+
+	uci set "network.$MUX_IFACE"='interface'
+	uci set "network.$MUX_IFACE.device"="$MUX_BR_DEV"
+	uci set "network.$MUX_IFACE.proto"='none'
+	uci set "network.$MUX_IFACE.auto"='1'
+	uci set "network.$MUX_IFACE.delegate"='0'
+}
+
+write_network_config() {
+	restore_old_lan_port
+	remove_managed_network
+
+	if [ "$VN_ENABLED" -eq 1 ]; then
+		# Only bridge mode needs exclusive netifd ownership of a LAN port.
+		detach_lan_port
+
+		case "$VN_MODE" in
+			route) write_route_network ;;
+			bridge) write_bridge_network ;;
+			trunk) write_trunk_network ;;
+		esac
+	fi
+
+	uci commit network || fail "Cannot save network configuration"
+}
+
+# Route mode is the only delivery with an L3 interface, hence the only one
+# with a firewall zone.
+write_firewall_config() {
+	remove_managed_firewall
+	detach_from_zones
+
+	if [ "$VN_ENABLED" -eq 1 ] && [ "$VN_MODE" = 'route' ]; then
+		uci set "firewall.$ZONE_SECTION"='zone'
+		uci set "firewall.$ZONE_SECTION.name"="$ZONE_NAME"
+		uci set "firewall.$ZONE_SECTION.input"='DROP'
+		uci set "firewall.$ZONE_SECTION.output"='ACCEPT'
+		uci set "firewall.$ZONE_SECTION.forward"='DROP'
+		uci -q delete "firewall.$ZONE_SECTION.network"
+		uci add_list "firewall.$ZONE_SECTION.network"="$IFACE"
+	fi
+
+	uci commit firewall || fail "Cannot save firewall configuration"
+}
+
+reload_runtime() {
+	[ "$ACTION" = 'boot' ] && return 0
+
+	# network first, then firewall: the zone has to see the interface when the
+	# firewall builds its ruleset, and a removed zone has to be flushed too.
+	ubus call network reload >/dev/null || fail "netifd reload failed"
+	/etc/init.d/firewall reload || fail "firewall4 reload failed"
+}
+
+load_voice_network
+load_internet_info
+
+validate_config
+check_vlan_conflict
+if [ "$VN_ENABLED" -eq 1 ]; then
+	case "$VN_MODE" in
+		bridge) check_port_conflict "$VN_LAN_PORT" ;;
+		trunk) check_port_conflict "$VN_TRUNK_PORT" ;;
+	esac
+fi
+
+# Everything above reads onu-* packages through config_load, which replaces
+# the in-memory configuration. The network package has to be loaded last and
+# stay loaded: detach_lan_port() walks it with config_foreach, and running
+# that against onu-voice or onu-iptv silently detaches nothing.
+config_load network
+BR_LAN_SECTION=""
+OLD_LAN_PORT=""
+config_foreach find_br_lan device
+find_old_voice_port
+
+write_network_config
+write_firewall_config
+reload_runtime
+
+if [ "$VN_ENABLED" -eq 1 ]; then
+	logger -t voice "Voice network applied (mode=$VN_MODE vlan=$VN_VLAN)"
+else
+	logger -t voice "Voice network disabled"
+fi
+
+exit 0

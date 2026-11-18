@@ -1,1 +1,99 @@
-IyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogQXBhY2hlLTIuMAoKaW5jbHVkZSAkKFRPUERJUikvcnVsZXMubWsKCiMgUEtHX05BTUUgY29tZXMgZnJvbSB0aGUgZGlyZWN0b3J5IG5hbWU6IGx1Y2kubWsgc2V0cwojICAgTFVDSV9OQU1FPSQobm90ZGlyICR7Q1VSRElSfSkgLT4gbHVjaS1hcHAtb251LCBQS0dfTkFNRT0kKExVQ0lfTkFNRSkKIyBzbyBub3RoaW5nIGhlcmUgbmVlZHMgcmVuYW1pbmcgYWZ0ZXIgdGhlIGx1Y2ktYXBwLXBvbiAtPiBsdWNpLWFwcC1vbnUgcmVuYW1lLgojIFRoZSBpMThuIHBhY2thZ2UgZm9sbG93cyBMVUNJX0JBU0VOQU1FLCBpLmUuIGx1Y2ktaTE4bi1vbnUtPGxhbmc+LgpMVUNJX1RJVExFOj1MdUNJIE9OVSBjb25maWd1cmF0aW9uCiMgZmlyZXdhbGw0IGFuZCBrbW9kLW5mdC1icmlkZ2UgYXJlIHJlcXVpcmVkIGJ5IHRoZSBJUFRWIGJyaWRnZTogaXB0di1hcHBseQojIHdyaXRlcyAvZXRjL2lwdHYubmZ0IGFuZCByZWxvYWRzIHRoZSBmaXJld2FsbCB3aGVuZXZlciB0aGUgYnJpZGdlIGNoYW5nZXMuCiMgb21jcHJveHkgYmFja3MgdGhlIElHTVAvTUxEIHByb3h5IHN3aXRjaGVzOyBpdCBwcm94aWVzIElHTVB2MyBhbmQgTUxEdjIgYXMgYQojIHNpbmdsZSBpbnN0YW5jZSBhbmQgcmVsaWVzIG9uIGtlcm5lbCBtdWx0aWNhc3Qgcm91dGluZyAoQ09ORklHX0lQX01ST1VURSAvCiMgQ09ORklHX0lQVjZfTVJPVVRFKS4gRHJvcCBpdCBmcm9tIExVQ0lfREVQRU5EUyBpZiB0aGUgdGFyZ2V0IGhhcyBubwojIG11bHRpY2FzdCByb3V0aW5nIHN1cHBvcnQuCiMgcnRwMmh0dHBkIGJhY2tzIHRoZSBtdWx0aWNhc3QtdG8tdW5pY2FzdCB0YWIuIEl0IGlzIGRlbGliZXJhdGVseSBOT1QgYSBoYXJkCiMgZGVwZW5kZW5jeTogaXB0di1hcHBseSBvbmx5IHdyaXRlcyB0aGUgdGhyZWUgZmllbGRzIGl0IG93bnMgYW5kIGxvZ3MgYQojIHdhcm5pbmcgd2hlbiB0aGUgcGFja2FnZSBpcyBtaXNzaW5nLCBzbyB0aGUgcmVsYXkgdGFiIGRlZ3JhZGVzIHF1aWV0bHkuCiMgQWRkICtydHAyaHR0cGQgaGVyZSBpZiB0aGUgdGFyZ2V0IGFsd2F5cyBzaGlwcyB0aGUgcmVsYXkuCiMgVGhlIGludGVybmV0IHBhZ2UgbmVlZHMgcHBwZCBmb3IgdGhlIGRpYWxsaW5nIG1vZGUsIHRoZSBicmlkZ2UgZmFtaWx5IG9mCiMgbmZ0YWJsZXMgZm9yIGl0cyBFdGhlclR5cGUgZmlsdGVyIGFuZCB0aGUgbmV0ZmlsdGVyIGZsb3d0YWJsZSBmb3IgaGFyZHdhcmUKIyBvZmZsb2FkaW5nOiB3aXRob3V0IGttb2QtbmZ0LW9mZmxvYWQgdGhlIFBQRSBuZXZlciBzZWVzIGEgZmxvdy4KIwojIGttb2QtbmYtY29ubnRyYWNrLWJyaWRnZSBpcyB0aGUgYnJpZGdlLW9mZmxvYWQgY29tcGFuaW9uOiB0aGUgYnJpZGdlIGZhbWlseQojIGZsb3d0YWJsZSBvbmx5IHByb2R1Y2VzIGEgaGFyZHdhcmUgZW50cnkgd2hlbiB0aGUgYnJpZGdlIGNvbm50cmFjayBoYXMgcGFyc2VkCiMgdGhlIGZyYW1lLCBhbmQgaXQgb25seSBwYXJzZXMgYW4gaW5uZXIgUFBQb0UgLyA4MDIuMXEgZW5jYXBzdWxhdGlvbiB3aGVuIHRoZQojIGZsb3cgc2l0cyBpbiBhIG5vbi1kZWZhdWx0IGNvbm50cmFjayB6b25lLiBpbnRlcm5ldC1hcHBseSBzZXRzIHRoYXQgem9uZSBvbgojIGV2ZXJ5IGZyYW1lIGNyb3NzaW5nIGJyLXdhbnVwOyB3aXRob3V0IHRoaXMgcGFja2FnZSB0aGUgYG5mdCAtY2AgcHJvYmUgZmFpbHMKIyBhbmQgdGhlIGJyaWRnZSBzaWxlbnRseSBzdGF5cyBpbiB0aGUgc29mdHdhcmUgcGF0aC4KTFVDSV9ERVBFTkRTOj0rbHVjaS1iYXNlICthaXJvaGEtcG9uY3RsICthaXJvaGEtcG9uZCBcCgkrbXRkICt1YmktdXRpbHMgK25hbmQtdXRpbHMgK2pzaG4gK2pzb25maWx0ZXIgXAoJK2ZpcmV3YWxsNCAra21vZC1uZnQtYnJpZGdlICtrbW9kLW5mdC1vZmZsb2FkICtrbW9kLW5mLWNvbm50cmFjay1icmlkZ2UgXAoJK29tY3Byb3h5ICtwcHAtbW9kLXBwcG9lClBLR19WRVJTSU9OOj0wLjEuMAojIDEwOiB0aGUgc2hpcHBlZCB2b2ljZSBjb25maWd1cmF0aW9uIGRyb3BzIHRoZSB0d28gbGluZSBzZWN0aW9ucyAtIHRoZSBib2FyZCBoYXMKIyBhIHNpbmdsZSBGWFMgcG9ydCwgc28gaXRzIHBhcmFtZXRlcnMgbW92ZWQgaW50byB0aGUgdm9pY2UgcHJvZmlsZS4KIyAxMTogb251LXZvaWNlLmNvbmZpZy5lbmFibGVkIGlzIGdvbmUuIE5vdGhpbmcgZXZlciByZWFkIGl0LCBzbyB0aGUgcGFnZSBub3cKIyBoYXMgb25lIHN3aXRjaCBvbmx5OiBvbnUtdm9pY2UubmV0d29yay5lbmFibGVkLCB0aGUgZmxhZyB2b2ljZS1hcHBseSByZWFkcy4KIyAxMjogcmVnaXN0ZXIgdGhlIHRvcC1sZXZlbCBPTlUgbWVudSBpbmRlcGVuZGVudGx5IG9mIFVDSSBhbmQgQUNMIHN0YXRlLgojIDEzOiBrZWVwIGV2ZXJ5IE9OVSBzdWJtZW51IHZpc2libGU7IHBhZ2UgY29kZSByZXBvcnRzIG1pc3NpbmcgY29uZmlndXJhdGlvbgojIG9yIGJhY2tlbmQgaGVscGVycyBpbnN0ZWFkIG9mIGhpZGluZyB0aGUgbWVudSBlbnRyeS4gS2VlcCB0aGUgcGFyZW50IGFjdGlvbgojIGFzIGZpcnN0Y2hpbGQgc28gdGhlbWVzIHJlbmRlciBpdCBhcyBhbiBleHBhbmRhYmxlIG1lbnUuCiMgMTQ6IGhpZGUgdGhlIGZpeGVkIGludGVybmV0IHVwbGluayBmcm9tIEx1Q0kgd2hpbGUga2VlcGluZyB0aGUgVUNJIGFuZCBhcHBseQojIGRlZmF1bHRzIGF0IHBvbjAuCiMgMTU6IG9taXQgc2luZ2xlLXBvcnQgbGluZSwgaW50ZXJmYWNlIGFuZCBwcm90b2NvbCBzZWN0aW9uIGlkZW50aWZpZXJzIGZyb20KIyB0aGUgc3RhdHVzIHBhZ2Ugd2hpbGUgcmV0YWluaW5nIHRoZW0gaW50ZXJuYWxseSBmb3IgYmFja2VuZCBkYXRhIG1hdGNoaW5nLgojIDE2OiBjb21wbGV0ZSBTaW1wbGlmaWVkIENoaW5lc2UgdHJhbnNsYXRpb25zIGZvciB0aGUgbGF0ZXN0IHN0YXR1cywKIyBkaWFnbm9zdGljcyBhbmQgaW50ZXJuZXQgbGFiZWxzLgojIDE3OiB1c2UgYW4gT05VLXNwZWNpZmljIHRyYW5zbGF0aW9uIGtleSBmb3IgdGhlIEF1dGhlbnRpY2F0aW9uIG1lbnUgc28gaXQKIyBpcyBub3Qgb3ZlcnJpZGRlbiBieSB0aGUgZ2VuZXJpYyBMdUNJIHRyYW5zbGF0aW9uLgojIDE4OiBwcmVmaXggZXZlcnkgc3VibWVudSB0cmFuc2xhdGlvbiBrZXkgd2l0aCBPTlUgdG8gYXZvaWQgY29sbGlzaW9ucyB3aXRoCiMgZ2VuZXJpYyBtZW51IGxhYmVscyBzdXBwbGllZCBieSBvdGhlciBMdUNJIGFwcGxpY2F0aW9ucy4KIyAxOTogbmFtZXNwYWNlIHRoZSBpbnRlcm5ldCwgSVBUViBhbmQgdm9pY2UgVUNJIHBhY2thZ2VzIGFzIG9udS0qIHRvIGF2b2lkCiMgY29sbGlzaW9ucyB3aXRoIGNvbmZpZ3VyYXRpb25zIG93bmVkIGJ5IG90aGVyIGFwcGxpY2F0aW9ucy4KIyAyMDogaGlkZSBwYXJrZWQgc3RvY2sgV0FOIHNlY3Rpb25zLCByZXVzZSBhbm9ueW1vdXMgV0FOIHpvbmVzIGFuZCBmb3JjZS1saW5rCiMgdGhlIGdlbmVyYXRlZCBQT04gV0FOIHNvIG5ldGlmZCBkb2VzIG5vdCByZWplY3QgaXQgYmVmb3JlIGNhcnJpZXIgYXBwZWFycy4KIyAyMTogYWxpZ24gdm9pY2Ugd2l0aCB0aGUgbWFuYWdlZCBsdWNpXyogLyBjdC0qIG5ldHdvcmsgdG9wb2xvZ3kgYW5kIG1pZ3JhdGUKIyB0aGUgbGVnYWN5IHZvaWNlX2RldmljZSBzZWN0aW9uIG9uIHRoZSBuZXh0IGFwcGx5LgojIDIyOiBhZGQgdm9pY2UgYnJpZGdlL3RydW5rIGRlbGl2ZXJ5IG1vZGVzLCBwb3J0L3ZsYW4gY29uZmxpY3QgZ3VhcmRzCiMgYWNyb3NzIHZvaWNlL2lwdHYvaW50ZXJuZXQsIGFuZCBjYXJkIHZpc2liaWxpdHkgdGllZCB0byBtb2RlLgojIDIzOiBmaXggYm9hcmQgaWRlbnRpdHkgc2F2ZSBvbiBjdXJyZW50IEx1Q0kgKGNhcHR1cmUgYmVmb3JlIHNhdmUoKQojIHJlLXJlbmRlcnMpLCByZWZyZXNoIGZsYXNoIHZhbHVlcyBpbiBwbGFjZSwgZ2F0ZSB0aGUgVUNJIGFwcGx5CiMgY291bnRkb3duIG9uIHJlYWwgc3RhZ2VkIGNoYW5nZXMsIGFuZCBkZWZhdWx0IHRoZSBPTUNJIHZlbmRvciBJRCB0bwojIHRoZSBzZXJpYWwgbnVtYmVyJ3MgZmlyc3QgZm91ciBjaGFyYWN0ZXJzLgojIDI0OiBVTlRBRyB0cmFuc3BhcmVudCBtb2RlIGlubGluZXMgdGhlIHJhdyB1cGxpbmsgaW50byBici13YW51cCBpbnN0ZWFkIG9mCiMgbmVzdGluZyBhIGN0LXdhbnVwIGJyaWRnZSBpbiBpdCAodGhlIEFpcm9oYSBrZXJuZWwgcmVqZWN0cyBicmlkZ2Utb24tYnJpZGdlKTsKIyB0aGUgSW50ZXJuZXQgVkxBTiByb3cgaXMgaGlkZGVuIHJhdGhlciB0aGFuIGRpc2FibGVkIGluIFVOVEFHLCBiZWNhdXNlIGEKIyBkaXNhYmxlZCByZXF1aXJlZCBmaWVsZCBzdGlsbCBmYWlsZWQgdmFsaWRhdGlvbjsgYnJpZGdlIHBvcnRzIGFyZSBoYW5kZWQgYmFjawojIHRvIGJyLWxhbiB3aGVuIGJyaWRnZSBtb2RlIGlzIGxlZnQsIHNvIHRoZXkgYXJlIG5vdCBvcnBoYW5lZDsgU2ltcGxpZmllZAojIENoaW5lc2UgdHJhbnNsYXRpb25zIGNvdmVyIHRoZSB0cmFuc3BhcmVudCBtb2RlIGxhYmVscy4KIyAyNTogY2xvc2UgdGhlIHJlbWFpbmluZyBnYXBzIGluIExBTiBwb3J0IG93bmVyc2hpcC4gaXB0di1hcHBseSBub3cgcmVmdXNlcwojIHBvcnRzIHRoZSBpbnRlcm5ldCBicmlkZ2Ugb3ducyAoaXRzIGRldGFjaCBzd2VlcCB3b3VsZCBvdGhlcndpc2Ugc3RlYWwgdGhlbQojIGZyb20gYnItd2FudXApLCBpbnRlcm5ldC1hcHBseSBhbHNvIHJlZnVzZXMgdGhlIElQVFYgdHJ1bmsgcG9ydCwgYW5kCiMgdm9pY2UtYXBwbHkgbG9hZHMgbmV0d29yayBsYXN0IHNvIGRldGFjaF9sYW5fcG9ydCgpIG5vIGxvbmdlciB3YWxrcyB0aGUKIyB3cm9uZyBVQ0kgcGFja2FnZSBhbmQgc2lsZW50bHkgZGV0YWNoZXMgbm90aGluZy4gRXZlcnkgc2NyaXB0IHNraXBzIHBvcnRzCiMgYW5vdGhlciBzZXJ2aWNlIHN0aWxsIGJyaWRnZXMgd2hlbiBoYW5kaW5nIHBvcnRzIGJhY2sgdG8gYnItbGFuLCBhbmQgYWxsCiMgdGhyZWUgcGFnZXMgZHJvcCB0YWtlbiBwb3J0cyBmcm9tIHRoZWlyIHBpY2tlcnMuCiMgMjY6IHRoZSBJUFRWIGFuZCB2b2ljZSBsaW5rcyBubyBsb25nZXIgY29tcGV0ZSB3aXRoIHRoZSBpbnRlcm5ldCBXQU4gZm9yIHRoZQojIGRlZmF1bHQgcm91dGU6IGJvdGggd3JpdGUgZGVmYXVsdHJvdXRlPTAgYW5kIGEgaGlnaCBnYXRld2F5IG1ldHJpYyAoSVBUViAyMDAwLAojIHZvaWNlIDIxMDApLiBUaGUgSVBUViBwYWdlIGRyb3BzIGl0cyB0YWJzIGFuZCBpdHMgbXVsdGljYXN0LXRvLXVuaWNhc3QgdGFiOgojIHRoZSBicmlkZ2Ugcm93cywgdGhlbiB0aGUgSUdNUC9NTEQgc3dpdGNoZXMsIG5vdyBzaXQgaW4gb25lIGZsYXQgY2FyZCwgYW5kIHRoZQojIHJlbGF5IGlzIGRyaXZlbiBieSBydHAyaHR0cGQncyBvd24gcGFnZS4KUEtHX1JFTEVBU0U6PTI2CgpQS0dfTElDRU5TRTo9QXBhY2hlLTIuMCBHUEwtMi4wLW9ubHkKCiMgU2NyaXB0cyB1bmRlciByb290L3Vzci9saWJleGVjIGFuZCByb290L2V0Yy9pbml0LmQgbXVzdCBrZWVwIHRoZWlyIGV4ZWN1dGFibGUKIyBiaXQgLSAwNzU1IGluIGdpdC4gbHVjaS5tayBjb3BpZXMgcm9vdC8gd2l0aCAkKENQKSwgd2hpY2ggcHJlc2VydmVzIHRoZSBtb2RlLAojIHNvIHRoZSBtb2RlIHJlY29yZGVkIGluIGdpdCBpcyB3aGF0IGVuZHMgdXAgb24gdGhlIHRhcmdldCAoMDc3NSB0aGVyZSwgZnJvbQojIHRoZSBidWlsZCB1bWFzaykuIE5ldmVyIG1vdmUgdGhlc2UgdG8gSU5TVEFMTF9EQVRBOiBhIG5vbi1leGVjdXRhYmxlCiMgaW50ZXJuZXQtYXBwbHkgc2lsZW50bHkgZGlzYWJsZXMgdGhlIHdob2xlIGludGVybmV0IHBhZ2UsIGFuZCB0aGUgc2FtZSBhcHBsaWVzCiMgdG8gaXB0di1hcHBseSAvIHZvaWNlLWFwcGx5LiBJZiB0aGUgc291cmNlcyBhcmUgZXZlciBzaGlwcGVkIHRocm91Z2ggdGhlIGltYWdlCiMgZmlsZXMvIG92ZXJsYXkgaW5zdGVhZCBvZiB0aGUgcGFja2FnZSwgYWRkIGFuIGV4cGxpY2l0IGNobW9kIDA3NTUgaW4gdGhlIGJ1aWxkCiMgc3RlcCAtIGEgcGxhaW4gc2hlbGwgcmVkaXJlY3QgdGhlcmUgY3JlYXRlcyB0aGUgZmlsZSB3aXRoIHRoZSB1bWFzayBhbmQgZHJvcHMKIyB0aGUgeCBiaXQgKDA2NDQvMDY2NCksIHdoaWNoIGlzIGV4YWN0bHkgaG93IGl0IGNhbiBiZSBsb3N0LgoKaW5jbHVkZSAkKFRPUERJUikvZmVlZHMvbHVjaS9sdWNpLm1rCgojIGNhbGwgQnVpbGRQYWNrYWdlOiBmZWVkIHNjYW5uZXIgbWFya2VyOyBsdWNpLm1rIGdlbmVyYXRlcyB0aGUgcGFja2FnZSBydWxlcy4K
+# SPDX-License-Identifier: Apache-2.0
+
+include $(TOPDIR)/rules.mk
+
+# PKG_NAME comes from the directory name: luci.mk sets
+#   LUCI_NAME=$(notdir ${CURDIR}) -> luci-app-onu, PKG_NAME=$(LUCI_NAME)
+# so nothing here needs renaming after the luci-app-pon -> luci-app-onu rename.
+# The i18n package follows LUCI_BASENAME, i.e. luci-i18n-onu-<lang>.
+LUCI_TITLE:=LuCI ONU configuration
+# firewall4 and kmod-nft-bridge are required by the IPTV bridge: iptv-apply
+# writes /etc/iptv.nft and reloads the firewall whenever the bridge changes.
+# omcproxy backs the IGMP/MLD proxy switches; it proxies IGMPv3 and MLDv2 as a
+# single instance and relies on kernel multicast routing (CONFIG_IP_MROUTE /
+# CONFIG_IPV6_MROUTE). Drop it from LUCI_DEPENDS if the target has no
+# multicast routing support.
+# rtp2httpd backs the multicast-to-unicast tab. It is deliberately NOT a hard
+# dependency: iptv-apply only writes the three fields it owns and logs a
+# warning when the package is missing, so the relay tab degrades quietly.
+# Add +rtp2httpd here if the target always ships the relay.
+# The internet page needs pppd for the dialling mode, the bridge family of
+# nftables for its EtherType filter and the netfilter flowtable for hardware
+# offloading: without kmod-nft-offload the PPE never sees a flow.
+#
+# kmod-nf-conntrack-bridge is the bridge-offload companion: the bridge family
+# flowtable only produces a hardware entry when the bridge conntrack has parsed
+# the frame, and it only parses an inner PPPoE / 802.1q encapsulation when the
+# flow sits in a non-default conntrack zone. internet-apply sets that zone on
+# every frame crossing br-wanup; without this package the `nft -c` probe fails
+# and the bridge silently stays in the software path.
+LUCI_DEPENDS:=+luci-base +airoha-ponctl +airoha-pond \
+	+mtd +ubi-utils +nand-utils +jshn +jsonfilter \
+	+firewall4 +kmod-nft-bridge +kmod-nft-offload +kmod-nf-conntrack-bridge \
+	+omcproxy +ppp-mod-pppoe
+PKG_VERSION:=0.1.0
+# 10: the shipped voice configuration drops the two line sections - the board has
+# a single FXS port, so its parameters moved into the voice profile.
+# 11: onu-voice.config.enabled is gone. Nothing ever read it, so the page now
+# has one switch only: onu-voice.network.enabled, the flag voice-apply reads.
+# 12: register the top-level ONU menu independently of UCI and ACL state.
+# 13: keep every ONU submenu visible; page code reports missing configuration
+# or backend helpers instead of hiding the menu entry. Keep the parent action
+# as firstchild so themes render it as an expandable menu.
+# 14: hide the fixed internet uplink from LuCI while keeping the UCI and apply
+# defaults at pon0.
+# 15: omit single-port line, interface and protocol section identifiers from
+# the status page while retaining them internally for backend data matching.
+# 16: complete Simplified Chinese translations for the latest status,
+# diagnostics and internet labels.
+# 17: use an ONU-specific translation key for the Authentication menu so it
+# is not overridden by the generic LuCI translation.
+# 18: prefix every submenu translation key with ONU to avoid collisions with
+# generic menu labels supplied by other LuCI applications.
+# 19: namespace the internet, IPTV and voice UCI packages as onu-* to avoid
+# collisions with configurations owned by other applications.
+# 20: hide parked stock WAN sections, reuse anonymous WAN zones and force-link
+# the generated PON WAN so netifd does not reject it before carrier appears.
+# 21: align voice with the managed luci_* / ct-* network topology and migrate
+# the legacy voice_device section on the next apply.
+# 22: add voice bridge/trunk delivery modes, port/vlan conflict guards
+# across voice/iptv/internet, and card visibility tied to mode.
+# 23: fix board identity save on current LuCI (capture before save()
+# re-renders), refresh flash values in place, gate the UCI apply
+# countdown on real staged changes, and default the OMCI vendor ID to
+# the serial number's first four characters.
+# 24: UNTAG transparent mode inlines the raw uplink into br-wanup instead of
+# nesting a ct-wanup bridge in it (the Airoha kernel rejects bridge-on-bridge);
+# the Internet VLAN row is hidden rather than disabled in UNTAG, because a
+# disabled required field still failed validation; bridge ports are handed back
+# to br-lan when bridge mode is left, so they are not orphaned; Simplified
+# Chinese translations cover the transparent mode labels.
+# 25: close the remaining gaps in LAN port ownership. iptv-apply now refuses
+# ports the internet bridge owns (its detach sweep would otherwise steal them
+# from br-wanup), internet-apply also refuses the IPTV trunk port, and
+# voice-apply loads network last so detach_lan_port() no longer walks the
+# wrong UCI package and silently detaches nothing. Every script skips ports
+# another service still bridges when handing ports back to br-lan, and all
+# three pages drop taken ports from their pickers.
+# 26: the IPTV and voice links no longer compete with the internet WAN for the
+# default route: both write defaultroute=0 and a high gateway metric (IPTV 2000,
+# voice 2100). The IPTV page drops its tabs and its multicast-to-unicast tab:
+# the bridge rows, then the IGMP/MLD switches, now sit in one flat card, and the
+# relay is driven by rtp2httpd's own page.
+PKG_RELEASE:=26
+
+PKG_LICENSE:=Apache-2.0 GPL-2.0-only
+
+# Scripts under root/usr/libexec and root/etc/init.d must keep their executable
+# bit - 0755 in git. luci.mk copies root/ with $(CP), which preserves the mode,
+# so the mode recorded in git is what ends up on the target (0775 there, from
+# the build umask). Never move these to INSTALL_DATA: a non-executable
+# internet-apply silently disables the whole internet page, and the same applies
+# to iptv-apply / voice-apply. If the sources are ever shipped through the image
+# files/ overlay instead of the package, add an explicit chmod 0755 in the build
+# step - a plain shell redirect there creates the file with the umask and drops
+# the x bit (0644/0664), which is exactly how it can be lost.
+
+include $(TOPDIR)/feeds/luci/luci.mk
+
+# call BuildPackage: feed scanner marker; luci.mk generates the package rules.

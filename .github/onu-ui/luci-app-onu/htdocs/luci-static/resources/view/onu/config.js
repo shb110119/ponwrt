@@ -1,1 +1,293 @@
-Ly8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEFwYWNoZS0yLjAKCid1c2Ugc3RyaWN0JzsKJ3JlcXVpcmUgZm9ybSc7CidyZXF1aXJlIHVjaSc7CidyZXF1aXJlIHZpZXcnOwoKLyogUHJpbnRhYmxlIEFTQ0lJIGtlZXBzIEphdmFTY3JpcHQgY2hhcmFjdGVyIGNvdW50cyBlcXVhbCB0byB3aXJlIGJ5dGUgY291bnRzLiAqLwpmdW5jdGlvbiB2YWxpZGF0ZVByaW50YWJsZUFzY2lpKHZhbHVlLCBtaW5pbXVtLCBtYXhpbXVtKSB7CglpZiAodmFsdWUgPT0gbnVsbCB8fCB2YWx1ZSA9PT0gJycpCgkJcmV0dXJuIHRydWU7CgoJaWYgKCEvXltceDIwLVx4N2VdKyQvLnRlc3QodmFsdWUpKQoJCXJldHVybiBfKCdPbmx5IHByaW50YWJsZSBBU0NJSSBjaGFyYWN0ZXJzIGFyZSBhbGxvd2VkLicpOwoKCWlmICh2YWx1ZS5sZW5ndGggPCBtaW5pbXVtIHx8IHZhbHVlLmxlbmd0aCA+IG1heGltdW0pIHsKCQlpZiAobWluaW11bSA9PT0gbWF4aW11bSkKCQkJcmV0dXJuIF8oJ1RoZSB2YWx1ZSBtdXN0IGNvbnRhaW4gZXhhY3RseSAlZCBieXRlcy4nKS5mb3JtYXQobWF4aW11bSk7CgoJCXJldHVybiBfKCdUaGUgdmFsdWUgbXVzdCBjb250YWluIGJldHdlZW4gJWQgYW5kICVkIGJ5dGVzLicpCgkJCS5mb3JtYXQobWluaW11bSwgbWF4aW11bSk7Cgl9CgoJcmV0dXJuIHRydWU7Cn0KCmZ1bmN0aW9uIGFzY2lpTGVuZ3RoKG1pbmltdW0sIG1heGltdW0pIHsKCXJldHVybiBmdW5jdGlvbihzZWN0aW9uSWQsIHZhbHVlKSB7CgkJcmV0dXJuIHZhbGlkYXRlUHJpbnRhYmxlQXNjaWkodmFsdWUsIG1pbmltdW0sIG1heGltdW0pOwoJfTsKfQoKZnVuY3Rpb24gaXNFcG9uTW9kZShtb2RlKSB7CglyZXR1cm4gKG1vZGUgfHwgJycpLmluZGV4T2YoJ2Vwb24tJykgPT09IDA7Cn0KCmZ1bmN0aW9uIHNlY3Rpb25Vc2VzRXBvbihzZWN0aW9uSWQpIHsKCXZhciBsaW5lID0gdWNpLmdldCgncG9uJywgc2VjdGlvbklkLCAnbGluZScpOwoKCXJldHVybiBpc0Vwb25Nb2RlKHVjaS5nZXQoJ3BvbicsIGxpbmUsICdtb2RlJykpOwp9CgovKgogKiBUaGUgT01DSSBhbmQgRVBPTiBPQU0gaWRlbnRpdHkgYmxvY2tzIGFyZSBib3RoIHJlZ2lzdGVyZWQgb24gdGhlIG1hcCwgYnV0IG9ubHkKICogb25lIG1hdGNoZXMgdGhlIHNlbGVjdGVkIGxpbmUgbW9kZS4gVGhlIHNlY3Rpb24gZmlsdGVyIGFscmVhZHkgZHJvcHMgdGhlIGlubmVyCiAqIGZpZWxkcyBvZiB0aGUgaXJyZWxldmFudCBibG9jaywgeWV0IEx1Q0kgc3RpbGwgcmVuZGVycyBpdHMgY2FyZCB3aXRoIHRoZQogKiAibm8gY29uZmlndXJhdGlvbiBhdmFpbGFibGUiIHBsYWNlaG9sZGVyLiBIaWRlIHRoZSB3aG9sZSBjYXJkIHNvIHRoZSB1c2VyCiAqIG5ldmVyIHNlZXMgdGhlIGVtcHR5IGJsb2NrOyB2aXNpYmlsaXR5IHRyYWNrcyB0aGUgTGluZSBtb2RlIGRyb3Bkb3duLgogKi8KZnVuY3Rpb24gbW9kZVNlY3Rpb25DYXJkKG5vZGUsIG5hbWUpIHsKCXZhciBjYXJkID0gbm9kZS5xdWVyeVNlbGVjdG9yKCcjY2JpLXBvbi0nICsgbmFtZSkgfHwKCQlub2RlLnF1ZXJ5U2VsZWN0b3IoJ1tpZF49ImNiaS1wb24tJyArIG5hbWUgKyAnIl0nKTsKCglyZXR1cm4gY2FyZCA/IChjYXJkLmNsb3Nlc3QoJy5jYmktc2VjdGlvbicpIHx8IGNhcmQpIDogbnVsbDsKfQoKZnVuY3Rpb24gdG9nZ2xlTW9kZVNlY3Rpb25zKG5vZGUsIG1vZGVPcHRpb24pIHsKCXZhciBvbWNpID0gbW9kZVNlY3Rpb25DYXJkKG5vZGUsICdvbWNpJyk7Cgl2YXIgb2FtID0gbW9kZVNlY3Rpb25DYXJkKG5vZGUsICdvYW0nKTsKCglmdW5jdGlvbiByZWFkTW9kZSgpIHsKCQkvKiAxKSBMaXZlIDxzZWxlY3Q+IGluc2lkZSB0aGUgcmVuZGVyZWQgbWFwOiB0cmFja3MgdGhlIGRyb3Bkb3duCgkJICAgICAgaW1tZWRpYXRlbHksIG9uIGZpcnN0IHJlbmRlciBhbmQgYWZ0ZXIgYSBjaGFuZ2UuIFNlYXJjaCB0aGUgbWFwCgkJICAgICAgcm9vdCBkaXJlY3RseSBpbnN0ZWFkIG9mIG1vZGVPcHRpb24ubm9kZSwgd2hpY2ggaXMgbm90IHJlbGlhYmx5CgkJICAgICAgcG9wdWxhdGVkIGluIGV2ZXJ5IEx1Q0kgYnVpbGQuICovCgkJdmFyIHNlbHMgPSBub2RlLnF1ZXJ5U2VsZWN0b3JBbGwoJ3NlbGVjdCcpOwoJCWZvciAodmFyIGkgPSAwOyBpIDwgc2Vscy5sZW5ndGg7IGkrKykgewoJCQlpZiAoKHNlbHNbaV0uaWQgfHwgJycpLmluZGV4T2YoJ21vZGUnKSAhPT0gLTEgJiYgc2Vsc1tpXS52YWx1ZSkKCQkJCXJldHVybiBzZWxzW2ldLnZhbHVlOwoJCX0KCgkJLyogMikgU2F2ZWQgVUNJIHZhbHVlLCByZWFkIGV4YWN0bHkgbGlrZSB0aGUgc2VjdGlvbiBmaWx0ZXIKCQkgICAgICAoc2VjdGlvblVzZXNFcG9uKSBkb2VzLCBzbyB0aGUgcG9zdC1hcHBseSBzdGF0ZSBpcyBhbHdheXMgcmlnaHQKCQkgICAgICBldmVuIGlmIHRoZSBvcHRpb24gbm9kZSBpcyBub3QgcmVzb2x2YWJsZS4gKi8KCQl2YXIgbGluZXMgPSB1Y2kuc2VjdGlvbnMoJ3BvbicsICd4cG9uJykgfHwgW107CgkJZm9yICh2YXIgaiA9IDA7IGogPCBsaW5lcy5sZW5ndGg7IGorKykgewoJCQl2YXIgc2lkID0gbGluZXNbal0ubmFtZSB8fCBsaW5lc1tqXVsnLm5hbWUnXSB8fCBsaW5lc1tqXS5zaWQ7CgkJCXZhciBtID0gdWNpLmdldCgncG9uJywgc2lkLCAnbW9kZScpOwoKCQkJaWYgKG0pCgkJCQlyZXR1cm4gbTsKCQl9CgoJCWlmIChtb2RlT3B0aW9uICYmIG1vZGVPcHRpb24uc2lkKSB7CgkJCXRyeSB7CgkJCQl2YXIgdiA9IG1vZGVPcHRpb24uZm9ybXZhbHVlKG1vZGVPcHRpb24uc2lkKTsKCgkJCQlpZiAodikKCQkJCQlyZXR1cm4gdjsKCQkJfSBjYXRjaCAoZSkge30KCQl9CgoJCXJldHVybiBudWxsOwoJfQoKCWZ1bmN0aW9uIHVwZGF0ZSgpIHsKCQl2YXIgZXBvbiA9IGlzRXBvbk1vZGUocmVhZE1vZGUoKSk7CgoJCWlmIChvbWNpKQoJCQlvbWNpLmNsYXNzTGlzdFtlcG9uID8gJ2FkZCcgOiAncmVtb3ZlJ10oJ2hpZGRlbicpOwoKCQlpZiAob2FtKQoJCQlvYW0uY2xhc3NMaXN0W2Vwb24gPyAncmVtb3ZlJyA6ICdhZGQnXSgnaGlkZGVuJyk7Cgl9CgoJaWYgKG1vZGVPcHRpb24pCgkJbW9kZU9wdGlvbi5vbmNoYW5nZSA9IHVwZGF0ZTsKCgkvKiBBdHRhY2ggZGlyZWN0bHkgdG8gdGhlIG1vZGUgPHNlbGVjdD4gYXMgYSBiYWNrdXAgdHJpZ2dlci4gKi8KCXZhciBzZWxzID0gbm9kZS5xdWVyeVNlbGVjdG9yQWxsKCdzZWxlY3QnKTsKCWZvciAodmFyIGsgPSAwOyBrIDwgc2Vscy5sZW5ndGg7IGsrKykgewoJCWlmICgoc2Vsc1trXS5pZCB8fCAnJykuaW5kZXhPZignbW9kZScpICE9PSAtMSkgewoJCQlzZWxzW2tdLmFkZEV2ZW50TGlzdGVuZXIoJ2NoYW5nZScsIHVwZGF0ZSk7CgkJCXNlbHNba10uYWRkRXZlbnRMaXN0ZW5lcignaW5wdXQnLCB1cGRhdGUpOwoJCQlicmVhazsKCQl9Cgl9CgoJdXBkYXRlKCk7Cn0KCnJldHVybiB2aWV3LmV4dGVuZCh7CglyZW5kZXI6IGZ1bmN0aW9uKCkgewoJCXZhciBtLCBzLCBvLCBtb2RlT3B0aW9uOwoKCQltID0gbmV3IGZvcm0uTWFwKCdwb24nLCBfKCdBdXRoZW50aWNhdGlvbicpLAoJCQlfKCdQT04gbGluZSBtb2RlIGFuZCBjcmVkZW50aWFscyB1c2VkIHRvIHJlZ2lzdGVyIHRoZSBPTlUgd2l0aCB0aGUgT0xULicpKTsKCQltLnJlYWRvbmx5ID0gIUwuaGFzVmlld1Blcm1pc3Npb24oKTsKCgkJcyA9IG0uc2VjdGlvbihmb3JtLlR5cGVkU2VjdGlvbiwgJ3hwb24nLCBfKCdQT04gTW9kZScpKTsKCQlzLmFub255bW91cyA9IHRydWU7CgkJcy5hZGRyZW1vdmUgPSBmYWxzZTsKCQlzLmRlc2NyaXB0aW9uID0gXygnTGluZSBtb2RlIGFuZCByZWdpc3RyYXRpb24gaWRlbnRpdHkgdGFrZSBlZmZlY3QgYWZ0ZXIgdGhlIFBPTiBpbnRlcmZhY2UgcmVzdGFydHMuJyk7CgoJCS8qCgkJICogVGhlIE9OVSBjbGFzcyB0cmF2ZWxzIGluIHRoZSBjYXJyaWVyIE9OVSBjYXBhYmlsaXR5IE1FLCBhbmQgdGhlCgkJICogY2FycmllcnMgZG8gbm90IHNoYXJlIG9uZTogVGVsZWNvbSBkZWZpbmVzIGNsYXNzIDB4RkZGOSBhbmQgVW5pY29tCgkJICogMHhGRkIxLCBlYWNoIGNhcnJ5aW5nIHRoZSBvcGVyYXRvciBJRCwgdGhlIHNwZWMgdmVyc2lvbiwgdGhlIE9OVSB0eXBlCgkJICogYW5kIHRoZSBUeCBwb3dlciBjb250cm9sIGluIHRoYXQgb3JkZXIuIFdoaWNoIG9mIHRoZW0gYSBsaW5lIG9mZmVycyAtCgkJICogYW5kIHdoYXQgaXQgcmVwb3J0cyBpbiBpdCAtIGRlc2NyaWJlcyBob3cgdGhlIGxpbmUgcmVnaXN0ZXJzIHdpdGggdGhlCgkJICogb3BlcmF0b3IsIHNvIGJvdGggb3B0aW9ucyBzaXQgd2l0aCB0aGUgbGluZSBtb2RlIHJhdGhlciB0aGFuIGluIHRoZQoJCSAqIE9NQ0kgY29tcGF0aWJpbGl0eSB0YWIuCgkJICovCgkJbyA9IHMub3B0aW9uKGZvcm0uTGlzdFZhbHVlLCAnY2FycmllcicsIF8oJ09wZXJhdG9yIHByb2ZpbGUnKSk7CgkJby5kZWZhdWx0ID0gJ2F1dG8nOwoJCW8ucm1lbXB0eSA9IGZhbHNlOwoJCW8udmFsdWUoJ2F1dG8nLCBfKCdBdXRvbWF0aWMnKSk7CgkJby52YWx1ZSgnY3RjJywgXygnQ2hpbmEgVGVsZWNvbScpKTsKCQlvLnZhbHVlKCdjdWMnLCBfKCdDaGluYSBVbmljb20nKSk7CgkJby52YWx1ZSgnY21jYycsIF8oJ0NoaW5hIE1vYmlsZScpKTsKCQlvLmRlc2NyaXB0aW9uID0gXygnV2hpY2ggY2FycmllciBjYXBhYmlsaXR5IE1FIHRoZSBsaW5lIG9mZmVycy4gVGVsZWNvbSBhbmQgVW5pY29tIGJvdGggZGVmaW5lIG9uZTsgbm8gcmVmZXJlbmNlIGRlZmluZXMgYSBDaGluYSBNb2JpbGUgb25lLCBzbyB0aGF0IHByb2ZpbGUga2VlcHMgdGhlIHN0YW5kYXJkIE1JQi4nKTsKCgkJbyA9IHMub3B0aW9uKGZvcm0uTGlzdFZhbHVlLCAnb251X3R5cGUnLCBfKCdPTlUgdHlwZScpKTsKCQlvLmRlZmF1bHQgPSAnMSc7CgkJby5ybWVtcHR5ID0gZmFsc2U7CgkJby52YWx1ZSgnMCcsIF8oJ1NGVScpKTsKCQlvLnZhbHVlKCcxJywgXygnSEdVJykpOwoJCW8udmFsdWUoJzInLCBfKCdTQlUnKSk7CgkJby5kZXNjcmlwdGlvbiA9IF8oJ09OVSBjbGFzcyByZXBvcnRlZCB0byB0aGUgT0xUIGluIHRoZSBjYXBhYmlsaXR5IE1FOiAwIFNGVSwgMSBIR1UgKGRlZmF1bHQpLCAyIFNCVS4nKTsKCgkJbyA9IHMub3B0aW9uKGZvcm0uTGlzdFZhbHVlLCAnbW9kZScsIF8oJ0xpbmUgbW9kZScpKTsKCQlvLmRlZmF1bHQgPSAneGdwb24nOwoJCW8ucm1lbXB0eSA9IGZhbHNlOwoJCS8qCgkJICogR1BPTiAyLjVHLzEuMjVHIGFuZCBFUE9OIDFHLzFHIGFyZSBtYXNrZWQgb3V0IG9mIHRoaXMgYnVpbGQ6IG9ubHkgdGhlCgkJICogMTBHIGxpbmUgbW9kZXMgYXJlIG9mZmVyZWQuIEJvdGggdmFsdWVzIHN0YXkgdmFsaWQgaW4gdGhlIGRhZW1vbnMsIHNvIGEKCQkgKiBib2FyZCBjb25maWd1cmVkIHdpdGggZWl0aGVyIG9uZSBzdGlsbCBydW5zLgoJCSAqLwoJCW8udmFsdWUoJ3hncG9uJywgXygnWEctUE9OIDEwRy8yLjVHJykpOwoJCW8udmFsdWUoJ3hnc3BvbicsIF8oJ1hHUy1QT04gMTBHLzEwRycpKTsKCQlvLnZhbHVlKCdlcG9uLTEwZy0xZycsIF8oJzEwRy1FUE9OIDEwRy8xRycpKTsKCQlvLnZhbHVlKCdlcG9uLTEwZy0xMGcnLCBfKCcxMEctRVBPTiAxMEcvMTBHJykpOwoJCW8uZGVzY3JpcHRpb24gPSBfKCdDaG9vc2UgdGhlIG1vZGUgYWNjb3JkaW5nIHRvIHRoZSBjYXJyaWVyXCdzIHJlcXVpcmVtZW50cy4nKTsKCQltb2RlT3B0aW9uID0gbzsKCglzID0gbS5zZWN0aW9uKGZvcm0uVHlwZWRTZWN0aW9uLCAnb21jaScsIF8oJ09NQ0kgc2V0dGluZ3MnKSwKCQlfKCdUaGUgT05VIGlkZW50aXR5IHJlcG9ydGVkIG92ZXIgT01DSSBpcyBjb25maWd1cmVkIG9uIHRoZSBoYXJkd2FyZSBpZGVudGl0eSBwYWdlLicpKTsKCXMuYW5vbnltb3VzID0gdHJ1ZTsKCXMuYWRkcmVtb3ZlID0gZmFsc2U7CglzLmZpbHRlciA9IGZ1bmN0aW9uKHNlY3Rpb25JZCkgewoJCXJldHVybiAhc2VjdGlvblVzZXNFcG9uKHNlY3Rpb25JZCk7Cgl9OwoJcy50YWIoJ2F1dGhlbnRpY2F0aW9uJywgXygnQXV0aGVudGljYXRpb24nKSk7CglzLnRhYignY29tcGF0aWJpbGl0eScsIF8oJ0NvbXBhdGliaWxpdHknKSk7CgoJbyA9IHMudGFib3B0aW9uKCdhdXRoZW50aWNhdGlvbicsIGZvcm0uTGlzdFZhbHVlLCAnYXV0aF9tb2RlJywgXygnQXV0aGVudGljYXRpb24gbW9kZScpLAoJCV8oJ0xPSUQgYXV0aDogTE9JRCArIG9wdGlvbmFsIHBhc3N3b3JkLiBQYXNzd29yZCBhdXRoOiByZWdpc3RyYXRpb24gSUQgb25seSwgbm8gTE9JRC4nKSk7CglvLmRlZmF1bHQgPSAnbG9pZCc7CglvLnJtZW1wdHkgPSBmYWxzZTsKCS8qCgkgKiBUaGUgc3RhdHVzIHBhZ2UgdXNlcyB0aGUgc2FtZSB3b3JkcyBmb3IgdGhlIExPSUQgYXV0aGVudGljYXRpb24gKnJlc3VsdCo7CgkgKiB0aGUgY29udGV4dCBrZWVwcyB0aGVzZSB0d28gdHJhbnNsYXRpb25zIGFwYXJ0LgoJICovCglvLnZhbHVlKCdsb2lkJywgXygnTE9JRCBhdXRoZW50aWNhdGlvbicsICdQT04gYXV0aGVudGljYXRpb24gbW9kZScpKTsKCW8udmFsdWUoJ3Bhc3N3b3JkJywgXygnUGFzc3dvcmQgYXV0aGVudGljYXRpb24nLCAnUE9OIGF1dGhlbnRpY2F0aW9uIG1vZGUnKSk7CgoJLyoKCSAqIFZpc2libGUgZm9yIExPSUQgYXV0aGVudGljYXRpb24gYW5kIGZvciBjb25maWd1cmF0aW9ucyB3cml0dGVuIGJlZm9yZSB0aGUKCSAqIG1vZGUgZXhpc3RlZDogdHdvIGRlcGVuZHMgY2FsbHMgYXJlIGFuIE9SLCBzbyBoaWRpbmcgdGhlbSB3b3VsZCBzdHJhbmQgdGhlCgkgKiBMT0lEIG9mIGFuIGluc3RhbGxhdGlvbiB0aGF0IG5ldmVyIGxlYXJuZWQgdGhlIG9wdGlvbi4KCSAqLwoJbyA9IHMudGFib3B0aW9uKCdhdXRoZW50aWNhdGlvbicsIGZvcm0uVmFsdWUsICdsb2lkJywgXygnTE9JRCcpKTsKCW8ucm1lbXB0eSA9IHRydWU7CglvLmRlcGVuZHMoJ2F1dGhfbW9kZScsICdsb2lkJyk7CglvLmRlcGVuZHMoJ2F1dGhfbW9kZScsICcnKTsKCW8udmFsaWRhdGUgPSBhc2NpaUxlbmd0aCgxLCAyNCk7CgoJbyA9IHMudGFib3B0aW9uKCdhdXRoZW50aWNhdGlvbicsIGZvcm0uVmFsdWUsICdsb2lkX3Bhc3N3b3JkJywgXygnTE9JRCBwYXNzd29yZCcpLAoJCV8oJ0xlYXZlIGVtcHR5IGZvciBwdXJlIExPSUQgYXV0aGVudGljYXRpb247IHNldCBpdCBvbmx5IHdoZW4gdGhlIE9MVCBhc2tzIGZvciBhIHBhc3N3b3JkIG5leHQgdG8gdGhlIExPSUQuJykpOwoJby5wYXNzd29yZCA9IHRydWU7CglvLnJtZW1wdHkgPSB0cnVlOwoJby5kZXBlbmRzKCdhdXRoX21vZGUnLCAnbG9pZCcpOwoJby5kZXBlbmRzKCdhdXRoX21vZGUnLCAnJyk7CglvLnZhbGlkYXRlID0gYXNjaWlMZW5ndGgoMSwgMTIpOwoKCS8qCgkgKiBUaGUgcmVnaXN0cmF0aW9uIElEIGlzIGFuIGF1dGhlbnRpY2F0aW9uIGNyZWRlbnRpYWwsIHNvIGl0IGJlbG9uZ3Mgd2l0aCB0aGUKCSAqIExPSUQgaXQgY29tcGV0ZXMgd2l0aCByYXRoZXIgdGhhbiBuZXh0IHRvIHRoZSBsaW5lJ3Mgc2VyaWFsIG51bWJlci4gVGhlCgkgKiB2YWx1ZSBzdGlsbCBzdG9yZWQgb24gdGhlIGxpbmUgaXMgc2hvd24gdW50aWwgaXQgaXMgc2F2ZWQgaGVyZS4KCSAqLwoJbyA9IHMudGFib3B0aW9uKCdhdXRoZW50aWNhdGlvbicsIGZvcm0uVmFsdWUsICdyZWdpc3RyYXRpb25faWQnLCBfKCdSZWdpc3RyYXRpb24tSUQnKSk7CglvLnBhc3N3b3JkID0gdHJ1ZTsKCW8ucm1lbXB0eSA9IHRydWU7CglvLmRlcGVuZHMoJ2F1dGhfbW9kZScsICdwYXNzd29yZCcpOwoJby52YWxpZGF0ZSA9IGFzY2lpTGVuZ3RoKDEsIDM2KTsKCW8uY2ZndmFsdWUgPSBmdW5jdGlvbihzZWN0aW9uSWQpIHsKCQl2YXIgbGluZSA9IHVjaS5nZXQoJ3BvbicsIHNlY3Rpb25JZCwgJ2xpbmUnKTsKCgkJcmV0dXJuIHVjaS5nZXQoJ3BvbicsIHNlY3Rpb25JZCwgJ3JlZ2lzdHJhdGlvbl9pZCcpIHx8CgkJCXVjaS5nZXQoJ3BvbicsIGxpbmUsICdyZWdpc3RyYXRpb25faWQnKSB8fCAnJzsKCX07CglvLmRlc2NyaXB0aW9uID0gXygnT3B0aW9uYWw7IHNlbnQgYXMgYWxsIHplcm9zIHdoZW4gZW1wdHkuJyk7CgoJLyoKCSAqIFRoZSBPTUNDIHZlcnNpb24gdGVsbHMgdGhlIE9MVCB3aGljaCBPTUNJIGJhc2VsaW5lIHRoZSBPTlUgc3BlYWtzLiBUaGUKCSAqIGxpc3QgaXMgb3JkZXJlZCBvbGRlc3QgdG8gbmV3ZXN0IHNvIHRoZSAid2hlbiB0byB0cnkgc29tZXRoaW5nIGVsc2UiCgkgKiByZWFkaW5nIGZvbGxvd3MgdGhlIGRyb3Bkb3duIHRvcCB0byBib3R0b207IHRoZSBkZWZhdWx0IHN0YXlzIDB4YjAuCgkgKi8KCW8gPSBzLnRhYm9wdGlvbignY29tcGF0aWJpbGl0eScsIGZvcm0uTGlzdFZhbHVlLCAnb21jY192ZXJzaW9uJywgXygnT01DQyB2ZXJzaW9uJykpOwoJby52YWx1ZSgnMHg4NicsICcweDg2Jyk7CglvLnZhbHVlKCcweGEwJywgJzB4YTAnKTsKCW8udmFsdWUoJzB4YTgnLCAnMHhhOCcpOwoJby52YWx1ZSgnMHhiMCcsICcweGIwJyk7CglvLnZhbHVlKCcweGI0JywgJzB4YjQnKTsKCW8uZGVmYXVsdCA9ICcweGIwJzsKCW8ucm1lbXB0eSA9IGZhbHNlOwoJby5kZXNjcmlwdGlvbiA9IF8oJzB4ODY6IEh1YXdlaSBPTFQgaW5jb21wYXRpYmxlIHdpdGggb2xkIG9yIHRoaXJkLXBhcnR5IE9OVXMgfCAweEEwOiBlYXJseSBHUE9OIGJhc2VsaW5lIHwgMHhBODogRy45ODQgZXZvbHV0aW9uLCBjb21tb24gb24gWlRFIGFuZCBGaWJlcmhvbWUgfCAweEIwOiBIdWF3ZWkgbmV3LWZpcm13YXJlIGRlZmF1bHQgfCAweEI0OiBlbmhhbmNlZCB2ZXJzaW9uIGZvciBuZXdlciBIdWF3ZWkgYW5kIE5va2lhIE9MVHMuJyk7CgoJbyA9IHMudGFib3B0aW9uKCdjb21wYXRpYmlsaXR5JywgZm9ybS5GbGFnLCAnZGlzYWJsZV9lbmhhbmNlZF9zZWN1cml0eScsIF8oJ0Rpc2FibGUgZW5oYW5jZWQgc2VjdXJpdHkgKENsYXNzIDMzMiknKSk7CglvLmRlZmF1bHQgPSAnMCc7CglvLnJtZW1wdHkgPSB0cnVlOwoKCW8gPSBzLnRhYm9wdGlvbignY29tcGF0aWJpbGl0eScsIGZvcm0uVmFsdWUsICdhbGxvY19pZF90aW1lb3V0JywgXygnQWxsb2MtSUQgd2FpdCB0aW1lb3V0JykpOwoJCW8uZGF0YXR5cGUgPSAndWludGVnZXInOwoJCW8ucGxhY2Vob2xkZXIgPSAnMzAnOwoJCW8ucm1lbXB0eSA9IHRydWU7CgkJby5kZXNjcmlwdGlvbiA9IF8oJ1NlY29uZHMgYSBkYXRhIHBhdGggbWF5IHdhaXQgZm9yIFBMT0FNIHRvIGFzc2lnbiBpdHMgQWxsb2MtSUQgYmVmb3JlIGl0IGlzIHJlcG9ydGVkIGFzIGZhaWxlZC4gVGhlIE9OVSBrZWVwcyB3YWl0aW5nIGFmdGVyd2FyZHM7IDAgZGlzYWJsZXMgdGhlIHRpbWVvdXQuJyk7CgoJcyA9IG0uc2VjdGlvbihmb3JtLlR5cGVkU2VjdGlvbiwgJ29hbScsIF8oJ0VQT04gT0FNIHNldHRpbmdzJyksCgkJXygnVGhlIE9OVSBpZGVudGl0eSByZXBvcnRlZCBvdmVyIE9BTSBpcyBjb25maWd1cmVkIG9uIHRoZSBoYXJkd2FyZSBpZGVudGl0eSBwYWdlLicpKTsKCXMuYW5vbnltb3VzID0gdHJ1ZTsKCXMuYWRkcmVtb3ZlID0gZmFsc2U7CglzLmZpbHRlciA9IGZ1bmN0aW9uKHNlY3Rpb25JZCkgewoJCXJldHVybiBzZWN0aW9uVXNlc0Vwb24oc2VjdGlvbklkKTsKCX07CgoJCglvID0gcy5vcHRpb24oZm9ybS5MaXN0VmFsdWUsICdvcGVyYXRvcicsIF8oJ09BTSBwcm9maWxlJykpOwoJby5kZWZhdWx0ID0gJ2N0Yyc7CglvLnZhbHVlKCdpZWVlJywgXygnSUVFRSA4MDIuM2FoJykpOwoJby52YWx1ZSgnY3RjJywgXygnSUVFRSA4MDIuM2FoICsgQ1RDJykpOwoJby5kZXNjcmlwdGlvbiA9IF8oJ1N0YW5kYXJkOiBJRUVFIDgwMi4zYWguIENoaW5hIFRlbGVjb20gRW5oYW5jZWQ6IElFRUUgODAyLjNhaCArIENUQy4nKTsKCgoJbyA9IHMub3B0aW9uKGZvcm0uVmFsdWUsICdsb2lkJywgXygnTE9JRCcpKTsKCW8ucm1lbXB0eSA9IHRydWU7CglvLmRlcGVuZHMoJ29wZXJhdG9yJywgJ2N0YycpOwoJby52YWxpZGF0ZSA9IGFzY2lpTGVuZ3RoKDEsIDI0KTsKCglvID0gcy5vcHRpb24oZm9ybS5WYWx1ZSwgJ2xvaWRfcGFzc3dvcmQnLCBfKCdMT0lEIHBhc3N3b3JkJykpOwoJby5wYXNzd29yZCA9IHRydWU7CglvLnJtZW1wdHkgPSB0cnVlOwoJby5kZXBlbmRzKCdvcGVyYXRvcicsICdjdGMnKTsKCW8udmFsaWRhdGUgPSBhc2NpaUxlbmd0aCgxLCAxMik7CglvLmRlc2NyaXB0aW9uID0gXygnRW50ZXIgdGhlIExPSUQgcGFzc3dvcmQgcHJvdmlkZWQgYnkgeW91ciBJU1AuIExlYXZlIGVtcHR5IGlmIG5vdCByZXF1aXJlZC4nKTsKCgkJcmV0dXJuIG0ucmVuZGVyKCkudGhlbihmdW5jdGlvbihub2RlKSB7CgkJCXRvZ2dsZU1vZGVTZWN0aW9ucyhub2RlLCBtb2RlT3B0aW9uKTsKCgkJCXJldHVybiBub2RlOwoJCX0pOwoJfQp9KTsK
+// SPDX-License-Identifier: Apache-2.0
+
+'use strict';
+'require form';
+'require uci';
+'require view';
+
+/* Printable ASCII keeps JavaScript character counts equal to wire byte counts. */
+function validatePrintableAscii(value, minimum, maximum) {
+	if (value == null || value === '')
+		return true;
+
+	if (!/^[\x20-\x7e]+$/.test(value))
+		return _('Only printable ASCII characters are allowed.');
+
+	if (value.length < minimum || value.length > maximum) {
+		if (minimum === maximum)
+			return _('The value must contain exactly %d bytes.').format(maximum);
+
+		return _('The value must contain between %d and %d bytes.')
+			.format(minimum, maximum);
+	}
+
+	return true;
+}
+
+function asciiLength(minimum, maximum) {
+	return function(sectionId, value) {
+		return validatePrintableAscii(value, minimum, maximum);
+	};
+}
+
+function isEponMode(mode) {
+	return (mode || '').indexOf('epon-') === 0;
+}
+
+function sectionUsesEpon(sectionId) {
+	var line = uci.get('pon', sectionId, 'line');
+
+	return isEponMode(uci.get('pon', line, 'mode'));
+}
+
+/*
+ * The OMCI and EPON OAM identity blocks are both registered on the map, but only
+ * one matches the selected line mode. The section filter already drops the inner
+ * fields of the irrelevant block, yet LuCI still renders its card with the
+ * "no configuration available" placeholder. Hide the whole card so the user
+ * never sees the empty block; visibility tracks the Line mode dropdown.
+ */
+function modeSectionCard(node, name) {
+	var card = node.querySelector('#cbi-pon-' + name) ||
+		node.querySelector('[id^="cbi-pon-' + name + '"]');
+
+	return card ? (card.closest('.cbi-section') || card) : null;
+}
+
+function toggleModeSections(node, modeOption) {
+	var omci = modeSectionCard(node, 'omci');
+	var oam = modeSectionCard(node, 'oam');
+
+	function readMode() {
+		/* 1) Live <select> inside the rendered map: tracks the dropdown
+		      immediately, on first render and after a change. Search the map
+		      root directly instead of modeOption.node, which is not reliably
+		      populated in every LuCI build. */
+		var sels = node.querySelectorAll('select');
+		for (var i = 0; i < sels.length; i++) {
+			if ((sels[i].id || '').indexOf('mode') !== -1 && sels[i].value)
+				return sels[i].value;
+		}
+
+		/* 2) Saved UCI value, read exactly like the section filter
+		      (sectionUsesEpon) does, so the post-apply state is always right
+		      even if the option node is not resolvable. */
+		var lines = uci.sections('pon', 'xpon') || [];
+		for (var j = 0; j < lines.length; j++) {
+			var sid = lines[j].name || lines[j]['.name'] || lines[j].sid;
+			var m = uci.get('pon', sid, 'mode');
+
+			if (m)
+				return m;
+		}
+
+		if (modeOption && modeOption.sid) {
+			try {
+				var v = modeOption.formvalue(modeOption.sid);
+
+				if (v)
+					return v;
+			} catch (e) {}
+		}
+
+		return null;
+	}
+
+	function update() {
+		var epon = isEponMode(readMode());
+
+		if (omci)
+			omci.classList[epon ? 'add' : 'remove']('hidden');
+
+		if (oam)
+			oam.classList[epon ? 'remove' : 'add']('hidden');
+	}
+
+	if (modeOption)
+		modeOption.onchange = update;
+
+	/* Attach directly to the mode <select> as a backup trigger. */
+	var sels = node.querySelectorAll('select');
+	for (var k = 0; k < sels.length; k++) {
+		if ((sels[k].id || '').indexOf('mode') !== -1) {
+			sels[k].addEventListener('change', update);
+			sels[k].addEventListener('input', update);
+			break;
+		}
+	}
+
+	update();
+}
+
+return view.extend({
+	render: function() {
+		var m, s, o, modeOption;
+
+		m = new form.Map('pon', _('Authentication'),
+			_('PON line mode and credentials used to register the ONU with the OLT.'));
+		m.readonly = !L.hasViewPermission();
+
+		s = m.section(form.TypedSection, 'xpon', _('PON Mode'));
+		s.anonymous = true;
+		s.addremove = false;
+		s.description = _('Line mode and registration identity take effect after the PON interface restarts.');
+
+		/*
+		 * The ONU class travels in the carrier ONU capability ME, and the
+		 * carriers do not share one: Telecom defines class 0xFFF9 and Unicom
+		 * 0xFFB1, each carrying the operator ID, the spec version, the ONU type
+		 * and the Tx power control in that order. Which of them a line offers -
+		 * and what it reports in it - describes how the line registers with the
+		 * operator, so both options sit with the line mode rather than in the
+		 * OMCI compatibility tab.
+		 */
+		o = s.option(form.ListValue, 'carrier', _('Operator profile'));
+		o.default = 'auto';
+		o.rmempty = false;
+		o.value('auto', _('Automatic'));
+		o.value('ctc', _('China Telecom'));
+		o.value('cuc', _('China Unicom'));
+		o.value('cmcc', _('China Mobile'));
+		o.description = _('Which carrier capability ME the line offers. Telecom and Unicom both define one; no reference defines a China Mobile one, so that profile keeps the standard MIB.');
+
+		o = s.option(form.ListValue, 'onu_type', _('ONU type'));
+		o.default = '1';
+		o.rmempty = false;
+		o.value('0', _('SFU'));
+		o.value('1', _('HGU'));
+		o.value('2', _('SBU'));
+		o.description = _('ONU class reported to the OLT in the capability ME: 0 SFU, 1 HGU (default), 2 SBU.');
+
+		o = s.option(form.ListValue, 'mode', _('Line mode'));
+		o.default = 'xgpon';
+		o.rmempty = false;
+		/*
+		 * GPON 2.5G/1.25G and EPON 1G/1G are masked out of this build: only the
+		 * 10G line modes are offered. Both values stay valid in the daemons, so a
+		 * board configured with either one still runs.
+		 */
+		o.value('xgpon', _('XG-PON 10G/2.5G'));
+		o.value('xgspon', _('XGS-PON 10G/10G'));
+		o.value('epon-10g-1g', _('10G-EPON 10G/1G'));
+		o.value('epon-10g-10g', _('10G-EPON 10G/10G'));
+		o.description = _('Choose the mode according to the carrier\'s requirements.');
+		modeOption = o;
+
+	s = m.section(form.TypedSection, 'omci', _('OMCI settings'),
+		_('The ONU identity reported over OMCI is configured on the hardware identity page.'));
+	s.anonymous = true;
+	s.addremove = false;
+	s.filter = function(sectionId) {
+		return !sectionUsesEpon(sectionId);
+	};
+	s.tab('authentication', _('Authentication'));
+	s.tab('compatibility', _('Compatibility'));
+
+	o = s.taboption('authentication', form.ListValue, 'auth_mode', _('Authentication mode'),
+		_('LOID auth: LOID + optional password. Password auth: registration ID only, no LOID.'));
+	o.default = 'loid';
+	o.rmempty = false;
+	/*
+	 * The status page uses the same words for the LOID authentication *result*;
+	 * the context keeps these two translations apart.
+	 */
+	o.value('loid', _('LOID authentication', 'PON authentication mode'));
+	o.value('password', _('Password authentication', 'PON authentication mode'));
+
+	/*
+	 * Visible for LOID authentication and for configurations written before the
+	 * mode existed: two depends calls are an OR, so hiding them would strand the
+	 * LOID of an installation that never learned the option.
+	 */
+	o = s.taboption('authentication', form.Value, 'loid', _('LOID'));
+	o.rmempty = true;
+	o.depends('auth_mode', 'loid');
+	o.depends('auth_mode', '');
+	o.validate = asciiLength(1, 24);
+
+	o = s.taboption('authentication', form.Value, 'loid_password', _('LOID password'),
+		_('Leave empty for pure LOID authentication; set it only when the OLT asks for a password next to the LOID.'));
+	o.password = true;
+	o.rmempty = true;
+	o.depends('auth_mode', 'loid');
+	o.depends('auth_mode', '');
+	o.validate = asciiLength(1, 12);
+
+	/*
+	 * The registration ID is an authentication credential, so it belongs with the
+	 * LOID it competes with rather than next to the line's serial number. The
+	 * value still stored on the line is shown until it is saved here.
+	 */
+	o = s.taboption('authentication', form.Value, 'registration_id', _('Registration-ID'));
+	o.password = true;
+	o.rmempty = true;
+	o.depends('auth_mode', 'password');
+	o.validate = asciiLength(1, 36);
+	o.cfgvalue = function(sectionId) {
+		var line = uci.get('pon', sectionId, 'line');
+
+		return uci.get('pon', sectionId, 'registration_id') ||
+			uci.get('pon', line, 'registration_id') || '';
+	};
+	o.description = _('Optional; sent as all zeros when empty.');
+
+	/*
+	 * The OMCC version tells the OLT which OMCI baseline the ONU speaks. The
+	 * list is ordered oldest to newest so the "when to try something else"
+	 * reading follows the dropdown top to bottom; the default stays 0xb0.
+	 */
+	o = s.taboption('compatibility', form.ListValue, 'omcc_version', _('OMCC version'));
+	o.value('0x86', '0x86');
+	o.value('0xa0', '0xa0');
+	o.value('0xa8', '0xa8');
+	o.value('0xb0', '0xb0');
+	o.value('0xb4', '0xb4');
+	o.default = '0xb0';
+	o.rmempty = false;
+	o.description = _('0x86: Huawei OLT incompatible with old or third-party ONUs | 0xA0: early GPON baseline | 0xA8: G.984 evolution, common on ZTE and Fiberhome | 0xB0: Huawei new-firmware default | 0xB4: enhanced version for newer Huawei and Nokia OLTs.');
+
+	o = s.taboption('compatibility', form.Flag, 'disable_enhanced_security', _('Disable enhanced security (Class 332)'));
+	o.default = '0';
+	o.rmempty = true;
+
+	o = s.taboption('compatibility', form.Value, 'alloc_id_timeout', _('Alloc-ID wait timeout'));
+		o.datatype = 'uinteger';
+		o.placeholder = '30';
+		o.rmempty = true;
+		o.description = _('Seconds a data path may wait for PLOAM to assign its Alloc-ID before it is reported as failed. The ONU keeps waiting afterwards; 0 disables the timeout.');
+
+	s = m.section(form.TypedSection, 'oam', _('EPON OAM settings'),
+		_('The ONU identity reported over OAM is configured on the hardware identity page.'));
+	s.anonymous = true;
+	s.addremove = false;
+	s.filter = function(sectionId) {
+		return sectionUsesEpon(sectionId);
+	};
+
+	
+	o = s.option(form.ListValue, 'operator', _('OAM profile'));
+	o.default = 'ctc';
+	o.value('ieee', _('IEEE 802.3ah'));
+	o.value('ctc', _('IEEE 802.3ah + CTC'));
+	o.description = _('Standard: IEEE 802.3ah. China Telecom Enhanced: IEEE 802.3ah + CTC.');
+
+
+	o = s.option(form.Value, 'loid', _('LOID'));
+	o.rmempty = true;
+	o.depends('operator', 'ctc');
+	o.validate = asciiLength(1, 24);
+
+	o = s.option(form.Value, 'loid_password', _('LOID password'));
+	o.password = true;
+	o.rmempty = true;
+	o.depends('operator', 'ctc');
+	o.validate = asciiLength(1, 12);
+	o.description = _('Enter the LOID password provided by your ISP. Leave empty if not required.');
+
+		return m.render().then(function(node) {
+			toggleModeSections(node, modeOption);
+
+			return node;
+		});
+	}
+});

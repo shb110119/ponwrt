@@ -1,1 +1,140 @@
-IyEvYmluL3NoCiMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25seQoKLiAvbGliL2Z1bmN0aW9ucy5zaAouIC91c3Ivc2hhcmUvbGlidWJveC9qc2huLnNoCi4gL2xpYi91cGdyYWRlL25hbmQuc2gKCmZhaWwoKQp7CgllY2hvICIkKiIgPiYyCglleGl0IDEKfQoKIyBBIGJhY2t1cCBpcyBoYW5kZWQgdG8gdGhlIGJyb3dzZXIgZnJvbSBhIGZpeGVkIHBhdGgsIHRoZSB3YXkgdGhlIGRpYWdub3N0aWMKIyBwYWNrYWdlIGlzOyB0aGUgVUkgcmVhZHMgaXQgYmFjayBmcm9tIHRoZXJlIGFuZCBuZXZlciBob2xkcyB0aGUgaW1hZ2UgaXRzZWxmLgpCQUNLVVA9L3RtcC9wb24tYm9hcmQtYmFja3VwLmJpbgoKbG9hZF90YXJnZXQoKQp7Cglqc29uX2xvYWQgIiQoY2F0IC9ldGMvYm9hcmQuanNvbikiIHx8IGZhaWwgIkNhbm5vdCByZWFkIGJvYXJkIGRhdGEgbGF5b3V0IgoJanNvbl9zZWxlY3QgcG9uX2RhdGEgfHwgZmFpbCAiQm9hcmQgZGF0YSBsYXlvdXQgaXMgbWlzc2luZyIKCWpzb25fc2VsZWN0ICIkMSIgfHwgZmFpbCAiVW5rbm93biBib2FyZCBkYXRhIHRhcmdldDogJDEiCglqc29uX2dldF92YXIgc3RvcmFnZSB0eXBlCglqc29uX2dldF92YXIgY2FwYWNpdHkgc2l6ZQoJanNvbl9nZXRfdmFyIHBhcmVudCBwYXJlbnQKCW5hbWU9IiQxIgoJY2FzZSAiJGNhcGFjaXR5IiBpbiAnJ3wqWyEwLTldKikgZmFpbCAiSW52YWxpZCB0YXJnZXQgc2l6ZSI7OyBlc2FjCglbICIkY2FwYWNpdHkiIC1ndCAwIF0gfHwgZmFpbCAiSW52YWxpZCB0YXJnZXQgc2l6ZSIKfQoKbG9jYXRlX3RhcmdldCgpCnsKCXRhcmdldD0KCWlmIFsgIiRzdG9yYWdlIiA9IG10ZCBdOyB0aGVuCgkJbG9jYWwgaW5kZXg9IiQoZmluZF9tdGRfaW5kZXggIiRuYW1lIikiCgkJWyAtbiAiJGluZGV4IiBdIHx8IGZhaWwgIk1URCBwYXJ0aXRpb24gJG5hbWUgaXMgbWlzc2luZyIKCQl0YXJnZXQ9Ii9kZXYvbXRkJGluZGV4IgoJCWFjdHVhbF9zaXplPSIkKGNhdCAiL3N5cy9jbGFzcy9tdGQvbXRkJGluZGV4L3NpemUiKSIKCQlbICIkYWN0dWFsX3NpemUiIC1lcSAiJGNhcGFjaXR5IiBdIHx8IGZhaWwgIk1URCBzaXplIGRpZmZlcnMgZnJvbSBib2FyZCBsYXlvdXQiCgkJcmV0dXJuCglmaQoKCVsgIiRzdG9yYWdlIiA9IHViaSBdICYmIFsgLW4gIiRwYXJlbnQiIF0gfHwgZmFpbCAiSW52YWxpZCBzdG9yYWdlIGRlY2xhcmF0aW9uIgoJdWJpZGV2PSIkKG5hbmRfZmluZF91YmkgIiRwYXJlbnQiKSIKCWlmIFsgLXogIiR1YmlkZXYiIF07IHRoZW4KCQlsb2NhbCBpbmRleD0iJChmaW5kX210ZF9pbmRleCAiJHBhcmVudCIpIgoJCVsgLW4gIiRpbmRleCIgXSB8fCBmYWlsICJVQkkgcGFyZW50ICRwYXJlbnQgaXMgbWlzc2luZyIKCQl1YmlhdHRhY2ggLW0gIiRpbmRleCIgPiYyIHx8IGZhaWwgIkNhbm5vdCBhdHRhY2ggVUJJIG9uICRwYXJlbnQiCgkJdWJpZGV2PSIkKG5hbmRfZmluZF91YmkgIiRwYXJlbnQiKSIKCWZpCglbIC1uICIkdWJpZGV2IiBdIHx8IGZhaWwgIlVCSSBvbiAkcGFyZW50IGlzIG1pc3NpbmciCglsb2NhbCB2b2x1bWU9IiQobmFuZF9maW5kX3ZvbHVtZSAiJHViaWRldiIgIiRuYW1lIikiCglbIC1uICIkdm9sdW1lIiBdIHx8IHJldHVybiAwCgl0YXJnZXQ9Ii9kZXYvJHZvbHVtZSIKCWxvY2FsIGVudHJ5PSIvc3lzL2NsYXNzL3ViaS8kdm9sdW1lIgoJYWN0dWFsX3NpemU9JCgoJChjYXQgIiRlbnRyeS9yZXNlcnZlZF9lYnMiKSAqICQoY2F0ICIkZW50cnkvdXNhYmxlX2ViX3NpemUiKSkpCn0KCnJlYWRfdGFyZ2V0KCkKewoJbG9jYWwgb3V0cHV0PSIkMSIgbGVuZ3RoPSIkMiIKCWlmIFsgIiRzdG9yYWdlIiA9IG10ZCBdICYmIFsgIiQoY2F0ICIvc3lzL2NsYXNzL210ZC8ke3RhcmdldCMjKi99L3R5cGUiKSIgPSBuYW5kIF07IHRoZW4KCQkjIFJlYWQgTkFORCB0aHJvdWdoIHRoZSBzYW1lIGJhZC1ibG9jayBtYXBwaW5nIHVzZWQgYnkgbXRkIHdyaXRlLgoJCW5hbmRkdW1wIC1xIC0tYmI9c2tpcGJhZCAtbCAiJGxlbmd0aCIgLWYgIiRvdXRwdXQiICIkdGFyZ2V0IiB8fAoJCQlmYWlsICJNVEQgcmVhZCBmYWlsZWQiCgllbHNlCgkJaGVhZCAtYyAiJGxlbmd0aCIgIiR0YXJnZXQiID4gIiRvdXRwdXQiIHx8IGZhaWwgIlJlYWQgZmFpbGVkIgoJZmkKCVsgIiQod2MgLWMgPCAiJG91dHB1dCIpIiAtZXEgIiRsZW5ndGgiIF0gfHwgZmFpbCAiU2hvcnQgcmVhZCIKfQoKd3JpdGVfdGFyZ2V0KCkKewoJbG9jYWwgYmFja3VwPQoKCWlmIFsgLW4gIiR0YXJnZXQiIF07IHRoZW4KCQliYWNrdXA9Ii90bXAvcG9uLWJvYXJkLWRhdGEuJG5hbWUuJCQuYmluIgoJCXJlYWRfdGFyZ2V0ICIkd29yay9vcmlnaW5hbCIgIiRjYXBhY2l0eSIKCQljcCAiJHdvcmsvb3JpZ2luYWwiICIkYmFja3VwIiB8fCBmYWlsICJDYW5ub3Qgc2F2ZSBib2FyZCBkYXRhIGJhY2t1cCIKCWZpCglpZiBbIC16ICIkdGFyZ2V0IiBdOyB0aGVuCgkJdWJpbWt2b2wgIi9kZXYvJHViaWRldiIgLU4gIiRuYW1lIiAtcyAiJGNhcGFjaXR5IiAtdCBzdGF0aWMgPiYyIHx8CgkJCWZhaWwgIkNhbm5vdCBjcmVhdGUgJG5hbWU7IGNoZWNrIGZyZWUgVUJJIHNwYWNlIgoJCWxvY2F0ZV90YXJnZXQKCWZpCglbIC1uICIkdGFyZ2V0IiBdICYmIFsgIiRhY3R1YWxfc2l6ZSIgLWdlICIkbGVuZ3RoIiBdIHx8IGZhaWwgIkV4aXN0aW5nIHRhcmdldCBpcyB0b28gc21hbGwiCgljYXNlICIkc3RvcmFnZSIgaW4KCXViaSkgdWJpdXBkYXRldm9sICIkdGFyZ2V0IiAiJHdvcmsvaW5wdXQiID4mMiB8fCBmYWlsICJVQkkgdXBkYXRlIGZhaWxlZCI7OwoJbXRkKSBtdGQgd3JpdGUgIiR3b3JrL2lucHV0IiAiJHRhcmdldCIgPiYyIHx8IGZhaWwgIk1URCB3cml0ZSBmYWlsZWQiOzsKCWVzYWMKCXJlYWRfdGFyZ2V0ICIkd29yay92ZXJpZnkiICIkbGVuZ3RoIgoJY21wIC1zICIkd29yay9pbnB1dCIgIiR3b3JrL3ZlcmlmeSIgfHwgZmFpbCAiUmVhZGJhY2sgdmVyaWZpY2F0aW9uIGZhaWxlZCIKCWlmIFsgLW4gIiRiYWNrdXAiIF07IHRoZW4KCQllY2hvICJXcml0dGVuIGFuZCB2ZXJpZmllZDogJG5hbWUuIEJhY2t1cDogJGJhY2t1cCIKCWVsc2UKCQllY2hvICJXcml0dGVuIGFuZCB2ZXJpZmllZDogJG5hbWUiCglmaQp9CgpjbGVhbnVwKCkKewoJWyAtbiAiJHdvcmsiIF0gJiYgcm0gLXJmICIkd29yayIKCXJtZGlyIC90bXAvYWlyb2hhLXBvbi1kYXRhLmxvY2sKfQoKY2FzZSAiJDEiIGluCmxpc3QpCglbICIkIyIgLWVxIDEgXSB8fCBleGl0IDIKCWpzb25maWx0ZXIgLWkgL2V0Yy9ib2FyZC5qc29uIC1lICdALnBvbl9kYXRhJyB8fCBwcmludGYgJ3t9XG4nCglleGl0IDAKCTs7CnJlYWQpCglbICIkIyIgLWVxIDIgXSB8fCBleGl0IDIKCWxvYWRfdGFyZ2V0ICIkMiIKCWxvY2F0ZV90YXJnZXQKCVsgLW4gIiR0YXJnZXQiIF0gfHwgZmFpbCAiQm9hcmQgZGF0YSB0YXJnZXQgJDIgaXMgZW1wdHkiCglybSAtZiAiJEJBQ0tVUCIKCXJlYWRfdGFyZ2V0ICIkQkFDS1VQIiAiJGNhcGFjaXR5IgoJZWNobyAiQmFja2VkIHVwICQyICgkY2FwYWNpdHkgYnl0ZXMpIHRvICRCQUNLVVAiCglleGl0IDAKCTs7CndyaXRlKQoJWyAiJCMiIC1lcSAyIF0gfHwgZXhpdCAyCglsb2FkX3RhcmdldCAiJDIiCgk7OwoqKQoJZWNobyAidXNhZ2U6IGFpcm9oYS1wb24tZGF0YSBsaXN0IHwgcmVhZCBOQU1FIHwgd3JpdGUgTkFNRSIgPiYyCglleGl0IDIKCTs7CmVzYWMKCm1rZGlyIC90bXAvYWlyb2hhLXBvbi1kYXRhLmxvY2sgMj4vZGV2L251bGwgfHwgZmFpbCAiQW5vdGhlciBib2FyZCBkYXRhIHdyaXRlIGlzIGluIHByb2dyZXNzIgp3b3JrPQp0cmFwIGNsZWFudXAgRVhJVAp3b3JrPSIkKG1rdGVtcCAtZCAvdG1wL2Fpcm9oYS1wb24tZGF0YS5YWFhYWFgpIiB8fCBmYWlsICJDYW5ub3QgY3JlYXRlIHdvcmsgZGlyZWN0b3J5IgptdiAvdG1wL3Bvbi1ib2FyZC1kYXRhLmJpbiAiJHdvcmsvaW5wdXQiIHx8IGZhaWwgIlVwbG9hZGVkIGltYWdlIGlzIG1pc3NpbmciCmxlbmd0aD0iJCh3YyAtYyA8ICIkd29yay9pbnB1dCIpIgpbICIkbGVuZ3RoIiAtZ3QgMCBdICYmIFsgIiRsZW5ndGgiIC1sZSAiJGNhcGFjaXR5IiBdIHx8IGZhaWwgIkludmFsaWQgaW1hZ2Ugc2l6ZSIKbG9jYXRlX3RhcmdldAp3cml0ZV90YXJnZXQK
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-only
+
+. /lib/functions.sh
+. /usr/share/libubox/jshn.sh
+. /lib/upgrade/nand.sh
+
+fail()
+{
+	echo "$*" >&2
+	exit 1
+}
+
+# A backup is handed to the browser from a fixed path, the way the diagnostic
+# package is; the UI reads it back from there and never holds the image itself.
+BACKUP=/tmp/pon-board-backup.bin
+
+load_target()
+{
+	json_load "$(cat /etc/board.json)" || fail "Cannot read board data layout"
+	json_select pon_data || fail "Board data layout is missing"
+	json_select "$1" || fail "Unknown board data target: $1"
+	json_get_var storage type
+	json_get_var capacity size
+	json_get_var parent parent
+	name="$1"
+	case "$capacity" in ''|*[!0-9]*) fail "Invalid target size";; esac
+	[ "$capacity" -gt 0 ] || fail "Invalid target size"
+}
+
+locate_target()
+{
+	target=
+	if [ "$storage" = mtd ]; then
+		local index="$(find_mtd_index "$name")"
+		[ -n "$index" ] || fail "MTD partition $name is missing"
+		target="/dev/mtd$index"
+		actual_size="$(cat "/sys/class/mtd/mtd$index/size")"
+		[ "$actual_size" -eq "$capacity" ] || fail "MTD size differs from board layout"
+		return
+	fi
+
+	[ "$storage" = ubi ] && [ -n "$parent" ] || fail "Invalid storage declaration"
+	ubidev="$(nand_find_ubi "$parent")"
+	if [ -z "$ubidev" ]; then
+		local index="$(find_mtd_index "$parent")"
+		[ -n "$index" ] || fail "UBI parent $parent is missing"
+		ubiattach -m "$index" >&2 || fail "Cannot attach UBI on $parent"
+		ubidev="$(nand_find_ubi "$parent")"
+	fi
+	[ -n "$ubidev" ] || fail "UBI on $parent is missing"
+	local volume="$(nand_find_volume "$ubidev" "$name")"
+	[ -n "$volume" ] || return 0
+	target="/dev/$volume"
+	local entry="/sys/class/ubi/$volume"
+	actual_size=$(($(cat "$entry/reserved_ebs") * $(cat "$entry/usable_eb_size")))
+}
+
+read_target()
+{
+	local output="$1" length="$2"
+	if [ "$storage" = mtd ] && [ "$(cat "/sys/class/mtd/${target##*/}/type")" = nand ]; then
+		# Read NAND through the same bad-block mapping used by mtd write.
+		nanddump -q --bb=skipbad -l "$length" -f "$output" "$target" ||
+			fail "MTD read failed"
+	else
+		head -c "$length" "$target" > "$output" || fail "Read failed"
+	fi
+	[ "$(wc -c < "$output")" -eq "$length" ] || fail "Short read"
+}
+
+write_target()
+{
+	local backup=
+
+	if [ -n "$target" ]; then
+		backup="/tmp/pon-board-data.$name.$$.bin"
+		read_target "$work/original" "$capacity"
+		cp "$work/original" "$backup" || fail "Cannot save board data backup"
+	fi
+	if [ -z "$target" ]; then
+		ubimkvol "/dev/$ubidev" -N "$name" -s "$capacity" -t static >&2 ||
+			fail "Cannot create $name; check free UBI space"
+		locate_target
+	fi
+	[ -n "$target" ] && [ "$actual_size" -ge "$length" ] || fail "Existing target is too small"
+	case "$storage" in
+	ubi) ubiupdatevol "$target" "$work/input" >&2 || fail "UBI update failed";;
+	mtd) mtd write "$work/input" "$target" >&2 || fail "MTD write failed";;
+	esac
+	read_target "$work/verify" "$length"
+	cmp -s "$work/input" "$work/verify" || fail "Readback verification failed"
+	if [ -n "$backup" ]; then
+		echo "Written and verified: $name. Backup: $backup"
+	else
+		echo "Written and verified: $name"
+	fi
+}
+
+cleanup()
+{
+	[ -n "$work" ] && rm -rf "$work"
+	rmdir /tmp/airoha-pon-data.lock
+}
+
+case "$1" in
+list)
+	[ "$#" -eq 1 ] || exit 2
+	jsonfilter -i /etc/board.json -e '@.pon_data' || printf '{}\n'
+	exit 0
+	;;
+read)
+	[ "$#" -eq 2 ] || exit 2
+	load_target "$2"
+	locate_target
+	[ -n "$target" ] || fail "Board data target $2 is empty"
+	rm -f "$BACKUP"
+	read_target "$BACKUP" "$capacity"
+	echo "Backed up $2 ($capacity bytes) to $BACKUP"
+	exit 0
+	;;
+write)
+	[ "$#" -eq 2 ] || exit 2
+	load_target "$2"
+	;;
+*)
+	echo "usage: airoha-pon-data list | read NAME | write NAME" >&2
+	exit 2
+	;;
+esac
+
+mkdir /tmp/airoha-pon-data.lock 2>/dev/null || fail "Another board data write is in progress"
+work=
+trap cleanup EXIT
+work="$(mktemp -d /tmp/airoha-pon-data.XXXXXX)" || fail "Cannot create work directory"
+mv /tmp/pon-board-data.bin "$work/input" || fail "Uploaded image is missing"
+length="$(wc -c < "$work/input")"
+[ "$length" -gt 0 ] && [ "$length" -le "$capacity" ] || fail "Invalid image size"
+locate_target
+write_target

@@ -1,1 +1,16 @@
-IyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMC1vbmx5CgpDQyA/PSBjYwpDRkxBR1MgPz0gLU8yCgpjb21waWxlOiBpZGVudGl0eS1pbWFnZQoKaWRlbnRpdHktaW1hZ2U6IGlkZW50aXR5LWltYWdlLmMKCSQoQ0MpICQoQ1BQRkxBR1MpICQoQ0ZMQUdTKSAtV2FsbCAtV2V4dHJhIC1XZXJyb3IgLW8gJEAgJDwKCmNsZWFuOgoJcm0gLWYgaWRlbnRpdHktaW1hZ2UKCmluc3RhbGw6IGNvbXBpbGUKCWluc3RhbGwgLWQgJChERVNURElSKS91c3IvbGliZXhlYwoJaW5zdGFsbCAtbSAwNzU1IGlkZW50aXR5LWltYWdlICQoREVTVERJUikvdXNyL2xpYmV4ZWMvcG9uLWlkZW50aXR5LWltYWdlCg==
+# SPDX-License-Identifier: GPL-2.0-only
+
+CC ?= cc
+CFLAGS ?= -O2
+
+compile: identity-image
+
+identity-image: identity-image.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -Wall -Wextra -Werror -o $@ $<
+
+clean:
+	rm -f identity-image
+
+install: compile
+	install -d $(DESTDIR)/usr/libexec
+	install -m 0755 identity-image $(DESTDIR)/usr/libexec/pon-identity-image

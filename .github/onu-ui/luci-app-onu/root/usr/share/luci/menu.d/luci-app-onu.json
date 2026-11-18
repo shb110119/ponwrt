@@ -1,1 +1,65 @@
-ewoJImFkbWluL29udSI6IHsKCQkidGl0bGUiOiAiT05VIiwKCQkib3JkZXIiOiAyMCwKCQkiYWN0aW9uIjogewoJCQkidHlwZSI6ICJmaXJzdGNoaWxkIgoJCX0KCX0sCgkiYWRtaW4vb251L3N0YXR1cyI6IHsKCQkidGl0bGUiOiAiT05VIFN0YXR1cyIsCgkJIm9yZGVyIjogMTAsCgkJImFjdGlvbiI6IHsKCQkJInR5cGUiOiAidmlldyIsCgkJCSJwYXRoIjogIm9udS9zdGF0dXMiCgkJfQoJfSwKCSJhZG1pbi9vbnUvaGFyZHdhcmUiOiB7CgkJInRpdGxlIjogIk9OVSBIYXJkd2FyZSIsCgkJIm9yZGVyIjogMjAsCgkJImFjdGlvbiI6IHsKCQkJInR5cGUiOiAidmlldyIsCgkJCSJwYXRoIjogIm9udS9oYXJkd2FyZSIKCQl9Cgl9LAoJImFkbWluL29udS9jb25maWciOiB7CgkJInRpdGxlIjogIk9OVSBBdXRoZW50aWNhdGlvbiIsCgkJIm9yZGVyIjogMzAsCgkJImFjdGlvbiI6IHsKCQkJInR5cGUiOiAidmlldyIsCgkJCSJwYXRoIjogIm9udS9jb25maWciCgkJfQoJfSwKCSJhZG1pbi9vbnUvaW50ZXJuZXQiOiB7CgkJInRpdGxlIjogIk9OVSBJbnRlcm5ldCIsCgkJIm9yZGVyIjogMzUsCgkJImFjdGlvbiI6IHsKCQkJInR5cGUiOiAidmlldyIsCgkJCSJwYXRoIjogIm9udS9pbnRlcm5ldCIKCQl9Cgl9LAoJImFkbWluL29udS9pcHR2IjogewoJCSJ0aXRsZSI6ICJPTlUgSVBUViIsCgkJIm9yZGVyIjogNDAsCgkJImFjdGlvbiI6IHsKCQkJInR5cGUiOiAidmlldyIsCgkJCSJwYXRoIjogIm9udS9pcHR2IgoJCX0KCX0sCgkiYWRtaW4vb251L3ZvaWNlIjogewoJCSJ0aXRsZSI6ICJPTlUgVm9pY2UiLAoJCSJvcmRlciI6IDQ1LAoJCSJhY3Rpb24iOiB7CgkJCSJ0eXBlIjogInZpZXciLAoJCQkicGF0aCI6ICJvbnUvdm9pY2UiCgkJfQoJfSwKCSJhZG1pbi9vbnUvZGlhZ25vc3RpY3MiOiB7CgkJInRpdGxlIjogIk9OVSBEaWFnbm9zdGljcyIsCgkJIm9yZGVyIjogNTAsCgkJImFjdGlvbiI6IHsKCQkJInR5cGUiOiAidmlldyIsCgkJCSJwYXRoIjogIm9udS9kaWFnbm9zdGljcyIKCQl9Cgl9Cn0K
+{
+	"admin/onu": {
+		"title": "ONU",
+		"order": 20,
+		"action": {
+			"type": "firstchild"
+		}
+	},
+	"admin/onu/status": {
+		"title": "ONU Status",
+		"order": 10,
+		"action": {
+			"type": "view",
+			"path": "onu/status"
+		}
+	},
+	"admin/onu/hardware": {
+		"title": "ONU Hardware",
+		"order": 20,
+		"action": {
+			"type": "view",
+			"path": "onu/hardware"
+		}
+	},
+	"admin/onu/config": {
+		"title": "ONU Authentication",
+		"order": 30,
+		"action": {
+			"type": "view",
+			"path": "onu/config"
+		}
+	},
+	"admin/onu/internet": {
+		"title": "ONU Internet",
+		"order": 35,
+		"action": {
+			"type": "view",
+			"path": "onu/internet"
+		}
+	},
+	"admin/onu/iptv": {
+		"title": "ONU IPTV",
+		"order": 40,
+		"action": {
+			"type": "view",
+			"path": "onu/iptv"
+		}
+	},
+	"admin/onu/voice": {
+		"title": "ONU Voice",
+		"order": 45,
+		"action": {
+			"type": "view",
+			"path": "onu/voice"
+		}
+	},
+	"admin/onu/diagnostics": {
+		"title": "ONU Diagnostics",
+		"order": 50,
+		"action": {
+			"type": "view",
+			"path": "onu/diagnostics"
+		}
+	}
+}

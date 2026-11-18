@@ -1,1 +1,106 @@
-Ly8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEFwYWNoZS0yLjAKCid1c2Ugc3RyaWN0JzsKJ3JlcXVpcmUgZnMnOwoncmVxdWlyZSBmb3JtJzsKJ3JlcXVpcmUgdWknOwoncmVxdWlyZSB1Y2knOwoncmVxdWlyZSB2aWV3JzsKCnZhciBIRUxQRVIgPSAnL3Vzci9saWJleGVjL2Fpcm9oYS1wb24tZGVidWcnOwp2YXIgQlVORExFID0gJy90bXAvcG9uLWRlYnVnLnRhci5neic7CgpmdW5jdGlvbiBkb3dubG9hZEJ1bmRsZSgpIHsKCXJldHVybiBmcy5yZWFkX2RpcmVjdChCVU5ETEUsICdibG9iJykudGhlbihmdW5jdGlvbihibG9iKSB7CgkJdmFyIHVybCA9IHdpbmRvdy5VUkwuY3JlYXRlT2JqZWN0VVJMKGJsb2IpOwoJCXZhciBsaW5rID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnYScpOwoJCXZhciBub3cgPSBuZXcgRGF0ZSgpOwoKCQlsaW5rLnN0eWxlLmRpc3BsYXkgPSAnbm9uZSc7CgkJbGluay5ocmVmID0gdXJsOwoJCWxpbmsuZG93bmxvYWQgPSAncG9uLWRlYnVnLScgKyBub3cudG9JU09TdHJpbmcoKS5yZXBsYWNlKC9bOi5dL2csICctJykgKyAnLnRhci5neic7CgkJZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZChsaW5rKTsKCQlsaW5rLmNsaWNrKCk7CgkJbGluay5yZW1vdmUoKTsKCQl3aW5kb3cuVVJMLnJldm9rZU9iamVjdFVSTCh1cmwpOwoJfSk7Cn0KCnJldHVybiB2aWV3LmV4dGVuZCh7CgloYW5kbGVEb3dubG9hZDogZnVuY3Rpb24oKSB7CgkJdmFyIGJ1dHRvbiA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdwb24tZGVidWctZG93bmxvYWQnKTsKCgkJYnV0dG9uLmRpc2FibGVkID0gdHJ1ZTsKCQlidXR0b24uY2xhc3NMaXN0LmFkZCgnc3Bpbm5pbmcnKTsKCQlyZXR1cm4gZnMuZXhlY19kaXJlY3QoSEVMUEVSLCBbICdjb2xsZWN0JyBdKS50aGVuKGRvd25sb2FkQnVuZGxlKS5jYXRjaChmdW5jdGlvbihlcnJvcikgewoJCQl1aS5hZGROb3RpZmljYXRpb24obnVsbCwgRSgncCcsIHt9LAoJCQkJXygnVW5hYmxlIHRvIGNyZWF0ZSBkaWFnbm9zdGljIHBhY2thZ2U6ICVzJykuZm9ybWF0KGVycm9yLm1lc3NhZ2UpKSk7CgkJfSkuZmluYWxseShmdW5jdGlvbigpIHsKCQkJYnV0dG9uLmRpc2FibGVkID0gZmFsc2U7CgkJCWJ1dHRvbi5jbGFzc0xpc3QucmVtb3ZlKCdzcGlubmluZycpOwoJCX0pOwoJfSwKCgloYW5kbGVSZXN0YXJ0OiBmdW5jdGlvbigpIHsKCQl2YXIgYnV0dG9uID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Bvbi1kZWJ1Zy1yZXN0YXJ0Jyk7CgoJCWlmICghd2luZG93LmNvbmZpcm0oXygnVGhlIFBPTiBsaW5lIGFuZCBPTUNJL09BTSBpbnRlcmZhY2VzIHdpbGwgYmUgc3RvcHBlZCBhbmQgcmVzdGFydGVkLiBDb250aW51ZT8nKSkpCgkJCXJldHVybjsKCgkJYnV0dG9uLmRpc2FibGVkID0gdHJ1ZTsKCQlidXR0b24uY2xhc3NMaXN0LmFkZCgnc3Bpbm5pbmcnKTsKCQlyZXR1cm4gZnMuZXhlY19kaXJlY3QoSEVMUEVSLCBbICdyZXN0YXJ0JyBdKS50aGVuKGZ1bmN0aW9uKG91dHB1dCkgewoJCQl2YXIgcmVzdWx0ID0gSlNPTi5wYXJzZShvdXRwdXQpOwoKCQkJaWYgKCFyZXN1bHQub2spCgkJCQl0aHJvdyBuZXcgRXJyb3IoXygnUE9OIHJlc3RhcnQgZmFpbGVkLicpKTsKCQkJdWkuYWRkTm90aWZpY2F0aW9uKG51bGwsIEUoJ3AnLCB7fSwgXygnUE9OIHJlc3RhcnQgY29tcGxldGVkLicpKSk7CgkJfSkuY2F0Y2goZnVuY3Rpb24oZXJyb3IpIHsKCQkJdWkuYWRkTm90aWZpY2F0aW9uKG51bGwsIEUoJ3AnLCB7fSwKCQkJCV8oJ1VuYWJsZSB0byByZXN0YXJ0IFBPTjogJXMnKS5mb3JtYXQoZXJyb3IubWVzc2FnZSkpKTsKCQl9KS5maW5hbGx5KGZ1bmN0aW9uKCkgewoJCQlidXR0b24uZGlzYWJsZWQgPSBmYWxzZTsKCQkJYnV0dG9uLmNsYXNzTGlzdC5yZW1vdmUoJ3NwaW5uaW5nJyk7CgkJfSk7Cgl9LAoKCXJlbmRlcjogZnVuY3Rpb24oKSB7CgkJdmFyIG0sIHMsIG87CgoJCW0gPSBuZXcgZm9ybS5NYXAoJ2Fpcm9oYS1wb24tZGVidWcnLCBfKCdPTlUgUE9OIGRpYWdub3N0aWNzJyksCgkJCV8oJ0RlYnVnIG1vZGUgY29udGludW91c2x5IGtlZXBzIHJlY2VudCByYXcgUE9OLCBPTUNJIGFuZCBPQU0gcGFja2V0cyBpbiBSQU0uIFRoZSBzZXR0aW5nIHJlbWFpbnMgZW5hYmxlZCBhZnRlciByZWJvb3QuJykpOwoJCW0uY2hhaW4oJ3BvbicpOwoJCW0ucmVhZG9ubHkgPSAhTC5oYXNWaWV3UGVybWlzc2lvbigpOwoKCQlzID0gbS5zZWN0aW9uKGZvcm0uTmFtZWRTZWN0aW9uLCAnY2FwdHVyZScsICdjYXB0dXJlJywgXygnUE9OIGxpbmUgZGlhZ25vc3RpY3MnKSk7CgoKCQlvID0gcy5vcHRpb24oZm9ybS5GbGFnLCAnZW5hYmxlZCcsIF8oJ0RlYnVnIG1vZGUnKSk7CgkJby5kZWZhdWx0ID0gby5kaXNhYmxlZDsKCQlvLnJtZW1wdHkgPSBmYWxzZTsKCQlvLmRlc2NyaXB0aW9uID0gXygnRW5hYmxpbmcgc3RhcnRzIHBhY2tldCBjYXB0dXJlIGJlZm9yZSBhIGZ1bGwgUE9OIHJlc3RhcnQuIERpc2FibGluZyBzdG9wcyBjYXB0dXJlLicpOwoKCQlyZXR1cm4gbS5yZW5kZXIoKS50aGVuKEwuYmluZChmdW5jdGlvbihtYXApIHsKCQkJcmV0dXJuIEUoW10sIFsgbWFwLAoJCQkJRSgnZGl2JywgeyAnY2xhc3MnOiAnY2JpLXNlY3Rpb24nIH0sIFsKCQkJCQlFKCdoMycsIHt9LCBfKCdEaWFnbm9zdGljIG9wZXJhdGlvbnMnKSksCgkJCQkJRSgncCcsIHt9LCBfKCdUaGUgcGFja2FnZSBjb250YWlucyByYXcgcGFja2V0IGNhcHR1cmVzLCBQT04gc3RhdGUsIHN5c3RlbSBsb2dzIGFuZCBuZXR3b3JrIGNvbmZpZ3VyYXRpb24uJykpLAoJCQkJCUUoJ2RpdicsIHsgJ2NsYXNzJzogJ2NiaS1wYWdlLWFjdGlvbnMnIH0sIFsKCQkJCQkJRSgnYnV0dG9uJywgewoJCQkJCQkJJ2NsYXNzJzogJ2NiaS1idXR0b24gY2JpLWJ1dHRvbi1hY3Rpb24nLAoJCQkJCQkJJ2lkJzogJ3Bvbi1kZWJ1Zy1kb3dubG9hZCcsCgkJCQkJCQknZGlzYWJsZWQnOiBtLnJlYWRvbmx5IHx8IG51bGwsCgkJCQkJCQknY2xpY2snOiB1aS5jcmVhdGVIYW5kbGVyRm4odGhpcywgJ2hhbmRsZURvd25sb2FkJykKCQkJCQkJfSwgXygnRG93bmxvYWQgZGlhZ25vc3RpYyBwYWNrYWdlJykpLAoJCQkJCQlFKCdidXR0b24nLCB7CgkJCQkJCQknY2xhc3MnOiAnY2JpLWJ1dHRvbiBjYmktYnV0dG9uLW5lZ2F0aXZlJywKCQkJCQkJCSdpZCc6ICdwb24tZGVidWctcmVzdGFydCcsCgkJCQkJCQknZGlzYWJsZWQnOiBtLnJlYWRvbmx5IHx8IG51bGwsCgkJCQkJCQknY2xpY2snOiB1aS5jcmVhdGVIYW5kbGVyRm4odGhpcywgJ2hhbmRsZVJlc3RhcnQnKQoJCQkJCQl9LCBfKCdSZXN0YXJ0IFBPTiBsaW5lJykpCgkJCQkJXSkKCQkJCV0pCgkJCV0pOwoJCX0sIHRoaXMpKTsKCX0KfSk7Cg==
+// SPDX-License-Identifier: Apache-2.0
+
+'use strict';
+'require fs';
+'require form';
+'require ui';
+'require uci';
+'require view';
+
+var HELPER = '/usr/libexec/airoha-pon-debug';
+var BUNDLE = '/tmp/pon-debug.tar.gz';
+
+function downloadBundle() {
+	return fs.read_direct(BUNDLE, 'blob').then(function(blob) {
+		var url = window.URL.createObjectURL(blob);
+		var link = document.createElement('a');
+		var now = new Date();
+
+		link.style.display = 'none';
+		link.href = url;
+		link.download = 'pon-debug-' + now.toISOString().replace(/[:.]/g, '-') + '.tar.gz';
+		document.body.appendChild(link);
+		link.click();
+		link.remove();
+		window.URL.revokeObjectURL(url);
+	});
+}
+
+return view.extend({
+	handleDownload: function() {
+		var button = document.getElementById('pon-debug-download');
+
+		button.disabled = true;
+		button.classList.add('spinning');
+		return fs.exec_direct(HELPER, [ 'collect' ]).then(downloadBundle).catch(function(error) {
+			ui.addNotification(null, E('p', {},
+				_('Unable to create diagnostic package: %s').format(error.message)));
+		}).finally(function() {
+			button.disabled = false;
+			button.classList.remove('spinning');
+		});
+	},
+
+	handleRestart: function() {
+		var button = document.getElementById('pon-debug-restart');
+
+		if (!window.confirm(_('The PON line and OMCI/OAM interfaces will be stopped and restarted. Continue?')))
+			return;
+
+		button.disabled = true;
+		button.classList.add('spinning');
+		return fs.exec_direct(HELPER, [ 'restart' ]).then(function(output) {
+			var result = JSON.parse(output);
+
+			if (!result.ok)
+				throw new Error(_('PON restart failed.'));
+			ui.addNotification(null, E('p', {}, _('PON restart completed.')));
+		}).catch(function(error) {
+			ui.addNotification(null, E('p', {},
+				_('Unable to restart PON: %s').format(error.message)));
+		}).finally(function() {
+			button.disabled = false;
+			button.classList.remove('spinning');
+		});
+	},
+
+	render: function() {
+		var m, s, o;
+
+		m = new form.Map('airoha-pon-debug', _('ONU PON diagnostics'),
+			_('Debug mode continuously keeps recent raw PON, OMCI and OAM packets in RAM. The setting remains enabled after reboot.'));
+		m.chain('pon');
+		m.readonly = !L.hasViewPermission();
+
+		s = m.section(form.NamedSection, 'capture', 'capture', _('PON line diagnostics'));
+
+
+		o = s.option(form.Flag, 'enabled', _('Debug mode'));
+		o.default = o.disabled;
+		o.rmempty = false;
+		o.description = _('Enabling starts packet capture before a full PON restart. Disabling stops capture.');
+
+		return m.render().then(L.bind(function(map) {
+			return E([], [ map,
+				E('div', { 'class': 'cbi-section' }, [
+					E('h3', {}, _('Diagnostic operations')),
+					E('p', {}, _('The package contains raw packet captures, PON state, system logs and network configuration.')),
+					E('div', { 'class': 'cbi-page-actions' }, [
+						E('button', {
+							'class': 'cbi-button cbi-button-action',
+							'id': 'pon-debug-download',
+							'disabled': m.readonly || null,
+							'click': ui.createHandlerFn(this, 'handleDownload')
+						}, _('Download diagnostic package')),
+						E('button', {
+							'class': 'cbi-button cbi-button-negative',
+							'id': 'pon-debug-restart',
+							'disabled': m.readonly || null,
+							'click': ui.createHandlerFn(this, 'handleRestart')
+						}, _('Restart PON line'))
+					])
+				])
+			]);
+		}, this));
+	}
+});

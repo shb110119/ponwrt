@@ -1,1 +1,318 @@
-Ly8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25seQoKI2luY2x1ZGUgPGN0eXBlLmg+CiNpbmNsdWRlIDxlcnJuby5oPgojaW5jbHVkZSA8c3RkaW50Lmg+CiNpbmNsdWRlIDxzdGRpby5oPgojaW5jbHVkZSA8c3RkbGliLmg+CiNpbmNsdWRlIDxzdHJpbmcuaD4KCiNkZWZpbmUgUklfSU1BR0VfU0laRSAgICAgIDB4NDAwMDAKI2RlZmluZSBSSV9SRUNPUkRfU0laRSAgICAgMHg4MAojZGVmaW5lIFJJX0NIRUNLU1VNX09GRlNFVCAweDdjCgpzdGF0aWMgaW50IGhleF92YWx1ZShjaGFyIHZhbHVlKQp7Cgl2YWx1ZSA9IHRvdXBwZXIoKHVuc2lnbmVkIGNoYXIpdmFsdWUpOwoJaWYgKHZhbHVlID49ICcwJyAmJiB2YWx1ZSA8PSAnOScpCgkJcmV0dXJuIHZhbHVlIC0gJzAnOwoJaWYgKHZhbHVlID49ICdBJyAmJiB2YWx1ZSA8PSAnRicpCgkJcmV0dXJuIHZhbHVlIC0gJ0EnICsgMTA7CglyZXR1cm4gLTE7Cn0KCnN0YXRpYyBpbnQgcGFyc2VfbnVtYmVyKGNvbnN0IGNoYXIgKnRleHQsIHNpemVfdCAqdmFsdWUpCnsKCWNoYXIgKmVuZDsKCXVuc2lnbmVkIGxvbmcgbnVtYmVyOwoKCWVycm5vID0gMDsKCW51bWJlciA9IHN0cnRvdWwodGV4dCwgJmVuZCwgMTApOwoJaWYgKGVycm5vIHx8ICEqdGV4dCB8fCAqZW5kKQoJCXJldHVybiAtMTsKCSp2YWx1ZSA9IG51bWJlcjsKCXJldHVybiAwOwp9CgpzdGF0aWMgaW50IHZhbGlkX21hYyhjb25zdCB1aW50OF90IG1hY1s2XSkKewoJc2l6ZV90IGk7CgoJaWYgKG1hY1swXSAmIDEpCgkJcmV0dXJuIDA7Cglmb3IgKGkgPSAwOyBpIDwgNiAmJiBtYWNbaV0gPT0gMDsgaSsrKQoJCTsKCXJldHVybiBpICE9IDY7Cn0KCnN0YXRpYyBpbnQgcGFyc2VfbWFjKGNvbnN0IGNoYXIgKnRleHQsIHVpbnQ4X3QgbWFjWzZdKQp7CgljaGFyIGRpZ2l0c1sxMl07CglzaXplX3QgY291bnQgPSAwOwoJc2l6ZV90IGk7CgoJZm9yICg7ICp0ZXh0OyB0ZXh0KyspIHsKCQlpZiAoKnRleHQgPT0gJzonIHx8ICp0ZXh0ID09ICctJykKCQkJY29udGludWU7CgkJaWYgKGNvdW50ID09IHNpemVvZihkaWdpdHMpIHx8IGhleF92YWx1ZSgqdGV4dCkgPCAwKQoJCQlyZXR1cm4gLTE7CgkJZGlnaXRzW2NvdW50KytdID0gKnRleHQ7Cgl9CglpZiAoY291bnQgIT0gc2l6ZW9mKGRpZ2l0cykpCgkJcmV0dXJuIC0xOwoJZm9yIChpID0gMDsgaSA8IDY7IGkrKykKCQltYWNbaV0gPSAoaGV4X3ZhbHVlKGRpZ2l0c1tpICogMl0pIDw8IDQpIHwgaGV4X3ZhbHVlKGRpZ2l0c1tpICogMiArIDFdKTsKCXJldHVybiB2YWxpZF9tYWMobWFjKSA/IDAgOiAtMTsKfQoKc3RhdGljIGludCBwYXJzZV9wb25fc24oY29uc3QgY2hhciAqdGV4dCwgdWludDhfdCBzZXJpYWxbMTJdLCB1aW50OF90IHZzc25bNF0pCnsKCXNpemVfdCBpOwoKCWlmIChzdHJsZW4odGV4dCkgIT0gMTIpCgkJcmV0dXJuIC0xOwoJZm9yIChpID0gMDsgaSA8IDQ7IGkrKykgewoJCWlmICghaXNhbG51bSgodW5zaWduZWQgY2hhcil0ZXh0W2ldKSkKCQkJcmV0dXJuIC0xOwoJCXNlcmlhbFtpXSA9IHRvdXBwZXIoKHVuc2lnbmVkIGNoYXIpdGV4dFtpXSk7Cgl9Cglmb3IgKGkgPSA0OyBpIDwgMTI7IGkrKykgewoJCWlmIChoZXhfdmFsdWUodGV4dFtpXSkgPCAwKQoJCQlyZXR1cm4gLTE7CgkJc2VyaWFsW2ldID0gdG91cHBlcigodW5zaWduZWQgY2hhcil0ZXh0W2ldKTsKCX0KCWZvciAoaSA9IDA7IGkgPCA0OyBpKyspCgkJdnNzbltpXSA9IChoZXhfdmFsdWUodGV4dFs0ICsgaSAqIDJdKSA8PCA0KSB8IGhleF92YWx1ZSh0ZXh0WzUgKyBpICogMl0pOwoJcmV0dXJuIDA7Cn0KCnN0YXRpYyB1aW50OF90ICpsb2FkX2ltYWdlKGNvbnN0IGNoYXIgKnBhdGgsIHNpemVfdCAqc2l6ZSkKewoJRklMRSAqZmlsZTsKCXVpbnQ4X3QgKmltYWdlOwoJbG9uZyBsZW5ndGg7CgoJZmlsZSA9IGZvcGVuKHBhdGgsICJyYiIpOwoJaWYgKCFmaWxlKQoJCXJldHVybiBOVUxMOwoJaWYgKGZzZWVrKGZpbGUsIDAsIFNFRUtfRU5EKSkKCQlnb3RvIGZhaWw7CglsZW5ndGggPSBmdGVsbChmaWxlKTsKCWlmIChsZW5ndGggPD0gMCkKCQlnb3RvIGZhaWw7CglyZXdpbmQoZmlsZSk7CglpbWFnZSA9IG1hbGxvYyhsZW5ndGgpOwoJaWYgKCFpbWFnZSkKCQlnb3RvIGZhaWw7CglpZiAoZnJlYWQoaW1hZ2UsIDEsIGxlbmd0aCwgZmlsZSkgIT0gKHNpemVfdClsZW5ndGgpIHsKCQlmcmVlKGltYWdlKTsKCQlnb3RvIGZhaWw7Cgl9CglmY2xvc2UoZmlsZSk7Cgkqc2l6ZSA9IGxlbmd0aDsKCXJldHVybiBpbWFnZTsKCmZhaWw6CglmY2xvc2UoZmlsZSk7CglyZXR1cm4gTlVMTDsKfQoKc3RhdGljIGludCBzYXZlX2ltYWdlKGNvbnN0IGNoYXIgKnBhdGgsIGNvbnN0IHVpbnQ4X3QgKmltYWdlLCBzaXplX3Qgc2l6ZSkKewoJRklMRSAqZmlsZTsKCWludCByZXN1bHQ7CgoJZmlsZSA9IGZvcGVuKHBhdGgsICJ3YiIpOwoJaWYgKCFmaWxlKQoJCXJldHVybiAtMTsKCXJlc3VsdCA9IGZ3cml0ZShpbWFnZSwgMSwgc2l6ZSwgZmlsZSkgPT0gc2l6ZSA/IDAgOiAtMTsKCWlmIChmY2xvc2UoZmlsZSkpCgkJcmVzdWx0ID0gLTE7CglyZXR1cm4gcmVzdWx0Owp9CgpzdGF0aWMgdm9pZCBwcmludF9tYWMoY29uc3QgdWludDhfdCBtYWNbNl0pCnsKCXByaW50ZigiJTAyeDolMDJ4OiUwMng6JTAyeDolMDJ4OiUwMnhcbiIsIG1hY1swXSwgbWFjWzFdLCBtYWNbMl0sIG1hY1szXSwgbWFjWzRdLCBtYWNbNV0pOwp9CgpzdGF0aWMgaW50IHJlYWRfZmllbGQoY29uc3QgdWludDhfdCAqZmllbGQsIHNpemVfdCBzaXplLCBjb25zdCBjaGFyICplbmNvZGluZykKewoJdWludDhfdCBtYWNbNl0sIHNlcmlhbFsxMl0sIHZzc25bNF07CgljaGFyIHRleHRbMjU2XTsKCXNpemVfdCBpOwoKCWlmICghc3RyY21wKGVuY29kaW5nLCAibWFjLWJpbmFyeTYiKSAmJiBzaXplID09IDYpIHsKCQlpZiAodmFsaWRfbWFjKGZpZWxkKSkKCQkJcHJpbnRfbWFjKGZpZWxkKTsKCQlyZXR1cm4gMDsKCX0KCWlmICgoIXN0cmNtcChlbmNvZGluZywgIm1hYy1oZXgxMiIpICYmIHNpemUgPT0gMTIpIHx8CgkgICAgKCFzdHJjbXAoZW5jb2RpbmcsICJtYWMtY29sb24xNyIpICYmIHNpemUgPT0gMTcpKSB7CgkJbWVtY3B5KHRleHQsIGZpZWxkLCBzaXplKTsKCQl0ZXh0W3NpemVdID0gMDsKCQlpZiAoIXBhcnNlX21hYyh0ZXh0LCBtYWMpKQoJCQlwcmludF9tYWMobWFjKTsKCQlyZXR1cm4gMDsKCX0KCWlmICghc3RyY21wKGVuY29kaW5nLCAicG9uLWFzY2lpMTIiKSAmJiBzaXplID09IDEyKSB7CgkJbWVtY3B5KHRleHQsIGZpZWxkLCBzaXplKTsKCQl0ZXh0W3NpemVdID0gMDsKCQlpZiAoIXBhcnNlX3Bvbl9zbih0ZXh0LCBzZXJpYWwsIHZzc24pKQoJCQlwcmludGYoIiUuMTJzXG4iLCAoY2hhciAqKXNlcmlhbCk7CgkJcmV0dXJuIDA7Cgl9CglpZiAoIXN0cmNtcChlbmNvZGluZywgInBvbi1iaW5hcnk4IikgJiYgc2l6ZSA9PSA4KSB7CgkJZm9yIChpID0gMDsgaSA8IDQ7IGkrKykKCQkJaWYgKCFpc2FsbnVtKGZpZWxkW2ldKSkKCQkJCXJldHVybiAwOwoJCXByaW50ZigiJWMlYyVjJWMlMDJYJTAyWCUwMlglMDJYXG4iLCBmaWVsZFswXSwgZmllbGRbMV0sIGZpZWxkWzJdLCBmaWVsZFszXSwKCQkgICAgICAgZmllbGRbNF0sIGZpZWxkWzVdLCBmaWVsZFs2XSwgZmllbGRbN10pOwoJCXJldHVybiAwOwoJfQoJaWYgKCFzdHJjbXAoZW5jb2RpbmcsICJzZXJpYWwtdGV4dCIpICYmIHNpemUgPCBzaXplb2YodGV4dCkpIHsKCQlmb3IgKGkgPSAwOyBpIDwgc2l6ZSAmJiBmaWVsZFtpXSAmJiBmaWVsZFtpXSAhPSAweGZmOyBpKyspCgkJCWlmICghaXNwcmludChmaWVsZFtpXSkpCgkJCQlyZXR1cm4gMDsKCQlwcmludGYoIiUuKnNcbiIsIChpbnQpaSwgZmllbGQpOwoJCXJldHVybiAwOwoJfQoJcmV0dXJuIC0xOwp9CgpzdGF0aWMgaW50IHdyaXRlX2ZpZWxkKHVpbnQ4X3QgKmZpZWxkLCBzaXplX3Qgc2l6ZSwgY29uc3QgY2hhciAqZW5jb2RpbmcsIGNvbnN0IGNoYXIgKnZhbHVlLAogICAgICAgICAgICAgICAgICAgICAgIHVpbnQ4X3QgdnNzbls0XSkKewoJdWludDhfdCBtYWNbNl0sIHNlcmlhbFsxMl07CglzaXplX3QgaTsKCglpZiAoIXN0cm5jbXAoZW5jb2RpbmcsICJtYWMtIiwgNCkpIHsKCQlpZiAocGFyc2VfbWFjKHZhbHVlLCBtYWMpKQoJCQlyZXR1cm4gLTE7CgkJaWYgKCFzdHJjbXAoZW5jb2RpbmcsICJtYWMtYmluYXJ5NiIpICYmIHNpemUgPT0gNikgewoJCQltZW1jcHkoZmllbGQsIG1hYywgNik7CgkJCXJldHVybiAwOwoJCX0KCQlpZiAoIXN0cmNtcChlbmNvZGluZywgIm1hYy1oZXgxMiIpICYmIHNpemUgPT0gMTIpIHsKCQkJY2hhciB0ZXh0WzEzXTsKCgkJCWZvciAoaSA9IDA7IGkgPCA2OyBpKyspCgkJCQlzcHJpbnRmKHRleHQgKyBpICogMiwgIiUwMlgiLCBtYWNbaV0pOwoJCQltZW1jcHkoZmllbGQsIHRleHQsIHNpemUpOwoJCQlyZXR1cm4gMDsKCQl9CgkJaWYgKCFzdHJjbXAoZW5jb2RpbmcsICJtYWMtY29sb24xNyIpICYmIHNpemUgPT0gMTcpIHsKCQkJY2hhciB0ZXh0WzE4XTsKCgkJCXNucHJpbnRmKHRleHQsIHNpemVvZih0ZXh0KSwgIiUwMlg6JTAyWDolMDJYOiUwMlg6JTAyWDolMDJYIiwgbWFjWzBdLAoJCQkgICAgICAgICBtYWNbMV0sIG1hY1syXSwgbWFjWzNdLCBtYWNbNF0sIG1hY1s1XSk7CgkJCW1lbWNweShmaWVsZCwgdGV4dCwgc2l6ZSk7CgkJCXJldHVybiAwOwoJCX0KCQlyZXR1cm4gLTE7Cgl9CglpZiAoIXN0cm5jbXAoZW5jb2RpbmcsICJwb24tIiwgNCkpIHsKCQlpZiAocGFyc2VfcG9uX3NuKHZhbHVlLCBzZXJpYWwsIHZzc24pKQoJCQlyZXR1cm4gLTE7CgkJaWYgKCFzdHJjbXAoZW5jb2RpbmcsICJwb24tYXNjaWkxMiIpICYmIHNpemUgPT0gMTIpIHsKCQkJbWVtY3B5KGZpZWxkLCBzZXJpYWwsIDEyKTsKCQkJcmV0dXJuIDA7CgkJfQoJCWlmICghc3RyY21wKGVuY29kaW5nLCAicG9uLWJpbmFyeTgiKSAmJiBzaXplID09IDgpIHsKCQkJbWVtY3B5KGZpZWxkLCBzZXJpYWwsIDQpOwoJCQltZW1jcHkoZmllbGQgKyA0LCB2c3NuLCA0KTsKCQkJcmV0dXJuIDA7CgkJfQoJCXJldHVybiAtMTsKCX0KCWlmICghc3RyY21wKGVuY29kaW5nLCAic2VyaWFsLXRleHQiKSAmJiBzdHJsZW4odmFsdWUpIDw9IHNpemUpIHsKCQlmb3IgKGkgPSAwOyB2YWx1ZVtpXTsgaSsrKQoJCQlpZiAoIWlzcHJpbnQoKHVuc2lnbmVkIGNoYXIpdmFsdWVbaV0pKQoJCQkJcmV0dXJuIC0xOwoJCW1lbXNldChmaWVsZCwgMCwgc2l6ZSk7CgkJbWVtY3B5KGZpZWxkLCB2YWx1ZSwgaSk7CgkJcmV0dXJuIDA7Cgl9CglyZXR1cm4gLTE7Cn0KCi8qIEVhY2ggUkkgcmVjb3JkIHN0b3JlcyBhIDE2LWJpdCB0d28ncy1jb21wbGVtZW50IGNoZWNrc3VtIG9mIGl0cyBkYXRhIGJ5dGVzLiAqLwpzdGF0aWMgdm9pZCB1cGRhdGVfcmlfY2hlY2tzdW0odWludDhfdCAqcmVjb3JkKQp7Cgl1aW50MzJfdCBzdW0gPSAwOwoJdWludDE2X3QgY2hlY2tzdW07CglzaXplX3QgaTsKCglmb3IgKGkgPSAwOyBpIDwgUklfQ0hFQ0tTVU1fT0ZGU0VUOyBpKyspCgkJc3VtICs9IHJlY29yZFtpXTsKCWNoZWNrc3VtID0gKHVpbnQxNl90KSgwdSAtIHN1bSk7CglyZWNvcmRbUklfQ0hFQ0tTVU1fT0ZGU0VUXSA9IGNoZWNrc3VtOwoJcmVjb3JkW1JJX0NIRUNLU1VNX09GRlNFVCArIDFdID0gY2hlY2tzdW0gPj4gODsKfQoKaW50IG1haW4oaW50IGFyZ2MsIGNoYXIgKiphcmd2KQp7Cgljb25zdCBjaGFyICplbmNvZGluZywgKmNvZGVjID0gIi0iOwoJdWludDhfdCAqaW1hZ2UsIHZzc25bNF0gPSB7MH07CglzaXplX3QgaW1hZ2Vfc2l6ZSwgb2Zmc2V0LCBzaXplLCBtaXJyb3IgPSAwLCBpOwoJaW50IHdyaXRpbmcsIHN0YXR1czsKCgl3cml0aW5nID0gYXJnYyA9PSAxMCAmJiAhc3RyY21wKGFyZ3ZbMV0sICJ3cml0ZSIpOwoJaWYgKCEoYXJnYyA9PSA2ICYmICFzdHJjbXAoYXJndlsxXSwgInJlYWQiKSkgJiYgIXdyaXRpbmcpCgkJcmV0dXJuIDI7CglpbWFnZSA9IGxvYWRfaW1hZ2UoYXJndlsyXSwgJmltYWdlX3NpemUpOwoJaWYgKCFpbWFnZSkgewoJCWZwcmludGYoc3RkZXJyLCAiQ2Fubm90IHJlYWQgaWRlbnRpdHkgaW1hZ2VcbiIpOwoJCXJldHVybiAxOwoJfQoJaWYgKHBhcnNlX251bWJlcihhcmd2W3dyaXRpbmcgPyA0IDogM10sICZvZmZzZXQpIHx8CgkgICAgcGFyc2VfbnVtYmVyKGFyZ3Zbd3JpdGluZyA/IDUgOiA0XSwgJnNpemUpIHx8ICFzaXplIHx8IG9mZnNldCA+IGltYWdlX3NpemUgfHwKCSAgICBzaXplID4gaW1hZ2Vfc2l6ZSAtIG9mZnNldCkgewoJCWZwcmludGYoc3RkZXJyLCAiSWRlbnRpdHkgZmllbGQgZXhjZWVkcyBpbWFnZSBib3VuZHNcbiIpOwoJCWZyZWUoaW1hZ2UpOwoJCXJldHVybiAyOwoJfQoJZW5jb2RpbmcgPSBhcmd2W3dyaXRpbmcgPyA2IDogNV07CglpZiAoIXdyaXRpbmcpIHsKCQlzdGF0dXMgPSByZWFkX2ZpZWxkKGltYWdlICsgb2Zmc2V0LCBzaXplLCBlbmNvZGluZyk7CgkJZnJlZShpbWFnZSk7CgkJcmV0dXJuIHN0YXR1cyA/IDIgOiAwOwoJfQoJY29kZWMgPSBhcmd2WzddOwoJaWYgKHN0cmNtcChjb2RlYywgIi0iKSAmJiAoc3RyY21wKGNvZGVjLCAibm9raWEtcmktdjEiKSB8fCBpbWFnZV9zaXplICE9IFJJX0lNQUdFX1NJWkUpKSB7CgkJZnJlZShpbWFnZSk7CgkJcmV0dXJuIDI7Cgl9CglpZiAoc3RyY21wKGFyZ3ZbOF0sICItIikgJiYKCSAgICAoaW1hZ2Vfc2l6ZSA8IDQgfHwgcGFyc2VfbnVtYmVyKGFyZ3ZbOF0sICZtaXJyb3IpIHx8IG1pcnJvciA+IGltYWdlX3NpemUgLSA0KSkgewoJCWZyZWUoaW1hZ2UpOwoJCXJldHVybiAyOwoJfQoKCS8qIFJJIGNoZWNrc3VtcyBjb3ZlciB0d28gcmVjb3JkcyBpbml0aWFsaXplZCB3aXRoIEFTQ0lJIHplcm9lcy4gKi8KCWlmICghc3RyY21wKGNvZGVjLCAibm9raWEtcmktdjEiKSkgewoJCWZvciAoaSA9IDA7IGkgPCBpbWFnZV9zaXplICYmIGltYWdlW2ldID09IDB4ZmY7IGkrKykKCQkJOwoJCWlmIChpID09IGltYWdlX3NpemUpCgkJCW1lbXNldChpbWFnZSwgJzAnLCAweDIwMCk7Cgl9CglpZiAod3JpdGVfZmllbGQoaW1hZ2UgKyBvZmZzZXQsIHNpemUsIGVuY29kaW5nLCBhcmd2WzldLCB2c3NuKSkgewoJCWZwcmludGYoc3RkZXJyLCAiSW52YWxpZCBpZGVudGl0eSB2YWx1ZVxuIik7CgkJZnJlZShpbWFnZSk7CgkJcmV0dXJuIDI7Cgl9CglpZiAoc3RyY21wKGFyZ3ZbOF0sICItIikpIHsKCQlpZiAoc3RyY21wKGNvZGVjLCAibm9raWEtcmktdjEiKSB8fCBzdHJjbXAoZW5jb2RpbmcsICJwb24tYXNjaWkxMiIpKSB7CgkJCWZyZWUoaW1hZ2UpOwoJCQlyZXR1cm4gMjsKCQl9CgkJbWVtY3B5KGltYWdlICsgbWlycm9yLCB2c3NuLCA0KTsKCX0KCWlmICghc3RyY21wKGNvZGVjLCAibm9raWEtcmktdjEiKSkgewoJCXVwZGF0ZV9yaV9jaGVja3N1bShpbWFnZSk7CgkJdXBkYXRlX3JpX2NoZWNrc3VtKGltYWdlICsgUklfUkVDT1JEX1NJWkUpOwoJfQoJc3RhdHVzID0gc2F2ZV9pbWFnZShhcmd2WzNdLCBpbWFnZSwgaW1hZ2Vfc2l6ZSk7CglmcmVlKGltYWdlKTsKCXJldHVybiBzdGF0dXMgPyAxIDogMDsKfQo=
+// SPDX-License-Identifier: GPL-2.0-only
+
+#include <ctype.h>
+#include <errno.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define RI_IMAGE_SIZE      0x40000
+#define RI_RECORD_SIZE     0x80
+#define RI_CHECKSUM_OFFSET 0x7c
+
+static int hex_value(char value)
+{
+	value = toupper((unsigned char)value);
+	if (value >= '0' && value <= '9')
+		return value - '0';
+	if (value >= 'A' && value <= 'F')
+		return value - 'A' + 10;
+	return -1;
+}
+
+static int parse_number(const char *text, size_t *value)
+{
+	char *end;
+	unsigned long number;
+
+	errno = 0;
+	number = strtoul(text, &end, 10);
+	if (errno || !*text || *end)
+		return -1;
+	*value = number;
+	return 0;
+}
+
+static int valid_mac(const uint8_t mac[6])
+{
+	size_t i;
+
+	if (mac[0] & 1)
+		return 0;
+	for (i = 0; i < 6 && mac[i] == 0; i++)
+		;
+	return i != 6;
+}
+
+static int parse_mac(const char *text, uint8_t mac[6])
+{
+	char digits[12];
+	size_t count = 0;
+	size_t i;
+
+	for (; *text; text++) {
+		if (*text == ':' || *text == '-')
+			continue;
+		if (count == sizeof(digits) || hex_value(*text) < 0)
+			return -1;
+		digits[count++] = *text;
+	}
+	if (count != sizeof(digits))
+		return -1;
+	for (i = 0; i < 6; i++)
+		mac[i] = (hex_value(digits[i * 2]) << 4) | hex_value(digits[i * 2 + 1]);
+	return valid_mac(mac) ? 0 : -1;
+}
+
+static int parse_pon_sn(const char *text, uint8_t serial[12], uint8_t vssn[4])
+{
+	size_t i;
+
+	if (strlen(text) != 12)
+		return -1;
+	for (i = 0; i < 4; i++) {
+		if (!isalnum((unsigned char)text[i]))
+			return -1;
+		serial[i] = toupper((unsigned char)text[i]);
+	}
+	for (i = 4; i < 12; i++) {
+		if (hex_value(text[i]) < 0)
+			return -1;
+		serial[i] = toupper((unsigned char)text[i]);
+	}
+	for (i = 0; i < 4; i++)
+		vssn[i] = (hex_value(text[4 + i * 2]) << 4) | hex_value(text[5 + i * 2]);
+	return 0;
+}
+
+static uint8_t *load_image(const char *path, size_t *size)
+{
+	FILE *file;
+	uint8_t *image;
+	long length;
+
+	file = fopen(path, "rb");
+	if (!file)
+		return NULL;
+	if (fseek(file, 0, SEEK_END))
+		goto fail;
+	length = ftell(file);
+	if (length <= 0)
+		goto fail;
+	rewind(file);
+	image = malloc(length);
+	if (!image)
+		goto fail;
+	if (fread(image, 1, length, file) != (size_t)length) {
+		free(image);
+		goto fail;
+	}
+	fclose(file);
+	*size = length;
+	return image;
+
+fail:
+	fclose(file);
+	return NULL;
+}
+
+static int save_image(const char *path, const uint8_t *image, size_t size)
+{
+	FILE *file;
+	int result;
+
+	file = fopen(path, "wb");
+	if (!file)
+		return -1;
+	result = fwrite(image, 1, size, file) == size ? 0 : -1;
+	if (fclose(file))
+		result = -1;
+	return result;
+}
+
+static void print_mac(const uint8_t mac[6])
+{
+	printf("%02x:%02x:%02x:%02x:%02x:%02x\n", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+}
+
+static int read_field(const uint8_t *field, size_t size, const char *encoding)
+{
+	uint8_t mac[6], serial[12], vssn[4];
+	char text[256];
+	size_t i;
+
+	if (!strcmp(encoding, "mac-binary6") && size == 6) {
+		if (valid_mac(field))
+			print_mac(field);
+		return 0;
+	}
+	if ((!strcmp(encoding, "mac-hex12") && size == 12) ||
+	    (!strcmp(encoding, "mac-colon17") && size == 17)) {
+		memcpy(text, field, size);
+		text[size] = 0;
+		if (!parse_mac(text, mac))
+			print_mac(mac);
+		return 0;
+	}
+	if (!strcmp(encoding, "pon-ascii12") && size == 12) {
+		memcpy(text, field, size);
+		text[size] = 0;
+		if (!parse_pon_sn(text, serial, vssn))
+			printf("%.12s\n", (char *)serial);
+		return 0;
+	}
+	if (!strcmp(encoding, "pon-binary8") && size == 8) {
+		for (i = 0; i < 4; i++)
+			if (!isalnum(field[i]))
+				return 0;
+		printf("%c%c%c%c%02X%02X%02X%02X\n", field[0], field[1], field[2], field[3],
+		       field[4], field[5], field[6], field[7]);
+		return 0;
+	}
+	if (!strcmp(encoding, "serial-text") && size < sizeof(text)) {
+		for (i = 0; i < size && field[i] && field[i] != 0xff; i++)
+			if (!isprint(field[i]))
+				return 0;
+		printf("%.*s\n", (int)i, field);
+		return 0;
+	}
+	return -1;
+}
+
+static int write_field(uint8_t *field, size_t size, const char *encoding, const char *value,
+                       uint8_t vssn[4])
+{
+	uint8_t mac[6], serial[12];
+	size_t i;
+
+	if (!strncmp(encoding, "mac-", 4)) {
+		if (parse_mac(value, mac))
+			return -1;
+		if (!strcmp(encoding, "mac-binary6") && size == 6) {
+			memcpy(field, mac, 6);
+			return 0;
+		}
+		if (!strcmp(encoding, "mac-hex12") && size == 12) {
+			char text[13];
+
+			for (i = 0; i < 6; i++)
+				sprintf(text + i * 2, "%02X", mac[i]);
+			memcpy(field, text, size);
+			return 0;
+		}
+		if (!strcmp(encoding, "mac-colon17") && size == 17) {
+			char text[18];
+
+			snprintf(text, sizeof(text), "%02X:%02X:%02X:%02X:%02X:%02X", mac[0],
+			         mac[1], mac[2], mac[3], mac[4], mac[5]);
+			memcpy(field, text, size);
+			return 0;
+		}
+		return -1;
+	}
+	if (!strncmp(encoding, "pon-", 4)) {
+		if (parse_pon_sn(value, serial, vssn))
+			return -1;
+		if (!strcmp(encoding, "pon-ascii12") && size == 12) {
+			memcpy(field, serial, 12);
+			return 0;
+		}
+		if (!strcmp(encoding, "pon-binary8") && size == 8) {
+			memcpy(field, serial, 4);
+			memcpy(field + 4, vssn, 4);
+			return 0;
+		}
+		return -1;
+	}
+	if (!strcmp(encoding, "serial-text") && strlen(value) <= size) {
+		for (i = 0; value[i]; i++)
+			if (!isprint((unsigned char)value[i]))
+				return -1;
+		memset(field, 0, size);
+		memcpy(field, value, i);
+		return 0;
+	}
+	return -1;
+}
+
+/* Each RI record stores a 16-bit two's-complement checksum of its data bytes. */
+static void update_ri_checksum(uint8_t *record)
+{
+	uint32_t sum = 0;
+	uint16_t checksum;
+	size_t i;
+
+	for (i = 0; i < RI_CHECKSUM_OFFSET; i++)
+		sum += record[i];
+	checksum = (uint16_t)(0u - sum);
+	record[RI_CHECKSUM_OFFSET] = checksum;
+	record[RI_CHECKSUM_OFFSET + 1] = checksum >> 8;
+}
+
+int main(int argc, char **argv)
+{
+	const char *encoding, *codec = "-";
+	uint8_t *image, vssn[4] = {0};
+	size_t image_size, offset, size, mirror = 0, i;
+	int writing, status;
+
+	writing = argc == 10 && !strcmp(argv[1], "write");
+	if (!(argc == 6 && !strcmp(argv[1], "read")) && !writing)
+		return 2;
+	image = load_image(argv[2], &image_size);
+	if (!image) {
+		fprintf(stderr, "Cannot read identity image\n");
+		return 1;
+	}
+	if (parse_number(argv[writing ? 4 : 3], &offset) ||
+	    parse_number(argv[writing ? 5 : 4], &size) || !size || offset > image_size ||
+	    size > image_size - offset) {
+		fprintf(stderr, "Identity field exceeds image bounds\n");
+		free(image);
+		return 2;
+	}
+	encoding = argv[writing ? 6 : 5];
+	if (!writing) {
+		status = read_field(image + offset, size, encoding);
+		free(image);
+		return status ? 2 : 0;
+	}
+	codec = argv[7];
+	if (strcmp(codec, "-") && (strcmp(codec, "nokia-ri-v1") || image_size != RI_IMAGE_SIZE)) {
+		free(image);
+		return 2;
+	}
+	if (strcmp(argv[8], "-") &&
+	    (image_size < 4 || parse_number(argv[8], &mirror) || mirror > image_size - 4)) {
+		free(image);
+		return 2;
+	}
+
+	/* RI checksums cover two records initialized with ASCII zeroes. */
+	if (!strcmp(codec, "nokia-ri-v1")) {
+		for (i = 0; i < image_size && image[i] == 0xff; i++)
+			;
+		if (i == image_size)
+			memset(image, '0', 0x200);
+	}
+	if (write_field(image + offset, size, encoding, argv[9], vssn)) {
+		fprintf(stderr, "Invalid identity value\n");
+		free(image);
+		return 2;
+	}
+	if (strcmp(argv[8], "-")) {
+		if (strcmp(codec, "nokia-ri-v1") || strcmp(encoding, "pon-ascii12")) {
+			free(image);
+			return 2;
+		}
+		memcpy(image + mirror, vssn, 4);
+	}
+	if (!strcmp(codec, "nokia-ri-v1")) {
+		update_ri_checksum(image);
+		update_ri_checksum(image + RI_RECORD_SIZE);
+	}
+	status = save_image(argv[3], image, image_size);
+	free(image);
+	return status ? 1 : 0;
+}

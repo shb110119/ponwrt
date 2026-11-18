@@ -1,1 +1,39 @@
-ewoJImx1Y2ktYXBwLW9udSI6IHsKCQkiZGVzY3JpcHRpb24iOiAiR3JhbnQgYWNjZXNzIHRvIFBPTiBjb25maWd1cmF0aW9uLCBib2FyZCBpZGVudGl0eSwgY2FsaWJyYXRpb24gZGF0YSwgdGhlIGludGVybmV0IHNlcnZpY2UsIHRoZSBJUFRWIGJyaWRnZSBhbmQgdm9pY2UiLAoJCSJyZWFkIjogewoJCQkiY2dpLWlvIjogWyAiZXhlYyIgXSwKCQkJInVjaSI6IFsgInBvbiIsICJhaXJvaGEtcG9uLWRlYnVnIiwgIm9udS1pbnRlcm5ldCIsICJvbnUtaXB0diIsICJvbnUtdm9pY2UiLCAibmV0d29yayIgXSwKCQkJInVidXMiOiB7CgkJCQkiZmlsZSI6IFsgInJlYWQiLCAiZXhlYyIgXSwKCQkJCSJuZXR3b3JrLmRldmljZSI6IFsgInN0YXR1cyIgXSwKCQkJCSJuZXR3b3JrLmludGVyZmFjZSI6IFsgImR1bXAiIF0KCQkJfSwKCQkJImZpbGUiOiB7CgkJCQkiL3Vzci9zYmluL3BvbmN0bCAtLWRldmljZSAqIHN0YXR1cyI6IFsgImV4ZWMiIF0sCgkJCQkiL3Vzci9zYmluL3BvbmN0bCAtLWRldmljZSAqIHN0YXR1cyAtLWpzb24iOiBbICJleGVjIiBdLAoJCQkJIi91c3IvYmluL3BvbmRjdGwgc3RhdHVzIC0tbGluZSAqIjogWyAiZXhlYyIgXSwKCQkJCSIvdXNyL2xpYmV4ZWMvcG9uLWJvYXJkLWlkZW50aXR5IGxpc3QiOiBbICJleGVjIiBdLAoJCQkJIi91c3IvbGliZXhlYy9wb24tYm9hcmQtaWRlbnRpdHkgcmVhZCAqIjogWyAiZXhlYyIgXSwKCQkJCSIvdXNyL2xpYmV4ZWMvYWlyb2hhLXBvbi1kYXRhIGxpc3QiOiBbICJleGVjIiBdLAoJCQkJIi91c3IvbGliZXhlYy9haXJvaGEtcG9uLWRhdGEgcmVhZCAqIjogWyAiZXhlYyIgXSwKCQkJCSIvdG1wL3Bvbi1ib2FyZC1iYWNrdXAuYmluIjogWyAicmVhZCIgXSwKCQkJCSIvdG1wL3Bvbi1kZWJ1Zy50YXIuZ3oiOiBbICJyZWFkIiBdCgkJCX0KCQl9LAoJCSJ3cml0ZSI6IHsKCQkJImNnaS1pbyI6IFsgInVwbG9hZCIgXSwKCQkJInVjaSI6IFsgInBvbiIsICJhaXJvaGEtcG9uLWRlYnVnIiwgIm9udS1pbnRlcm5ldCIsICJvbnUtaXB0diIsICJvbnUtdm9pY2UiIF0sCgkJCSJ1YnVzIjogewoJCQkJImZpbGUiOiBbICJleGVjIiwgIndyaXRlIiBdCgkJCX0sCgkJCSJmaWxlIjogewoJCQkJIi90bXAvcG9uLWJvYXJkLWRhdGEuYmluIjogWyAid3JpdGUiIF0sCgkJCQkiL3Vzci9saWJleGVjL2Fpcm9oYS1wb24tZGF0YSB3cml0ZSAqIjogWyAiZXhlYyIgXSwKCQkJCSIvdXNyL2xpYmV4ZWMvcG9uLWJvYXJkLWlkZW50aXR5IHdyaXRlICoiOiBbICJleGVjIiBdLAoJCQkJIi91c3IvbGliZXhlYy9haXJvaGEtcG9uLWRlYnVnIGNvbGxlY3QiOiBbICJleGVjIiBdLAoJCQkJIi91c3IvbGliZXhlYy9haXJvaGEtcG9uLWRlYnVnIHJlc3RhcnQiOiBbICJleGVjIiBdCgkJCX0KCQl9Cgl9Cn0K
+{
+	"luci-app-onu": {
+		"description": "Grant access to PON configuration, board identity, calibration data, the internet service, the IPTV bridge and voice",
+		"read": {
+			"cgi-io": [ "exec" ],
+			"uci": [ "pon", "airoha-pon-debug", "onu-internet", "onu-iptv", "onu-voice", "network" ],
+			"ubus": {
+				"file": [ "read", "exec" ],
+				"network.device": [ "status" ],
+				"network.interface": [ "dump" ]
+			},
+			"file": {
+				"/usr/sbin/ponctl --device * status": [ "exec" ],
+				"/usr/sbin/ponctl --device * status --json": [ "exec" ],
+				"/usr/bin/pondctl status --line *": [ "exec" ],
+				"/usr/libexec/pon-board-identity list": [ "exec" ],
+				"/usr/libexec/pon-board-identity read *": [ "exec" ],
+				"/usr/libexec/airoha-pon-data list": [ "exec" ],
+				"/usr/libexec/airoha-pon-data read *": [ "exec" ],
+				"/tmp/pon-board-backup.bin": [ "read" ],
+				"/tmp/pon-debug.tar.gz": [ "read" ]
+			}
+		},
+		"write": {
+			"cgi-io": [ "upload" ],
+			"uci": [ "pon", "airoha-pon-debug", "onu-internet", "onu-iptv", "onu-voice" ],
+			"ubus": {
+				"file": [ "exec", "write" ]
+			},
+			"file": {
+				"/tmp/pon-board-data.bin": [ "write" ],
+				"/usr/libexec/airoha-pon-data write *": [ "exec" ],
+				"/usr/libexec/pon-board-identity write *": [ "exec" ],
+				"/usr/libexec/airoha-pon-debug collect": [ "exec" ],
+				"/usr/libexec/airoha-pon-debug restart": [ "exec" ]
+			}
+		}
+	}
+}
