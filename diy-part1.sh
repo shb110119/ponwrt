@@ -239,6 +239,27 @@ for p in luci-app-natmode luci-app-pon-status; do
   fi
 done
 
+# 注意：此块必须在下面的 prepare-tmpinfo 之前执行，否则包进不了
+# tmp/.packageinfo 索引，CONFIG_PACKAGE_luci-app-onu=y 会被 make 静默忽略。
+# ---------------------------------------------------------
+# ONU UI：把 vendored 的 luci-app-onu（naoki66/OpenWrt_ONU_CONFIG 前端，
+#   源码放在 .github/onu-ui/）拷进 package/custom。只拿 UI + 自带 helper，
+#   daemon 仍用 pbs05 的（保留我们的 VLAN 累积补丁）。
+#   与现有 luci-app-pon / luci-app-pon-status / luci-app-iptv 并存，菜单不冲突。
+#   IPTV 页的实时 IGMP 子面板因 pbs05 ponctl 无 igmp 命令会显示空（已降级处理）。
+# ---------------------------------------------------------
+ONU_UI_SRC="$PWD/.github/onu-ui/luci-app-onu"
+ONU_UI_DST="$PKG_DIR/luci-app-onu"
+if [ -d "$ONU_UI_SRC" ]; then
+  rm -rf "$ONU_UI_DST"
+  cp -a "$ONU_UI_SRC" "$ONU_UI_DST"
+  # init.d 与 libexec 脚本必须带 x 位，否则对应页面直接失效
+  chmod 0755 "$ONU_UI_DST"/root/etc/init.d/* "$ONU_UI_DST"/root/usr/libexec/* 2>/dev/null || true
+  echo "✅ ONU UI 已放入 $ONU_UI_DST"
+else
+  echo "::warning::未找到 vendored ONU UI 源码: $ONU_UI_SRC"
+fi
+
 # ---------------------------------------------------------
 # 清理重复嵌套目录
 # rchen14b/luci-app-airoha-npu 这个仓库有问题：包在根目录放了一份，
@@ -383,24 +404,5 @@ else
   echo "::warning::未找到 PON VLAN 补丁（$PON_VLAN_PATCH）或 pon_userspace 源码（$PON_CTC_RS），跳过"
 fi
 
-
-# ---------------------------------------------------------
-# ONU UI：把 vendored 的 luci-app-onu（naoki66/OpenWrt_ONU_CONFIG 前端，
-#   源码放在 .github/onu-ui/）拷进 package/custom。只拿 UI + 自带 helper，
-#   daemon 仍用 pbs05 的（保留我们的 VLAN 累积补丁）。
-#   与现有 luci-app-pon / luci-app-pon-status / luci-app-iptv 并存，菜单不冲突。
-#   IPTV 页的实时 IGMP 子面板因 pbs05 ponctl 无 igmp 命令会显示空（已降级处理）。
-# ---------------------------------------------------------
-ONU_UI_SRC="$PWD/.github/onu-ui/luci-app-onu"
-ONU_UI_DST="$PKG_DIR/luci-app-onu"
-if [ -d "$ONU_UI_SRC" ]; then
-  rm -rf "$ONU_UI_DST"
-  cp -a "$ONU_UI_SRC" "$ONU_UI_DST"
-  # init.d 与 libexec 脚本必须带 x 位，否则对应页面直接失效
-  chmod 0755 "$ONU_UI_DST"/root/etc/init.d/* "$ONU_UI_DST"/root/usr/libexec/* 2>/dev/null || true
-  echo "✅ ONU UI 已放入 $ONU_UI_DST"
-else
-  echo "::warning::未找到 vendored ONU UI 源码: $ONU_UI_SRC"
-fi
 
 echo "🎉 diy-part1.sh 执行完毕"
